@@ -5,7 +5,7 @@ date = "2021-02-09T17:11:05+01:00"
 #
 # description is optional
 #
-# description = "Jeg er en oversetter som oversetter fra norsk til tysk. Her skriver jeg mine tanker rundt oversetting av ordet powerful kraftfull potent, som ofte brukes i IT."
+description = "Jeg er en oversetter som oversetter fra norsk til tysk. Her skriver jeg mine tanker rundt oversetting av ordet powerful kraftfull potent, som ofte brukes i IT."
 
 tags = ["english","german","linux","oversettelse","translation","tysk",]
 +++
@@ -23,7 +23,7 @@ I dag fikk jeg servert følgende setning på svensk (redigert litt for anonymise
 
 > Du får också se hur möjligheterna att förstå och analysera verksamheten kraftfullt kan förbättras.
 
-Det som springer meg i øyet, er bruken av orden kraftfullt. 
+Det jeg reagerer på, er bruken av orden kraftfullt. 
 Setningen påstår altså at den vil vise meg hvordan jeg kan forstå og analysere virksomheten på en kraftfull måte.
 
 Edderkoppsansen min plinger -- nå er det opp med guarden! 
