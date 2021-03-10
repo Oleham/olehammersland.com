@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{ if eq .Type "blogg" }}{{ if not .Params.menu }}{{ if .Params.include_toc }}
+<div id="TableOfContents">
+<p><strong>Innhold:</strong></p>
+{{ .TableOfContents }}
+{{ end }}
+</div>
+<h1>{{ .Title }}</h1>
+<p>
+  <i>
+    <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+      {{ .Date.Format "02. Jan, 2006" }}
+    </time>
+  </i>
+</p>
+{{ end }}{{ end }}
+<content>
+  {{ .Content }}
+</content>
+{{ if eq .Type "blogg" }}
+<hr>
+<p style="text-align: center;"><a href="/blogg/">Tilbake til bloggoversikten</a></p>
+<h4>Tagger:</h4>
+<p>
+  {{ range (.GetTerms "tags") }}
+  <a href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+  {{ end }}
+</p>
+{{ end }}
+{{ end }}

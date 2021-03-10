@@ -7,6 +7,8 @@ date = "2021-01-27T19:46:15+01:00"
 #
 description = "Språktjeneste, oversetterbransjen, XTRF, utvikling og automatisering for oversetterbransjen. Triks til å bruke XTRF. Python sitt nettframework Django"
 
+include_toc = true
+
 tags = ["english","python","xtrf", "automatisering"]
 +++
 
@@ -43,7 +45,7 @@ A more prominent reason for this architecture is also simply the fact that I was
 Here, the potential clients would be able enter their information and write a short message to request a quote.
 This form was linked to the following Django model:
 
-```
+```python
 class Company(models.Model):
     name = models.CharField(max_length=300, verbose_name="Name")
     publish_date = models.DateTimeField(auto_now=True)
@@ -82,7 +84,8 @@ If we deemed the request as serious, we would run the python script **add_client
 Install something similar to the requirements in **requirements.txt**. 
 Go into the client_registration folder, migrate the database and run the test server.
 Add a super user so that you will be able to log in to the admin and API panels.
-```
+
+```bash
 cd client_registration
 python3 manage.py makemigrations
 python3 manage.py makemigrations registration_app

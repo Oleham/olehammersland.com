@@ -7,6 +7,8 @@ date = "2021-02-12T17:38:36+01:00"
 #
 # description = "An optional description for SEO. If not provided, an automatically created summary will be used."
 
+include_toc = true
+
 tags = ["oversettelse","translation","memoQ",]
 +++
 

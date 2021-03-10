@@ -7,6 +7,8 @@ date = "2021-02-03T15:19:39+01:00"
 #
 description = "Python-prosjekt for å automatisere og forenkle filhåndtering i XTRF."
 
+include_toc = true
+
 tags = ["automatisering","oversettelse","python","xtrf","effektivisering"]
 +++
 
@@ -93,7 +95,7 @@ Programmet fungerer nå som en veldig forenklet utgave av Vendor Portal. Man vel
 
 Når man trykker på oppdater-symbolet (♻️), vil simpleVP legge til nye oppdrag i listen eller endre status på oppdrag – litt som i nettleseren.
 
-Det som gjør simpleVP spesielt nyttig, er at man kan velge flere oppdrag med sjekkboksene ute til venstre. Når man trykker på download, vil **alle** filene lastes ned til mappen som er definert, uten noe om og med. Mappen vil kun inneholde filene som ble lastet ned sist.
+Det som gjør simpleVP spesielt nyttig, er at man kan velge flere oppdrag med sjekkboksene ute til venstre. Når man trykker på download, vil **alle** filene lastes ned til mappen som er definert, uten noe om og men. Mappen vil kun inneholde filene som ble lastet ned sist.
 
 Nå trenger jeg ikke lenger forlate oversettelsesprogrammet mitt, men kan jobbe meg gjennom fil for fil, uten avbrytelser. Jeg bruker en hurtigtast for å pakke ut neste prosjekt i nedlastningsmappen, og det går lynraskt.
 

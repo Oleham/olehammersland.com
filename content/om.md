@@ -29,7 +29,7 @@ Her vil du etterhvert kunne laste ned min CV. Her er kortversjonen:
 * **1,5 år** som lokal medarbeider ved Tysklands ambassade i Oslo.
 * **1,5 år** som oversetter for GLOBALscandinavia AS  
 
-[Last ned min CV her!](#)
+[Last ned min CV her!](/resume_hammersland.pdf)
 
 ## Om denne siden
 Denne siden er laget ved hjelp av [Hugo](https://gohugo.io/). Jeg har tatt utgangspunkt i temaet [Hugo Bear Blog](https://github.com/Jazzex/hugo-bearblog). Takk for å gjøre det tilgjengelig.

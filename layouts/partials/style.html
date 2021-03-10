@@ -1,7 +1,18 @@
 <style>
+
+  @import url('fonts/inter.css');
+    html { 
+      font-family: 'Inter', sans-serif; 
+    }
+  @supports (font-variation-settings: normal) {
+    html { 
+      font-family: 'Inter var', sans-serif; 
+    }
+  }
+
   body {
-    font-family: Verdana, sans-serif;
     margin: auto;
+    font-size: 1.2rem;
     padding: 20px;
     max-width: 720px;
     text-align: left;
@@ -124,7 +135,15 @@
   ul.blog-posts li a:visited {
     color: #8b6fcb;
   }
-  
+
+  /* Table of contents -- blogg */
+  div#TableOfContents {
+    padding-top: 10px; 
+  }
+  #TableOfContents li {
+    list-style: circle;
+  }
+
   @media (prefers-color-scheme: dark) {
     body {
       background-color: #333;

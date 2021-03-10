@@ -8,6 +8,9 @@ date = "2021-02-16T18:31:38+01:00"
 # description = "Jeg automatiserer lesing av e-poster for en kunde. BeautifulSoup og Mailparser. Spare tid og klikk på å automatisere e-postlesing"
 
 tags = ["automatisering","bash","effektivisering","python",]
+
+include_toc = true
+
 +++
 
 Det er ikke alltid mulig å arbeide på en så effektiv måte som mulig. Ofte må man samarbeide med organisasjoner med en egen arbeidsflyt og kultur som ikke nødvendigvis er forenlig med hurtig arbeid. 
@@ -15,7 +18,7 @@ Det er ikke alltid mulig å arbeide på en så effektiv måte som mulig. Ofte m�
 **To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post og Excel-regneark.** Det er ikke så rart. For flere kunder som ikke nødvendigvis er så teknisk kompetente, fremstår Excel som grei måte å organisere tekst på. På samme måte er e-post en rask og umiddelbar måte å sende ut en fil når det ikke er noen etablert teknisk infrastruktur på plass ennå. Men det er ikke noen solid måte å arbeide på. Det er mange ulemper ved å distribuere filer på e-post:
 
 * oversikt
-* kapasitet (mental og kronisk)
+* kapasitet (mental og tidsmessig)
 * stress
 
 Det første punktet gjelder oversikt: til tross for at jeg har jobbet mye med e-post, føler jeg fortsatt ikke at jeg helt har knekket koden for hvordan man skal sortere e-poster så effektivt som mulig. Spesielt når man også skal sortere flere kunder, flere kontaktpersoner og flere filer. Det har hendt meg at jeg har oversatt feil fil fordi jeg på samme tid fikk to filer tilsendt med tilnærmet samme navn.

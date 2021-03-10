@@ -7,7 +7,7 @@ date = "2021-02-24T16:41:49+01:00"
 #
 # description = "Jeg beskriver et fakturaprogram jeg har laget for frilanservirksomheten min. Som frilanser og oversetter vil jeg dra nytte av denne fakturageneraturen, som automatisere det å opprette fakturaer."
 
-tags = ["automatisering","effektivisering","python","xtrf",]
+tags = ["automatisering","effektivisering","python","xtrf","enkeltpersonforetak",]
 +++
 
 I denne bloggposten beskriver jeg en fakturagenerator jeg har laget i Python. Fakturageneratoren kan i løpet av få milisekunder opprette en faktura i HTML-format basert på data.
@@ -125,7 +125,7 @@ Dette dokumentet består av to byggeklosser.
 
 `maler/tabellmal.html` inneholder rammeverket for selve tabellen. Fordelen med denne oppgavedelingen er at jeg raskt kan utforme en annerledes tabell til en annen kunde, uten å påvirke utformingen til resten av fakturaen.
 
-Selve stylingen gjøres i `maler/faktura.css`. Jeg har forsøkt å legge meg på en stil som ligner på [Faktura Larsen](#), et (gratis!) eldre hobbyprogram som fortsatt fungerer veldig bra.
+Selve stylingen gjøres i `maler/faktura.css`. Jeg har forsøkt å legge meg på en stil som ligner på Faktura Larsen, et (gratis!) eldre hobbyprogram som fortsatt fungerer veldig bra.
 
 ![Faktura fra Faktura Larsen](/images/blogg/hammer-faktura-faktura_larsen.jpg)
 
@@ -145,14 +145,15 @@ kontorer = ["NO", "DK", "SE"]
 for kontor in kontorer:
 
 	if kontor == "NO":
-		gs = hammer_faktura.Kunde("NORSK KUNDE", "1234567", "Oslo")
+		kunde = hammer_faktura.Kunde("NORSK KUNDE", "1234567", "Oslo")
 	elif kontor == "DK":
-		gs = hammer_faktura.Kunde("DANSK KUNDE", "7654321", "København")
+		kunde = hammer_faktura.Kunde("DANSK KUNDE", "7654321", "København")
 	else:
-		gs = hammer_faktura.Kunde("SVENSK KUNDE", "17262534", "Stockholm")
+		kunde = hammer_faktura.Kunde("SVENSK KUNDE", "17262534", "Stockholm")
 
-	invoice = hammer_faktura.Faktura(gs)
+	invoice = hammer_faktura.Faktura(kunde)
 
+	# Fyller ut tabellen med data som hentes direkte fra XTRF
 	populate_invoice_from_XTRF(invoice, oversikt, kontor)
 
 	invoice.generate_table()
@@ -184,4 +185,10 @@ Jeg startet prosjetet på mandag og har kost meg veldig gjennom hele uken. Det h
 Det er ikke så lett, fordi man må prøve å gjette på hvilke funksjoner som kan være nyttige i fremtiden. Muligheten for å endre språket i fakturaen? Kanskje bør kundene lagres i en database og hentes derfra? Kanskje skal det være mulig å oppdatere totalen etter at tabellen har blitt generert? Og så videre.
 
 Uansett er jeg fornøyd med ukens fremgang på prosjektet. Nå skal jeg lage fakturaene mine, og så får jeg tenke over de neste utvidelsene en annen gang!
+
+---
+### OBS!
+
+**Oppdatering 4.3.2021**
+Jeg har overhalet Hammer Faktura ganske betydelig. Alle endringene og forbedringene er beskrevet og forklart tydelig i det nye blogginnlegget, [som kan leses her](/blogg/fakturaer-del-to)
 
