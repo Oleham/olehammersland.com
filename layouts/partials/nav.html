@@ -1,0 +1,7 @@
+<a href="{{ "/" | relURL }}">Hjem</a>
+{{ range .Site.Menus.main }}
+<a href="{{ .URL }}">{{ .Name }}</a>
+{{ end }}
+{{ with .Site.GetPage "/blogg" }}
+<a href="{{ "/blogg" | relURL }}">Blogg</a>
+{{ end }}

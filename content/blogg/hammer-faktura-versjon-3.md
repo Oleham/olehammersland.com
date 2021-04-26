@@ -34,8 +34,9 @@ Hammer Faktura kan nå dessuten [kjøres direkte som et skript](#kommandolinjeve
 **Innhold:**
 
 1. [Hurtigstart](#hurtigstart)
-1. [Samhandling med databasen](#samhandling-med-databasen)
 1. [Skape og bruke fakturageneratoren](#skape-og-bruke-fakturageneratoren)
+1. [Samhandling med databasen](#samhandling-med-databasen)
+1. [Navn og kontrakter](#navn-og-kontrakter)
 1. [Kommandolinjeverktøy](#kommandolinjeverktøy)
 
 ### Hurtigstart
@@ -43,7 +44,7 @@ Hammer Faktura kan nå dessuten [kjøres direkte som et skript](#kommandolinjeve
 Last ned modulen:
 
 ```
-git clone https://github.com/Oleham/hammer_faktura
+git clone https://github.com/Oleham/hammer_faktura.git
 ```
 
 Opprett en tom database i nåværende mappe. Navnet vil alltid være `hammer_faktura.db`.
@@ -146,7 +147,7 @@ invoice_number = hfdb.addInvoice(client_pk, bank_pk,
                     frist=30, 
                     language="NO")
                                                                                      
-hfdb.assignItemsByDate(inv, 
+hfdb.assignItemsByDate(invoice_number, 
                     "16.03.2021",
                     "21.03.2021")  
   
@@ -154,7 +155,7 @@ hfdb.assignItemsByDate(inv,
 
 I dette eksempelet lagrer vi jobbene manuelt i databasen med `hfdb.addItem()`. Jobbene lagres i tabellen invoice_items. Merk at vi nå er nødt til å oppgi hvem som er client for hver enkelt jobb, siden vi nå legger til jobbene «uavhengig» av en faktura. 
 
-`hfdb.addInvoice()` lagrer en faktura i databasen, i tabellen invoices. Det er kun nødvendig å oppgi en kunde og bankinformasjon. Vi kan også oppgi følgende: en egendefinert fakturadato (som timestamp – standard er dagens dato), en egendefinert frist eller velge et annet språk enn norsk. I bakgrunnen blir det automatisk generert et fakturanummer som returneres og lagres i variabelen inv.
+`hfdb.addInvoice()` lagrer en faktura i databasen, i tabellen invoices. Det er kun nødvendig å oppgi en kunde og bankinformasjon. Vi kan også oppgi følgende: en egendefinert fakturadato (som timestamp – standard er dagens dato), en egendefinert frist eller velge et annet språk enn norsk. I bakgrunnen blir det automatisk generert et fakturanummer som returneres og lagres i variabelen invoice_number.
 
 `hfdb.assignItemsByDate()` knytter så en rekke invoice_item til en invoice i et én-til-flere-forhold. Dette forholdet etableres først når vi kjører denne funksjonen – fakturaposter som ennå ikke er blitt berørt, vil ikke være tilknyttet noen faktura i det hele tatt. Argumentene er fakturanummeret det gjelder og et datospenn. Alle poster i invoice_items med samme client som fakturaen og leveringsdato innenfor tidsspennet, blir knyttet til fakturaen.
 
@@ -186,13 +187,38 @@ generator.invoice_items[0]["beskrivelse"] += " m.m." # endre en jobb
 ```
 Man skal imidlertid ha en ganske god grunn for å gjøre det, for endringene vil ikke gjenspeiles i databasen, kun på fakturaen man så genererer. Om man vil endre på innholdet i databasen, må det gjøre med funksjonene i `hfdb`-modulen.
 
+### Navn og kontrakter
+
+I dette prosjektet har jeg blitt inspirert av boken jeg leser for tiden, *The Go Programming Language*. Forfatterne av boken går nøye gjennom navnekonvensjonene i Go, og det har vært lærerikt å tilnærme seg en lignende konsekvenstenking når jeg definerer funksjoner og oppførsel i dette prosjektet.
+
+Som den oppmerksomme leser kanskje har fått med seg, finnes det en rekke funksjoner i Hammer Faktura med prefikset «add», etterfulgt av et objekt i singular. «addInvoice», «addItem», «addClient» og «addBank». Alle disse korresponderer med en tabell i databasen. 
+
+Wrapper-funksjonene starter med «quick» og gir allerede i navnet et hint om hvilke argumenter som må følge: «quickGeneratorFromList» eller «quickGeneratorFromItem».
+
+Hva er poenget? Hvorfor ikke bare kalle funksjonene for «funksjon1» eller «asdfgh»?
+
+Vel, ved å skape lignende navn og lignende oppførsel blir det lettere å lese og forstå koden. Det skaper en slags «kontrakt» mellom brukeren og modulen. Konsekvenstenkingen vil også gjøre det lettere for meg å plukke opp koden på et senere tidspunkt. Jeg har for eksempel bestemt at alle «addX»-funksjonene legger til noe i databasen, og at de returnerer primærnøkkelen for den posten de nettopp la til. Dette skal da gjennomføres konsekvent, selv om jeg som regel ikke bruker denne returverdien til noe, unntatt i «addInvoice». Om jeg i fremtiden vil bruke Hammer Faktura på en ny måte, vet jeg imidlertid at det er en mulighet. Det vil også gjøre det lettere å skumme gjennom listen over funksjoner og se hvilke nye funksjoner som kan legges til. Kanskje vil jeg legge til en funksjon kalt «assignItemsById» for å knytte fakturaposter til fakturaer etter jobb-id, i stedet for etter et datospenn med «assignItemsByDate».
+
+* def addItem(values)
+* def addClient(navn, org_nr, adresse, vat, valuta)
+* def addBank(konto, iban, bic, bank)
+* def addInvoice(client, bank, dato=int(time.time()), frist=30, language="NO")
+* def assignItemsByDate(invoice, _from, to)
+* def makeGenerator(id)
+* def quickGeneratorFromList(items, client, bank)
+* def quickGeneratorFromItem(dato, id, beskrivelse, netto, client, bank)
+
+Når jeg ser på listen over funksjoner, vil jeg si at det ser ganske forståelig ut (selvskryt skal man lytte til, for det kommer fra hjertet)! 😬
+
+I henhold til SQL-konvensjoner er tabellene databasen skrevet i såkalt *snake case* i stedet for *camel case*, altså *slik_som_dette* i stedet for *påDenneMåten*. Dessuten står tabellnavn alltid i flertall.
+
 ### Kommandolinjeverktøy
 
 Jeg har begynt å lage støtte for å bruke Hammer Faktura i kommandolinjen. Inntil videre har jeg konsentrert meg spesielt om de operasjonene som ikke må gjøres så ofte: da tenker jeg på det å legge til en ny kunde eller en ny bankforbindelse. Jeg har også støtte for å legge til en enkelt jobb i invoice_item.
 
 Slik kan Hammer Faktura brukes i kommandolinjen:
 
-```bash
+```
 $ python3 -m hammer_faktura
 
 Usage: python3 -m hammer_faktura [-l/-a] <args>
@@ -230,3 +256,6 @@ $ python3 -m hammer_faktura -l clients
 ```
 
 Neste punkt på programmet vil være støtte for å lage en faktura direkte i kommandolinjen, på samme måte som `hfdb.quickGeneratorFromItem`.
+
+[Se Hammer Faktura på Github!](https://github.com/Oleham/hammer_faktura)
+

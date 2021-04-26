@@ -194,6 +194,11 @@ hammer_faktura/
 
 Dessuten har jeg lagt CSS-stilene inn i et eget HTML-dokument, som jeg legger inn i headeren til fakturaen. Dermed er fakturaen et helt frittstående HTML-dokument hvor alt er synlig, litt som HTML-dokumentene til hjemmesiden min.
 
-[Programmet mitt er fortsatt tilgjengelig på Github](https://github.com/Oleham/hammer_faktura).
+---
+**Obs:**
+
+Siden jeg la ut denne bloggposten har jeg oppdatert Hammer Faktura igjen. Nå har jeg lagt til støtte for databaser.
+
+[Les bloggposten om versjon 3 av Hammer Faktura her](/blogg/hammer-faktura-versjon-3).
 
 [Les bloggposten om den første utgaven av Hammer Faktura her](/blogg/fakturagenerator-i-python).
