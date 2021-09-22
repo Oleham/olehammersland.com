@@ -1,9 +1,12 @@
 {{ define "main" }}
-{{ if eq .Type "blogg" }}{{ if not .Params.menu }}{{ if .Params.include_toc }}
+{{ if eq .Type "blogg" }}
+
+{{ if .Params.include_toc }}
 <div id="TableOfContents">
 <p><strong>Innhold:</strong></p>
 {{ .TableOfContents }}
 {{ end }}
+
 </div>
 <h1>{{ .Title }}</h1>
 <p>
@@ -13,10 +16,12 @@
     </time>
   </i>
 </p>
-{{ end }}{{ end }}
+{{ end }}
+
 <content>
   {{ .Content }}
 </content>
+
 {{ if eq .Type "blogg" }}
 <hr>
 <p style="text-align: center;"><a href="/blogg/">Tilbake til bloggoversikten</a></p>
@@ -27,4 +32,10 @@
   {{ end }}
 </p>
 {{ end }}
+
+{{ if .Params.sykkel }}
+<div id="bysykkel-component"></div>
+<script src="/bysykkel.js"></script>
+{{ end }}
+
 {{ end }}
