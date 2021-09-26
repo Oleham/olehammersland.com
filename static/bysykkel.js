@@ -25,7 +25,7 @@ bikeForm.appendChild(bikeDropdown)
 
 // Div Element for text
 const bikeText = document.createElement("div")
-bikeForm.setAttribute("id", "bike_text")
+bikeText.setAttribute("id", "bike_text")
 bikeForm.appendChild(bikeText)
 
 // fetches both the station information and availability and combines the information.
@@ -85,9 +85,13 @@ async function renderBikes() {
     // Add the event listener
     bikeDropdown.addEventListener("change", function(e) {
         bicycles.forEach(function(cyc) {
+
             if (e.target.value == cyc.name) {
-                let date =  niceDate(new Date(cyc.last_reported * 1000));
-                bikeText.innerHTML = "<p>" + cyc.name + " har " + cyc.num_bikes_available + " ledige sykler og " + cyc.num_docks_available + " ledige plasser.\n(Sist kontrollert " + date + ").</p>"
+
+                date = niceDate(new Date(cyc.last_reported * 1000));
+
+                bikeText.innerHTML = `<p>${cyc.name} har ${cyc.num_bikes_available == 1 ? (cyc.num_bikes_available + ' ledig sykkel'): (cyc.num_bikes_available + ' ledige sykler')} og ${cyc.num_docks_available == 1 ? (cyc.num_docks_available + ' ledig plass'): (cyc.num_docks_available + ' ledige plasser')}<br>
+                (sist kontrollert ${date}).</p>`;
                 return
             }
         })
@@ -96,7 +100,7 @@ async function renderBikes() {
 
 function niceDate(date) {
     let months = ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"]
-    let wdays = ["mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag", "søndag"]
+    let wdays = ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"]
     let wday = date.getDay();
     let day = date.getDate();
     let month = date.getMonth();
@@ -111,7 +115,7 @@ function niceDate(date) {
         minute = "0" + minute;
     }
 
-    return `kl. ${hour}.${minute} ${wdays[wday-1]} den ${day}. ${months[month]}`
+    return `kl. ${hour}.${minute} ${wdays[wday]} den ${day}. ${months[month]}`
 }
 
 renderBikes();

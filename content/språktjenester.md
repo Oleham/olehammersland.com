@@ -4,7 +4,7 @@ menu = "main"
 +++
 
 # Språktjenester
-Mitt enkeltmannsforetak tilbyr språktjenester overfor direktekunder og oversettelsesbyråer. Jeg har ca. 4 års erfaring i denne bransjen: som oversetter, korrekturleser, selger, vendor manager og utvikler.
+Mitt enkeltmannsforetak tilbyr språktjenester overfor direktekunder og oversettelsesbyråer. Jeg har ca. 4 års erfaring i denne bransjen: som oversetter, korrekturleser og utvikler.
 
 ## Hva tilbyr jeg
 Jeg oversetter fra følgende språk:
@@ -14,7 +14,7 @@ Jeg oversetter fra følgende språk:
 * svensk
 
 Jeg har særlig erfaring med å oversette:
-* IT (her konvergerer mine to interesser)
+* IT
 * Generelle nettsider
 * Automobil-industrien
 * Andre tekniske instruksjoner
@@ -26,7 +26,6 @@ Jeg har også en viss erfaring med å oversette til tysk, under de rette forutse
 
 ## Hvorfor velge meg?
  Jeg vet hvilke egenskaper som verdsettes av både kunder og prosjektledere (og trolig også av tekstens sluttkonsument).
-
 
 #### 1. God (og rask) kommunikasjon
 Ingen liker å vente i timevis på svar og så få en halv setning som i beste fall kan betegnes som unnvikende. 
@@ -47,10 +46,10 @@ Det er nettopp det jeg elsker med denne jobben.
 Jeg er veldig glad i lære og sette meg inn i nye ting.
 
 ## Ta kontakt
-Høres dette interessant ut? [Ta gjerne kontakt.](/kontakt/)
+Høres dette interessant ut? [Ta gjerne kontakt.](/om#kontakt)
 
 
-## Bortsett fra oversettelse
+## Ut over oversettelse
 Jeg har ellers god kjennskap til språktjenestebransen fra arbeid med vendor management, håndtering av klager og salg, hvor jeg har arbeidet tett opp mot prosjektledersiden.
 
 Jeg har også god teknisk forståelse og er svært interessert i smarte automatiseringsløsninger. [På min Github](https://github.com/Oleham) har jeg lagt opp noen av prosjektene mine for å forenkle bl.a. filhåndtering og annet på byråsiden. 

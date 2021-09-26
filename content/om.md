@@ -9,9 +9,9 @@ menu = "main"
 Engasjert oversetter med lidenskap for språk og programmering.
 
 ## Kvalifikasjoner
-Her vil du etterhvert kunne laste ned min CV. Her er kortversjonen:
+Jeg har arbeidet som oversetter fulltid siden 2018.
 
-[Last ned min CV her!](/resume_hammersland.pdf)
+[Du kan laste ned min CV her!](/resume_hammersland.pdf)
 
 ## Kontakt
 
