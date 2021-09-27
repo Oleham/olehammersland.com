@@ -12,9 +12,9 @@
     <h3>{{ .Title }}</h3>
     <p>{{ .Summary | printf "%.200s" }} ...</p>
       {{ if eq .ReadingTime 1 }}
-      <p>(lesetid ca. 1 minutt)</p>
+      <small>Først publisert: {{ .Date.Format "02.01.2006" }}, lesetid ca. 1 minutt</small>
       {{ else }}
-      <p>(lesetid ca. {{ .ReadingTime }} minutter)</p>
+      <small>Først publisert: {{ .Date.Format "02.01.2006" }}, lesetid ca. {{ .ReadingTime }} minutter</small>
       {{ end }}
     </a>
   {{ else }}
