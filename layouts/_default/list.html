@@ -6,24 +6,26 @@
     <a href="{{ "/blogg" | relURL }}">Remove filter</a>
   </small>
   {{ end }}
-  <ul class="blog-posts">
-    {{ range .Pages }}
-    <li>
-      <span>
-        <i>
-          <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
-            {{ .Date.Format "02. Jan, 2006" }}
-          </time>
-        </i>
-      </span>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
-    </li>
-    {{ else }}
+  <div class="blog-posts">
+  {{ range .Pages }}
+    <a href="{{ .Permalink }}">
+    <h3>{{ .Title }}</h3>
+    <p>{{ .Summary | printf "%.200s" }} ...</p>
+      {{ if eq .ReadingTime 1 }}
+      <p>(lesetid ca. 1 minutt)</p>
+      {{ else }}
+      <p>(lesetid ca. {{ .ReadingTime }} minutter)</p>
+      {{ end }}
+    </a>
+  {{ else }}
     <li>
       No posts yet
     </li>
-    {{ end }}
-  </ul>
+  {{ end }}
+  </div>
+   <!-- Pagination script-->
+  <div id="pagination"></div>
+  <script src="pagination.js"></script>
   {{ if .Data.Singular }}
   {{else}}
     <small>
