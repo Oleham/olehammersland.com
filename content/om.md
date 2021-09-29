@@ -6,10 +6,10 @@ menu = "main"
 ![Portrettbilde av meg](/images/om.jpg)
 
 ## Om meg
-Engasjert oversetter med lidenskap for språk og programmering.
+Engasjert oversetter med lidenskap for språk og programmering. Opprinnelig fra Kristiansand, men bosatt på St.Hanshaugen i Oslo.
 
 ## Kvalifikasjoner
-Jeg har arbeidet som oversetter fulltid siden 2018.
+Jeg har arbeidet fulltid som oversetter siden 2018.
 
 [Du kan laste ned min CV her!](/resume_hammersland.pdf)
 

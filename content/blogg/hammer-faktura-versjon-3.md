@@ -31,14 +31,6 @@ Hammer Faktura kan nå dessuten [kjøres direkte som et skript](#kommandolinjeve
 
 ## Dokumentasjon
 
-**Innhold:**
-
-1. [Hurtigstart](#hurtigstart)
-1. [Skape og bruke fakturageneratoren](#skape-og-bruke-fakturageneratoren)
-1. [Samhandling med databasen](#samhandling-med-databasen)
-1. [Navn og kontrakter](#navn-og-kontrakter)
-1. [Kommandolinjeverktøy](#kommandolinjeverktøy)
-
 ### Hurtigstart
 
 Last ned modulen:

@@ -4,7 +4,7 @@ baseURL = "https://www.olehammersland.com"
 theme = 'hugo-bearblog'
 
 # Basic metadata configuration for your blog.
-title = "Norsk-tysk oversettelse"
+title = "olehammersland.com"
 author = "Ole Hammersland"
 copyright = "Ole Hammersland©2021"
 languageCode = "en-US"

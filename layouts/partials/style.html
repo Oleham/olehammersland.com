@@ -59,7 +59,20 @@
   }
 
   nav a {
-    margin-right: 10px;
+    margin-right: 5px;
+    padding-right: 10px;
+    color:#444;
+    text-decoration: none;
+    border-right: 2px solid rgb(35, 19, 253);
+  }
+
+  nav a:hover {
+    color:rgb(145, 139, 139)
+  }
+
+  nav a:last-of-type {
+    border-right: none;
+
   }
 
   textarea {
@@ -132,7 +145,6 @@
   }
 
   .blog-posts a:hover, .blog-posts h3:hover {
-    text-decoration: none;
     color:rgb(145, 139, 139);
   }
 
@@ -158,49 +170,4 @@
   #TableOfContents li {
     list-style: circle;
   }
-
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #333;
-      color: #ddd;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    strong,
-    b {
-      color: #eee;
-    }
-
-    a {
-      color: #8cc2dd;
-    }
-
-    code {
-      background-color: #777;
-    }
-
-    pre code {
-      color: #ddd;
-    }
-
-    blockquote {
-      color: #ccc;
-    }
-
-    textarea,
-    input {
-      background-color: #252525;
-      color: #ddd;
-    }
-
-    .helptext {
-      color: #aaa;
-    }
-  }
-
 </style>
