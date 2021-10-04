@@ -6,7 +6,7 @@ menu = "main"
 ![Portrettbilde av meg](/images/om.jpg)
 
 ## Om meg
-Engasjert oversetter med lidenskap for språk og programmering. Opprinnelig fra Kristiansand, men bosatt på St.Hanshaugen i Oslo.
+Engasjert oversetter med lidenskap for språk og programmering. Opprinnelig fra Kristiansand, men bosatt på St. Hanshaugen i Oslo.
 
 ## Kvalifikasjoner
 Jeg har arbeidet fulltid som oversetter siden 2018.

@@ -1,13 +1,15 @@
 const root = document.getElementById("pagination");
 
-const nextBtn = document.createElement("next-btn");
+const nextBtn = document.createElement("button");
+nextBtn.setAttribute("class", "next-btn");
 nextBtn.appendChild(document.createTextNode("<<< neste"));
 root.appendChild(nextBtn);
 
 const displayInfo = document.createElement("span");
 root.appendChild(displayInfo)
 
-const prevBtn = document.createElement("prev-btn");
+const prevBtn = document.createElement("button");
+prevBtn.setAttribute("class","prev-btn");
 prevBtn.appendChild(document.createTextNode("forrige >>>"));
 root.appendChild(prevBtn);
 
