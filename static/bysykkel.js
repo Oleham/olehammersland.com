@@ -13,6 +13,11 @@
 
 const slot = document.getElementById("bysykkel-component")
 
+const inputField = document.createElement("input")
+inputField.setAttribute("type", "text")
+inputField.setAttribute("style", "margin-bottom:10px;font-family:inherit; font-size:inherit;")
+slot.appendChild(inputField)
+
 // Form Element
 const bikeForm = document.createElement("form")
 bikeForm.setAttribute("id", "bike_form")
@@ -21,12 +26,16 @@ slot.appendChild(bikeForm)
 // Select Element
 const bikeDropdown = document.createElement("select")
 bikeDropdown.setAttribute("id", "bike_dropdown")
+bikeDropdown.setAttribute("style", "font-family:inherit; font-size:inherit;")
 bikeForm.appendChild(bikeDropdown)
 
 // Div Element for text
 const bikeText = document.createElement("div")
 bikeText.setAttribute("id", "bike_text")
 bikeForm.appendChild(bikeText)
+
+// Global variable for stations
+let sortedStationNames = []
 
 // fetches both the station information and availability and combines the information.
 async function fetchStationsAndAvailability() {
@@ -67,20 +76,13 @@ async function renderBikes() {
     let bicycles = await fetchStationsAndAvailability();
 
     // Alphatical list for dropdown
-    let sortedStationNames = []
     bicycles.forEach((cyc) => {
         sortedStationNames.push(cyc.name)
     });
     sortedStationNames = sortedStationNames.sort()
     
     // Populate dropdown
-    sortedStationNames.forEach((n) => {
-        let textNode = document.createTextNode(n);
-        let option = document.createElement("option");
-        option.setAttribute("value", n)
-        option.appendChild(textNode);
-        bikeDropdown.appendChild(option)
-    })
+    populateDropDown(sortedStationNames)
 
     // Add the event listener
     bikeDropdown.addEventListener("change", function(e) {
@@ -95,7 +97,28 @@ async function renderBikes() {
                 return
             }
         })
-    }, false);  
+    }, false);
+
+function populateDropDown(stations) {
+    // Reset the dropdown
+    while (bikeDropdown.lastChild) {
+        bikeDropdown.removeChild(bikeDropdown.lastChild)
+    }
+
+    // Populate dropdown
+    stations.forEach((n) => {
+        let textNode = document.createTextNode(n);
+        let option = document.createElement("option");
+        option.setAttribute("value", n)
+        option.appendChild(textNode);
+    })
+}
+
+    // Add event listener for input field
+    inputField.addEventListener("input", function(e) {
+        let searchedStations = sortedStationNames.filter(item => item.toLowerCase().startsWith(e.target.value.toLowerCase()))
+        populateDropDown(searchedStations)
+    })
 }
 
 function niceDate(date) {
