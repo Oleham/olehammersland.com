@@ -98,6 +98,7 @@ async function renderBikes() {
             }
         })
     }, false);
+};
 
 function populateDropDown(stations) {
     // Reset the dropdown
@@ -111,15 +112,17 @@ function populateDropDown(stations) {
         let option = document.createElement("option");
         option.setAttribute("value", n)
         option.appendChild(textNode);
+        bikeDropdown.appendChild(option)
     })
-}
+};
 
-    // Add event listener for input field
-    inputField.addEventListener("input", function(e) {
-        let searchedStations = sortedStationNames.filter(item => item.toLowerCase().startsWith(e.target.value.toLowerCase()))
-        populateDropDown(searchedStations)
-    })
-}
+// Add event listener for input field
+inputField.addEventListener("input", function(e) {
+    let searchedStations = sortedStationNames.filter(item => item.toLowerCase().startsWith(e.target.value.toLowerCase()))
+    populateDropDown(searchedStations)
+    bikeDropdown.dispatchEvent(new Event("change"))
+});
+
 
 function niceDate(date) {
     let months = ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"]
