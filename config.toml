@@ -20,6 +20,9 @@ ignoreErrors = ["error-disable-taxonomy"]
   tags = "/blogg/:slug"
 
 [params]
+  # Alpine JS CDN
+  alpineCDN= "https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+
   # The "description" of your website. This is used in the meta data of your generated html.
   description = "Min hjemmeside. Jeg arbeider med oversettelse fra tysk, engelsk, dansk og svensk."
 
@@ -43,6 +46,9 @@ ignoreErrors = ["error-disable-taxonomy"]
   #hideMadeWithLine = true
 
 [markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
   [markup.highlight]
     anchorLineNos = false
     codeFences = true
