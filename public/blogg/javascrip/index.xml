@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascrip on olehammersland.com</title>
+    <link>https://www.olehammersland.com/blogg/javascrip/</link>
+    <description>Recent content in javascrip on olehammersland.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Mon, 27 Sep 2021 17:30:58 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/javascrip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Javascript, Svelte og React</title>
+      <link>https://www.olehammersland.com/blogg/javascript-svelte-react/</link>
+      <pubDate>Mon, 27 Sep 2021 17:30:58 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/javascript-svelte-react/</guid>
+      <description>Jeg har hatt en bok om JavaScript liggende hjemme i over ett år. Den handler om grunnleggende JavaScript samt en innføring i det sannsynligvis mest brukte rammeverket jQuery.
+En venn har mast på meg i lang tid om at jeg må sjekke ut Svelte, et visstnok fantastisk rammeverk som er superraskt og gjør det lekende lett å utvikle nettsider og apper. Før det har jeg hatt mest erfaring med rammeverkene Django og Hugo – sistnevnte er rammeverket som denne nettsiden er bygget på.</description>
+    </item>
+    
+  </channel>
+</rss>

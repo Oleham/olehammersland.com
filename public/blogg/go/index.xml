@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on olehammersland.com</title>
+    <link>https://www.olehammersland.com/blogg/go/</link>
+    <description>Recent content in go on olehammersland.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Mon, 26 Apr 2021 12:57:36 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mitt første Go-prosjekt</title>
+      <link>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</link>
+      <pubDate>Mon, 26 Apr 2021 12:57:36 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</guid>
+      <description>Jeg har de siste ukene jobbet ganske jevnt og trutt på et nytt programmerings-prosjekt. Målet er å utvide simpleVP, et prosjekt jeg skapte for å automatisere filnedlastning og opplastning fra oversettelsesportalen XTRF (se her). I tillegg vil jeg smelte det sammen med faktura-generatoren min. Det nye prosjektet skal altså bli en one-stop klient for XTRF-systemet for oversettere!
+Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er at den er skrevet i Go.</description>
+    </item>
+    
+  </channel>
+</rss>

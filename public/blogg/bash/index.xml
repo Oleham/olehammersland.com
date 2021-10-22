@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bash on olehammersland.com</title>
+    <link>https://www.olehammersland.com/blogg/bash/</link>
+    <description>Recent content in bash on olehammersland.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Mon, 04 Oct 2021 17:02:15 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fornyelse av Let&#39;s Encrypt-sertifikat</title>
+      <link>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</link>
+      <pubDate>Mon, 04 Oct 2021 17:02:15 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</guid>
+      <description>Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.</description>
+    </item>
+    
+    <item>
+      <title>Hammer Faktura versjon 3</title>
+      <link>https://www.olehammersland.com/blogg/hammer-faktura-versjon-3/</link>
+      <pubDate>Sun, 21 Mar 2021 18:16:42 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/hammer-faktura-versjon-3/</guid>
+      <description>Jeg har oppdatert Hammer Faktura igjen! I denne bloggposten går jeg gjennom hva som er nytt, og gir litt dokumentasjon på hvordan man kan bruke programmet.
+Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring av fakturaposter, kunder, bankinformasjon og fakturaer. Kommandolinjeverktøy for direkte samhandling med databasen. Wrapper-funksjoner som forenkler prosessen med å opprette faktuaene. Støtte for enkel flerspråklighet, slik at jeg kan skrive ut engelske fakturaer.  De tidligere utgavene av Hammer Faktura har kun hatt støtte for å opprette fakturaene.</description>
+    </item>
+    
+    <item>
+      <title>Parsing av e-poster 📮</title>
+      <link>https://www.olehammersland.com/blogg/epost-parsing/</link>
+      <pubDate>Tue, 16 Feb 2021 18:31:38 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/epost-parsing/</guid>
+      <description>Det er ikke alltid mulig å arbeide på en så effektiv måte som mulig. Ofte må man samarbeide med organisasjoner med en egen arbeidsflyt og kultur som ikke nødvendigvis er forenlig med hurtig arbeid.
+To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post og Excel-regneark. Det er ikke så rart. For flere kunder som ikke nødvendigvis er så teknisk kompetente, fremstår Excel som grei måte å organisere tekst på.</description>
+    </item>
+    
+    <item>
+      <title>Velkommen til web-loggen</title>
+      <link>https://www.olehammersland.com/blogg/velkommen/</link>
+      <pubDate>Sun, 24 Jan 2021 16:56:35 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/velkommen/</guid>
+      <description>Hei og velkommen til den første bloggposten min.
+Her vil jeg skrive om oversettelse, språk, programmering og alle andre interesser.
+Jeg vil skrive opp ulike tips og triks og andre prosjekter jeg holder på med. Blant annet ser jeg for meg at jeg vil vie litt plass til ulike snarveier og arbeidsflyter jeg har utviklet når jeg arbeider med oversettelsesverktøy som
+ XTRF memoQ Transit NXT  Jeg arbeider f.eks. også mye med bash og python for å automatisere og effektivisere arbeidet mitt.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>english on olehammersland.com</title>
+    <link>https://www.olehammersland.com/blogg/english/</link>
+    <description>Recent content in english on olehammersland.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Tue, 09 Feb 2021 17:11:05 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/english/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gjenstridige floskler: Powerful</title>
+      <link>https://www.olehammersland.com/blogg/gjenstridige-floskler-powerful/</link>
+      <pubDate>Tue, 09 Feb 2021 17:11:05 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/gjenstridige-floskler-powerful/</guid>
+      <description>Dette ordet har jeg de siste månedene bitt meg merke i som en av disse «gjenstridige flosklene» som har som vane å snike seg inn over alt – til og med på tvers av språk!
+De gjenstridige flosklene er litt som falske venner, altså sånt som når man blander sammen chin og kinn. I motsetning til falske venner, er gjenstridige floskler imidlertid ikke bundet så veldig til fonetikk, men mer til semantikk, eller betydning.</description>
+    </item>
+    
+    <item>
+      <title>Automatisk registrering av kunder i XTRF</title>
+      <link>https://www.olehammersland.com/blogg/automatisk-registrering-kunder-xtrf/</link>
+      <pubDate>Wed, 27 Jan 2021 19:46:15 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/automatisk-registrering-kunder-xtrf/</guid>
+      <description>Denne bloggposten beskriver et lite pilotkonsept jeg lagde i fjor. Jeg arbeidet da som selger for GLOBALscandinavia AS, og hadde ansvaret for å forberede tilbud til kunder som meldte seg via nettsiden vår. Den samme oppsummeringen ligger ute på min Github
+Dette prosjektet var en god trening i å bruke både Django og JSON-API. Jeg måtte sette meg inn det å selv lage et API, og det å forstå dokumentasjonen til API-et noen andre har laget.</description>
+    </item>
+    
+  </channel>
+</rss>

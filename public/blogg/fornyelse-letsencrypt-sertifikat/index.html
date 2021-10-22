@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://www.olehammersland.com/images/favicon.png" />
+<title>Fornyelse av Let&#39;s Encrypt-sertifikat | olehammersland.com</title>
+<meta name="title" content="Fornyelse av Let&#39;s Encrypt-sertifikat" />
+<meta name="description" content="Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg." />
+<meta name="keywords" content="automatisering,bash,enkeltpersonforetak,koding,linux," />
+
+
+<meta property="og:title" content="Fornyelse av Let&#39;s Encrypt-sertifikat" />
+<meta property="og:description" content="Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/" />
+<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="article:published_time" content="2021-10-04T17:02:15+02:00" />
+<meta property="article:modified_time" content="2021-10-04T17:02:15+02:00" /><meta property="og:site_name" content="Ole Hammersland" />
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.olehammersland.com/images/share.png"/>
+
+<meta name="twitter:title" content="Fornyelse av Let&#39;s Encrypt-sertifikat"/>
+<meta name="twitter:description" content="Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg."/>
+
+
+
+<meta itemprop="name" content="Fornyelse av Let&#39;s Encrypt-sertifikat">
+<meta itemprop="description" content="Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.">
+<meta itemprop="datePublished" content="2021-10-04T17:02:15+02:00" />
+<meta itemprop="dateModified" content="2021-10-04T17:02:15+02:00" />
+<meta itemprop="wordCount" content="235">
+<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
+
+
+
+<meta itemprop="keywords" content="automatisering,bash,enkeltpersonforetak,koding,linux," />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+
+  @import url('fonts/inter.css');
+    html { 
+      font-family: 'Inter', sans-serif; 
+    }
+  @supports (font-variation-settings: normal) {
+    html { 
+      font-family: 'Inter var', sans-serif; 
+    }
+  }
+
+  body {
+    margin: auto;
+    font-size: 1.2rem;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .logo-icon {
+    float:left;
+    padding-right: 10px;
+  }
+
+  .logo-box {
+    display:inline-block;
+    width: 100%;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 5px;
+    padding-right: 10px;
+    color:#444;
+    text-decoration: none;
+    border-right: 2px solid rgb(35, 19, 253);
+  }
+
+  nav a:hover {
+    color:rgb(145, 139, 139)
+  }
+
+  nav a:last-of-type {
+    border-right: none;
+
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+  .blog-posts a {
+    text-decoration: none;
+    color:#444;
+  }
+
+  .blog-posts h3 {
+    border-bottom: 1px solid rgb(35, 19, 253);
+  }
+
+  .blog-posts h3::first-letter {
+    color:rgb(35, 19, 253);
+  }
+
+  .blog-posts a:hover, .blog-posts h3:hover {
+    color:rgb(145, 139, 139);
+  }
+
+  #pagination {
+    margin: auto;
+    width: 100%;
+    align-items: center;
+    font-size: 1.5rem;
+    border: 1px solid rgb(35, 19, 253);
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #pagination span {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  #pagination button {
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  div#TableOfContents {
+    padding-top: 10px; 
+  }
+  #TableOfContents li {
+    list-style: circle;
+  }
+</style>
+</head>
+
+<body>
+  <header>
+<div class="logo-box">
+  <a href="/" class="title">
+    <img class="logo-icon" src="/images/book.png">
+    <h2>olehammersland.com</h2>
+  </a>
+  <nav><a href="/">Hjem</a>
+
+<a href="/om/">Om</a>
+
+<a href="/spr%C3%A5ktjenester/">Språktjenester</a>
+
+<a href="/sykkel/">Sykkel</a>
+
+<a href="/bokhylla/">📚</a>
+
+
+<a href="/blogg">Blogg</a>
+
+</nav>
+</div>
+
+</header>
+  <main>
+
+
+
+</div>
+<h1>Fornyelse av Let&#39;s Encrypt-sertifikat</h1>
+<p>
+  <i>
+    <time datetime='2021-10-04' pubdate>
+      Først publisert: 04.10.2021
+    </time>
+  </i>
+</p>
+
+
+<content>
+  <p>Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.</p>
+<p>I dag tidlig var det f.eks. på tide å fornye sertifikatet, som var løpt ut i løpet av helgens Paris-Roubaix-ritt. Jeg gjorde prosessen slik jeg husket det, men glemte å restarte alle programmene som er involvert i e-posttjenesten min. Dermed fungerte fornyelsen av sertifikatet mitt øyensynlig ikke, og det ble en lett stresset og irritabel start på dagen.</p>
+<p>Derfor skriver jeg nå en liten huskeliste til meg selv:</p>
+<ol>
+<li>Skru av både Apache, Postfix <strong>OG</strong> Dovecot med <code>sudo service [---] stop</code></li>
+<li>Kjør Certbot, som av en eller annen grunn ikke ligger under PATH: <code>sudo ~/snap/bin/certbot renew</code></li>
+<li>Sjekk at alt er fornyet med <code>sudo ~/snap/bin/certbot certificates</code></li>
+<li>Start de tre daemonene igjen.</li>
+<li>Sjekk ev. <code>/var/log/mail.log</code> for å se at e-posten er oppe.</li>
+</ol>
+<p>Viktig å huske å skru av både Postfix og Dovecot 😅!</p>
+<p>Og ja, dette kan selvfølgelig automatiseres, det vet jeg. Vet bare ikke om jeg orker å stikke fingeren i det vepsebolet i nærmeste fremtid&hellip;</p>
+
+</content>
+
+
+<hr>
+<p style="text-align: center;"><a href="/blogg/">Tilbake til bloggoversikten</a></p>
+<h4>Tagger:</h4>
+<p>
+  
+  <a href="https://www.olehammersland.com/blogg/automatisering/">#automatisering</a>
+  
+  <a href="https://www.olehammersland.com/blogg/bash/">#bash</a>
+  
+  <a href="https://www.olehammersland.com/blogg/enkeltpersonforetak/">#enkeltpersonforetak</a>
+  
+  <a href="https://www.olehammersland.com/blogg/koding/">#koding</a>
+  
+  <a href="https://www.olehammersland.com/blogg/linux/">#linux</a>
+  
+</p>
+
+
+
+
+
+
+
+  </main>
+  <footer>Kontakt: <a href="mailto:post@olehammersland">post@olehammersland.com</a>
+</footer>
+
+    
+</body>
+
+</html>

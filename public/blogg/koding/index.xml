@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>koding on olehammersland.com</title>
+    <link>https://www.olehammersland.com/blogg/koding/</link>
+    <description>Recent content in koding on olehammersland.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Mon, 04 Oct 2021 17:02:15 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/koding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fornyelse av Let&#39;s Encrypt-sertifikat</title>
+      <link>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</link>
+      <pubDate>Mon, 04 Oct 2021 17:02:15 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</guid>
+      <description>Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.</description>
+    </item>
+    
+    <item>
+      <title>Javascript, Svelte og React</title>
+      <link>https://www.olehammersland.com/blogg/javascript-svelte-react/</link>
+      <pubDate>Mon, 27 Sep 2021 17:30:58 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/javascript-svelte-react/</guid>
+      <description>Jeg har hatt en bok om JavaScript liggende hjemme i over ett år. Den handler om grunnleggende JavaScript samt en innføring i det sannsynligvis mest brukte rammeverket jQuery.
+En venn har mast på meg i lang tid om at jeg må sjekke ut Svelte, et visstnok fantastisk rammeverk som er superraskt og gjør det lekende lett å utvikle nettsider og apper. Før det har jeg hatt mest erfaring med rammeverkene Django og Hugo – sistnevnte er rammeverket som denne nettsiden er bygget på.</description>
+    </item>
+    
+  </channel>
+</rss>

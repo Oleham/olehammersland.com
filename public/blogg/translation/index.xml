@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>translation on olehammersland.com</title>
+    <link>https://www.olehammersland.com/blogg/translation/</link>
+    <description>Recent content in translation on olehammersland.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Thu, 26 Aug 2021 09:38:32 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/translation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>180.no – ikke glem abonnementer 💸</title>
+      <link>https://www.olehammersland.com/blogg/ferie-over/</link>
+      <pubDate>Thu, 26 Aug 2021 09:38:32 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/ferie-over/</guid>
+      <description>Dette er en påminnelse om å ikke glemme løpende abonnementer. Da jeg meldte enkeltpersonforetaket mitt inn i Enhetsregisteret, ble jeg straks oppringt av 180.no. De kunne gi meg et strålende tilbud på å la meg oppføre i registeret deres. Slik ser det ut. Det gikk selvfølgelig som det måtte gå – jeg glemte å si opp abonnementet i ferieørska og er nå tvunget til å fortsette kundeforholdet i 1 år. Ett helt år!</description>
+    </item>
+    
+    <item>
+      <title>Mitt første Go-prosjekt</title>
+      <link>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</link>
+      <pubDate>Mon, 26 Apr 2021 12:57:36 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</guid>
+      <description>Jeg har de siste ukene jobbet ganske jevnt og trutt på et nytt programmerings-prosjekt. Målet er å utvide simpleVP, et prosjekt jeg skapte for å automatisere filnedlastning og opplastning fra oversettelsesportalen XTRF (se her). I tillegg vil jeg smelte det sammen med faktura-generatoren min. Det nye prosjektet skal altså bli en one-stop klient for XTRF-systemet for oversettere!
+Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er at den er skrevet i Go.</description>
+    </item>
+    
+    <item>
+      <title>Maskinoversettelse i Azure</title>
+      <link>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</link>
+      <pubDate>Thu, 25 Mar 2021 16:28:09 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</guid>
+      <description>Har tenkt på og jobbet litt med maskinoversettelse i mars. I denne posten sammenfatter jeg noen generelle tanker og idéer rundt temaet. Jeg liker selv å bruke maskinoversettelse, og har lyst til å på sikt dykke dypere ned i den tekniske delen av det.
+Ja til maskinoversettelser 📜🤖 Helt siden jeg startet som oversetter, har jeg hatt inntrykket av at det lureste jeg kan lære meg, er koding og maskinoversettelse. For meg er det ingen tvil om at maskinoversettelse kun er i startgropen, og at det vil bli mer og mer utbredt.</description>
+    </item>
+    
+    <item>
+      <title>Mine 10 beste memoQ-triks</title>
+      <link>https://www.olehammersland.com/blogg/mine-beste-memoq-triks/</link>
+      <pubDate>Tue, 09 Mar 2021 19:28:15 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/mine-beste-memoq-triks/</guid>
+      <description>I anledning av at jeg denne uken kjøpte min første lisens til memoQ, tenkte jeg å liste opp noen tips og triks jeg bruker når jeg arbeider i dette CAT-verktøyet. Listen er nok mest interessant for deg som allerede har kjennskap til verktøyet. For deg som ikke kjenner til det og lurer på hva det er, vil jeg forklare det i neste avsnitt.
+Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation).</description>
+    </item>
+    
+    <item>
+      <title>memoQ-triks – Versjonskontroll</title>
+      <link>https://www.olehammersland.com/blogg/memoq-triks-versjonskontroll/</link>
+      <pubDate>Fri, 12 Feb 2021 17:38:36 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/memoq-triks-versjonskontroll/</guid>
+      <description>Jeg har funnet en fin-fin funksjon i memoQ som jeg har bestemt meg for å benytte meg hemningsløst av fremover. Det er en funksjon jeg har savnet, frem til jeg faktisk gjorde litt research og fant ut at den har vært der hele tiden. Typisk.
+Det er muligheten for å bruke memoQs innebygde versjonskontroll til å sammenligne ulike versjoner av et oppdrag. Ved å klikke på «Review»-fanen øverst, vil man se en seksjon som heter «History».</description>
+    </item>
+    
+    <item>
+      <title>Gjenstridige floskler: Powerful</title>
+      <link>https://www.olehammersland.com/blogg/gjenstridige-floskler-powerful/</link>
+      <pubDate>Tue, 09 Feb 2021 17:11:05 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/gjenstridige-floskler-powerful/</guid>
+      <description>Dette ordet har jeg de siste månedene bitt meg merke i som en av disse «gjenstridige flosklene» som har som vane å snike seg inn over alt – til og med på tvers av språk!
+De gjenstridige flosklene er litt som falske venner, altså sånt som når man blander sammen chin og kinn. I motsetning til falske venner, er gjenstridige floskler imidlertid ikke bundet så veldig til fonetikk, men mer til semantikk, eller betydning.</description>
+    </item>
+    
+    <item>
+      <title>Velkommen til web-loggen</title>
+      <link>https://www.olehammersland.com/blogg/velkommen/</link>
+      <pubDate>Sun, 24 Jan 2021 16:56:35 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/velkommen/</guid>
+      <description>Hei og velkommen til den første bloggposten min.
+Her vil jeg skrive om oversettelse, språk, programmering og alle andre interesser.
+Jeg vil skrive opp ulike tips og triks og andre prosjekter jeg holder på med. Blant annet ser jeg for meg at jeg vil vie litt plass til ulike snarveier og arbeidsflyter jeg har utviklet når jeg arbeider med oversettelsesverktøy som
+ XTRF memoQ Transit NXT  Jeg arbeider f.eks. også mye med bash og python for å automatisere og effektivisere arbeidet mitt.</description>
+    </item>
+    
+  </channel>
+</rss>

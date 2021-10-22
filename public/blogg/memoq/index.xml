@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>memoq on olehammersland.com</title>
+    <link>https://www.olehammersland.com/blogg/memoq/</link>
+    <description>Recent content in memoq on olehammersland.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Thu, 25 Mar 2021 16:28:09 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/memoq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maskinoversettelse i Azure</title>
+      <link>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</link>
+      <pubDate>Thu, 25 Mar 2021 16:28:09 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</guid>
+      <description>Har tenkt på og jobbet litt med maskinoversettelse i mars. I denne posten sammenfatter jeg noen generelle tanker og idéer rundt temaet. Jeg liker selv å bruke maskinoversettelse, og har lyst til å på sikt dykke dypere ned i den tekniske delen av det.
+Ja til maskinoversettelser 📜🤖 Helt siden jeg startet som oversetter, har jeg hatt inntrykket av at det lureste jeg kan lære meg, er koding og maskinoversettelse. For meg er det ingen tvil om at maskinoversettelse kun er i startgropen, og at det vil bli mer og mer utbredt.</description>
+    </item>
+    
+    <item>
+      <title>Mine 10 beste memoQ-triks</title>
+      <link>https://www.olehammersland.com/blogg/mine-beste-memoq-triks/</link>
+      <pubDate>Tue, 09 Mar 2021 19:28:15 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/mine-beste-memoq-triks/</guid>
+      <description>I anledning av at jeg denne uken kjøpte min første lisens til memoQ, tenkte jeg å liste opp noen tips og triks jeg bruker når jeg arbeider i dette CAT-verktøyet. Listen er nok mest interessant for deg som allerede har kjennskap til verktøyet. For deg som ikke kjenner til det og lurer på hva det er, vil jeg forklare det i neste avsnitt.
+Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation).</description>
+    </item>
+    
+    <item>
+      <title>memoQ-triks – Versjonskontroll</title>
+      <link>https://www.olehammersland.com/blogg/memoq-triks-versjonskontroll/</link>
+      <pubDate>Fri, 12 Feb 2021 17:38:36 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/memoq-triks-versjonskontroll/</guid>
+      <description>Jeg har funnet en fin-fin funksjon i memoQ som jeg har bestemt meg for å benytte meg hemningsløst av fremover. Det er en funksjon jeg har savnet, frem til jeg faktisk gjorde litt research og fant ut at den har vært der hele tiden. Typisk.
+Det er muligheten for å bruke memoQs innebygde versjonskontroll til å sammenligne ulike versjoner av et oppdrag. Ved å klikke på «Review»-fanen øverst, vil man se en seksjon som heter «History».</description>
+    </item>
+    
+  </channel>
+</rss>

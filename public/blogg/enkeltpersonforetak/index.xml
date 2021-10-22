@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>enkeltpersonforetak on olehammersland.com</title>
+    <link>https://www.olehammersland.com/blogg/enkeltpersonforetak/</link>
+    <description>Recent content in enkeltpersonforetak on olehammersland.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Mon, 04 Oct 2021 17:02:15 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/enkeltpersonforetak/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fornyelse av Let&#39;s Encrypt-sertifikat</title>
+      <link>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</link>
+      <pubDate>Mon, 04 Oct 2021 17:02:15 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</guid>
+      <description>Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.</description>
+    </item>
+    
+    <item>
+      <title>180.no – ikke glem abonnementer 💸</title>
+      <link>https://www.olehammersland.com/blogg/ferie-over/</link>
+      <pubDate>Thu, 26 Aug 2021 09:38:32 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/ferie-over/</guid>
+      <description>Dette er en påminnelse om å ikke glemme løpende abonnementer. Da jeg meldte enkeltpersonforetaket mitt inn i Enhetsregisteret, ble jeg straks oppringt av 180.no. De kunne gi meg et strålende tilbud på å la meg oppføre i registeret deres. Slik ser det ut. Det gikk selvfølgelig som det måtte gå – jeg glemte å si opp abonnementet i ferieørska og er nå tvunget til å fortsette kundeforholdet i 1 år. Ett helt år!</description>
+    </item>
+    
+    <item>
+      <title>Mitt første Go-prosjekt</title>
+      <link>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</link>
+      <pubDate>Mon, 26 Apr 2021 12:57:36 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</guid>
+      <description>Jeg har de siste ukene jobbet ganske jevnt og trutt på et nytt programmerings-prosjekt. Målet er å utvide simpleVP, et prosjekt jeg skapte for å automatisere filnedlastning og opplastning fra oversettelsesportalen XTRF (se her). I tillegg vil jeg smelte det sammen med faktura-generatoren min. Det nye prosjektet skal altså bli en one-stop klient for XTRF-systemet for oversettere!
+Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er at den er skrevet i Go.</description>
+    </item>
+    
+    <item>
+      <title>Maskinoversettelse i Azure</title>
+      <link>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</link>
+      <pubDate>Thu, 25 Mar 2021 16:28:09 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</guid>
+      <description>Har tenkt på og jobbet litt med maskinoversettelse i mars. I denne posten sammenfatter jeg noen generelle tanker og idéer rundt temaet. Jeg liker selv å bruke maskinoversettelse, og har lyst til å på sikt dykke dypere ned i den tekniske delen av det.
+Ja til maskinoversettelser 📜🤖 Helt siden jeg startet som oversetter, har jeg hatt inntrykket av at det lureste jeg kan lære meg, er koding og maskinoversettelse. For meg er det ingen tvil om at maskinoversettelse kun er i startgropen, og at det vil bli mer og mer utbredt.</description>
+    </item>
+    
+    <item>
+      <title>Hammer Faktura versjon 3</title>
+      <link>https://www.olehammersland.com/blogg/hammer-faktura-versjon-3/</link>
+      <pubDate>Sun, 21 Mar 2021 18:16:42 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/hammer-faktura-versjon-3/</guid>
+      <description>Jeg har oppdatert Hammer Faktura igjen! I denne bloggposten går jeg gjennom hva som er nytt, og gir litt dokumentasjon på hvordan man kan bruke programmet.
+Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring av fakturaposter, kunder, bankinformasjon og fakturaer. Kommandolinjeverktøy for direkte samhandling med databasen. Wrapper-funksjoner som forenkler prosessen med å opprette faktuaene. Støtte for enkel flerspråklighet, slik at jeg kan skrive ut engelske fakturaer.  De tidligere utgavene av Hammer Faktura har kun hatt støtte for å opprette fakturaene.</description>
+    </item>
+    
+    <item>
+      <title>Fakturaer del to</title>
+      <link>https://www.olehammersland.com/blogg/fakturaer-del-to/</link>
+      <pubDate>Wed, 03 Mar 2021 20:34:36 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/fakturaer-del-to/</guid>
+      <description>Fakturaer, fakturaer. Jeg tenker fortsatt utelukkende på fakturaer.
+I forrige blogginnlegg skrev jeg om en fakturagenerator jeg har skrevet i Python. Et gøy prosjekt som jeg satt sammen i løpet av noen dager innimellom oversettelsesoppdragene. Denne uken skulle Hammer Faktura settes på prøve, og den bestod!
+I løpet av 3 sekunder hadde jeg lastet ned informasjonen om 500 mini-oppdrag fra XTRF, fordelt disse på tre fakturaer basert på avdeling og tegnet opp tre fine fakturaer med fakturanummer, forfallsdato, bankopplysninger og kundenes adresser.</description>
+    </item>
+    
+    <item>
+      <title>Fakturagenerator i Python</title>
+      <link>https://www.olehammersland.com/blogg/fakturagenerator-i-python/</link>
+      <pubDate>Wed, 24 Feb 2021 16:41:49 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/fakturagenerator-i-python/</guid>
+      <description>I denne bloggposten beskriver jeg en fakturagenerator jeg har laget i Python. Fakturageneratoren kan i løpet av få milisekunder opprette en faktura i HTML-format basert på data.
+Nedenfor vil jeg gå litt gjennom prosjektet og vise hvordan det fungerer med et praktisk eksempel. Koden til fakturageneratoren min finner du her!
+Oversikt:
+ Hammer Faktura Slik fungerer det Den ferdige fakturaen Eksempel på bruk av Hammer Faktura Veien videre  Hammer Faktura I løpet av februar har jeg gjort over 500 (små) oppdrag for én og samme kunde.</description>
+    </item>
+    
+  </channel>
+</rss>

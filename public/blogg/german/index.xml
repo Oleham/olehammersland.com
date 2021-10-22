@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>german on olehammersland.com</title>
+    <link>https://www.olehammersland.com/blogg/german/</link>
+    <description>Recent content in german on olehammersland.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Tue, 09 Feb 2021 17:11:05 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/german/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gjenstridige floskler: Powerful</title>
+      <link>https://www.olehammersland.com/blogg/gjenstridige-floskler-powerful/</link>
+      <pubDate>Tue, 09 Feb 2021 17:11:05 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/gjenstridige-floskler-powerful/</guid>
+      <description>Dette ordet har jeg de siste månedene bitt meg merke i som en av disse «gjenstridige flosklene» som har som vane å snike seg inn over alt – til og med på tvers av språk!
+De gjenstridige flosklene er litt som falske venner, altså sånt som når man blander sammen chin og kinn. I motsetning til falske venner, er gjenstridige floskler imidlertid ikke bundet så veldig til fonetikk, men mer til semantikk, eller betydning.</description>
+    </item>
+    
+    <item>
+      <title>Velkommen til web-loggen</title>
+      <link>https://www.olehammersland.com/blogg/velkommen/</link>
+      <pubDate>Sun, 24 Jan 2021 16:56:35 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/velkommen/</guid>
+      <description>Hei og velkommen til den første bloggposten min.
+Her vil jeg skrive om oversettelse, språk, programmering og alle andre interesser.
+Jeg vil skrive opp ulike tips og triks og andre prosjekter jeg holder på med. Blant annet ser jeg for meg at jeg vil vie litt plass til ulike snarveier og arbeidsflyter jeg har utviklet når jeg arbeider med oversettelsesverktøy som
+ XTRF memoQ Transit NXT  Jeg arbeider f.eks. også mye med bash og python for å automatisere og effektivisere arbeidet mitt.</description>
+    </item>
+    
+  </channel>
+</rss>
