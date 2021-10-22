@@ -23,7 +23,7 @@ I dag leste jeg f.eks. i Süddeutsche Zeitung at rettsaken rundt Cum-Ex-skandale
 
 Det synes jeg er verdt å tenke gjennom en gang til. 
 
-Saken handler om en rekke finansfolk som svindlet Europas sentralbanker for ufattelige *62,9 milliarder euro*! Vi burde fråtse av raseri og få dem dømt så snart som mulig. Anklagemyndigheten er imidlertid likefullt nødt til å vente på et uendelig langt oversettelsesprosjekt som sikkert er utført av en rekke juridiske oversettere, mens flere av bakmennene lever som vanlig.
+Saken handler om en rekke finansfolk som svindlet Europas sentralbanker for ufattelige *62,9 milliarder euro*! Vi burde fråde av raseri og få dem dømt så snart som mulig. Anklagemyndigheten er imidlertid likefullt nødt til å vente på et uendelig langt oversettelsesprosjekt som sikkert er utført av en rekke juridiske oversettere, mens flere av bakmennene lever som vanlig.
 
 Tenk på alle forsinkelsene og kostnadene i forbindelse med rettsakter, anbudsrunder, osv. på tvers av landegrenser. Det kan være en fulltidsjobb for flere oversettere i flere år om f.eks. Oslo Sporveier bestiller et nytt signalsystem fra et firma i Tyskland. De færreste jubler vel over at kommunen skal lønne en rekke personer for å gjøre en potensiell meningsløs jobb (er det ikke lettere, billigere og mer givende for ingeniørene i Oslo Kommune å lese de engelske tekstene?). De fleste ønsker seg vel heller et godt t-banesystem.
 

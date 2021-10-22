@@ -85,7 +85,22 @@ data:
         read: 2021
         genre: Sci-fi  
         img: https://deichman.no/api/images/resize/420/cover-images/p706429cbca91c0ca2fe9eaa42ff4b1f6.jpg
-        review: Første bok i <i>The Expanse</i>. God sci-fi om brytningpunktet der menneskene har befolket store deler av eget solsystem, men ennå ikke har klart å reise til andre stjerner. Dette er en av de beste i serien. Lettlest sidevender. 
+        review: Første bok i <i>The Expanse</i>. God sci-fi om brytningpunktet der menneskene har befolket store deler av eget solsystem, men ennå ikke har klart å reise til andre stjerner. Dette er en av de beste i serien. Lettlest sidevender.
+
+    -   title: Shades of Grey
+        subtitle: 1. The road to High Saffron
+        author: Jasper Fforde
+        read: 2021
+        genre: Sci-fi
+        img: https://deichman.no/api/images/resize/420/cover-images/p6dff1b8cb9ae53592fc9bea1cbaf555f.jpg
+        review: <i>Shades of grey</i> er en temmelig unik bok, skrevet i en vanvittig smart, tørrvittig britisk stil. Humoren gjennomsyrer hver eneste side, alt fra hele den absurde parodien på en dystopisk fremtid etter apokalypsen, eller «The Something That Happened», til dialogene mellom de tegneserieaktige og svært sjarmerende figurene. Hovedpersonen er spesielt vellykket, og jeg mistenker at forfatteren har lagt sin egen sjel inn i ham. Veldig, veldig artig bok. Den har to oppfølgere som jeg har veldig lyst til å lese. Anbefales varmt.
+
+    -   title: The Miracle Pill
+        subtitle: Why a sedentary world is getting it all wrong
+        img: https://images-na.ssl-images-amazon.com/images/I/41EmQha39fL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg
+        read: 2021
+        genre: Sakprosa
+        review: "Litt sånn selvhjelpsbok som går inn på hvor viktig bevegelse egentlig er for mennesker, og hvordan vårt moderne samfunn gjør det svært vanskelig for oss å holde oss i bevegelse. Mange gode fakta og mye informasjon som var nytt for meg. Beste tanken i boka: vi finner rester fra mennesker som levde for over 300 000 år siden (muligens). Jordbrukssamfunnet utviklet seg for bare 10 000 år siden. Fysisk er vi ikke skapt for å sitte i ro. Ellers er boken litt tørr og skaper ikke virkelig engasjement. Forfatteren har en irriterende tendens til å relatere alt til seg selv. \"While writing this book, I\""
     
 
 ---
