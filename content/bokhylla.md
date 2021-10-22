@@ -97,6 +97,7 @@ data:
 
     -   title: The Miracle Pill
         subtitle: Why a sedentary world is getting it all wrong
+        author: Peter Walker
         img: https://images-na.ssl-images-amazon.com/images/I/41EmQha39fL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg
         read: 2021
         genre: Sakprosa
