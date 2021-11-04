@@ -4,13 +4,58 @@
   
   <url>
     <loc>https://www.olehammersland.com/</loc>
-    <lastmod>2021-10-09T17:54:51+02:00</lastmod>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://www.olehammersland.com/blogg/automatisering/</loc>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.olehammersland.com/blogg/</loc>
-    <lastmod>2021-10-09T17:54:51+02:00</lastmod>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/effektivisering/</loc>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/forkorte-stringer/</loc>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/koding/</loc>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/maskinoversttelse/</loc>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/memoq/</loc>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/oversettelse/</loc>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/python/</loc>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/translation/</loc>
+    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
   </url>
   
   <url>
@@ -29,11 +74,6 @@
   </url>
   
   <url>
-    <loc>https://www.olehammersland.com/blogg/automatisering/</loc>
-    <lastmod>2021-10-04T17:02:15+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.olehammersland.com/blogg/bash/</loc>
     <lastmod>2021-10-04T17:02:15+02:00</lastmod>
   </url>
@@ -45,11 +85,6 @@
   
   <url>
     <loc>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</loc>
-    <lastmod>2021-10-04T17:02:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/koding/</loc>
     <lastmod>2021-10-04T17:02:15+02:00</lastmod>
   </url>
   
@@ -74,21 +109,6 @@
   </url>
   
   <url>
-    <loc>https://www.olehammersland.com/blogg/oversettelse/</loc>
-    <lastmod>2021-08-26T09:38:32+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/translation/</loc>
-    <lastmod>2021-08-26T09:38:32+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/effektivisering/</loc>
-    <lastmod>2021-04-26T12:57:36+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.olehammersland.com/blogg/go/</loc>
     <lastmod>2021-04-26T12:57:36+02:00</lastmod>
   </url>
@@ -110,21 +130,6 @@
   
   <url>
     <loc>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</loc>
-    <lastmod>2021-03-25T16:28:09+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/maskinoversttelse/</loc>
-    <lastmod>2021-03-25T16:28:09+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/memoq/</loc>
-    <lastmod>2021-03-25T16:28:09+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/python/</loc>
     <lastmod>2021-03-25T16:28:09+01:00</lastmod>
   </url>
   

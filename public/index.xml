@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Ole Hammersland©2021</copyright>
-    <lastBuildDate>Sat, 09 Oct 2021 17:54:51 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Nov 2021 15:33:19 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Forkorte strenger</title>
+      <link>https://www.olehammersland.com/blogg/forkorte-stringer/</link>
+      <pubDate>Thu, 04 Nov 2021 15:33:19 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/forkorte-stringer/</guid>
+      <description>Innledning Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.
+Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes.</description>
+    </item>
+    
     <item>
       <title>Ny sykkel! Specialized Allez Elite</title>
       <link>https://www.olehammersland.com/blogg/specialized-allez/</link>
