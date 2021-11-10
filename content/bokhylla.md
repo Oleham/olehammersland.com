@@ -102,6 +102,16 @@ data:
         read: 2021
         genre: Sakprosa
         review: "Litt sånn selvhjelpsbok som går inn på hvor viktig bevegelse egentlig er for mennesker, og hvordan vårt moderne samfunn gjør det svært vanskelig for oss å holde oss i bevegelse. Mange gode fakta og mye informasjon som var nytt for meg. Beste tanken i boka: vi finner rester fra mennesker som levde for over 300 000 år siden (muligens). Jordbrukssamfunnet utviklet seg for bare 10 000 år siden. Fysisk er vi ikke skapt for å sitte i ro. Ellers er boken litt tørr og skaper ikke virkelig engasjement. Forfatteren har en irriterende tendens til å relatere alt til seg selv. \"While writing this book, I\""
+
+
+    -   title: Grensen
+        subtitle: "en reise rundt Russland : gjennom Nord-Korea, Kina, Mongolia, Kasakhstan, Aserbajdsjan, Georgia, Ukraina, Hviterussland, Litauen, Polen, Latvia, Estland, Finland og Norge samt Nordøstpassasjen"
+        author: Erika Fatland
+        img: https://deichman.no/api/images/resize/420/cover-images/p025068553764.jpg
+        read: 2021
+        genre: Sakprosa
+        review: Denne boken overrasket meg positivt. Det merkelige bokomslaget pepret med norske anmelderterninger gjorde at forventningene ikke var så veldig høye, men det er faktisk en veldig velskrevet reiseskildringen av en sympatisk forfatter. Hun tar oss gjennom grensestrøkene og morsomme historiske anekdoter, flere av disse var helt ukjente for meg. For meg lå bokens store styrke i disse skildringene, men også flere av møtene og miljøskildringene fra virkeligheten er godt skrevet og engasjerende. Gav meg veldig lyst til å reise til noen av de samme landene, som Russland, Georgia og Kasakhstan.
+    
     
 
 ---

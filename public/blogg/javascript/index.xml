@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ole Hammersland sin blogg</title>
+    <link>https://www.olehammersland.com/blogg/javascript/</link>
+    <description>Ole Hammersland sin blogg</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Wed, 10 Nov 2021 08:55:37 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nettside for forro</title>
+      <link>https://www.olehammersland.com/blogg/nettside-for-forro/</link>
+      <pubDate>Wed, 10 Nov 2021 08:55:37 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/nettside-for-forro/</guid>
+      <description>Har laget en ny nettside for forro som stort sett er lanseringsklar, i tide til dansekvelden vi skal arrangere på søndag.
+osloforro.site
+Nettsiden er laget ved hjelp av to rammeverk: Django og Svelte. Tanken er at Svelte skal håndtere frontenden (presentasjonen, selve siden), mens Django håndterer backenden (lagring av data og så videre). Jeg valgte dette oppsettet for å lett kunne invitere mine medsammensvorne i forrogruppen til å lage sine egne innlegg i Django sin backend.</description>
+    </item>
+    
+  </channel>
+</rss>

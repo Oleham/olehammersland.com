@@ -1,9 +1,6 @@
 baseURL = "https://www.olehammersland.com"
 
-
-# Basic metadata configuration for your blog.
 title = "olehammersland.com"
-author = "Ole Hammersland"
 copyright = "Ole Hammersland©2021"
 languageCode = "en-US"
 
@@ -16,6 +13,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   tags = "/blogg/:slug"
 
 [params]
+  authorName = "Ole Hammersland"
   # Alpine JS CDN
   alpineCDN= "https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
 

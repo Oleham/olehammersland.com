@@ -4,17 +4,32 @@
   
   <url>
     <loc>https://www.olehammersland.com/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+    <lastmod>2021-11-10T08:55:37+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.olehammersland.com/blogg/automatisering/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
+    <loc>https://www.olehammersland.com/blogg/</loc>
+    <lastmod>2021-11-10T08:55:37+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.olehammersland.com/blogg/</loc>
+    <loc>https://www.olehammersland.com/blogg/javascript/</loc>
+    <lastmod>2021-11-10T08:55:37+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/koding/</loc>
+    <lastmod>2021-11-10T08:55:37+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/nettside-for-forro/</loc>
+    <lastmod>2021-11-10T08:55:37+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/automatisering/</loc>
     <lastmod>2021-11-04T15:33:19+01:00</lastmod>
   </url>
   
@@ -25,11 +40,6 @@
   
   <url>
     <loc>https://www.olehammersland.com/blogg/forkorte-stringer/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/koding/</loc>
     <lastmod>2021-11-04T15:33:19+01:00</lastmod>
   </url>
   
