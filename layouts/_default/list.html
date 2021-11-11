@@ -6,6 +6,7 @@
     <a href="{{ "/blogg" | relURL }}">Fjern filter</a>
   </small>
   {{ end }}
+  <h1>Blogg</h1>
   <div class="blog-posts">
   {{ range .Pages }}
     <a href="{{ .Permalink }}">
@@ -19,13 +20,11 @@
     </a>
   {{ else }}
     <li>
-      No posts yet
+      Ingen poster ennå
     </li>
   {{ end }}
   </div>
-   <!-- Pagination script-->
   <div id="pagination"></div>
-  <script src="/scripts/pagination.js"></script>
   {{ if .Data.Singular }}
   {{else}}
     <small>

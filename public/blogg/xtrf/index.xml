@@ -14,8 +14,26 @@
       <pubDate>Mon, 26 Apr 2021 12:57:36 +0200</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</guid>
-      <description>Jeg har de siste ukene jobbet ganske jevnt og trutt på et nytt programmerings-prosjekt. Målet er å utvide simpleVP, et prosjekt jeg skapte for å automatisere filnedlastning og opplastning fra oversettelsesportalen XTRF (se her). I tillegg vil jeg smelte det sammen med faktura-generatoren min. Det nye prosjektet skal altså bli en one-stop klient for XTRF-systemet for oversettere!
-Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er at den er skrevet i Go.</description>
+      <description>&lt;p&gt;Jeg har de siste ukene jobbet ganske jevnt og trutt på et nytt programmerings-prosjekt. Målet er å utvide simpleVP, et prosjekt jeg skapte for å automatisere filnedlastning og opplastning fra oversettelsesportalen XTRF (&lt;a href=&#34;http://localhost:1313/blogg/simplevp-xtrf-gjort-enkelt/&#34;&gt;se her&lt;/a&gt;). I tillegg vil jeg smelte det sammen med faktura-generatoren min. Det nye prosjektet skal altså bli en one-stop klient for XTRF-systemet for oversettere!&lt;/p&gt;
+&lt;p&gt;Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er at den er skrevet i Go. Go er et såkalt &lt;em&gt;kompilert&lt;/em&gt; språk som gjør det mye lettere for meg å distribuere programmet. Da jeg lagde det opprinnelige simpleVP i Python, skrev jeg lange instruksjoner til sluttbrukerne om hvordan man laster ned Python, bruker kommandolinjen, installerer ulike moduler og setter opp miljøvariabler. Nå er målet å lage en enkel kjørbar fil i et format som er velkjent for de fleste Windows-brukere (.exe). Det legger Go til rette for.&lt;/p&gt;
+&lt;p&gt;Det andre som er nytt, er at jeg skaper programmet med perspektivet til en frilansoversetter. Derfor skal systemet ha støtte for å koble seg til ulike XTRF-servere, slik at jeg kan samle oppdrag fra flere oversettelsesbyråer inn i én enkel oversikt. I min erfaring er XTRF noe slikt som en bransjestandard. Tar man oppdrag fra et oversettelsesbyrå, er sjansen for at de bruker XTRF temmelig stor. Derfor er det spesielt verdifullt å samle alle disse web-applikasjonene inn i ett enkelt grensesnitt. Dessuten baserer de fleste byråer seg på XTRF til regnskapet sitt. Derfor er det heller ikke så dumt å legge inn støtte for fakturering også.&lt;/p&gt;
+&lt;p&gt;Så langt har jeg jobbet mest med et enkelt grafisk brukergrensesnitt og databasen. Brukergrensesnittet er basert på en åpen kildekode-modul ved navn &lt;a href=&#34;https://pkg.go.dev/fyne.io/fyne&#34;&gt;Fyne&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-gui-first-look.jpg&#34; alt=&#34;Slik ser nye simpleVP ut.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Bildet over viser den delen av programmet som er kommet lengst: siden for å opprette, endre og slette forbindelsene til de ulike XTRF-portalene. Når du bruker programmet, vil du kunne bruke alle disse XTRF-portalene samtidig, i samme programmet.&lt;/p&gt;
+&lt;p&gt;Prosjektet er delt opp i følgende pakker eller «delprogrammer»:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;            main
+           /    \
+        gui  –-  db
+                   \
+                   xtrf
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;GUI tegner det grafiske grensnittet på skjermen. For å gjøre det, henter det informasjon fra databasen (db). Kunden kan kan også oppdatere databasen. Da bruker databasen delprogrammet som heter xtrf til å laste ned informasjonen via API-et til XTRF.&lt;/p&gt;
+&lt;p&gt;Databasen er med andre ord hjulnavet, &lt;em&gt;die Drehscheibe&lt;/em&gt;, i programmet mitt. Den starter med en tabell for &lt;strong&gt;settings&lt;/strong&gt;. En setting inneholder påloggingsinformasjonen for en XTRF-portal. Per setting kan man finne flere &lt;strong&gt;jobs&lt;/strong&gt;, som representerer jobbene fra XTRF, enten de har statusen &lt;em&gt;in progress&lt;/em&gt;, &lt;em&gt;pending&lt;/em&gt; eller &lt;em&gt;to be invoiced&lt;/em&gt;. Hver jobb kan igjen inneholde filer: tabellen &lt;strong&gt;files&lt;/strong&gt; inneholder alle filene.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-database.jpg&#34; alt=&#34;Database-oversikt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Når hovedfunksjonaliteten er klar, kan det bli relevant med en tabell kalt &lt;strong&gt;invoices&lt;/strong&gt;, som inneholder fakturaene brukeren skaper. Hver jobb vil da også knyttes til en faktura. Tabellen &lt;strong&gt;banks&lt;/strong&gt; vil inneholde betalingsinformasjonen til brukeren, og så må &lt;strong&gt;settings&lt;/strong&gt; oppdateres med kundens faktureringsinnstillinger.&lt;/p&gt;
+&lt;p&gt;Databasen, og logikken for å oppdatere den, er nesten fullført. I neste trinn må det grafiske brukergrensesnittet kunne vise jobber, beskrivelser, filer og annen informasjon på en passe oversiktlig måte. Deretter skal brukeren få muligheten til å laste ned jobber.&lt;/p&gt;
+&lt;p&gt;Gleder meg til å jobbe videre på dette prosjektet!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -24,9 +42,130 @@ Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er
       <pubDate>Wed, 03 Mar 2021 20:34:36 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/fakturaer-del-to/</guid>
-      <description>Fakturaer, fakturaer. Jeg tenker fortsatt utelukkende på fakturaer.
-I forrige blogginnlegg skrev jeg om en fakturagenerator jeg har skrevet i Python. Et gøy prosjekt som jeg satt sammen i løpet av noen dager innimellom oversettelsesoppdragene. Denne uken skulle Hammer Faktura settes på prøve, og den bestod!
-I løpet av 3 sekunder hadde jeg lastet ned informasjonen om 500 mini-oppdrag fra XTRF, fordelt disse på tre fakturaer basert på avdeling og tegnet opp tre fine fakturaer med fakturanummer, forfallsdato, bankopplysninger og kundenes adresser.</description>
+      <description>&lt;p&gt;Fakturaer, fakturaer. Jeg tenker fortsatt utelukkende på fakturaer.&lt;/p&gt;
+&lt;p&gt;I forrige blogginnlegg skrev jeg om &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturagenerator-i-python&#34;&gt;en fakturagenerator jeg har skrevet i Python&lt;/a&gt;. Et gøy prosjekt som jeg satt sammen i løpet av noen dager innimellom oversettelsesoppdragene. Denne uken skulle Hammer Faktura settes på prøve, og den bestod!&lt;/p&gt;
+&lt;p&gt;I løpet av 3 sekunder hadde jeg lastet ned informasjonen om 500 mini-oppdrag fra XTRF, fordelt disse på tre fakturaer basert på avdeling og tegnet opp tre fine fakturaer med fakturanummer, forfallsdato, bankopplysninger og kundenes adresser.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura_hf.jpg&#34; alt=&#34;Den forrige fakturaen!&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Resultatet ser fint ut. I prinsippet speiler det opplysningene i XTRF helt og holdent.&lt;/p&gt;
+&lt;h2 id=&#34;utfordringene&#34;&gt;Utfordringene&lt;/h2&gt;
+&lt;p&gt;Den siste uken har jeg imidlertid hatt den tvilsomme gleden av å fylle ut min første MVA-melding. Nå som jeg har vært i gjennom den prosessen, skjønner jeg mer av hva som er nyttig i forbindelse med fakturaer. Jeg måtte for eksempel stadig konsultere kalkulatoren for å finne tall som ikke var skrevet eksplisitt på fakturaen, bruttoprisen på enkeltjobber eller sammenlagt MVA. Om jeg en dag må føre opplysningene inn i andre skjemaer eller regnskapsark, vil det potensielt bety masse omregning.&lt;/p&gt;
+&lt;p&gt;Det jeg på den andre &lt;em&gt;siden ikke hadde bruk for i det hele tatt&lt;/em&gt;, var opplysninger som den interne jobb-ID-en til XTRF, oppdragstypen, etc. En faktura er en salgsdokumentasjon som skal dokumentere salget, pengene som skifter hånd og hvilke forpliktelser som oppstår med hensyn til MVA-registeret. Det er et dokument som skal regnskapsføres og være etterettelig. I MVA-meldingen er det helt ubetydelig om oppdraget var oversettelse eller korrekturlesning – man trenger bare ha en passe god beskrivelse av hva slags arbeid som har blitt utført. Det er beløpene som teller.&lt;/p&gt;
+&lt;p&gt;Derfor har jeg gitt programmet en ordentlig overhaling, oppdatert fakturamalene og ellers fikset opp i en del småting som jeg har manglet.&lt;/p&gt;
+&lt;h2 id=&#34;ny-utforming&#34;&gt;Ny utforming&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-eksempel-ny-faktura.jpg&#34; alt=&#34;Ny utforming på fakturaen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Nå har jeg presset de tidligere spaltene navn + type, som jo egentlig var kategorier fra XTRF, inn på en linje som heter &amp;ldquo;Beskrivelse&amp;rdquo;. Her kan jeg legge inn en generell varebeskrivelse. Jeg beholder ID-kolonnen, fordi jeg ser for meg at den kan brukes i mange sammenhenger. Jeg har lagt til en egen MVA-utregning på hver eneste post, hvilket gjør at fakturaen er mye mer eksplisitt. Dessuten har jeg lagt til en utregning for totalt beregnet MVA.&lt;/p&gt;
+&lt;p&gt;Jeg kunne ikke dy meg, og la også til en liten gul farge nederst – i tråd med den klassiske norske giroen.&lt;/p&gt;
+&lt;h2 id=&#34;gjennomgang-av-nye-hammer-faktura&#34;&gt;Gjennomgang av nye Hammer Faktura&lt;/h2&gt;
+&lt;p&gt;I det nye programmet har jeg lagt til to nye klasser: Bank og Faktura. Det slo meg at jeg ikke ville oppgi min egen bankinformasjon på Github, så nå er ikke lenger bankopplysningene statiske inne i programmet.&lt;/p&gt;
+&lt;p&gt;Nå som mye av informasjonen var blitt sortert etter Kunde og Bank, slo deg meg som inkonsekvent at fakturanummer og forfallsdato ligger lagret direkte i fakturageneratoren. Derfor ligger den informasjonen nå i en egen Faktura-klasse.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cdcd00&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#00cdcd&#34;&gt;Bank&lt;/span&gt;():
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; __init__(self, konto, iban, bic, bank):
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;konto &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; konto
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;iban &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; iban
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;bic &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; bic
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;bank &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; bank
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#00cdcd&#34;&gt;Faktura&lt;/span&gt;():
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; __init__(self):
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;id &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;make_invoice_number()
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;dato, self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;get_invoice_dates()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Jobben med å faktisk skape fakturaen har blitt flyttet til en fjerde klasse, som heter Generator. Dermed er oppgavefordelingen slik:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;code&gt;Kunde()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Holder informasjon om kunden. Dette inkluderer også informasjon om MVA-sats og valuta.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;Faktura()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Inneholder metainformasjon om fakturaen:  dato, forfall og fakturanr.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;Bank()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Inneholder betalingsinformasjon som kontonr, IBAN etc.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;Generator()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;har som oppgave å skape fakturaen. Skaper en tabell med metoden &lt;code&gt;add_to_invoice&lt;/code&gt; og fyller inn metainformasjon fra Kunde, Faktura og Bank.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id=&#34;1-initialisere-kunde-bank-og-faktura&#34;&gt;1. Initialisere kunde, bank og faktura&lt;/h3&gt;
+&lt;p&gt;Det første som må gjøres, er å initialisere Kunde og Bank. Faktura skapes fortsatt automatisk.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Importer modulen&lt;/span&gt;
+&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hammer_faktura
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Initialiser Kunde og Bank.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Initialiser selve Generatoren.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Faktura initialiseres automatisk med datoer og id.&lt;/span&gt;
+kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde AS&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4&amp;#34;&lt;/span&gt;)
+bank &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Bank(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;XX.XXX.XXX..XX&amp;#34;&lt;/span&gt;,
+        	&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NOXX.XXXX.XXXX.XX&amp;#34;&lt;/span&gt;,
+        	&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NKSVP&amp;#34;&lt;/span&gt;,
+        	&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Banken AS&amp;#34;&lt;/span&gt;)
+
+generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Generator(kunde, bank)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Viktig å merke seg at man også kan legge til to valgfrie argumenter når man initialiserer kunden for å endre MVA-sats og valuta. Som standard initialiseres kunden med 0,25 % MVA og «NOK» som valuta.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Kunde med null MVA og amerikanske dollar som valuta.&lt;/span&gt;
+kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde AS&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4&amp;#34;&lt;/span&gt;, vat&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;0.00&lt;/span&gt;, valuta&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;USD&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;På dette stadiet har man også mulighet til å endre andre standarder. For eksempel kan forfallsdato eller fakturadato endres manuelt, om du vil gi kunden litt lenger frist.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Endre fakturadato og forfallsdato manuelt&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;dato &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;10.05.1997&amp;#34;&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;10.07.1997&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-mat-inn-alle-oppdrag&#34;&gt;2. Mat inn alle oppdrag&lt;/h3&gt;
+&lt;p&gt;Nå som rammeopplysningene er på plass, kan vi legge inn noen oppdrag vi vil fakturere kunden for. For hvert oppdrag må vi legge inn en leveringsdato, en id, en beskrivelse og et beløp. Leveringsdato, ID og bekreftelse er tekst, mens beløpet er et naturlig tall (floating point) som vi skal utføre mattestykker på.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Her lager jeg en liste med 3 fiktive oppdrag&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Hvert av de fiktive oppdragene ligger i en dictionary.&lt;/span&gt;
+alle_oppdrag &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;01.01.2020&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;001&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse nettside&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1200.00&lt;/span&gt;
+                },
+                {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;05.01.2020&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;002&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Korrekturlesning&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;432.30&lt;/span&gt;
+                },
+                {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;06.01.2020&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;004&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Skjønnlitteratur oversettelse&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1223.00&lt;/span&gt;
+                }]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Det er lurt å på en eller annen måte strukturere dataene på en forutsigbar måte. I dette tilfellet har jeg laget en liste. Listen inneholder 3 unike gjenstander. Hver gjenstand representerer én jobb, og inneholder 4 nøkkel-verdi-par som inneholder de fire opplysningene jeg behøver (i Python er dette en &lt;em&gt;dictonary&lt;/em&gt;, en samling med data strukturert som nøkkel-verdi-par)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Loop over alle oppdragene i datasettet.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg inn id, navn, type, beløp, enhet og leveringsdato.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Gjenta for alle oppdragene som skal med.&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; oppdrag &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; alle_oppdrag:
+	generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;add_to_invoice(oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Nå kan jeg loope over de tre gjenstandene i listen min. Jeg kaller metoden &lt;code&gt;faktura.add_to_invoice&lt;/code&gt; på hver gjenstand, slik at informasjonen blir lagt inn i faktura-generatoren.&lt;/p&gt;
+&lt;p&gt;Takket være den nye fordelingen med netto-brutto-utregning for hver eneste fakturapost, kan vi nå også endre MVA-satsen på enkelte poster. Dette kan være nyttig om du skal fakturere med ulike MVA-satser.&lt;/p&gt;
+&lt;p&gt;I eksempelet nedenfor skal jeg fakturere en jobb som av en eller annen grunn har en annen MVA-sats. Da legger jeg til et fjerde, valgfritt argument som sier at MVA-satsen på denne jobben skal være 12 %, i stedet for de 25 %-ene som er standard på overordnet nivå (fra &lt;code&gt;generator.kunde.vat&lt;/code&gt;)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;add_to_invoice(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;07.01.2020&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;0007&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse skatteregler&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd00cd&#34;&gt;1310.23&lt;/span&gt;, vat&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;0.12&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-generer-fakturaen-og-skriv-til-fil&#34;&gt;3. Generer fakturaen og skriv til fil&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Generer tabellen.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Generer så selve fakturaen og lagre den i en variabel.&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_table()
+html_fil &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_body()
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Skriv fakturaen til en fil.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# (Bruk fakturanummret i filnavnet for bedre oversikt.)&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(f&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;invoices/obs_faktura_{generator.faktura.id}.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(html_fil)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Resten fungerer som før. Ved å kalle &lt;code&gt;generator.generate_table()&lt;/code&gt;, vil tabellen til fakturaen skapes. Neste kall til &lt;code&gt;generator.generate_body()&lt;/code&gt; legger tabellen, kundeinformasjon, bankinformasjon og fakturainformasjon inn i selve HTML-dokumentet og returnerer det. Jeg lagrer det returnerte objektet i variabelen html_fil, og skriver den til en fil. Filen markerer jeg med fakturanummeret, som jeg har tilgang til via &lt;code&gt;generator.faktura.id&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.olehammersland.com/obs_faktura_9159.html&#34;&gt;Her kan du se den ferdige fakturaen.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Det er alt som trengs for å «programmatisk» skape en faktura. Nå burde det meste ligge til rette for å automatisere hele prosessen, for eksempel ved å binde Hammer Faktura inn i et skript som laster informasjonen om utførte oppdrag ned fra XTRF-installasjonen til kunden din.&lt;/p&gt;
+&lt;h2 id=&#34;andre-forbedringer&#34;&gt;Andre forbedringer&lt;/h2&gt;
+&lt;p&gt;Det er også noen andre forbedringer jeg er fornøyd med med tanke på organisering av kode.&lt;/p&gt;
+&lt;p&gt;Nå ligger alle byggesteinene til dokumentet lagret som maler i HTML-format i en og samme mappe. Det gjør det enda enklere å arbeide med utformingen til fakturaene, uten å gjøre endringer i Python-koden.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;/&lt;/span&gt;
+&lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; __init__&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;py
+&lt;span style=&#34;&#34;&gt;└──&lt;/span&gt; maler
+    &lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; fakturamal&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+    &lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; style&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+    &lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; tabellmal&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+    &lt;span style=&#34;&#34;&gt;└──&lt;/span&gt; tr_elem_mal&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Dessuten har jeg lagt CSS-stilene inn i et eget HTML-dokument, som jeg legger inn i headeren til fakturaen. Dermed er fakturaen et helt frittstående HTML-dokument hvor alt er synlig, litt som HTML-dokumentene til hjemmesiden min.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Obs:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Siden jeg la ut denne bloggposten har jeg oppdatert Hammer Faktura igjen. Nå har jeg lagt til støtte for databaser.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.olehammersland.com/blogg/hammer-faktura-versjon-3&#34;&gt;Les bloggposten om versjon 3 av Hammer Faktura her&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.olehammersland.com/blogg/fakturagenerator-i-python&#34;&gt;Les bloggposten om den første utgaven av Hammer Faktura her&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -35,10 +174,143 @@ I løpet av 3 sekunder hadde jeg lastet ned informasjonen om 500 mini-oppdrag fr
       <pubDate>Wed, 24 Feb 2021 16:41:49 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/fakturagenerator-i-python/</guid>
-      <description>I denne bloggposten beskriver jeg en fakturagenerator jeg har laget i Python. Fakturageneratoren kan i løpet av få milisekunder opprette en faktura i HTML-format basert på data.
-Nedenfor vil jeg gå litt gjennom prosjektet og vise hvordan det fungerer med et praktisk eksempel. Koden til fakturageneratoren min finner du her!
-Oversikt:
- Hammer Faktura Slik fungerer det Den ferdige fakturaen Eksempel på bruk av Hammer Faktura Veien videre  Hammer Faktura I løpet av februar har jeg gjort over 500 (små) oppdrag for én og samme kunde.</description>
+      <description>&lt;p&gt;I denne bloggposten beskriver jeg en fakturagenerator jeg har laget i Python. Fakturageneratoren kan i løpet av få milisekunder opprette en faktura i HTML-format basert på data.&lt;/p&gt;
+&lt;p&gt;Nedenfor vil jeg gå litt gjennom prosjektet og vise hvordan det fungerer med et praktisk eksempel. &lt;a href=&#34;https://github.com/Oleham/hammer_faktura&#34;&gt;Koden til fakturageneratoren min finner du her!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Oversikt:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#hammer-faktura&#34;&gt;Hammer Faktura&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#slik-fungerer-det&#34;&gt;Slik fungerer det&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#den-ferdige-fakturaen&#34;&gt;Den ferdige fakturaen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#eksempel-p%C3%A5-bruk-av-hammer-faktura&#34;&gt;Eksempel på bruk av Hammer Faktura&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#veien-videre&#34;&gt;Veien videre&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;hammer-faktura&#34;&gt;Hammer Faktura&lt;/h2&gt;
+&lt;p&gt;I løpet av februar har jeg gjort over 500 (små) oppdrag for én og samme kunde. Disse skal faktureres til tre ulike organsiasjonsnumre avhengig av hvilket land oppdraget kom fra. Da ble det klart for meg at jeg behøver en automatisert måte å opprette fakturaer på – litt på samme måte som &lt;a href=&#34;https://www.olehammersland.com/blogg/simplevp-xtrf-gjort-enkelt/&#34;&gt;GUI-programmet mitt simpleVP&lt;/a&gt;, som jeg bruker til å automatisere nedlastning av oppdrag fra XTRF-portalen.&lt;/p&gt;
+&lt;p&gt;Det startet altså som et prosjekt skreddersydd én eneste kunde, men det kjentes ikke ut som noen elegant løsning. Hva så når jeg får en annen kunde med andre behov?&lt;/p&gt;
+&lt;p&gt;Jeg vil jo egentlig ha et fakturaprogram som kan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tilpasses ulike kunder.&lt;/li&gt;
+&lt;li&gt;skape enhetlige fakturaer.&lt;/li&gt;
+&lt;li&gt;ellers automatisere alt det praktiske med faktura-nr. og datoer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Noen kunder vil ha faktura på jobb-basis, mens andre vil ha månedlige fakturaer. Derfor er det viktig å kunne tilpasse fakturaene og layoutet litt, samtidig som det hele skal ha et visst enhetlig format.&lt;/p&gt;
+&lt;p&gt;Løsningen på dette ble å todele det opprinnelige prosjektet mitt. Den ene delen er skriptet som laster ned data fra XTRF og sorterer det. Det er spesialtilpasset en viss kunde og et visst CMS-system.&lt;/p&gt;
+&lt;p&gt;Resten av programmet flyttet jeg over i en hjemmelaget modul som jeg gav navnet &lt;strong&gt;Hammer Faktura&lt;/strong&gt; og by-linen &lt;em&gt;einfach der Hammer&lt;/em&gt;. Denne modulen har kun én jobb – ta i mot data og lage en faktura på bakgrunn av denne. Målet er at jeg skal kunne bruke den samme modulen med alle mine kunder.&lt;/p&gt;
+&lt;h2 id=&#34;slik-fungerer-det&#34;&gt;Slik fungerer det&lt;/h2&gt;
+&lt;p&gt;Slik er Hammer Faktura bygget opp:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hammer_faktura
+├── README.md
+├── __init__.py
+└── maler
+    ├── faktura.css
+    ├── fakturamal.html
+    └── tabellmal.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Den inneholder en python-fil med to klasser, og en mappe med byggeklosser i HTML og CSS. Jobben til modulen er å hente inn informasjon, plassere det inn i HTML-byggeklossene og så sette sammen et ferdig dokument.&lt;/p&gt;
+&lt;p&gt;Vi starter med kundeklassen:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-kunde-klasse.jpg&#34; alt=&#34;Kunde.klassen initaliseres&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Kunde-klassen inneholder så langt bare tre nøkkelinformasjoner: navn, organisasjonsnummer og adresse. Dette skal skrives ut på fakturaen. Etter hvert vil det også være aktuelt å legge til flere variabler og metoder – for eksempel om kunden vil ha 30 dagers eller 14 dagers frist.&lt;/p&gt;
+&lt;p&gt;Nå som vi har initialisert en kunde, kan vi initialisere selve fakturaen.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura-klasse.jpg&#34; alt=&#34;Faktura-klassen initaliseres&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I det Faktura-klassen initialiseres, fyller den automatisk ut feltet dato med dagens dato, og legger til en forfallsdato 1 måned senere. Dessuten genererer den et tilfeldig fakturanummer.&lt;/p&gt;
+&lt;p&gt;I tillegg inneholder den en liten html-snutt som representerer en rad i en tabell, lagret som &lt;code&gt;tr_elem_mal&lt;/code&gt;. Det er den som skal fylles opp med alle jobbene vi skal fakturere. Det gjøres trinn for trinn ved hjelp av metodene til Faktura-klassen.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;add_to_tr_elem&lt;/strong&gt;&lt;br&gt;
+Denne metoden brukes til å legge oppdragets navn, referanse, type og avtalt beløp inn i html-snutten &lt;code&gt;Faktura.tr_elem_list&lt;/code&gt;. Hver gang metoden kalles, vil en ny rad legges inn i listen. Om det er flere oppdrag som skal legges til en faktura, kan man altså loope over dem og kalle denne metoden.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;generate_table&lt;/strong&gt;&lt;br&gt;
+Når alle radene er på plass i &lt;code&gt;Faktura.tr_elem_list&lt;/code&gt;, kan selve tabellen genereres. Tabell-radene fra punkt 1 settes inn i &lt;code&gt;maler/tabellmal.html&lt;/code&gt;. Totalen legges så inn, og bruttopris regnes ut basert på momssatsen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;generate_body&lt;/strong&gt;&lt;br&gt;
+Til slutt kan man generere selve fakturaen. Den ferdige tabellen med total fra punkt 2 settes inn i &lt;code&gt;maler/fakturamal.html&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Her er en eksemplarisk bruk av modulen:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Importer modulen&lt;/span&gt;
+&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hammer_faktura
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Last inn et datasett med alle oppdrag som skal på fakturaen&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;oppdrag.json&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	alle_oppdrag &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; json&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;load(f)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Oppgi kunde og initialiser fakturaen.&lt;/span&gt;
+kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde AS&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4&amp;#34;&lt;/span&gt;)
+faktura &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Faktura(kunde)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Loop over alle oppdragene i datasettet.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg inn id, navn, type, beløp, enhet og leveringsdato.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Gjenta for alle oppdragene som skal med.&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; oppdrag &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; alle_oppdrag:
+	faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;add_to_tr_elem(oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;enhet&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;])
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Generer tabellen.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Generer så selve fakturaen og lagre den i en variabel.&lt;/span&gt;
+faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_table()
+html_fil &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_body()
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Skriv fakturaen til en fil.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# (Bruk fakturanummret i filnavnet for bedre oversikt.)&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(f&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura_{faktura.invoice_number}.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(html_fil)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;den-ferdige-fakturaen&#34;&gt;Den ferdige fakturaen&lt;/h2&gt;
+&lt;p&gt;Resultatet er et HTML-dokument som f.eks. kan åpnes i nettleseren.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura_hf.jpg&#34; alt=&#34;Eksempel på hvordan en ferdig faktura kan se ut.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Dette dokumentet består av to byggeklosser.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maler/fakturamal.html&lt;/code&gt; inneholder selve rammen, med kontaktinformasjon, datoer og betalingsinformasjon.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maler/tabellmal.html&lt;/code&gt; inneholder rammeverket for selve tabellen. Fordelen med denne oppgavedelingen er at jeg raskt kan utforme en annerledes tabell til en annen kunde, uten å påvirke utformingen til resten av fakturaen.&lt;/p&gt;
+&lt;p&gt;Selve stylingen gjøres i &lt;code&gt;maler/faktura.css&lt;/code&gt;. Jeg har forsøkt å legge meg på en stil som ligner på Faktura Larsen, et (gratis!) eldre hobbyprogram som fortsatt fungerer veldig bra.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura_larsen.jpg&#34; alt=&#34;Faktura fra Faktura Larsen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Minus den (riktignok tidløse) giroen nederst, og kanskje pluss en liten logo.&lt;/p&gt;
+&lt;p&gt;Hvorfor et HTML-dokument? Vel, det er utrolig versatilt og kan enkelt konverteres til PDF og docx ved hjelp av verktøy som pandoc. Tanken er at det er et tidløst format som kan brukes til veldig mye, og som det er lett å endre stilen på.&lt;/p&gt;
+&lt;h2 id=&#34;eksempel-på-bruk-av-hammer-faktura&#34;&gt;Eksempel på bruk av Hammer Faktura&lt;/h2&gt;
+&lt;p&gt;Hvorfor alt styret? La oss gå tilbake og ta en titt på denne kunden som ville ha tre ulike fakturaer for over 500 småoppdrag som jeg gjorde i løpet av en måned.&lt;/p&gt;
+&lt;p&gt;I eksempelet nedenfor viser jeg hvor lett det nå har blitt for meg å generere 3 fakturaer med over 500 oppdrag som lastes direkte ned fra nettet:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;kontorer &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;DK&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;SE&amp;#34;&lt;/span&gt;]
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; kontor &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; kontorer:
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;if&lt;/span&gt; kontor &lt;span style=&#34;color:#39c&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO&amp;#34;&lt;/span&gt;:
+		kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NORSK KUNDE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;1234567&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oslo&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;elif&lt;/span&gt; kontor &lt;span style=&#34;color:#39c&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;DK&amp;#34;&lt;/span&gt;:
+		kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;DANSK KUNDE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;7654321&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;København&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;else&lt;/span&gt;:
+		kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;SVENSK KUNDE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;17262534&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Stockholm&amp;#34;&lt;/span&gt;)
+
+	invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Faktura(kunde)
+
+	&lt;span style=&#34;color:#000080&#34;&gt;# Fyller ut tabellen med data som hentes direkte fra XTRF&lt;/span&gt;
+	populate_invoice_from_XTRF(invoice, oversikt, kontor)
+
+	invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_table()
+		
+	faktura &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_body()
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;join(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;invoices&amp;#34;&lt;/span&gt;, f&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura_{invoice.invoice_number}_{kontor}.html&amp;#34;&lt;/span&gt;), &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+		f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt; write(faktura)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Resultatet? 3 fine filer som dette:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;─ faktura_13137_DK.html
+─ faktura_2912_SE.html
+─ faktura_35457_NO.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Disse kan så gjøres om til Word med pandoc:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ for file in *; do pandoc -o ${file%.html}.docx $file; done;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Det å skrive dette skriptet tar ikke så lang tid nå som selve fakturaens oppbygning og stil allerede er på plass.&lt;/p&gt;
+&lt;h2 id=&#34;veien-videre&#34;&gt;Veien videre&lt;/h2&gt;
+&lt;p&gt;Jeg startet prosjetet på mandag og har kost meg veldig gjennom hele uken. Det har vært en spennende utfordring å rydde opp i koden min og prøve å gjøre oppbygningen så logisk som mulig. Prøve å finne den perfekte balansen mellom &lt;em&gt;enhetlig&lt;/em&gt; og &lt;em&gt;fleksibel&lt;/em&gt; – et program som skaper orden, men som likevel skal kunne utvides og endres på i fremtiden.&lt;/p&gt;
+&lt;p&gt;Det er ikke så lett, fordi man må prøve å gjette på hvilke funksjoner som kan være nyttige i fremtiden. Muligheten for å endre språket i fakturaen? Kanskje bør kundene lagres i en database og hentes derfra? Kanskje skal det være mulig å oppdatere totalen etter at tabellen har blitt generert? Og så videre.&lt;/p&gt;
+&lt;p&gt;Uansett er jeg fornøyd med ukens fremgang på prosjektet. Nå skal jeg lage fakturaene mine, og så får jeg tenke over de neste utvidelsene en annen gang!&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;obs&#34;&gt;OBS!&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Oppdatering 4.3.2021&lt;/strong&gt;
+Jeg har overhalet Hammer Faktura ganske betydelig. Alle endringene og forbedringene er beskrevet og forklart tydelig i det nye blogginnlegget, &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturaer-del-to&#34;&gt;som kan leses her&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -47,9 +319,80 @@ Oversikt:
       <pubDate>Wed, 03 Feb 2021 15:19:39 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/simplevp-xtrf-gjort-enkelt/</guid>
-      <description>Helt siden Norge gikk i lockdown, har jeg jobbet med et jobb/hobbyprosjekt som jeg nå begynner å bli veldig fornøyd med. Det er prosjekt som effektiviserer og automatiserer arbeidsflyten min knyttet til XTRFs Vendor Portal.
-Jeg har lært mer om:
- Hvordan bruke HTTP, ~Verdensvevens~ grunnmur. Hvordan lage en database og hvordan bruke SQL-spørringer. Et enkelt (og riktignok ikke særlig pent) brukergrensesnitt Masse Python Sortering av kode, bruk av Git etc.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/intro.gif&#34; alt=&#34;Bilde av simpleVP&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Helt siden Norge gikk i lockdown, har jeg jobbet med et jobb/hobbyprosjekt som jeg nå begynner å bli veldig fornøyd med. Det er prosjekt som effektiviserer og automatiserer arbeidsflyten min knyttet til XTRFs Vendor Portal.&lt;/p&gt;
+&lt;p&gt;Jeg har lært mer om:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hvordan bruke HTTP, ~Verdensvevens~ grunnmur.&lt;/li&gt;
+&lt;li&gt;Hvordan lage en database og hvordan bruke SQL-spørringer.&lt;/li&gt;
+&lt;li&gt;Et enkelt (og riktignok ikke særlig pent) brukergrensesnitt&lt;/li&gt;
+&lt;li&gt;Masse Python&lt;/li&gt;
+&lt;li&gt;Sortering av kode, bruk av Git etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Og det har ikke minst gjort meg til en mye mer effektiv oversetter!&lt;/p&gt;
+&lt;p&gt;Dette programmet er skrevet i Python og &lt;a href=&#34;https://github.com/Oleham/simplevp&#34;&gt;ligger på min Github&lt;/a&gt;. Det er nyttig for oversettere som bruker XTRF Vendor Portal til å laste ned flere oppdrag hver dag, men som synes det blir litt vel tungvint.&lt;/p&gt;
+&lt;p&gt;Prosjektet startet slik jeg har blitt fortalt at alle gode programmeringsprosjekter startet – med et virkelig problem.&lt;/p&gt;
+&lt;h2 id=&#34;bakgrunn&#34;&gt;Bakgrunn&lt;/h2&gt;
+&lt;p&gt;Da jeg startet som fastansatt oversetter i 2018, ble jeg raskt konfrontert med &lt;a href=&#34;https://xtrf.eu&#34;&gt;XTRF&lt;/a&gt;.
+XTRF er et såkalt TMS – Translation Management System – altså en avart av et CMS som er rettet mot språkbransjen.&lt;/p&gt;
+&lt;p&gt;Det polske selskapet har som mål å strømlinjeforme arbeidet i språkbransjen. Taglinen deres er «Translation Made Simple». Systemet består av én kundeportal hvor kunder kan be om tilbud, én portal hvor leverandører kan finne prosjekter, og én Home-portal for alt det administrative i bakgrunnen.
+Oversettere som meg vil altså bli sendt til deres leverandørportal, eller Vendor Portal.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/vendorportal.jpg&#34; alt=&#34;Skjermdump av XTRFs Vendor Portal&#34;&gt;&lt;br&gt;
+&lt;em&gt;Skjermdump av Vendor Portal&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Dette skriver XTRF selv om leverandørportalen sin:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;XTRF’s Vendor Portal is your vendors’ one-stop-shop.
+It’s where they accept jobs, access and upload files,
+create invoices, and update their availability.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Som oversetter bruker man altså XTRF til å si ja til oppdrag, og til å laste ned ev. filer. Man har også tilgang til en oversikt over fullførte oppdrag som kan brukes som fakturagrunnlag. Ganske nyttig!&lt;/p&gt;
+&lt;p&gt;Mitt problem var bare det at jobben min involverte veldig, veldig mange &lt;em&gt;mindre&lt;/em&gt; oppdrag.
+Bak mange av dem lå det en automatisert arbeidsflyt som forhåndsoversatte det meste, og som så spyttet de siste resterende setningene mot meg. En arbeidsdag kunne dermed involvere 30–40 oppdrag på kun 1–4 setninger. For alle disse oppdragene måtte jeg manuelt laste ned filene fra Vendor Portal.&lt;/p&gt;
+&lt;p&gt;Tillat meg, kjære leser, å ta deg med på denne uendelige lidelsen, trinn for trinn.&lt;/p&gt;
+&lt;p&gt;Først måtte jeg velge et oppdrag fra listen, trykke last ned…&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/xtrf_vendorportal_dl_button.JPG&#34; alt=&#34;Last ned&#34;&gt;&lt;/p&gt;
+&lt;p&gt;…velge lokal mappe. Pakke ut. Oversette! Eksportere. Trykke last opp…&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/xtrf_vendorportal_ul_button.jpg&#34; alt=&#34;Last opp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Velge fra lokal mappe, lokalisere filen…&lt;/p&gt;
+&lt;p&gt;…trykke avslutt.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/xtrf_finish_button.jpg&#34; alt=&#34;Avslutt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;…bekrefte avslutt.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/xtrf_finish_button2.jpg&#34; alt=&#34;Bekrefte avslutt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;…og det 40 ganger, dag inn, dag ut.&lt;/p&gt;
+&lt;p&gt;Sammenlagt ender man opp med å bruke veldig mye tid på å klikke på grafiske elementer. Selv om jeg etterhvert er i stand til å gjøre det med bind for øynene, i fritt fall, med armene bundet på ryggen, vil jeg jo aller helst kunne konsentrere meg om oversettelsen!&lt;/p&gt;
+&lt;p&gt;Den ideelle situasjonen ville være at alle disse oppdragene bare er en lang, uavbrutt rekke med tekst.
+Jeg vil ha så få muligheter til å falle ut av flytsonen som mulig.&lt;/p&gt;
+&lt;h2 id=&#34;simplevp&#34;&gt;simpleVP&lt;/h2&gt;
+&lt;p&gt;En dag, mens jeg satt i en transe og klikket på grønne knapper, drømte jeg opp «simpleVP». En leverandørportal av folket – for folket. A powerful tool enabling freedom to enjoy what really matters to you. We take care of the rest. Eller noe annet sånn bullshit.&lt;/p&gt;
+&lt;p&gt;Den første iterasjonen av simpleVP var et Python-skript som fjernstyrte en nettleser. Det var ganske ålreit, fordi det i det minste tok seg av all klikkingen. Jeg kunne stikke bort på kjøkkenet og hente meg en kaffe, og i mellomtiden navigerte simpleVP versjon 1 seg gjennom leverandørportalen, lastet opp filen, avsluttet oppdraget og startet neste oppdrag. &lt;a href=&#34;https://www.selenium.dev/&#34;&gt;Til dette brukte jeg det som heter Selenium.&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Men til tross for nytelsen det er å kunne se på at musepekeren flytter seg magisk over skjermen – om jeg virkelig ville spare inn verdifull tid, måtte programmet jobbe enda litt raskere enn det.&lt;/p&gt;
+&lt;p&gt;Etter mye prøving og feiling fant jeg, med god hjelp, til slutt noe som fungerte enda bedre: simpleVP versjon 2!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/simplevp_list_view.jpg&#34; alt=&#34;simpleVP versjon 2&#34;&gt;&lt;br&gt;
+&lt;em&gt;Listevisningen til simpleVP.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Programmet fungerer nå som en veldig forenklet utgave av Vendor Portal. Man velger dato i kalenderen til høyre, og har så valget om å vise alle oppdrag med nedlastbare filer, eller vise absolutt alle oppdrag med frist på valgt dato.&lt;/p&gt;
+&lt;p&gt;Når man trykker på oppdater-symbolet (♻️), vil simpleVP legge til nye oppdrag i listen eller endre status på oppdrag – litt som i nettleseren.&lt;/p&gt;
+&lt;p&gt;Det som gjør simpleVP spesielt nyttig, er at man kan velge flere oppdrag med sjekkboksene ute til venstre. Når man trykker på download, vil &lt;strong&gt;alle&lt;/strong&gt; filene lastes ned til mappen som er definert, uten noe om og men. Mappen vil kun inneholde filene som ble lastet ned sist.&lt;/p&gt;
+&lt;p&gt;Nå trenger jeg ikke lenger forlate oversettelsesprogrammet mitt, men kan jobbe meg gjennom fil for fil, uten avbrytelser. Jeg bruker en hurtigtast for å pakke ut neste prosjekt i nedlastningsmappen, og det går lynraskt.&lt;/p&gt;
+&lt;p&gt;På samme måte kan jeg slenge alle ferdige prosjekter inn i en mappe, uten å memorere filnavn eller tenke noe videre over det. Når filen skal lastes opp, finner simpleVP selv frem til riktig fil, laster den opp og avslutter oppdraget.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/simplevp_list_status.JPG&#34; alt=&#34;simpleVP versjon 2&#34;&gt;&lt;br&gt;
+&lt;em&gt;Slik ser det ut på en typisk arbeidsdag.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Programmet, eller databasen, holder selv styr på hvilke oppdrag som er lastet ned, lastet opp, eller som har blitt avsluttet (OK). Grunnen til at det er to separate statuser for opplastet og OK, er at det ikke fungerer feilfritt hver gang på grunn av en intern feil i XTRF-systemet. I slike tilfeller er det lettest å bruke nettleseren til forsøke å stenge oppdraget, siden det trengs flere tilløp.&lt;/p&gt;
+&lt;h2 id=&#34;arktitekturen-bak&#34;&gt;Arktitekturen bak&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/sVP_explanation.png&#34; alt=&#34;Databasen&#34;&gt;&lt;br&gt;
+&lt;em&gt;En &amp;ndash;elegant&amp;ndash; fremstilling av arkitekturen bak.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;simpleVP benytter seg av det man kaller et API &amp;ndash; &lt;em&gt;application programming interface&lt;/em&gt;. Når jeg bruker XTRF sin opprinnelige Vendor Portal, blir det sendt en forespørsel til XTRF sin server, som svarer med en strukturert oversikt over alle tilgjengelige oppdrag i JSON-format.&lt;/p&gt;
+&lt;p&gt;For å lage simpleVP har jeg ganske enkelt undersøkt hvilke forespørsler som sendes i nettleseren min når jeg besøker vendor portal. Så har jeg skrevet et python-program som sender akkurat de samme forespørslene som nettleseren min gjør.
+Om jeg bare formulerer forespørselen riktig, bryr ikke serveren til XTRF seg om det er en nettleser eller et python-skript som står bak: den bare svarer med ønsket informasjon.&lt;/p&gt;
+&lt;p&gt;Hele cluet er altså å lage et program som emulerer nettsiden til XTRF. Kommunikasjonen foregår etter HTTP &amp;ndash; &lt;em&gt;Hyper Text Transfer Protocol&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Informasjonen som returneres, lagres så i min lokale database. Det er oppdragsnummer, frist, størrelsen på oppdraget, prosjektlederen osv.&lt;/p&gt;
+&lt;p&gt;Det siste leddet i programmet er selve det grafiske brukergrensesnittet, altså «vinduet». Det er et eget program som tegner opp et vindu ved hjelp av Python sitt tkinter-bibliotek. Programmet sender en forespørsel til min lokale database, for eksempel «vis alle oppdrag som har frist mandag 12.01.2021». Databasen svarer, og informasjonen sorteres til en rekke setninger som listes opp ved siden av en rekke sjekkbokser. Brukeren kan nå interagere med disse sjekkboksene, og programmet vil knytte det til riktig underliggende oppdrags-ID.&lt;/p&gt;
+&lt;p&gt;Dermed kan brukeren selv styre opplastning og nedlastning av individuelle oppdrag.&lt;/p&gt;
+&lt;h2 id=&#34;veien-videre&#34;&gt;Veien videre&lt;/h2&gt;
+&lt;p&gt;simpleVP er et lite hjertebarn som jeg bruker hver dag, og jeg vet at flere tidligere kolleger i GLOBALscandinavia også bruker det. Jeg fortsetter inntil videre å utvikle det på samme måte som jeg har gjort hele tiden: jeg fikser småfeil her og der når jeg kommer over dem og legger til forbedringer når jeg føler for det. Det er ikke et disiplinert prosjekt, men det har vært veldig lærerikt.&lt;/p&gt;
+&lt;p&gt;Akkurat nå er det så klart veldig tilpasset oppdrag fra et visst oversettelsesbyrå og en viss type oppdrag, men jeg ser for meg at jeg etterhvert vil bruke det for andre oversettelsesbyråer som bruker XTRF-systemet.&lt;/p&gt;
+&lt;p&gt;Jeg vil også lage et nytt prosjekt opp mot XTRF Vendor Portal som skal la meg generere egne fakturaer automatisk. Det vil fungere på omtrent samme måte, men produktet vil da bli en spesifikasjonsliste på en faktura, og ikke en liste med sjekkbokser på et grafisk brukergrensesnitt.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Oleham/simplevp&#34;&gt;Last ned simpleVP 2.0 her!&lt;/a&gt; Alltid gøy med kommentarer, tips og råd! :)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -58,8 +401,74 @@ Jeg har lært mer om:
       <pubDate>Wed, 27 Jan 2021 19:46:15 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/automatisk-registrering-kunder-xtrf/</guid>
-      <description>Denne bloggposten beskriver et lite pilotkonsept jeg lagde i fjor. Jeg arbeidet da som selger for GLOBALscandinavia AS, og hadde ansvaret for å forberede tilbud til kunder som meldte seg via nettsiden vår. Den samme oppsummeringen ligger ute på min Github
-Dette prosjektet var en god trening i å bruke både Django og JSON-API. Jeg måtte sette meg inn det å selv lage et API, og det å forstå dokumentasjonen til API-et noen andre har laget.</description>
+      <description>&lt;p&gt;Denne bloggposten beskriver et lite pilotkonsept jeg lagde i fjor. Jeg arbeidet da som selger for GLOBALscandinavia AS, og hadde ansvaret for å forberede tilbud til kunder som meldte seg via nettsiden vår. &lt;a href=&#34;https://github.com/Oleham/xtrf_client_registration&#34;&gt;Den samme oppsummeringen ligger ute på min Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Dette prosjektet var en god trening i å bruke både Django og JSON-API. Jeg måtte sette meg inn det å selv lage et API, og det å forstå dokumentasjonen til API-et noen andre har laget.
+Husker det var spesielt morsomt å utvide funksjonaliteten med automatiske varsler til Teams! Og ikke minst var det min første erfaring med &lt;a href=&#34;https://www.linode.com&#34;&gt;Linode&lt;/a&gt;, hvor man kan leie seg en liten virtuell server for noen få euro i måneden. Det er tjenesten jeg nå hoster denne nettsiden på.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;automatically-registering-clients-on-the-xtrf-translation-system&#34;&gt;Automatically registering clients on the XTRF translation system&lt;/h2&gt;
+&lt;h3 id=&#34;why&#34;&gt;Why?&lt;/h3&gt;
+&lt;p&gt;Working as a sales person at a translation agency, I recieved numerous requests from potential clients requesting a quote. The requests are usually sent to a large number of agencies in order for them to compare prices. Sending these probably didn&amp;rsquo;t take the potential clients very long. However, I found that registering them in XTRF so that I could prepare a quote ended up eating up a lot of my time.&lt;/p&gt;
+&lt;p&gt;XTRF is a nice enough TMS (Translation Management System), but it&amp;rsquo;s heavy: with a lot of menus. Most of the time, you end up entering the same information for everyone. So why not automate the process?&lt;/p&gt;
+&lt;h3 id=&#34;gathering-information&#34;&gt;Gathering information&lt;/h3&gt;
+&lt;p&gt;Interestingly enough, most potential clients went through our web page in order to request a quote. There, they would be able to enter their basic contact information along with their request. I would then register them as a new client in the XTRF database, drawing on online sources to find the missing pieces. Especially the organization number or CSV-number, which is needed for tax reasons.&lt;/p&gt;
+&lt;p&gt;In my new project, I would allow the clients to simply enter this information themselves. The tax number (organization number in Sweden/Norway, CVR in Denmark) is the most important piece of information. Depending on which Scandinavian country the company was from, I would know what else to set up when registering them to the XTRF database: project managers, invoicing settings, responsible sales person, etc.&lt;/p&gt;
+&lt;p&gt;Of course, it would also be nice to keep all the not so serious-sounding clients out of our XTRF database. I came up with a simple architecture looking something like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/automatisk-registrering-kunder-xtrf-chart.png&#34; alt=&#34;The architecture of my site&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here, the clients could interact with our web page (represented by the IP adress in the illustration). The sales team (&amp;ldquo;Salg&amp;rdquo;) would recieve a notification, and choose whether to subsequently transfer the information from the web page into the main XTRF database.&lt;/p&gt;
+&lt;p&gt;By first having the potential clients enter their information into an intermediary database, my translation agency would be able to screen the requests before choosing to automatically registering them on XTRF. That&amp;rsquo;s good, as we&amp;rsquo;d get a lot of requests for smaller translation jobs, two-pagers like CVs and diplomas, which wasn&amp;rsquo;t something we as a B2B translation agency would do.&lt;/p&gt;
+&lt;p&gt;A more prominent reason for this architecture is also simply the fact that I was learning Django at the time. I thought this would be a good opportunity to make use of the &lt;a href=&#34;https://www.django-rest-framework.org/&#34;&gt;Django REST API framework&lt;/a&gt;. I quickly built a very simple pilot web site containing only one form in the frontend.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/automatisk-registrering-kunder-xtrf-form.jpg&#34; alt=&#34;The form for collecting user input&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here, the potential clients would be able enter their information and write a short message to request a quote.
+This form was linked to the following Django model:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cdcd00&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#00cdcd&#34;&gt;Company&lt;/span&gt;(models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Model):
+    name &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;300&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Name&amp;#34;&lt;/span&gt;)
+    publish_date &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;DateTimeField(auto_now&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True)
+    adressLine1 &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adress Line 1&amp;#34;&lt;/span&gt;)
+    adressLine2 &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adress Line 2&amp;#34;&lt;/span&gt;)
+    area_code &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Area Code&amp;#34;&lt;/span&gt;)
+    email &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;EmailField(verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;E-Mail&amp;#34;&lt;/span&gt;)
+    phone_number &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Phone Number&amp;#34;&lt;/span&gt;)
+    city &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;City&amp;#34;&lt;/span&gt;)
+    country_id &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;ForeignKey(Country, on_delete&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CASCADE, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Country&amp;#34;&lt;/span&gt;)
+    idNumber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;30&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Company ID/Org.No./CVR No.&amp;#34;&lt;/span&gt;)
+    document &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;FileField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, upload_to&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;documents/&amp;#39;&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Upload Files that need translating&amp;#34;&lt;/span&gt;)
+    freetext &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;TextField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;What can we help you with?&amp;#34;&lt;/span&gt;)
+
+    &lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; __str__(self):
+        &lt;span style=&#34;color:#cdcd00&#34;&gt;return&lt;/span&gt; self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;name
+
+    &lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; get_absolute_url(self):
+        &lt;span style=&#34;color:#cdcd00&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;success/&amp;#34;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A Django model defines the database fields for the table which is connected to the web page form. When the user submits the form, the information is organized and stored in the corresponding fields of that database table (sort of like an Excel spreadsheet).
+As you might tell from the model, the potential client would also be able to directly upload the file he or she wanted translated.&lt;/p&gt;
+&lt;h3 id=&#34;registering&#34;&gt;Registering&lt;/h3&gt;
+&lt;p&gt;When someone entered the above information to request a quote, all the information was stored on the database of my Django site. It was then accessible via the Django REST API in JSON format.&lt;/p&gt;
+&lt;p&gt;I would get an email from the server informing me of the request. Also, my team would recieve a message on &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/connectors-using&#34;&gt;Teams through a connector&lt;/a&gt;, which would allow us to directly discuss the request.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/automatisk-registrering-kunder-xtrf-teams.jpg&#34; alt=&#34;Demo of the Teams connector&#34;&gt;&lt;/p&gt;
+&lt;p&gt;If we deemed the request as serious, we would run the python script &lt;strong&gt;add_client.py&lt;/strong&gt;, using the ID of the request as an argument, i.e. &lt;code&gt;python3 add_client.py 23&lt;/code&gt;. The script downloaded the information from the Django API and instantly uploaded it to the XTRF database through the &lt;a href=&#34;https://www.xtrf.eu/xtrf-api-doc/home-api&#34;&gt;Home Portal API&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;to-test-the-django-site&#34;&gt;To test the Django site&lt;/h3&gt;
+&lt;p&gt;Install something similar to the requirements in &lt;strong&gt;requirements.txt&lt;/strong&gt;.
+Go into the client_registration folder, migrate the database and run the test server.
+Add a super user so that you will be able to log in to the admin and API panels.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;cd&lt;/span&gt; client_registration
+python3 manage.py makemigrations
+python3 manage.py makemigrations registration_app
+python3 manage.py migrate
+python3 manage.py createsuperuser
+python3 manage.py runserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Go to localhost:8000 and try adding someone to your database. You should see the company you added on localhost:8000/api/companies&lt;/p&gt;
+&lt;p&gt;To review the email and Teams-functionality, check out the commented out code in &lt;strong&gt;client_registration/registration_app/views.py&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;to-sum-up&#34;&gt;To sum up&lt;/h3&gt;
+&lt;p&gt;This was a fun &amp;ldquo;proof-of-concept&amp;rdquo;. XTRF is a very big TMS that aims to satisfy every thinkable need. For us, the translation business is mostly fast-moving and fluid. Why invest too much time in a potential client when the likelihood of them picking one of the fifteen other agencies they contacted is so high?&lt;/p&gt;
+&lt;p&gt;Advantages of automating client registration in XTRF:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Instantanous registration within seconds&lt;/li&gt;
+&lt;li&gt;All standard fields entered correctly based on country&lt;/li&gt;
+&lt;li&gt;No danger of spam, as the client go through an intermediate server&lt;/li&gt;
+&lt;li&gt;Teams integration – better communication!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

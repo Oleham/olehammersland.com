@@ -35,6 +35,8 @@
     {{- partial "footer.html" . -}}
   </footer>
 
+  {{$build := resources.Get "index.js" | js.Build (dict "minify" "true" "targetPath" "bundle.js") }}
+  <script src={{ $build.RelPermalink }}></script>
 </body>
 
 </html>

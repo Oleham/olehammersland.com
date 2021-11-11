@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="shortcut icon" href="https://www.olehammersland.com/images/favicon.png" />
-<title>memoq | olehammersland.com</title>
+<title>memoq | Ole Hammersland</title>
 <meta name="title" content="memoq" />
 <meta name="description" content="Min hjemmeside. Jeg arbeider med oversettelse fra tysk, engelsk, dansk og svensk." />
 <meta name="keywords" content="automatisering,bash,effektivisering,english,enkeltpersonforetak,german,go,javascrip,javascript,koding,linux,maskinoversttelse,memoq,oversettelse,python,sykkel,translation,tysk,xtrf," />
@@ -34,8 +34,12 @@
 
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="alternate" type="application/rss+xml" href="https://www.olehammersland.com/blogg/memoq/index.xml" title="olehammersland.com" />
+  <link rel="alternate" type="application/rss+xml" href="https://www.olehammersland.com/blogg/memoq/index.xml" title="Ole Hammersland" />
   <style>
+
+  :root {
+    --main-color: rgb(35, 19, 253);
+}
 
   @import url('fonts/inter.css');
     html { 
@@ -81,13 +85,13 @@
     border: 0;
   }
 
-  .logo-icon {
-    float:left;
-    padding-right: 10px;
+ .logo-icon {
+    min-width: 100px;
+    margin-right: 10px;
   }
 
   .logo-box {
-    display:inline-block;
+    display:flex;
     width: 100%;
   }
 
@@ -95,21 +99,33 @@
     font-weight: 400;
   }
 
-  nav a {
+  #main-nav a {
+    font-size: 1.5rem;
     margin-right: 5px;
     padding-right: 10px;
     color:#444;
     text-decoration: none;
-    border-right: 2px solid rgb(35, 19, 253);
+    border-right: 2px solid var(--main-color);
   }
 
-  nav a:hover {
+  #main-nav a:hover {
     color:rgb(145, 139, 139)
   }
 
-  nav a:last-of-type {
+  #main-nav a:last-of-type {
     border-right: none;
+  }
 
+  #burger {
+    display: none;
+    margin: 10px;
+  }
+
+  .burger-line {
+    height: 5px;
+    width: 35px;
+    background-color:var(--main-color);
+    margin-bottom: 5px;
   }
 
   textarea {
@@ -174,11 +190,11 @@
   }
 
   .blog-posts h3 {
-    border-bottom: 1px solid rgb(35, 19, 253);
+    border-bottom: 1px solid var(--main-color);
   }
 
   .blog-posts h3::first-letter {
-    color:rgb(35, 19, 253);
+    color:var(--main-color);
   }
 
   .blog-posts a:hover, .blog-posts h3:hover {
@@ -190,7 +206,7 @@
     width: 100%;
     align-items: center;
     font-size: 1.5rem;
-    border: 1px solid rgb(35, 19, 253);
+    border: 1px solid var(--main-color);
     margin-bottom: 20px;
     margin-top: 20px;
     text-align: center;
@@ -215,8 +231,54 @@
   #TableOfContents li {
     list-style: circle;
   }
-</style>
 
+  @media screen and (max-width: 700px) {
+    #burger {
+      display:block
+    }
+
+    #main-nav {
+      display: absolute;
+      transform: translateY(calc(-100vh));
+      height: 5px;
+      transition: 1s;
+      border-left: 2px solid var(--main-color);
+      padding-left: 10px;
+    }
+
+    #main-nav a {
+      border:none;
+    }
+
+    #main-nav.open-burger {
+      display: flex;
+      height: unset;
+      flex-direction: column;
+      transition: 1s;
+      font-size: 2rem;
+      transform: translateY(0);
+    }
+
+    .open-burger .burger-line {
+      margin:none;
+      transform: none;
+    }
+
+   .open-burger #line1 {
+      transform: rotate(45deg) translateY(6px) translateX(1px);
+      margin:none;
+      transition: 1s ease-out;
+    }
+    .open-burger #line2 {
+      display:none;
+    }
+    .open-burger #line3 {
+      transform: rotate(-45deg) translateY(-6px);
+      margin:none;
+      transition: 1s ease-out;
+    }
+  }
+</style>
 
 </head>
 
@@ -225,9 +287,15 @@
 <div class="logo-box">
   <a href="/" class="title">
     <img class="logo-icon" src="/images/book.png">
-    <h2>olehammersland.com</h2>
   </a>
-  <nav><a href="/">Hjem</a>
+  <h2>Ole Hammersland</h2>
+  <div id="burger">
+      <div class="burger-line" id="line1"></div>
+      <div class="burger-line" id="line2"></div>
+      <div class="burger-line" id="line3"></div>
+  </div>
+</div>
+<nav id="main-nav"><a href="/">Hjem</a>
 
 <a href="/om/">Om</a>
 
@@ -241,7 +309,6 @@
 <a href="/blogg">Blogg</a>
 
 </nav>
-</div>
 
 </header>
   <main>
@@ -252,6 +319,7 @@
     <a href="/blogg">Fjern filter</a>
   </small>
   
+  <h1>Blogg</h1>
   <div class="blog-posts">
   
     <a href="https://www.olehammersland.com/blogg/forkorte-stringer/">
@@ -287,9 +355,7 @@
     </a>
   
   </div>
-   
   <div id="pagination"></div>
-  <script src="/scripts/pagination.js"></script>
   
   
 </content>
@@ -298,6 +364,8 @@
   <footer>Kontakt: <a href="mailto:post@olehammersland">post@olehammersland.com</a>
 </footer>
 
+  
+  <script src=/bundle.js></script>
 </body>
 
 </html>

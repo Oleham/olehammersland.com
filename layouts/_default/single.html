@@ -35,7 +35,8 @@
 {{ if .Params.sykkel }}
 <!-- Custom bysykkel component -->
 <div id="bysykkel-component"></div>
-<script src="/scripts/bysykkel.js"></script>
+{{ $sykkel := resources.Get "bysykkel.js" | js.Build "sykkel.js" }}
+<script src={{ $sykkel.RelPermalink }}></script>
 {{ end }}
 
 {{ if .Params.include_data }}

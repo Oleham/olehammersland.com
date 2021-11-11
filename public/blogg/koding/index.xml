@@ -14,9 +14,18 @@
       <pubDate>Wed, 10 Nov 2021 08:55:37 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/nettside-for-forro/</guid>
-      <description>Har laget en ny nettside for forro som stort sett er lanseringsklar, i tide til dansekvelden vi skal arrangere på søndag.
-osloforro.site
-Nettsiden er laget ved hjelp av to rammeverk: Django og Svelte. Tanken er at Svelte skal håndtere frontenden (presentasjonen, selve siden), mens Django håndterer backenden (lagring av data og så videre). Jeg valgte dette oppsettet for å lett kunne invitere mine medsammensvorne i forrogruppen til å lage sine egne innlegg i Django sin backend.</description>
+      <description>&lt;p&gt;Har laget en ny nettside for forro som stort sett er lanseringsklar, i tide til dansekvelden vi skal arrangere på søndag.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://osloforro.site&#34;&gt;osloforro.site&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/forro.jpg&#34; alt=&#34;Skjermdump som viser Oslo forro-siden&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Nettsiden er laget ved hjelp av to rammeverk: Django og Svelte. Tanken er at Svelte skal håndtere frontenden (presentasjonen, selve siden), mens Django håndterer backenden (lagring av data og så videre). Jeg valgte dette oppsettet for å lett kunne invitere mine medsammensvorne i forrogruppen til å lage sine egne innlegg i Django sin backend.&lt;/p&gt;
+&lt;p&gt;Siden jeg jobber med dette på hobbybasis, har jeg tatt noen snarveier. Jeg har nå lagt opp til at de andre skal opprette innlegg og arrangementer direkte i Django sitt admin-panel. Det er litt uheldig, fordi det ikke er veldig brukervennlig, men jeg tenker at det bør fungere. Dessuten har det nå blitt slik at Nyheter/Blogg- og Om-delen på siden leveres rett fra Django, siden det gikk raskere for meg å sette opp slik.&lt;/p&gt;
+&lt;p&gt;Svelte er nå brukt som en SPA på hovedsiden. Rammeverket gjorde det enkelt for meg å lage en mer interaktiv opplevelse der, hvor man kan bla gjennom informasjonsboksen, se over kommende og tidligere arrangementer og bla gjennom de siste blogginnleggene. Alt med enkle animasjoner. Det var både gøy og lærerikt å bruke Svelte her, og i neste gjennomgang vil jeg utvide ansvarsområdet til dette rammeverket. Synes det er veldig gøy å jobbe med Django også, men Svelte gjør det mye lettere å skape en mer «levende» side.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/forro2.jpg&#34; alt=&#34;Skjermdump som administrasjonspanelet til siden&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Slik ser adminpanelet til siden ut. Brukere kan opprette og endre nyhetsinnlegg, fanene i infoboksen og arrangementer samt laste opp bilder direkte til siden. Det vil si at alt innhold på siden kan styres herfra – man må ikke kunne noe om programmering for å endre på siden. Innholdet hentes fra Svelte gjennom REST API, mens sidene som leveres direkte fra Django kombinerer maler og innhold allerede før siden leveres.&lt;/p&gt;
+&lt;p&gt;Har i dette prosjektet dessuten forsøkt meg på litt enkel server side rendering i byggetrinnet med Svelte. Det fungerer, men siden tegnes uten innholdet fra API-et, så det gjør ikke så veldig stor forskjell. Det er i hvert fall noe.&lt;/p&gt;
+&lt;p&gt;Ellers har jeg satt opp hele siden på en Digitalocean droplet. Serveren består av Nginx og Gunicorn, og Let&amp;rsquo;s Encrypt leverer SSL-sertifikatet.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Oleham/forrosite&#34;&gt;Koden ligger på Github.&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -25,8 +34,60 @@ Nettsiden er laget ved hjelp av to rammeverk: Django og Svelte. Tanken er at Sve
       <pubDate>Thu, 04 Nov 2021 15:33:19 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/forkorte-stringer/</guid>
-      <description>Innledning Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.
-Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes.</description>
+      <description>&lt;h2 id=&#34;innledning&#34;&gt;Innledning&lt;/h2&gt;
+&lt;p&gt;Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.&lt;/p&gt;
+&lt;p&gt;Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med  at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes. Vet ikke helt hvorfor kundene er så gniene på bytesene.&lt;/p&gt;
+&lt;p&gt;Uansett slo det meg som lite effektivt, spesielt når Excel-makroen ikke teller riktig, så jeg har forsøkt å utvikle en litt raskere workflow. Håpet er å kunne bruke denne også på fremtidige oppdrag. Les videre:&lt;/p&gt;
+&lt;h2 id=&#34;ny-arbeidsflyt&#34;&gt;Ny arbeidsflyt&lt;/h2&gt;
+&lt;h3 id=&#34;trinn-1-analysere-teksten&#34;&gt;Trinn 1: Analysere teksten&lt;/h3&gt;
+&lt;p&gt;Jeg begynte med et python-skript som deler opp hver setning i enkeltord og deretter teller opp hvor ofte hvert enkeltord forekommer i setningen. Dette (meta!)skriptet skriver så et nytt python-skript som kun inneholder en liste over hvert ord dobbelt og en merknad om hvor ofte ordet forekommer i Excel-listen.&lt;/p&gt;
+&lt;p&gt;Slik ser det nye python-skriptet ut:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Tyskland/Sveits/Østerrike&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Tyskland/Sveits/Østerrike&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Frankrike/Belgia/Sveits/Lux.&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Frankrike/Belgia/Sveits/Lux.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Italia/Sveits&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Italia/Sveits&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;mørkeblå/beige&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;mørkeblå/beige&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    &lt;span style=&#34;color:#000080&#34;&gt;#[...]&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;kjøretøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;kjøretøy.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 54&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;til&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;til&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 55&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;T-skjorte&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;T-skjorte&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 61&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;venstre&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;venstre&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 64&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 73&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Program&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Program&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 103&lt;/span&gt;
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Merk at jeg kun har skilt opp ord etter mellomrommene i teksten. Derfor dukker det også opp flere ord som ikke er skilt av mellomrom.&lt;/p&gt;
+&lt;h3 id=&#34;trinn-2-lage-forkortelser&#34;&gt;Trinn 2: Lage forkortelser&lt;/h3&gt;
+&lt;p&gt;Jeg gikk så manuelt gjennom denne python-listen og forkortet det høyre ordet i hver tuple, slik som dette:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmont.verktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;B/NL&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Tyskland/Sveits/Østerrike&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;DE/CH/A&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Frankrike/Belgia/Sveits/Lux.&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;F/B/CH/LX&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Italia/Sveits&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;I/CH&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;mørkeblå/beige&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;blå/beige&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    &lt;span style=&#34;color:#000080&#34;&gt;#[...]&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;kjøretøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;kj.tøy.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 54&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;til&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;til&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 55&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;T-skjorte&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;T-skj.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 61&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;venstre&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;v.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 64&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 73&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Program&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Pr.gram&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 103&lt;/span&gt;
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I denne første gjennomgangen konsentrerte jeg meg om de ordene som forekommer oftest og om de vanligste og mest lavthengende forkortelsene. Jeg gikk ikke gjennom fra A til Å, men holdt på en stund til jeg følte jeg hadde tatt det som ville gi størst utslag.&lt;/p&gt;
+&lt;h3 id=&#34;trinn-3-korte-hver-setning-ned-til-25-bytes&#34;&gt;Trinn 3: Korte hver setning ned til 25 bytes&lt;/h3&gt;
+&lt;p&gt;Etter å ha definert en rekke forkortelser, skrev jeg et nytt skript som søkte gjennom hele Excel-listen og sjekket hver setning om den er på mer enn 25 bytes. Hvis en setning er på over 25 bytes, vil den erstatte ordene i setningen med tilsvarende forkortelser fra &lt;code&gt;vanlige_ord&lt;/code&gt;-listen helt til setningen kommer under 25 bytes eller det ikke finnes flere relevante forkortelser.&lt;/p&gt;
+&lt;p&gt;Resultatet i Excel blir seende slik ut:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/forkortede-strenger.jpg&#34; alt=&#34;Utklipp fra Excel&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Utgangsspråket er helt til venstre, den norske oversettelsen i midten og den nye, forkortede versjonen helt til høyre. Om man sammenligner kolonne D og F, ser man at disse setningene nå er innenfor tegnbegrensningen.&lt;/p&gt;
+&lt;p&gt;Det som er ålreit, er at denne arbeidsflyten kan itereres flere ganger. Etter første gjennomgang kunne jeg skape en ny  &lt;code&gt;vanlige_ord&lt;/code&gt;-liste, men denne gangen definere enda særere og mer uforståelige forkortelser. Det er ok, fordi det vil til slutt kun berøre setningene som fortsatt ligger over 25 bytes. Det er da sannsynligvis setninger som uansett må tåle litt dårligere leseforståelse.&lt;/p&gt;
+&lt;p&gt;Faremomentet er at setningene blir komplett uleselige. I flere tilfeller vil det nok gi mer mening å kutte ut enkelte ord, fremfor å forkorte hvert eneste ord enda litt til. Derfor tror jeg denne fremgangsmåten og andre «søk og erstatt»-metoder kun vil være effektivt til en viss grad. Men de kan skape et nyttig utgangspunkt.&lt;/p&gt;
+&lt;h2 id=&#34;oppsummering&#34;&gt;Oppsummering&lt;/h2&gt;
+&lt;p&gt;Jeg tror dette er en mye mer effektiv arbeidsflyt enn å gå gjennom med kun vanlig «søk og erstatt». Jeg har nå gått gjennom prosessen tre ganger, og resultatet er at ca. 60 % av setningene er under 25 bytes-grensen 👍 Resten tar jeg nok manuelt.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -35,7 +96,19 @@ Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller an
       <pubDate>Mon, 04 Oct 2021 17:02:15 +0200</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</guid>
-      <description>Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.</description>
+      <description>&lt;p&gt;Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.&lt;/p&gt;
+&lt;p&gt;I dag tidlig var det f.eks. på tide å fornye sertifikatet, som var løpt ut i løpet av helgens Paris-Roubaix-ritt. Jeg gjorde prosessen slik jeg husket det, men glemte å restarte alle programmene som er involvert i e-posttjenesten min. Dermed fungerte fornyelsen av sertifikatet mitt øyensynlig ikke, og det ble en lett stresset og irritabel start på dagen.&lt;/p&gt;
+&lt;p&gt;Derfor skriver jeg nå en liten huskeliste til meg selv:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Skru av både Apache, Postfix &lt;strong&gt;OG&lt;/strong&gt; Dovecot med &lt;code&gt;sudo service [---] stop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Kjør Certbot, som av en eller annen grunn ikke ligger under PATH: &lt;code&gt;sudo ~/snap/bin/certbot renew&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Sjekk at alt er fornyet med &lt;code&gt;sudo ~/snap/bin/certbot certificates&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start de tre daemonene igjen.&lt;/li&gt;
+&lt;li&gt;Sjekk ev. &lt;code&gt;/var/log/mail.log&lt;/code&gt; for å se at e-posten er oppe.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Viktig å huske å skru av både Postfix og Dovecot 😅!&lt;/p&gt;
+&lt;p&gt;Og ja, dette kan selvfølgelig automatiseres, det vet jeg. Vet bare ikke om jeg orker å stikke fingeren i det vepsebolet i nærmeste fremtid&amp;hellip;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -44,8 +117,14 @@ Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller an
       <pubDate>Mon, 27 Sep 2021 17:30:58 +0200</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/javascript-svelte-react/</guid>
-      <description>Jeg har hatt en bok om JavaScript liggende hjemme i over ett år. Den handler om grunnleggende JavaScript samt en innføring i det sannsynligvis mest brukte rammeverket jQuery.
-En venn har mast på meg i lang tid om at jeg må sjekke ut Svelte, et visstnok fantastisk rammeverk som er superraskt og gjør det lekende lett å utvikle nettsider og apper. Før det har jeg hatt mest erfaring med rammeverkene Django og Hugo – sistnevnte er rammeverket som denne nettsiden er bygget på.</description>
+      <description>&lt;p&gt;Jeg har hatt en bok om JavaScript liggende hjemme i over ett år. Den handler om grunnleggende JavaScript samt en innføring i det sannsynligvis mest brukte rammeverket jQuery.&lt;/p&gt;
+&lt;p&gt;En venn har mast på meg i lang tid om at jeg må sjekke ut &lt;a href=&#34;https://svelte.dev/&#34;&gt;Svelte&lt;/a&gt;, et visstnok fantastisk rammeverk som er superraskt og gjør det lekende lett å utvikle nettsider og apper. Før det har jeg hatt mest erfaring med rammeverkene Django og Hugo – sistnevnte er rammeverket som denne nettsiden er bygget på.&lt;/p&gt;
+&lt;p&gt;Derfor har jeg lekt meg litt med vanilla JavaScript de siste par ukene. Et av resultatene er å se på &lt;a href=&#34;https://www.olehammersland.com/sykkel/&#34;&gt;Sykkel-siden&lt;/a&gt;. Tanken var å teste hvordan jeg kan laste inn dynamiske data og bruke det til å produsere en HTML-side. Kult å skrive kode som skal utføres i frontenden, i besøkerens nettleser, i stedet for at det kjører på en server som i Django. Jeg har også just oppdatert &lt;a href=&#34;https://www.olehammersland.com/blogg/&#34;&gt;Blogg-oversikten&lt;/a&gt; på denne siden, slik at ikke alle bloggposter vises samtidig, men deles opp i sider.&lt;/p&gt;
+&lt;p&gt;Det største hinderet for å komme i gang med Svelte, skulle likevel vise seg å være nvm-npm-node-trifektaen. Jeg brukte lang tid på å forstå hvordan det henger sammen. Fra tidligere er jeg vant til å skrive kode som kjøres gjennom en compiler/interpreter og hvor jeg selv importerer inn alle modulene, men i frontend-verdenen er det åpenbart litt mer komplisert. Alt må gå gjennom ulike npm-verktøy. Jeg brukte altfor lang tid fordi jeg ville starte Svelte-prosjekt helt fra scratch, men det er åpenbart forventet at man bare skal kopiere de ferdige prosjektmalene fra hjemmesiden deres. Det synes jeg personlig er lite tilfredsstillende. Med tid og krefter kan man nok få bedre innsikt i hva som skjer under panseret – jeg liker å vite alt som skjer.&lt;/p&gt;
+&lt;p&gt;Den gledelige nyheten er at Svelte er artig å bruke. Føler jeg fikk en grei, generell forståelse av hvordan det henger sammen. Noe som gav meg mestringsfølelse, er at jeg veldig godt kunne dra nytte av erfaringene fra Hugo, Django og Go sitt innebygde template-system. Svelte organiserer koden sin mer samlet. Både HTML/CSS og JavaScript pakkes inn i samme fil. Likevel føles det stort sett likt som tidligere rammeverk jeg har brukt: du har et HTML-basert template som fylles opp med andre templates, som igjen fylles opp av ulike parametere basert på brukerens input eller kanskje http-forespørsler. Det kjentes slettes ikke så fremmed. Den største overraskelsen for meg, er at Svelte i prinsippet er en compiler som oversetter prosjektet ditt til en ren JavaScript-fil. Faktisk er det derfor fullt mulig å lage JavaScript-kode som kan klippes inn i helt andre prosjekter.&lt;/p&gt;
+&lt;p&gt;Så langt har jeg laget to-tre veldig enkle apper i sjangeren «todo»-liste, hvor man skal kunne skape, slette, oppdatere og endre en gjøremålsliste (CRUD-operasjonene). Noen av disse prosjektene prøvde jeg å klippe inn i et urelatert HTML-dokument, og det fungerte også utmerket. At de kompilerte JavaScript-filene er såpass uavhengige, synes jeg er kult! Om jeg vil lage noe mer komplisert JavaScript for denne siden, vil jeg altså kunne gjøre det gjennom Svelte.&lt;/p&gt;
+&lt;p&gt;I dag tittet jeg også litt på React, som visstnok er et av de viktigste rammeverkene i 2021. Det virket heller ikke helt fremmed – teknikkene og arbeidstrinnene minner veldig mye om alle de andre rammeverkene.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -1,5 +1,9 @@
 <style>
 
+  :root {
+    --main-color: rgb(35, 19, 253);
+}
+
   @import url('fonts/inter.css');
     html { 
       font-family: 'Inter', sans-serif; 
@@ -44,13 +48,13 @@
     border: 0;
   }
 
-  .logo-icon {
-    float:left;
-    padding-right: 10px;
+ .logo-icon {
+    min-width: 100px;
+    margin-right: 10px;
   }
 
   .logo-box {
-    display:inline-block;
+    display:flex;
     width: 100%;
   }
 
@@ -58,21 +62,33 @@
     font-weight: 400;
   }
 
-  nav a {
+  #main-nav a {
+    font-size: 1.5rem;
     margin-right: 5px;
     padding-right: 10px;
     color:#444;
     text-decoration: none;
-    border-right: 2px solid rgb(35, 19, 253);
+    border-right: 2px solid var(--main-color);
   }
 
-  nav a:hover {
+  #main-nav a:hover {
     color:rgb(145, 139, 139)
   }
 
-  nav a:last-of-type {
+  #main-nav a:last-of-type {
     border-right: none;
+  }
 
+  #burger {
+    display: none;
+    margin: 10px;
+  }
+
+  .burger-line {
+    height: 5px;
+    width: 35px;
+    background-color:var(--main-color);
+    margin-bottom: 5px;
   }
 
   textarea {
@@ -137,11 +153,11 @@
   }
 
   .blog-posts h3 {
-    border-bottom: 1px solid rgb(35, 19, 253);
+    border-bottom: 1px solid var(--main-color);
   }
 
   .blog-posts h3::first-letter {
-    color:rgb(35, 19, 253);
+    color:var(--main-color);
   }
 
   .blog-posts a:hover, .blog-posts h3:hover {
@@ -153,7 +169,7 @@
     width: 100%;
     align-items: center;
     font-size: 1.5rem;
-    border: 1px solid rgb(35, 19, 253);
+    border: 1px solid var(--main-color);
     margin-bottom: 20px;
     margin-top: 20px;
     text-align: center;
@@ -177,5 +193,52 @@
   }
   #TableOfContents li {
     list-style: circle;
+  }
+
+  @media screen and (max-width: 700px) {
+    #burger {
+      display:block
+    }
+
+    #main-nav {
+      display: absolute;
+      transform: translateY(calc(-100vh));
+      height: 5px;
+      transition: 1s;
+      border-left: 2px solid var(--main-color);
+      padding-left: 10px;
+    }
+
+    #main-nav a {
+      border:none;
+    }
+
+    #main-nav.open-burger {
+      display: flex;
+      height: unset;
+      flex-direction: column;
+      transition: 1s;
+      font-size: 2rem;
+      transform: translateY(0);
+    }
+
+    .open-burger .burger-line {
+      margin:none;
+      transform: none;
+    }
+
+   .open-burger #line1 {
+      transform: rotate(45deg) translateY(6px) translateX(1px);
+      margin:none;
+      transition: 1s ease-out;
+    }
+    .open-burger #line2 {
+      display:none;
+    }
+    .open-burger #line3 {
+      transform: rotate(-45deg) translateY(-6px);
+      margin:none;
+      transition: 1s ease-out;
+    }
   }
 </style>

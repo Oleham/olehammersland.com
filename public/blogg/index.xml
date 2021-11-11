@@ -14,9 +14,18 @@
       <pubDate>Wed, 10 Nov 2021 08:55:37 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/nettside-for-forro/</guid>
-      <description>Har laget en ny nettside for forro som stort sett er lanseringsklar, i tide til dansekvelden vi skal arrangere på søndag.
-osloforro.site
-Nettsiden er laget ved hjelp av to rammeverk: Django og Svelte. Tanken er at Svelte skal håndtere frontenden (presentasjonen, selve siden), mens Django håndterer backenden (lagring av data og så videre). Jeg valgte dette oppsettet for å lett kunne invitere mine medsammensvorne i forrogruppen til å lage sine egne innlegg i Django sin backend.</description>
+      <description>&lt;p&gt;Har laget en ny nettside for forro som stort sett er lanseringsklar, i tide til dansekvelden vi skal arrangere på søndag.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://osloforro.site&#34;&gt;osloforro.site&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/forro.jpg&#34; alt=&#34;Skjermdump som viser Oslo forro-siden&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Nettsiden er laget ved hjelp av to rammeverk: Django og Svelte. Tanken er at Svelte skal håndtere frontenden (presentasjonen, selve siden), mens Django håndterer backenden (lagring av data og så videre). Jeg valgte dette oppsettet for å lett kunne invitere mine medsammensvorne i forrogruppen til å lage sine egne innlegg i Django sin backend.&lt;/p&gt;
+&lt;p&gt;Siden jeg jobber med dette på hobbybasis, har jeg tatt noen snarveier. Jeg har nå lagt opp til at de andre skal opprette innlegg og arrangementer direkte i Django sitt admin-panel. Det er litt uheldig, fordi det ikke er veldig brukervennlig, men jeg tenker at det bør fungere. Dessuten har det nå blitt slik at Nyheter/Blogg- og Om-delen på siden leveres rett fra Django, siden det gikk raskere for meg å sette opp slik.&lt;/p&gt;
+&lt;p&gt;Svelte er nå brukt som en SPA på hovedsiden. Rammeverket gjorde det enkelt for meg å lage en mer interaktiv opplevelse der, hvor man kan bla gjennom informasjonsboksen, se over kommende og tidligere arrangementer og bla gjennom de siste blogginnleggene. Alt med enkle animasjoner. Det var både gøy og lærerikt å bruke Svelte her, og i neste gjennomgang vil jeg utvide ansvarsområdet til dette rammeverket. Synes det er veldig gøy å jobbe med Django også, men Svelte gjør det mye lettere å skape en mer «levende» side.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/forro2.jpg&#34; alt=&#34;Skjermdump som administrasjonspanelet til siden&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Slik ser adminpanelet til siden ut. Brukere kan opprette og endre nyhetsinnlegg, fanene i infoboksen og arrangementer samt laste opp bilder direkte til siden. Det vil si at alt innhold på siden kan styres herfra – man må ikke kunne noe om programmering for å endre på siden. Innholdet hentes fra Svelte gjennom REST API, mens sidene som leveres direkte fra Django kombinerer maler og innhold allerede før siden leveres.&lt;/p&gt;
+&lt;p&gt;Har i dette prosjektet dessuten forsøkt meg på litt enkel server side rendering i byggetrinnet med Svelte. Det fungerer, men siden tegnes uten innholdet fra API-et, så det gjør ikke så veldig stor forskjell. Det er i hvert fall noe.&lt;/p&gt;
+&lt;p&gt;Ellers har jeg satt opp hele siden på en Digitalocean droplet. Serveren består av Nginx og Gunicorn, og Let&amp;rsquo;s Encrypt leverer SSL-sertifikatet.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Oleham/forrosite&#34;&gt;Koden ligger på Github.&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -25,8 +34,60 @@ Nettsiden er laget ved hjelp av to rammeverk: Django og Svelte. Tanken er at Sve
       <pubDate>Thu, 04 Nov 2021 15:33:19 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/forkorte-stringer/</guid>
-      <description>Innledning Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.
-Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes.</description>
+      <description>&lt;h2 id=&#34;innledning&#34;&gt;Innledning&lt;/h2&gt;
+&lt;p&gt;Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.&lt;/p&gt;
+&lt;p&gt;Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med  at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes. Vet ikke helt hvorfor kundene er så gniene på bytesene.&lt;/p&gt;
+&lt;p&gt;Uansett slo det meg som lite effektivt, spesielt når Excel-makroen ikke teller riktig, så jeg har forsøkt å utvikle en litt raskere workflow. Håpet er å kunne bruke denne også på fremtidige oppdrag. Les videre:&lt;/p&gt;
+&lt;h2 id=&#34;ny-arbeidsflyt&#34;&gt;Ny arbeidsflyt&lt;/h2&gt;
+&lt;h3 id=&#34;trinn-1-analysere-teksten&#34;&gt;Trinn 1: Analysere teksten&lt;/h3&gt;
+&lt;p&gt;Jeg begynte med et python-skript som deler opp hver setning i enkeltord og deretter teller opp hvor ofte hvert enkeltord forekommer i setningen. Dette (meta!)skriptet skriver så et nytt python-skript som kun inneholder en liste over hvert ord dobbelt og en merknad om hvor ofte ordet forekommer i Excel-listen.&lt;/p&gt;
+&lt;p&gt;Slik ser det nye python-skriptet ut:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Tyskland/Sveits/Østerrike&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Tyskland/Sveits/Østerrike&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Frankrike/Belgia/Sveits/Lux.&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Frankrike/Belgia/Sveits/Lux.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Italia/Sveits&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Italia/Sveits&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;mørkeblå/beige&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;mørkeblå/beige&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    &lt;span style=&#34;color:#000080&#34;&gt;#[...]&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;kjøretøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;kjøretøy.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 54&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;til&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;til&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 55&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;T-skjorte&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;T-skjorte&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 61&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;venstre&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;venstre&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 64&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 73&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Program&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Program&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 103&lt;/span&gt;
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Merk at jeg kun har skilt opp ord etter mellomrommene i teksten. Derfor dukker det også opp flere ord som ikke er skilt av mellomrom.&lt;/p&gt;
+&lt;h3 id=&#34;trinn-2-lage-forkortelser&#34;&gt;Trinn 2: Lage forkortelser&lt;/h3&gt;
+&lt;p&gt;Jeg gikk så manuelt gjennom denne python-listen og forkortet det høyre ordet i hver tuple, slik som dette:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmont.verktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;B/NL&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Tyskland/Sveits/Østerrike&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;DE/CH/A&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Frankrike/Belgia/Sveits/Lux.&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;F/B/CH/LX&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Italia/Sveits&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;I/CH&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;mørkeblå/beige&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;blå/beige&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
+    &lt;span style=&#34;color:#000080&#34;&gt;#[...]&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;kjøretøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;kj.tøy.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 54&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;til&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;til&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 55&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;T-skjorte&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;T-skj.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 61&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;venstre&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;v.&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 64&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 73&lt;/span&gt;
+    (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Program&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Pr.gram&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 103&lt;/span&gt;
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I denne første gjennomgangen konsentrerte jeg meg om de ordene som forekommer oftest og om de vanligste og mest lavthengende forkortelsene. Jeg gikk ikke gjennom fra A til Å, men holdt på en stund til jeg følte jeg hadde tatt det som ville gi størst utslag.&lt;/p&gt;
+&lt;h3 id=&#34;trinn-3-korte-hver-setning-ned-til-25-bytes&#34;&gt;Trinn 3: Korte hver setning ned til 25 bytes&lt;/h3&gt;
+&lt;p&gt;Etter å ha definert en rekke forkortelser, skrev jeg et nytt skript som søkte gjennom hele Excel-listen og sjekket hver setning om den er på mer enn 25 bytes. Hvis en setning er på over 25 bytes, vil den erstatte ordene i setningen med tilsvarende forkortelser fra &lt;code&gt;vanlige_ord&lt;/code&gt;-listen helt til setningen kommer under 25 bytes eller det ikke finnes flere relevante forkortelser.&lt;/p&gt;
+&lt;p&gt;Resultatet i Excel blir seende slik ut:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/forkortede-strenger.jpg&#34; alt=&#34;Utklipp fra Excel&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Utgangsspråket er helt til venstre, den norske oversettelsen i midten og den nye, forkortede versjonen helt til høyre. Om man sammenligner kolonne D og F, ser man at disse setningene nå er innenfor tegnbegrensningen.&lt;/p&gt;
+&lt;p&gt;Det som er ålreit, er at denne arbeidsflyten kan itereres flere ganger. Etter første gjennomgang kunne jeg skape en ny  &lt;code&gt;vanlige_ord&lt;/code&gt;-liste, men denne gangen definere enda særere og mer uforståelige forkortelser. Det er ok, fordi det vil til slutt kun berøre setningene som fortsatt ligger over 25 bytes. Det er da sannsynligvis setninger som uansett må tåle litt dårligere leseforståelse.&lt;/p&gt;
+&lt;p&gt;Faremomentet er at setningene blir komplett uleselige. I flere tilfeller vil det nok gi mer mening å kutte ut enkelte ord, fremfor å forkorte hvert eneste ord enda litt til. Derfor tror jeg denne fremgangsmåten og andre «søk og erstatt»-metoder kun vil være effektivt til en viss grad. Men de kan skape et nyttig utgangspunkt.&lt;/p&gt;
+&lt;h2 id=&#34;oppsummering&#34;&gt;Oppsummering&lt;/h2&gt;
+&lt;p&gt;Jeg tror dette er en mye mer effektiv arbeidsflyt enn å gå gjennom med kun vanlig «søk og erstatt». Jeg har nå gått gjennom prosessen tre ganger, og resultatet er at ca. 60 % av setningene er under 25 bytes-grensen 👍 Resten tar jeg nok manuelt.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -35,9 +96,14 @@ Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller an
       <pubDate>Sat, 09 Oct 2021 17:54:51 +0200</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/specialized-allez/</guid>
-      <description>Kjøpte ny sykkel fra Finn.no på onsdag. I dag fikk jeg endelig tatt den ut på tur! Det er en Specialized Allez Elite, som visstnok er en litt billigere intromodell. Siden jeg hittil har syklet langturer med den gamle DBS-hybriden min fra 16-årene, regnet jeg med å se bedre prestasjoner i dag.
-Min nye Specialized foran Oscarsborg festning (beklager tommelen).
-På tidligere turer sørover har jeg nådd Tusenfryd ved 1-timersmerket fra husdøra.</description>
+      <description>&lt;p&gt;Kjøpte ny sykkel fra Finn.no på onsdag. I dag fikk jeg endelig tatt den ut på tur! Det er en Specialized Allez Elite, som visstnok er en litt billigere intromodell. Siden jeg hittil har syklet langturer med den gamle DBS-hybriden min fra 16-årene, regnet jeg med å se bedre prestasjoner i dag.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/specialized.JPG&#34; alt=&#34;Ny sykkel plassert foran Oscarsborg festning&#34;&gt;
+&lt;small style=&#34;display:block;&#34;&gt;Min nye Specialized foran Oscarsborg festning (beklager tommelen).&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;På tidligere turer sørover har jeg nådd Tusenfryd ved 1-timersmerket fra husdøra. I dag tok jeg dagens første pause ved Nesset innerst i Bunnefjorden, og da var det ikke gått én hel time ennå. Jeg nådde Drøbak etter ca. 1 t og 45 min.&lt;/p&gt;
+&lt;p&gt;Jeg kan ikke helt si jeg merket forskjellen mens jeg var på farten, men jeg mistenker at det spesielt er i de litt slakere oppoverbakkene at jeg klarer å holde et betydelig høyere tempo. Uansett viser klokka at jeg er mye raskere på denne.&lt;/p&gt;
+&lt;p&gt;Et stort problem var at fremre girskifter ikke er satt opp riktig. Kjedet hoppet av to ganger fordi det trekkes forbi det store giret. Jeg lærte meg etterhvert å gire, men det krever at man ser på kjedet og konsentrer seg om å ikke trekke for mye i spaken. Det må altså fikses.&lt;/p&gt;
+&lt;p&gt;Bortsett fra det var det en kjempebra tur på en god sykkel. Utrolig deilig å fyke langs åkrene mellom Drøbak og Årungen med solen i ryggen. Sommerfølelse i oktober.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -46,7 +112,19 @@ På tidligere turer sørover har jeg nådd Tusenfryd ved 1-timersmerket fra husd
       <pubDate>Mon, 04 Oct 2021 17:02:15 +0200</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</guid>
-      <description>Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.</description>
+      <description>&lt;p&gt;Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.&lt;/p&gt;
+&lt;p&gt;I dag tidlig var det f.eks. på tide å fornye sertifikatet, som var løpt ut i løpet av helgens Paris-Roubaix-ritt. Jeg gjorde prosessen slik jeg husket det, men glemte å restarte alle programmene som er involvert i e-posttjenesten min. Dermed fungerte fornyelsen av sertifikatet mitt øyensynlig ikke, og det ble en lett stresset og irritabel start på dagen.&lt;/p&gt;
+&lt;p&gt;Derfor skriver jeg nå en liten huskeliste til meg selv:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Skru av både Apache, Postfix &lt;strong&gt;OG&lt;/strong&gt; Dovecot med &lt;code&gt;sudo service [---] stop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Kjør Certbot, som av en eller annen grunn ikke ligger under PATH: &lt;code&gt;sudo ~/snap/bin/certbot renew&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Sjekk at alt er fornyet med &lt;code&gt;sudo ~/snap/bin/certbot certificates&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start de tre daemonene igjen.&lt;/li&gt;
+&lt;li&gt;Sjekk ev. &lt;code&gt;/var/log/mail.log&lt;/code&gt; for å se at e-posten er oppe.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Viktig å huske å skru av både Postfix og Dovecot 😅!&lt;/p&gt;
+&lt;p&gt;Og ja, dette kan selvfølgelig automatiseres, det vet jeg. Vet bare ikke om jeg orker å stikke fingeren i det vepsebolet i nærmeste fremtid&amp;hellip;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -55,8 +133,14 @@ På tidligere turer sørover har jeg nådd Tusenfryd ved 1-timersmerket fra husd
       <pubDate>Mon, 27 Sep 2021 17:30:58 +0200</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/javascript-svelte-react/</guid>
-      <description>Jeg har hatt en bok om JavaScript liggende hjemme i over ett år. Den handler om grunnleggende JavaScript samt en innføring i det sannsynligvis mest brukte rammeverket jQuery.
-En venn har mast på meg i lang tid om at jeg må sjekke ut Svelte, et visstnok fantastisk rammeverk som er superraskt og gjør det lekende lett å utvikle nettsider og apper. Før det har jeg hatt mest erfaring med rammeverkene Django og Hugo – sistnevnte er rammeverket som denne nettsiden er bygget på.</description>
+      <description>&lt;p&gt;Jeg har hatt en bok om JavaScript liggende hjemme i over ett år. Den handler om grunnleggende JavaScript samt en innføring i det sannsynligvis mest brukte rammeverket jQuery.&lt;/p&gt;
+&lt;p&gt;En venn har mast på meg i lang tid om at jeg må sjekke ut &lt;a href=&#34;https://svelte.dev/&#34;&gt;Svelte&lt;/a&gt;, et visstnok fantastisk rammeverk som er superraskt og gjør det lekende lett å utvikle nettsider og apper. Før det har jeg hatt mest erfaring med rammeverkene Django og Hugo – sistnevnte er rammeverket som denne nettsiden er bygget på.&lt;/p&gt;
+&lt;p&gt;Derfor har jeg lekt meg litt med vanilla JavaScript de siste par ukene. Et av resultatene er å se på &lt;a href=&#34;https://www.olehammersland.com/sykkel/&#34;&gt;Sykkel-siden&lt;/a&gt;. Tanken var å teste hvordan jeg kan laste inn dynamiske data og bruke det til å produsere en HTML-side. Kult å skrive kode som skal utføres i frontenden, i besøkerens nettleser, i stedet for at det kjører på en server som i Django. Jeg har også just oppdatert &lt;a href=&#34;https://www.olehammersland.com/blogg/&#34;&gt;Blogg-oversikten&lt;/a&gt; på denne siden, slik at ikke alle bloggposter vises samtidig, men deles opp i sider.&lt;/p&gt;
+&lt;p&gt;Det største hinderet for å komme i gang med Svelte, skulle likevel vise seg å være nvm-npm-node-trifektaen. Jeg brukte lang tid på å forstå hvordan det henger sammen. Fra tidligere er jeg vant til å skrive kode som kjøres gjennom en compiler/interpreter og hvor jeg selv importerer inn alle modulene, men i frontend-verdenen er det åpenbart litt mer komplisert. Alt må gå gjennom ulike npm-verktøy. Jeg brukte altfor lang tid fordi jeg ville starte Svelte-prosjekt helt fra scratch, men det er åpenbart forventet at man bare skal kopiere de ferdige prosjektmalene fra hjemmesiden deres. Det synes jeg personlig er lite tilfredsstillende. Med tid og krefter kan man nok få bedre innsikt i hva som skjer under panseret – jeg liker å vite alt som skjer.&lt;/p&gt;
+&lt;p&gt;Den gledelige nyheten er at Svelte er artig å bruke. Føler jeg fikk en grei, generell forståelse av hvordan det henger sammen. Noe som gav meg mestringsfølelse, er at jeg veldig godt kunne dra nytte av erfaringene fra Hugo, Django og Go sitt innebygde template-system. Svelte organiserer koden sin mer samlet. Både HTML/CSS og JavaScript pakkes inn i samme fil. Likevel føles det stort sett likt som tidligere rammeverk jeg har brukt: du har et HTML-basert template som fylles opp med andre templates, som igjen fylles opp av ulike parametere basert på brukerens input eller kanskje http-forespørsler. Det kjentes slettes ikke så fremmed. Den største overraskelsen for meg, er at Svelte i prinsippet er en compiler som oversetter prosjektet ditt til en ren JavaScript-fil. Faktisk er det derfor fullt mulig å lage JavaScript-kode som kan klippes inn i helt andre prosjekter.&lt;/p&gt;
+&lt;p&gt;Så langt har jeg laget to-tre veldig enkle apper i sjangeren «todo»-liste, hvor man skal kunne skape, slette, oppdatere og endre en gjøremålsliste (CRUD-operasjonene). Noen av disse prosjektene prøvde jeg å klippe inn i et urelatert HTML-dokument, og det fungerte også utmerket. At de kompilerte JavaScript-filene er såpass uavhengige, synes jeg er kult! Om jeg vil lage noe mer komplisert JavaScript for denne siden, vil jeg altså kunne gjøre det gjennom Svelte.&lt;/p&gt;
+&lt;p&gt;I dag tittet jeg også litt på React, som visstnok er et av de viktigste rammeverkene i 2021. Det virket heller ikke helt fremmed – teknikkene og arbeidstrinnene minner veldig mye om alle de andre rammeverkene.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -65,7 +149,12 @@ En venn har mast på meg i lang tid om at jeg må sjekke ut Svelte, et visstnok 
       <pubDate>Thu, 26 Aug 2021 09:38:32 +0200</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/ferie-over/</guid>
-      <description>Dette er en påminnelse om å ikke glemme løpende abonnementer. Da jeg meldte enkeltpersonforetaket mitt inn i Enhetsregisteret, ble jeg straks oppringt av 180.no. De kunne gi meg et strålende tilbud på å la meg oppføre i registeret deres. Slik ser det ut. Det gikk selvfølgelig som det måtte gå – jeg glemte å si opp abonnementet i ferieørska og er nå tvunget til å fortsette kundeforholdet i 1 år. Ett helt år!</description>
+      <description>&lt;p&gt;Dette er en påminnelse om å ikke glemme løpende abonnementer. Da jeg meldte enkeltpersonforetaket mitt inn i Enhetsregisteret, ble jeg straks oppringt av 180.no. De kunne gi meg et strålende tilbud på å la meg oppføre i registeret deres. &lt;a href=&#34;https://www.180.no/firmavis/02011553231561.htm&#34;&gt;Slik ser det ut&lt;/a&gt;. Det gikk selvfølgelig som det måtte gå – jeg glemte å si opp abonnementet i ferieørska og er nå tvunget til å fortsette kundeforholdet i 1 år. Ett helt år! Ergerlig! 💸&lt;/p&gt;
+&lt;p&gt;Nå som jeg har arbeidet som frilanser i 6 måneder, vet jeg at jeg ikke hadde noe behov for denne tjenesten. Da jeg meldte meg inn, var jeg fortsatt spent på om jeg i det hele tatt ville få noen kunder. Men kombinasjonen av gode relasjoner til tidligere arbeidsgiver og forhåndskunnskap om bransjen har ført til at jeg alltid har hatt nok å gjøre. Om noe, har jeg hatt det motsatte (luksus-)problemet – for mye å gjøre!&lt;/p&gt;
+&lt;p&gt;De nye kundene jeg har vunnet, har dessuten ikke kommet fra 180.no, men fra Proz.com. Proz.com er en nettportal for språktjenester. Jeg har ikke en gang registrert meg for den betalte versjonen, men får likevel stadig nye tilbud. Mange av disse er useriøse henvendelser av typen «oversett 10 000 ord innen kl. 1800 i dag for 50 euro», men jeg har også knyttet kontakter med seriøse byråer som har gitt meg flere gode oppdrag!&lt;/p&gt;
+&lt;p&gt;180.no har imidlertid ikke brakt meg noen merverdi utover å gi nettsiden min en marginalt bedre plassering i Google. Så det er ikke en tjeneste jeg vil anbefale til frilansoversettere, dessverre. Mitt inntrykk er at de fleste byråer jeg jobber for uansett kommer fra Sverige, Baltikum og østover i Europa.&lt;/p&gt;
+&lt;p&gt;Og 1 år! Det er lenge! Og dyrt! Skulle ikke vært lov med automatisk fornyelse av abonnementer i denne prisklassen. Noen av oss må faktisk beskyttes mot oss selv. Siden jeg uansett er tvunget til å være kunde hos dem 1 ett år til, skal jeg gjøre et ærlig forsøk på å pusse opp profilen min. Rådet mitt til andre frilansoversettere er imidlertid – utvis forsiktighet!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -74,8 +163,26 @@ En venn har mast på meg i lang tid om at jeg må sjekke ut Svelte, et visstnok 
       <pubDate>Mon, 26 Apr 2021 12:57:36 +0200</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</guid>
-      <description>Jeg har de siste ukene jobbet ganske jevnt og trutt på et nytt programmerings-prosjekt. Målet er å utvide simpleVP, et prosjekt jeg skapte for å automatisere filnedlastning og opplastning fra oversettelsesportalen XTRF (se her). I tillegg vil jeg smelte det sammen med faktura-generatoren min. Det nye prosjektet skal altså bli en one-stop klient for XTRF-systemet for oversettere!
-Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er at den er skrevet i Go.</description>
+      <description>&lt;p&gt;Jeg har de siste ukene jobbet ganske jevnt og trutt på et nytt programmerings-prosjekt. Målet er å utvide simpleVP, et prosjekt jeg skapte for å automatisere filnedlastning og opplastning fra oversettelsesportalen XTRF (&lt;a href=&#34;http://localhost:1313/blogg/simplevp-xtrf-gjort-enkelt/&#34;&gt;se her&lt;/a&gt;). I tillegg vil jeg smelte det sammen med faktura-generatoren min. Det nye prosjektet skal altså bli en one-stop klient for XTRF-systemet for oversettere!&lt;/p&gt;
+&lt;p&gt;Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er at den er skrevet i Go. Go er et såkalt &lt;em&gt;kompilert&lt;/em&gt; språk som gjør det mye lettere for meg å distribuere programmet. Da jeg lagde det opprinnelige simpleVP i Python, skrev jeg lange instruksjoner til sluttbrukerne om hvordan man laster ned Python, bruker kommandolinjen, installerer ulike moduler og setter opp miljøvariabler. Nå er målet å lage en enkel kjørbar fil i et format som er velkjent for de fleste Windows-brukere (.exe). Det legger Go til rette for.&lt;/p&gt;
+&lt;p&gt;Det andre som er nytt, er at jeg skaper programmet med perspektivet til en frilansoversetter. Derfor skal systemet ha støtte for å koble seg til ulike XTRF-servere, slik at jeg kan samle oppdrag fra flere oversettelsesbyråer inn i én enkel oversikt. I min erfaring er XTRF noe slikt som en bransjestandard. Tar man oppdrag fra et oversettelsesbyrå, er sjansen for at de bruker XTRF temmelig stor. Derfor er det spesielt verdifullt å samle alle disse web-applikasjonene inn i ett enkelt grensesnitt. Dessuten baserer de fleste byråer seg på XTRF til regnskapet sitt. Derfor er det heller ikke så dumt å legge inn støtte for fakturering også.&lt;/p&gt;
+&lt;p&gt;Så langt har jeg jobbet mest med et enkelt grafisk brukergrensesnitt og databasen. Brukergrensesnittet er basert på en åpen kildekode-modul ved navn &lt;a href=&#34;https://pkg.go.dev/fyne.io/fyne&#34;&gt;Fyne&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-gui-first-look.jpg&#34; alt=&#34;Slik ser nye simpleVP ut.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Bildet over viser den delen av programmet som er kommet lengst: siden for å opprette, endre og slette forbindelsene til de ulike XTRF-portalene. Når du bruker programmet, vil du kunne bruke alle disse XTRF-portalene samtidig, i samme programmet.&lt;/p&gt;
+&lt;p&gt;Prosjektet er delt opp i følgende pakker eller «delprogrammer»:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;            main
+           /    \
+        gui  –-  db
+                   \
+                   xtrf
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;GUI tegner det grafiske grensnittet på skjermen. For å gjøre det, henter det informasjon fra databasen (db). Kunden kan kan også oppdatere databasen. Da bruker databasen delprogrammet som heter xtrf til å laste ned informasjonen via API-et til XTRF.&lt;/p&gt;
+&lt;p&gt;Databasen er med andre ord hjulnavet, &lt;em&gt;die Drehscheibe&lt;/em&gt;, i programmet mitt. Den starter med en tabell for &lt;strong&gt;settings&lt;/strong&gt;. En setting inneholder påloggingsinformasjonen for en XTRF-portal. Per setting kan man finne flere &lt;strong&gt;jobs&lt;/strong&gt;, som representerer jobbene fra XTRF, enten de har statusen &lt;em&gt;in progress&lt;/em&gt;, &lt;em&gt;pending&lt;/em&gt; eller &lt;em&gt;to be invoiced&lt;/em&gt;. Hver jobb kan igjen inneholde filer: tabellen &lt;strong&gt;files&lt;/strong&gt; inneholder alle filene.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-database.jpg&#34; alt=&#34;Database-oversikt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Når hovedfunksjonaliteten er klar, kan det bli relevant med en tabell kalt &lt;strong&gt;invoices&lt;/strong&gt;, som inneholder fakturaene brukeren skaper. Hver jobb vil da også knyttes til en faktura. Tabellen &lt;strong&gt;banks&lt;/strong&gt; vil inneholde betalingsinformasjonen til brukeren, og så må &lt;strong&gt;settings&lt;/strong&gt; oppdateres med kundens faktureringsinnstillinger.&lt;/p&gt;
+&lt;p&gt;Databasen, og logikken for å oppdatere den, er nesten fullført. I neste trinn må det grafiske brukergrensesnittet kunne vise jobber, beskrivelser, filer og annen informasjon på en passe oversiktlig måte. Deretter skal brukeren få muligheten til å laste ned jobber.&lt;/p&gt;
+&lt;p&gt;Gleder meg til å jobbe videre på dette prosjektet!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -84,8 +191,33 @@ Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er
       <pubDate>Thu, 25 Mar 2021 16:28:09 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</guid>
-      <description>Har tenkt på og jobbet litt med maskinoversettelse i mars. I denne posten sammenfatter jeg noen generelle tanker og idéer rundt temaet. Jeg liker selv å bruke maskinoversettelse, og har lyst til å på sikt dykke dypere ned i den tekniske delen av det.
-Ja til maskinoversettelser 📜🤖 Helt siden jeg startet som oversetter, har jeg hatt inntrykket av at det lureste jeg kan lære meg, er koding og maskinoversettelse. For meg er det ingen tvil om at maskinoversettelse kun er i startgropen, og at det vil bli mer og mer utbredt.</description>
+      <description>&lt;p&gt;Har tenkt på og jobbet litt med maskinoversettelse i mars. I denne posten sammenfatter jeg noen generelle tanker og idéer rundt temaet. Jeg liker selv å bruke maskinoversettelse, og har lyst til å på sikt dykke dypere ned i den tekniske delen av det.&lt;/p&gt;
+&lt;h2 id=&#34;ja-til-maskinoversettelser-&#34;&gt;Ja til maskinoversettelser 📜🤖&lt;/h2&gt;
+&lt;p&gt;Helt siden jeg startet som oversetter, har jeg hatt inntrykket av at det lureste jeg kan lære meg, er koding og maskinoversettelse. For meg er det ingen tvil om at maskinoversettelse kun er i startgropen, og at det vil bli mer og mer utbredt. Kvaliteten blir bedre og bedre, men ikke bare derfor – den generelle forbedringen i kvalitet vil med tiden møte på en større og større aksept for mindre oversettelsesfeil. Gevinsten med litt dårlig, maskinelt språk vil etterhvert overveie ulempene med alt for mange faktorer.&lt;/p&gt;
+&lt;p&gt;I dag leste jeg f.eks. i Süddeutsche Zeitung at rettsaken rundt Cum-Ex-skandalen, som skal starte i disse dager i Frankfurt, &lt;a href=&#34;https://www.sueddeutsche.de/wirtschaft/cum-ex-skandal-zum-prozessauftakt-fehlen-die-hauptpersonen-1.5245685&#34;&gt;ble utsatt i nesten 1 år fordi man ventet på en engelsk oversettelse av anklageskriften&lt;/a&gt; (som var på nesten 1000 sider, «selbst für Profis schwer zu lesen»).&lt;/p&gt;
+&lt;p&gt;Det synes jeg er verdt å tenke gjennom en gang til.&lt;/p&gt;
+&lt;p&gt;Saken handler om en rekke finansfolk som svindlet Europas sentralbanker for ufattelige &lt;em&gt;62,9 milliarder euro&lt;/em&gt;! Vi burde fråde av raseri og få dem dømt så snart som mulig. Anklagemyndigheten er imidlertid likefullt nødt til å vente på et uendelig langt oversettelsesprosjekt som sikkert er utført av en rekke juridiske oversettere, mens flere av bakmennene lever som vanlig.&lt;/p&gt;
+&lt;p&gt;Tenk på alle forsinkelsene og kostnadene i forbindelse med rettsakter, anbudsrunder, osv. på tvers av landegrenser. Det kan være en fulltidsjobb for flere oversettere i flere år om f.eks. Oslo Sporveier bestiller et nytt signalsystem fra et firma i Tyskland. De færreste jubler vel over at kommunen skal lønne en rekke personer for å gjøre en potensiell meningsløs jobb (er det ikke lettere, billigere og mer givende for ingeniørene i Oslo Kommune å lese de engelske tekstene?). De fleste ønsker seg vel heller et godt t-banesystem.&lt;/p&gt;
+&lt;p&gt;Jeg synes ikke det er noen særlig verdi i å beskytte markedet for oversettere. Oversettelser er fantastiske fordi de lar oss få innblikk i andre verdener. Det er imidlertid ingenting mot å faktisk lære det andre språket. &lt;a href=&#34;https://slator.com/&#34;&gt;Bransjemagasinet Slator&lt;/a&gt; har et større perspektiv en ren «oversettelse», de snakker om «språktjenestebransjen». Den omfatter mer enn ren oversettelse, den omfatter også språkkurs, tolkning, maskinoversettelse, programvare, kulturformidling m.m. Og denne bransjen kommer nok alltid i høy grad til å finnes.&lt;/p&gt;
+&lt;p&gt;Når motstandere mot maskinoversettelser krever at vi må «beskytte» oversettelser, synes jeg man glemmer den underliggende tragikken i å være avhengige av mellommenn for å kommunisere med sine medmennesker på tvers av landegrensene.&lt;/p&gt;
+&lt;p&gt;Målet må jo være at kommunikasjonen kan finne sted, så enkelt som mulig!&lt;/p&gt;
+&lt;p&gt;Så jeg tror bare det er å forvente mer og mer aksept for maskinoversettelser. &lt;a href=&#34;https://www.dn.se/ekonomi/amazons-sverigelansering-hanas-for-oversattningsmissar/&#34;&gt;Man gjorde narr av kvaliteten på oversettelsene&lt;/a&gt; da Amazon ble lansert i  Sverige, men tenk heller på de svimlende summende de sparte. Jeg tror ikke det bedre kvalitet som er den egentlig driveren: globalisering og mer interaksjon på tvers av landegrenser vil nok forbli den virkelig store driveren.&lt;/p&gt;
+&lt;h2 id=&#34;min-bruk-av-mt&#34;&gt;Min bruk av MT&lt;/h2&gt;
+&lt;p&gt;Spørsmålet er som alltid hvilken kvalitet man er villig til å betale for. Som oversetter vil jeg kunne være fleksibel når det gjelder graden av personlig vs. automatisert oversettelse. For å si det enkelt: om en kunde er villig til å betale for at jeg leverer en oversettelse av en årsrapport på 100 sider i løpet av én dag, 7,5 timer, så vil jeg kunne levere &lt;em&gt;noe&lt;/em&gt;. Så får vi diskutere hvilke tilpasninger jeg realistisk skal prioritere for å levere et produkt som er akseptabelt for sitt formål.&lt;/p&gt;
+&lt;p&gt;Denne uken har jeg hatt det veldig, veldig travelt. Da en kunde ønsket oversettelse av en veldig generell tekst, hadde jeg egentlig ikke tid til det – men teksten så såpass generell ut at det var en kandidat for maskinoversettelse med de generelle MT-motorene til Microsoft, Google osv. Jo mer fagspesifikk en tekst er, med intern sjargong og interne forkortelser og lignende, desto mindre egnet vil den være (med mindre man trener opp en egen MT-motor for nettopp det fagfeltet/den kunden), mer om det siden.&lt;/p&gt;
+&lt;p&gt;Så jeg logget meg inn på Azure og satte opp en gratis oversetter. Fikk en API-nøkkel og la det inn i memoQ. Heldigvis stemte teorien – jeg sparte tid og fikk levert uten å ofre hele kvelden. Det beste er ofte at man ikke er nødt til å skrive så mye på tastaturet, men kan konsentrere seg om å endre i en allerede eksisterende tekstmal.&lt;/p&gt;
+&lt;p&gt;Forøvrig: med tiden håper jeg å kunne bruke europeiske &lt;a href=&#34;https://www.deepl.com/translator&#34;&gt;DeepL&lt;/a&gt; til å maskinoversette tekster for kunder. De har en fantastisk god maskinoversetter som gir glimrende oversettelser mellom tysk og engelsk. &lt;a href=&#34;https://slator.com/machine-translation/deepl-adds-13-european-languages-as-traffic-continues-to-surge/&#34;&gt;Nå har de lagt ut støtte for 13 nye europeiske språk&lt;/a&gt;, blant annet svensk og dansk!&lt;/p&gt;
+&lt;p&gt;… men dessverre ikke norsk 😕&lt;/p&gt;
+&lt;h2 id=&#34;ge-de-pe-errr&#34;&gt;GE-DE-PE-ERRR&lt;/h2&gt;
+&lt;p&gt;Personvern er jo noe å tenke på. Når man bruker Microsoft Translator, laster man i prinsippet teksten opp til en av Azure sine mange servere. Det bør man gjøre kunden klar over, &lt;a href=&#34;https://azure.microsoft.com/en-us/services/cognitive-services/translator/&#34;&gt;til tross for at Microsoft lover at dataene er sikre&lt;/a&gt;. Om kunden har betenkninger, kan man jo prøve seg med en liten reduksjon i ordpris for å gjøre det mer smakfullt. I min erfaring er det imidlertid ikke &lt;em&gt;så&lt;/em&gt; mye tid å spare som kundene kanskje ser for seg. Man arbeider kanskje 20 % raskere som følge av at ikke alle ord må tastes inn første gangen. Men det egentlige arbeidet, det å skape en god og flytende tekst, gjenstår. Og det er vel det kunden &lt;em&gt;egentlig&lt;/em&gt; betaler for?&lt;/p&gt;
+&lt;p&gt;Det håper i hvert fall jeg – det er det jeg synes er gøy. Hvis ikke, kan vel bare maskinene ta seg av arbeidet?&lt;/p&gt;
+&lt;p&gt;Ironisk nok (jeg tror i hvert fall det er ironisk?), så har jeg merket at tekster om personvern er de som enklest lar seg oversette av Microsoft Translator. 🤫 Det beste resultatet jeg noen gang har hatt, var da jeg lastet opp en tekst med personvernretningslinjer. Det virket som om Microsoft Translator hadde lest den teksten før, fordi den spyttet ut en helt perfekt, menneskelig oversettelse med det samme. Det tok meg kun 15 minutter å lese gjennom to ganger for å konstatere at alt var rett. Så det er nok en del firmaer som har automatisert dette kjedelige lovkravet. 😁&lt;/p&gt;
+&lt;h2 id=&#34;pytorch-tensorflow&#34;&gt;PyTorch? Tensorflow?&lt;/h2&gt;
+&lt;p&gt;På sikt kunne jeg veldig gjerne tenke meg å lære meg hvordan man selv trener en maskinlæringsalgoritme for å lage sine egne maskinoversettelser. Det kunne vært en spennende pakke å tilby til kunder – jeg oversetter ikke bare, jeg lager en algoritme som blir ekspert på akkurat deres tekster!&lt;/p&gt;
+&lt;p&gt;Jeg har forsøkt å sette meg inn i Tensorflow og PyTorch, men jeg forstår det liksom ikke helt. Det glipper.&lt;/p&gt;
+&lt;p&gt;I språklæring heter det at man lærer mest av å lese tekster hvor man forstår 80 %, slik at hjernen forstår helheten, og kan fokusere på å fylle inn de ukjente enkeltordene og -uttrykkene. Når jeg prøver å lese meg opp på maskinlæring, har jeg følelsen av at jeg ikke har nådd til disse 80 %-ene ennå. Jeg har ikke nok forutsetninger for å helt forestille meg hva det handler om.&lt;/p&gt;
+&lt;p&gt;Så for tiden leter jeg etter en god ressurs til å komme igang med det helt grunnleggende. Om du kjenner til en god ressurs for en nybegynner, gi meg gjerne noen tips :) (jeg liker bøker!)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -94,8 +226,187 @@ Ja til maskinoversettelser 📜🤖 Helt siden jeg startet som oversetter, har j
       <pubDate>Sun, 21 Mar 2021 18:16:42 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/hammer-faktura-versjon-3/</guid>
-      <description>Jeg har oppdatert Hammer Faktura igjen! I denne bloggposten går jeg gjennom hva som er nytt, og gir litt dokumentasjon på hvordan man kan bruke programmet.
-Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring av fakturaposter, kunder, bankinformasjon og fakturaer. Kommandolinjeverktøy for direkte samhandling med databasen. Wrapper-funksjoner som forenkler prosessen med å opprette faktuaene. Støtte for enkel flerspråklighet, slik at jeg kan skrive ut engelske fakturaer.  De tidligere utgavene av Hammer Faktura har kun hatt støtte for å opprette fakturaene.</description>
+      <description>&lt;p&gt;Jeg har oppdatert Hammer Faktura igjen! I denne bloggposten går jeg gjennom hva som er nytt, og gir litt dokumentasjon på hvordan man kan bruke programmet.&lt;/p&gt;
+&lt;h2 id=&#34;nytt-i-hammer-faktura-versjon-3&#34;&gt;Nytt i Hammer Faktura versjon 3:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Støtte for sqlite-database muliggjør lagring av fakturaposter, kunder, bankinformasjon og fakturaer.&lt;/li&gt;
+&lt;li&gt;Kommandolinjeverktøy for direkte samhandling med databasen.&lt;/li&gt;
+&lt;li&gt;Wrapper-funksjoner som forenkler prosessen med å opprette faktuaene.&lt;/li&gt;
+&lt;li&gt;Støtte for enkel flerspråklighet, slik at jeg kan skrive ut engelske fakturaer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;De tidligere utgavene av Hammer Faktura har kun hatt støtte for å opprette fakturaene. Fakturaene har blitt opprettet ved å kjøre data fra eksterne kilder gjennom programmet. Nå legger jeg til støtte for å lagre all relevant informasjon i en egen database. En database er i prinsippet som et Excel-regneark: den inneholder ulike tabeller som er knyttet sammen. Man kan samhandle med databasen med spørringsspråket SQL, eller med andre verktøy og drivere.&lt;/p&gt;
+&lt;p&gt;Det er det som er fint med å lagre all informasjonen i en SQL-database: det er en ganske agnostisk måte å lagre data på. Det finnes utallige måter å hente dataene og kjøre regnestykker og analyser på dem, og det er ikke knyttet til noe spesielt program eller programmeringsspråk. Den sentraliserte datastrukturen burde tilfredsstille alle behovene mine for regnskapsføring: f.eks kan jeg regne ut hvor mye penger jeg tjente i løpet av en viss tidsperiode, hvor mye MVA jeg har betalt, hvor mange oppdrag jeg har fått fra kunde X, osv.&lt;/p&gt;
+&lt;p&gt;Hammer Faktura har fått en egen modul, &lt;code&gt;hfdb&lt;/code&gt;(Hammer Faktura -database), som er ansvarlig for å samhandle med databasen og knytte informasjonen der sammen med programmet mitt.&lt;/p&gt;
+&lt;p&gt;Hammer Faktura kan nå dessuten &lt;a href=&#34;#kommandolinjeverkt%C3%B8y&#34;&gt;kjøres direkte som et skript&lt;/a&gt; med &amp;ldquo;-m&amp;rdquo; flagget til Python.&lt;/p&gt;
+&lt;h2 id=&#34;dokumentasjon&#34;&gt;Dokumentasjon&lt;/h2&gt;
+&lt;h3 id=&#34;hurtigstart&#34;&gt;Hurtigstart&lt;/h3&gt;
+&lt;p&gt;Last ned modulen:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/Oleham/hammer_faktura.git
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Opprett en tom database i nåværende mappe. Navnet vil alltid være &lt;code&gt;hammer_faktura.db&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m hammer_faktura.create_tables
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Importer database-modulen &lt;code&gt;hammerfaktura.hfdb&lt;/code&gt; i skriptet ditt. Den inneholder funksjoner for å samhandle med databasen.
+Lag en enkel faktura for ett oppdrag:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg til en kunde i databasen.&lt;/span&gt;
+client_pk &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addClient(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde&amp;#34;&lt;/span&gt;, 
+                            &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;934 343 343&amp;#34;&lt;/span&gt;,
+                            &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4, 1234 Oslo&amp;#34;&lt;/span&gt;, 
+                            &lt;span style=&#34;color:#cd00cd&#34;&gt;0.25&lt;/span&gt;, 
+                            &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NOK&amp;#34;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg til bankinformasjonen din i databasen.&lt;/span&gt;
+bank_pk &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addBank(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123.2312.2323&amp;#34;&lt;/span&gt;, 
+                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO87234233&amp;#34;&lt;/span&gt;,
+                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NONKIRE&amp;#34;&lt;/span&gt;,
+                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Banken AS&amp;#34;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Verdien på jobben&lt;/span&gt;
+value &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;2320.3&lt;/span&gt;
+
+generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromItem(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;01.01.1990&amp;#34;&lt;/span&gt;,
+                                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;ID-231&amp;#34;&lt;/span&gt;,
+                                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse kokebok&amp;#34;&lt;/span&gt;,
+                                        value,
+                                        client_pk, 
+                                        bank_pk)
+
+invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeInvoiceBody()
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+    f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(invoice)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt; lar oss legge til en jobb i databasen og umiddelbart skape en faktura for den. Med &lt;code&gt;hfdb.quickGeneratorFromList&lt;/code&gt; kan vi på samme måte legge inn flere oppdrag og umiddelbart skape en faktura.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968966&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;1234&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse avis&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;320.12&lt;/span&gt;
+    }, 
+    {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968100&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;5678&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Korrekturlesning 4 timer&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1030.20&lt;/span&gt;
+    }, 
+    {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1616328966&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;ABCDF&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kokebok&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;365.06&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;vat&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;0.15&lt;/span&gt; &lt;span style=&#34;color:#000080&#34;&gt;# obs!&lt;/span&gt;
+    } 
+]
+
+generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromList(jobber, client_pk, bank_pk)
+
+invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeInvoiceBody()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Merk at det er valgfritt å oppgi en mva-sats på enkeltjobbene. Om det ikke oppgis noen mva-sats, vil standardsatsen for den aktuelle kunden velges (i dette tilfellet 0.25, altså 25 %)&lt;/p&gt;
+&lt;h3 id=&#34;samhandling-med-databasen&#34;&gt;Samhandling med databasen&lt;/h3&gt;
+&lt;p&gt;La oss ta en titt på hva som skjer i bakgrunnen. Da er det nyttig å først kaste et blikk på strukturen til databasen:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer_faktura_database.jpg&#34; alt=&#34;En skjematisk fremstilling av databasen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Som vi ser, består databasen av fire tabeller: invoices, invoice_items, clients og banks. Den viktigste tabellen som knytter alle tabellene sammen, er invoices. Det er alltid knyttet en client og en bank til hver invoice, i et én-til-én-forhold. Samtidig kan flere poster i invoice_items, som representerer de enkelte jobbene, være knyttet til en invoice i et mange-til-én-forhold (en faktura kan inneholde flere fakturaposter).&lt;/p&gt;
+&lt;p&gt;I forrige avsnitt viste jeg hvordan man veldig raskt kan skape fakturaer med &lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt; og &lt;code&gt;hfdb.quickGeneratorFromList&lt;/code&gt;. Dette er faktisk to wrapper-funksjoner som «wrapper» en rekke funksjoner for samhandling med databasen, med den hensikt å gjøre det så enkelt så mulig å opprette en faktura hurtig. De gjør to ting med informasjonen som gis dem: de legger dem til i databasen, og så returnerer de en &lt;code&gt;hammer_faktura.Generator&lt;/code&gt;, som vi kan bruke for å skape en faktura.&lt;/p&gt;
+&lt;p&gt;La oss ta en titt på hva som skjer i bakgrunnen når vi bruker disse wrapper-funksjonene:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
+
+jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968100&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;5678&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Korrekturlesning 4 timer&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1030.20&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;client&amp;#34;&lt;/span&gt;: client_pk  &lt;span style=&#34;color:#000080&#34;&gt;# obs!&lt;/span&gt;
+    },
+    [&lt;span style=&#34;&#34;&gt;…&lt;/span&gt;]
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; jobb &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; jobber:
+    hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addItem(jobb)  
+
+invoice_number &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addInvoice(client_pk, bank_pk, 
+                    dato&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;timestamp, 
+                    frist&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;30&lt;/span&gt;, 
+                    language&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO&amp;#34;&lt;/span&gt;)
+                                                                                     
+hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;assignItemsByDate(invoice_number, 
+                    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;16.03.2021&amp;#34;&lt;/span&gt;,
+                    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;21.03.2021&amp;#34;&lt;/span&gt;)  
+  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I dette eksempelet lagrer vi jobbene manuelt i databasen med &lt;code&gt;hfdb.addItem()&lt;/code&gt;. Jobbene lagres i tabellen invoice_items. Merk at vi nå er nødt til å oppgi hvem som er client for hver enkelt jobb, siden vi nå legger til jobbene «uavhengig» av en faktura.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hfdb.addInvoice()&lt;/code&gt; lagrer en faktura i databasen, i tabellen invoices. Det er kun nødvendig å oppgi en kunde og bankinformasjon. Vi kan også oppgi følgende: en egendefinert fakturadato (som timestamp – standard er dagens dato), en egendefinert frist eller velge et annet språk enn norsk. I bakgrunnen blir det automatisk generert et fakturanummer som returneres og lagres i variabelen invoice_number.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hfdb.assignItemsByDate()&lt;/code&gt; knytter så en rekke invoice_item til en invoice i et én-til-flere-forhold. Dette forholdet etableres først når vi kjører denne funksjonen – fakturaposter som ennå ikke er blitt berørt, vil ikke være tilknyttet noen faktura i det hele tatt. Argumentene er fakturanummeret det gjelder og et datospenn. Alle poster i invoice_items med samme client som fakturaen og leveringsdato innenfor tidsspennet, blir knyttet til fakturaen.&lt;/p&gt;
+&lt;h3 id=&#34;skape-og-bruke-fakturageneratoren&#34;&gt;Skape og bruke fakturageneratoren&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;[&lt;span style=&#34;&#34;&gt;…&lt;/span&gt;]
+
+generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeGenerator(invoice_number)  
+
+body &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeInvoiceBody()
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+    f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(body)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Til slutt skaper vi generatoren med funksjonen &lt;code&gt;hfdb.makeGenerator()&lt;/code&gt;. Funksjonen tar et fakturanummer som argument, og forutsetter at det finnes poster i tabellen invoice_items som er knyttet til dette fakturanummeret. Det henter så all informasjon om client, bank, og invoice_items som er knyttet til fakturaen, og lagrer det i generatoren.&lt;/p&gt;
+&lt;p&gt;Generatoren er en klasse med tre underklasser, client, invoice og bank, som til sammen inneholder all relevant informasjon om fakturaen fra databasen. Den har også en (wrapper-)metode &lt;code&gt;hammer_faktura.Generator.makeInvoiceBody&lt;/code&gt; som returnerer et html-dokument som en string. &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturaer-del-to/#1-initialisere-kunde-bank-og-faktura&#34;&gt;Se min forrige post for mer informasjon om Generator-objektet&lt;/a&gt;. &lt;code&gt;hfdb.makeGenerator()&lt;/code&gt; er altså en nøkkelfunksjon som forvandler en post i tabellen invoices til en python-klasse vi kan bruke programmet vårt.Vi kan  manuelt overskrive feltene til hammer_faktura.Generator-objektet, f.eks slik:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromList(jobber, client_pk, bank_pk)
+
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;language &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;        &lt;span style=&#34;color:#000080&#34;&gt;# endre språk.&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;01.01.2020&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000080&#34;&gt;# overskrive forfallsdatoen&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;client&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;vat &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;0.3&lt;/span&gt;               &lt;span style=&#34;color:#000080&#34;&gt;# overskrive mva-satsen&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice_items[&lt;span style=&#34;color:#cd00cd&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;] &lt;span style=&#34;color:#39c&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34; m.m.&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000080&#34;&gt;# endre en jobb&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Man skal imidlertid ha en ganske god grunn for å gjøre det, for endringene vil ikke gjenspeiles i databasen, kun på fakturaen man så genererer. Om man vil endre på innholdet i databasen, må det gjøre med funksjonene i &lt;code&gt;hfdb&lt;/code&gt;-modulen.&lt;/p&gt;
+&lt;h3 id=&#34;navn-og-kontrakter&#34;&gt;Navn og kontrakter&lt;/h3&gt;
+&lt;p&gt;I dette prosjektet har jeg blitt inspirert av boken jeg leser for tiden, &lt;em&gt;The Go Programming Language&lt;/em&gt;. Forfatterne av boken går nøye gjennom navnekonvensjonene i Go, og det har vært lærerikt å tilnærme seg en lignende konsekvenstenking når jeg definerer funksjoner og oppførsel i dette prosjektet.&lt;/p&gt;
+&lt;p&gt;Som den oppmerksomme leser kanskje har fått med seg, finnes det en rekke funksjoner i Hammer Faktura med prefikset «add», etterfulgt av et objekt i singular. «addInvoice», «addItem», «addClient» og «addBank». Alle disse korresponderer med en tabell i databasen.&lt;/p&gt;
+&lt;p&gt;Wrapper-funksjonene starter med «quick» og gir allerede i navnet et hint om hvilke argumenter som må følge: «quickGeneratorFromList» eller «quickGeneratorFromItem».&lt;/p&gt;
+&lt;p&gt;Hva er poenget? Hvorfor ikke bare kalle funksjonene for «funksjon1» eller «asdfgh»?&lt;/p&gt;
+&lt;p&gt;Vel, ved å skape lignende navn og lignende oppførsel blir det lettere å lese og forstå koden. Det skaper en slags «kontrakt» mellom brukeren og modulen. Konsekvenstenkingen vil også gjøre det lettere for meg å plukke opp koden på et senere tidspunkt. Jeg har for eksempel bestemt at alle «addX»-funksjonene legger til noe i databasen, og at de returnerer primærnøkkelen for den posten de nettopp la til. Dette skal da gjennomføres konsekvent, selv om jeg som regel ikke bruker denne returverdien til noe, unntatt i «addInvoice». Om jeg i fremtiden vil bruke Hammer Faktura på en ny måte, vet jeg imidlertid at det er en mulighet. Det vil også gjøre det lettere å skumme gjennom listen over funksjoner og se hvilke nye funksjoner som kan legges til. Kanskje vil jeg legge til en funksjon kalt «assignItemsById» for å knytte fakturaposter til fakturaer etter jobb-id, i stedet for etter et datospenn med «assignItemsByDate».&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;def addItem(values)&lt;/li&gt;
+&lt;li&gt;def addClient(navn, org_nr, adresse, vat, valuta)&lt;/li&gt;
+&lt;li&gt;def addBank(konto, iban, bic, bank)&lt;/li&gt;
+&lt;li&gt;def addInvoice(client, bank, dato=int(time.time()), frist=30, language=&amp;ldquo;NO&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;def assignItemsByDate(invoice, _from, to)&lt;/li&gt;
+&lt;li&gt;def makeGenerator(id)&lt;/li&gt;
+&lt;li&gt;def quickGeneratorFromList(items, client, bank)&lt;/li&gt;
+&lt;li&gt;def quickGeneratorFromItem(dato, id, beskrivelse, netto, client, bank)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Når jeg ser på listen over funksjoner, vil jeg si at det ser ganske forståelig ut (selvskryt skal man lytte til, for det kommer fra hjertet)! 😬&lt;/p&gt;
+&lt;p&gt;I henhold til SQL-konvensjoner er tabellene databasen skrevet i såkalt &lt;em&gt;snake case&lt;/em&gt; i stedet for &lt;em&gt;camel case&lt;/em&gt;, altså &lt;em&gt;slik_som_dette&lt;/em&gt; i stedet for &lt;em&gt;påDenneMåten&lt;/em&gt;. Dessuten står tabellnavn alltid i flertall.&lt;/p&gt;
+&lt;h3 id=&#34;kommandolinjeverktøy&#34;&gt;Kommandolinjeverktøy&lt;/h3&gt;
+&lt;p&gt;Jeg har begynt å lage støtte for å bruke Hammer Faktura i kommandolinjen. Inntil videre har jeg konsentrert meg spesielt om de operasjonene som ikke må gjøres så ofte: da tenker jeg på det å legge til en ny kunde eller en ny bankforbindelse. Jeg har også støtte for å legge til en enkelt jobb i invoice_item.&lt;/p&gt;
+&lt;p&gt;Slik kan Hammer Faktura brukes i kommandolinjen:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m hammer_faktura
+
+Usage: python3 -m hammer_faktura [-l/-a] &amp;lt;args&amp;gt;
+
+        list: -l or --list (table name in plural, i.e. &amp;quot;invoices&amp;quot;)
+        add: -a or --add (item, bank, client or invoice)
+
+$ python3 -m hammer_faktura -l clients
+
+3       Navn     Org        Adresse     0.25    NOK
+4       Test     234234     Adresse     0.25    SEK
+5       Navn     43443      Adresse     0.25    SEK
+6       Probe    234233     Adresse     0.25    SEK
+
+$ python3 -m hammer_faktura -a client &amp;quot;En ny kunde&amp;quot; 94233465 &amp;quot;Bakketoppen 4, 4567 Kristiansand&amp;quot; 0.25 NOK
+
+        Name: En ny kunde
+        Org_nr: 94233465
+        Adresse: Bakketoppen 4, 4567 Kristiansand
+        VAT rate: 0.25
+        Valuta: NOK
+
+Type Y to add client (Y)
+Y
+Added new client: En ny kunde, 94233465, Bakketoppen 4, 4567 Kristiansand, 0.25, NOK
+
+$ python3 -m hammer_faktura -l clients
+
+3       Navn            Org        Adresse               0.25    NOK
+4       Test            234234     Adresse               0.25    SEK
+5       Navn            43443      Adresse               0.25    SEK
+6       Probe           234233     Adresse               0.25    SEK      
+8       En ny kunde     94233465   Bakketoppen 4, 
+                                   4567 Kristiansand     0.25    NOK
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Neste punkt på programmet vil være støtte for å lage en faktura direkte i kommandolinjen, på samme måte som &lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Oleham/hammer_faktura&#34;&gt;Se Hammer Faktura på Github!&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -104,8 +415,128 @@ Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring
       <pubDate>Tue, 09 Mar 2021 19:28:15 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/mine-beste-memoq-triks/</guid>
-      <description>I anledning av at jeg denne uken kjøpte min første lisens til memoQ, tenkte jeg å liste opp noen tips og triks jeg bruker når jeg arbeider i dette CAT-verktøyet. Listen er nok mest interessant for deg som allerede har kjennskap til verktøyet. For deg som ikke kjenner til det og lurer på hva det er, vil jeg forklare det i neste avsnitt.
-Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation).</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoq-triks.png&#34; alt=&#34;En hjemmelaget memoQ-logo&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I anledning av at jeg denne uken kjøpte min første lisens til memoQ, tenkte jeg å liste opp noen tips og triks jeg bruker når jeg arbeider i dette CAT-verktøyet. Listen er nok mest interessant for deg som allerede har kjennskap til verktøyet. For deg som ikke kjenner til det og lurer på hva det er, vil jeg forklare det i neste avsnitt.&lt;/p&gt;
+&lt;h2 id=&#34;hva-er-memoq&#34;&gt;Hva er memoQ?&lt;/h2&gt;
+&lt;p&gt;memoQ er et såkalt CAT-verktøy (Computer Assisted Translation). CAT-verktøy er i bunn og grunn en tekstbehandler som Word eller Notepad, men spesielt for oversettelsesarbeid. Det finnes en rekke ulike CAT-verktøy der ute, men i dag er det vel bare memoQ og Trados Studios som kan betegne seg selv om «bransjestandard».&lt;/p&gt;
+&lt;p&gt;Grunnen til at man bruker et CAT-verktøy, i stedet for å jobbe i en vanlig tekstbehandler, er at de samler en rekke praktiske funksjoner.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;De deler opp teksten i &lt;em&gt;segmenter&lt;/em&gt;, hvilket gjør det enklere å jobbe raskt.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;De gir deg en todelt visning med kildetekst og måltekst, slik at du har alt i synsfeltet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;De viser deg masse kontekst: treff i tidligere oversettelser, treff i  ordbøker og treff i kundens egen terminologilister. De lar deg også bearbeide disse ressursene.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;De fleste har også innebygd parsing av alle mulige filformater. I memoQ kan du importere alt fra HTML til PDF, uten å gå gjennom et mellomledd.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sist, men ikke minst legger de til rette for enkel distribusjon av tekster og ressurser. Derfor brukes de av svært mange oversettelsesbyråer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoQ-default-view.jpg&#34; alt=&#34;En vanlig visning i memoQ&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Slik ser en vanlig visning i memoQ ut. Tekstfeltet er delt mellom kildetekst og måltekst. Nederst ser man en forhåndsvisning av det ferdige dokumentet. Til høyre vil man se informasjon fra ordlister og oversettelseminne.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Selv synes jeg memoQ er et veldig godt verktøy. Det har mye å si at man liker programmet man jobber i. Jeg arbeider også mye i det eldre CAT-verktøyet Transit NXT, og det har en del åpenbare mangler som gjør at jeg alltid savner memoQ.&lt;/p&gt;
+&lt;p&gt;Likevel tok det meg litt tid å bruke memoQ på en effektiv måte. Programmet har en rekke skjulte funksjoner. Mye har jeg funnet selv ved å eksperimentere inne i programmet, mens andre ting har jeg funnet ved å lese &lt;a href=&#34;https://docs.memoq.com/current/en/Welcome/welcome-memoq-docs.html&#34;&gt;memoQs offisielle dokumentasjon&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Her kommer mine 10 tips og triks for å jobbe i memoQ!&lt;/p&gt;
+&lt;h2 id=&#34;1-hold-det-aktive-segmentet-i-midten&#34;&gt;1. Hold det aktive segmentet i midten&lt;/h2&gt;
+&lt;p&gt;Noen ganger er det enkleste det viktigste. Noe av det som kan drive meg til vanvidd i de fleste andre tekstbehandlingsverktøy, er at den aktive linjen man skriver på alltid havner nederst. Dette er også standard i memoQ. Når man bare ser linjene over det aktive, har man jo bare halve konteksten i synsfeltet. I verktøyraden øverst, gå til&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;View &amp;gt; Active Row &amp;gt; In the middle&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Da er det aktive segmentet alltid i midten – og man har alltid oversikt over teksten umiddelbart før og etter.&lt;/p&gt;
+&lt;h2 id=&#34;2-bevegelser-over-korte-avstander-med-tastaturet&#34;&gt;2. Bevegelser over korte avstander med tastaturet&lt;/h2&gt;
+&lt;p&gt;memoQ gir heldigvis en noen muligheter for å raskt bevege seg rundt i området rundt det aktive segmentet.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Denne bør være velkjent for de fleste, men jeg lister den opp for det: bruk &lt;code&gt;Ctrl + Piltast venstre/høyre&lt;/code&gt; for å flytte markøren ord for ord.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Med &lt;code&gt;Ctrl + PgUp&lt;/code&gt; og &lt;code&gt;Ctrl + PgDown&lt;/code&gt; kan man flytte markøren til starten eller slutten av et segment. Praktisk om det ene ordet du vil endre på befinner seg til slutt.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Med &lt;code&gt;Alt + Piltast Opp&lt;/code&gt; eller &lt;code&gt;Alt + Piltast Ned&lt;/code&gt; kan man hoppe et segment opp eller ned. Merk at kun piltastene uten Alt kun flytter deg rad for rad inne i segmentet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Med &lt;code&gt;PgUp&lt;/code&gt; og &lt;code&gt;PgDown&lt;/code&gt; kan man skrolle opp eller ned et helt skjermbilde.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + A&lt;/code&gt; markerer hele &lt;em&gt;segmentet&lt;/em&gt;. Nyttig for å slette all forhåndsoversatt tekst. (&lt;code&gt;Ctrl + Shift + A&lt;/code&gt; markerer alle segmenter).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Disse kommandoene er supre til å f.eks. hoppe litt bakover for å endre et ord du ikke er fornøyd med, eller til å raskt skifte ut noen ord i en eksisterende tekst.&lt;/p&gt;
+&lt;h2 id=&#34;3-bruk-auto-propagation&#34;&gt;3. Bruk Auto-Propagation&lt;/h2&gt;
+&lt;p&gt;Det vil nesten alltid lønne seg å ha på Auto-Propagation. Funksjonen gjør at alle segmenter som er 100% like og befinner seg under det segmentet du arbeider med, automatisk blir godkjent når du kvitterer med &lt;code&gt;Ctrl + Enter&lt;/code&gt; . I kombinasjon med Go To Next (se neste tips) kan man hoppe raskt og effektivt gjennom teksten.&lt;/p&gt;
+&lt;p&gt;Men Auto-Propagation gir ikke mening i situasjoner der segmenteringen ikke er vellykket. Om segmentene har blitt delt opp feil, vil det ofte ikke gi mening at oversettelsene skal autopropageres gjennom hele filen. Da kan dette slås av i verktøyraden under&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Translation &amp;gt; Translation Settings &amp;gt; Auto-Propagation&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-bruk-go-to-next-flittig&#34;&gt;4. Bruk Go To Next flittig&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Ctrl + G&lt;/code&gt; står for «Go To Next», og det er en viktig tastekombinasjon i memoQ. Denne gjør at du automatisk hopper til neste segment som samsvarer med et forhåndsdefinert filter. Filteret stiller du inn med &lt;code&gt;Ctrl + Shift + G&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoq-filter-view.jpg&#34; alt=&#34;Filtervisningen i memoQ&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Dette er filtermenyen til memoQ. Den brukes bl.a. av Go To Next til å hurtigfiltrere alle segmenter&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Man bruker tastekombinasjonen stort sett for å hoppe til neste «ubehandlede» segment.&lt;/p&gt;
+&lt;p&gt;Når jeg oversetter en fil pleier jeg å bruke innstillingen i bildet ovenfor. Når jeg korrekturleser det noen andre har oversatt, pleier jeg å kun huke av for «Translator confirmed».&lt;/p&gt;
+&lt;p&gt;Med &lt;code&gt;Ctrl + Shift + G&lt;/code&gt; kan man også huke av for «Automatically Jump after Confirmation». Det gjør at du automatisk hopper til neste ubehandlede segment etter å ha kvittert et segment med &lt;code&gt;Ctrl + Enter&lt;/code&gt;. I kombinasjon med Auto-Propagation gjør det at man kan jobbe veldig raskt, da man automatisk alltid hopper over de segmentene som er gjentakelser.&lt;/p&gt;
+&lt;h2 id=&#34;5-sorter-filen-med-filtre&#34;&gt;5. Sorter filen med filtre&lt;/h2&gt;
+&lt;p&gt;Filtermenyen i forrige punkt kan også brukes til å filtrere segmenter. Trykk på filtersymbolet til høyre over målteksten (ved siden av tannhjulet) for å få opp samme meny.&lt;/p&gt;
+&lt;p&gt;Jeg pleier for eksempel å filtrere ut alle ubehandlede segmenter om det er en veldig stor fil med mye forhåndsoversettelser. Man kan også sortere etter Match Rate. I starten av en stor jobb kan det være nyttig å få unna segmenter med høy match rate for å få et mer realistisk bilde av størrelsen på filen.&lt;/p&gt;
+&lt;p&gt;Om prosjektlederen har låst segmenter, kan disse også filtreres bort her.&lt;/p&gt;
+&lt;h2 id=&#34;6-bevegelser-over-lange-avstander-med-hurtigfiltre&#34;&gt;6. Bevegelser over lange avstander med hurtigfiltre&lt;/h2&gt;
+&lt;p&gt;Når jeg har gått i gjennom filen en gang, pleier jeg å bruke hurtigfiltrene for å hurtig finne tilbake til enkelte segmenter. De to tekstfeltene over henholdsvis kildeteksten og målteksten kan brukes til å filtrere alle segmentene etter ord. Dette er f.eks. nyttig i følgende scenario:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;du har vært teksten igjennom, og du innser at oversettelsen din av frasen «apply the principles» ikke var så bra. Dette var en frase som gikk igjen ofte, og du har oversatt den litt ulikt hver gang. Da kan du skrive inn de tre ordene i søkefeltet over kildeteksten, og du vil kun stå igjen med de segmentene hvor denne frasen forekom i kildeteksten.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;samtidig husker du at kunden ikke ønsker å bruke forkortelsen «app», men ønsker å skrive det litt mer formelt som «applikasjon» eller «program», avhengig av hva som passer. Da kan du filtrere etter «app » (med mellomrom) i målteksten, og så gå igjennom disse segmentene.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Jeg har blitt veldig glad i å bruke filtrene aktivt for å bevege meg raskere tilbake gjennom det jeg allerede har oversatt. I mange situasjoner er filtrene også bedre enn search and replace, siden de ikke er så umiddelbare. Du får tid til å se gjennom segmentene på nytt og leke litt med dem før du lander på en ny oversettelse.&lt;/p&gt;
+&lt;p&gt;Men, vi kommer så klart ikke utenom å nevne…&lt;/p&gt;
+&lt;h2 id=&#34;7-search-and-replace-for-life&#34;&gt;7. Search and replace for life&lt;/h2&gt;
+&lt;p&gt;Det viktigste verktøyet i ethvert tekstbehandlingsprogram.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoq-search-and-replace.jpg&#34; alt=&#34;Seach and replace&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Varianten i memoQ er faktisk veldig god. Man kan velge mellom kildetekst og måltekst, og man kan også søke i tagger. Man kan søke case-insensitive og -sensitive. Det fungerer veldig bra å erstatte i sensitive-modusen, memoQ klarer som regel å bruke store og små bokstaver riktig. Man har også mulighet til å trykke «Find all» for å se alle funnene i et eget vindu.&lt;/p&gt;
+&lt;p&gt;Om man trykker på de to «større enn», «mindre enn»-symbolene øverst (&amp;lt; &amp;gt;), har memoQ også støtte for &lt;em&gt;regular expressions&lt;/em&gt;. Mer om det senere.&lt;/p&gt;
+&lt;p&gt;PS: som i mange andre programmer kan man trykke &lt;code&gt;Ctrl + H&lt;/code&gt; for å åpne Search and replace direkte.&lt;/p&gt;
+&lt;h2 id=&#34;8-versjonskontroll&#34;&gt;8. Versjonskontroll&lt;/h2&gt;
+&lt;p&gt;Jeg har tidligere skrevet et blogginnlegg om&lt;a href=&#34;https://www.olehammersland.com/blogg/memoq-triks-versjonskontroll&#34;&gt; versjonskontrollen i memoQ&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Kort sagt lagrer memoQ mye metainformasjon om tidligere versjoner av samme dokument. Dette kan man bruke til sin fordel. For eksempel kan man eksportere alle endringer til en Word-fil med tracked changes for å dele endringer med andre lingivster. Man kan også filtrere på endringsdato og se tidligere versjoner av enkeltsegmenter. Det er veldig nyttig om du vil se hvordan teksten har utviklet seg.&lt;/p&gt;
+&lt;h2 id=&#34;9-fjern-slitsom-markup-med-regex-tagger&#34;&gt;9. Fjern slitsom markup med regex tagger&lt;/h2&gt;
+&lt;p&gt;Markup vil si kodetegn som f.eks. «\n» (linjeskift), «&amp;lt;br&amp;gt;» (også linjeskift), «&amp;amp;nbsp;» (hardt mellomrom) og så videre. Dette er kode som f.eks. skal tolkes av en nettleser for å markere teksten på en bestemt måte. F.eks. skrives &lt;strong&gt;fet skrift&lt;/strong&gt; slik i HTML: &amp;lt;strong&amp;gt;fet skrift&amp;lt;/strong&amp;gt;&lt;/p&gt;
+&lt;p&gt;memoQ har god støtte for å filtrere bort markup, slik at man som oversetter kan konsentrere seg om den faktiske teksten. Noen ganger sniker det seg likevel med noen varianter. Jeg har f.eks. lagt merke til at «\n» sjelden blir filtrert bort. Om teksten ser slik ut, kan det bli slitsomt:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Kjære kunde\n\nVi ønsker å gjøre dere oppmerksomme\npå at det ikke er mulig å\nbetale med kort.\n\nTakk for forståelsen.\n\nmvh kundeservice. 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Hver «\n» er viktig å få med, fordi den representerer et linjeskift. Men i sin nåværende form er det tungvint å se hvor ordene begynner og slutter. Dessuten vil vi bruke mye tid på stavekontroll, siden den vil reagere på nesten annethvert ord. Det er  bortkastet tid om teksten er på 10 000 ord eller mer.&lt;/p&gt;
+&lt;p&gt;Med regex-tagger kan man låse hver forekomst av «\n» inn i en tagg. I memoQ representeres en slik tagg som en liten rød blokk som ikke kan endres på. Den teller ikke som et ord. Programmet reagerer dessuten dersom taggen mangler eller ikke står i riktig rekkefølge.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoq-regex-tagger.JPG&#34; alt=&#34;Regex-tagger i aksjon&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Regex-tagger finner man i verktøyraden under&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Preparations &amp;gt; Regex Tagger&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;10-regular-expressions-i-memoq&#34;&gt;10. Regular expressions i memoQ&lt;/h2&gt;
+&lt;p&gt;Det siste punktet er at memoQ er det eneste CAT-verktøyet jeg kjenner til som har god støtte for bruk av &lt;em&gt;regular expressions&lt;/em&gt;, eller &lt;a href=&#34;https://no.wikipedia.org/wiki/Regul%C3%A6rt_uttrykk&#34;&gt;regulære uttrykk på godt norsk&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Jeg vil skrive egentlig skrive et eget blogginnlegg om dette temaet, men i korte trekk kan man søke etter mønstre uten å kjenne det nøyaktige innholdet.&lt;/p&gt;
+&lt;p&gt;Dette er et kjempenyttig verktøy som kan brukes i mange av memoQ sine filtrerings- og søkefunksjoner.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I Regex tagger brukes det til å låse tekst inn i tagger, slik jeg viste i punkt 9.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I hurtigfilteret kan man også filtrere etter regulære uttrykk. Klikk på tannhjulet for å aktivere.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I search and replace kan man trykke på «&amp;lt;&amp;gt;»-symbolet for å bruke søk og erstatt med regulære uttrykk.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Noen raske eksempler på hvilke superkrefter man får med regulære uttrykk: man kan filtrere etter alle setninger hvor «Aftenposten» er det første ordet (&lt;em&gt;^Aftenposten&lt;/em&gt;). Eller filtrere bort alle setninger som inneholder bokstaver (&lt;em&gt;[^\w]&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Eller skifte valuta på alle beløp i hele filen. Slik kan man f.eks. skifte fra amerikansk stil (USD XXX) til norsk (XXX NOK) med et trylleslag:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Search for: USD (\d{2,4})
+
+Replace with: $1 NOK
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Dette vil si at alle forekomster av USD foran to til fire tall vil bli erstattet med de samme to til fire tallene &lt;em&gt;etterfulgt&lt;/em&gt; av NOK.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.memoq.com/current/en/Places/regular-expressions.html&#34;&gt;Les mer om regulære uttrykk i dokumentasjonen til memoQ&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;oppsummert&#34;&gt;Oppsummert&lt;/h2&gt;
+&lt;p&gt;Det var 10 av mine viktigste memoQ-triks som jeg synes gjør livet mye bedre. Nå som jeg har kjøpt lisens til programmet har jeg liksom etablert meg ugjenkallelig i memoQ-leiren, så jeg håper jeg kunne komme med noen nyttige tips til mine med-memokunister!&lt;/p&gt;
+&lt;p&gt;Memokunister, foren eder!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -114,9 +545,130 @@ Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation).<
       <pubDate>Wed, 03 Mar 2021 20:34:36 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/fakturaer-del-to/</guid>
-      <description>Fakturaer, fakturaer. Jeg tenker fortsatt utelukkende på fakturaer.
-I forrige blogginnlegg skrev jeg om en fakturagenerator jeg har skrevet i Python. Et gøy prosjekt som jeg satt sammen i løpet av noen dager innimellom oversettelsesoppdragene. Denne uken skulle Hammer Faktura settes på prøve, og den bestod!
-I løpet av 3 sekunder hadde jeg lastet ned informasjonen om 500 mini-oppdrag fra XTRF, fordelt disse på tre fakturaer basert på avdeling og tegnet opp tre fine fakturaer med fakturanummer, forfallsdato, bankopplysninger og kundenes adresser.</description>
+      <description>&lt;p&gt;Fakturaer, fakturaer. Jeg tenker fortsatt utelukkende på fakturaer.&lt;/p&gt;
+&lt;p&gt;I forrige blogginnlegg skrev jeg om &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturagenerator-i-python&#34;&gt;en fakturagenerator jeg har skrevet i Python&lt;/a&gt;. Et gøy prosjekt som jeg satt sammen i løpet av noen dager innimellom oversettelsesoppdragene. Denne uken skulle Hammer Faktura settes på prøve, og den bestod!&lt;/p&gt;
+&lt;p&gt;I løpet av 3 sekunder hadde jeg lastet ned informasjonen om 500 mini-oppdrag fra XTRF, fordelt disse på tre fakturaer basert på avdeling og tegnet opp tre fine fakturaer med fakturanummer, forfallsdato, bankopplysninger og kundenes adresser.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura_hf.jpg&#34; alt=&#34;Den forrige fakturaen!&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Resultatet ser fint ut. I prinsippet speiler det opplysningene i XTRF helt og holdent.&lt;/p&gt;
+&lt;h2 id=&#34;utfordringene&#34;&gt;Utfordringene&lt;/h2&gt;
+&lt;p&gt;Den siste uken har jeg imidlertid hatt den tvilsomme gleden av å fylle ut min første MVA-melding. Nå som jeg har vært i gjennom den prosessen, skjønner jeg mer av hva som er nyttig i forbindelse med fakturaer. Jeg måtte for eksempel stadig konsultere kalkulatoren for å finne tall som ikke var skrevet eksplisitt på fakturaen, bruttoprisen på enkeltjobber eller sammenlagt MVA. Om jeg en dag må føre opplysningene inn i andre skjemaer eller regnskapsark, vil det potensielt bety masse omregning.&lt;/p&gt;
+&lt;p&gt;Det jeg på den andre &lt;em&gt;siden ikke hadde bruk for i det hele tatt&lt;/em&gt;, var opplysninger som den interne jobb-ID-en til XTRF, oppdragstypen, etc. En faktura er en salgsdokumentasjon som skal dokumentere salget, pengene som skifter hånd og hvilke forpliktelser som oppstår med hensyn til MVA-registeret. Det er et dokument som skal regnskapsføres og være etterettelig. I MVA-meldingen er det helt ubetydelig om oppdraget var oversettelse eller korrekturlesning – man trenger bare ha en passe god beskrivelse av hva slags arbeid som har blitt utført. Det er beløpene som teller.&lt;/p&gt;
+&lt;p&gt;Derfor har jeg gitt programmet en ordentlig overhaling, oppdatert fakturamalene og ellers fikset opp i en del småting som jeg har manglet.&lt;/p&gt;
+&lt;h2 id=&#34;ny-utforming&#34;&gt;Ny utforming&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-eksempel-ny-faktura.jpg&#34; alt=&#34;Ny utforming på fakturaen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Nå har jeg presset de tidligere spaltene navn + type, som jo egentlig var kategorier fra XTRF, inn på en linje som heter &amp;ldquo;Beskrivelse&amp;rdquo;. Her kan jeg legge inn en generell varebeskrivelse. Jeg beholder ID-kolonnen, fordi jeg ser for meg at den kan brukes i mange sammenhenger. Jeg har lagt til en egen MVA-utregning på hver eneste post, hvilket gjør at fakturaen er mye mer eksplisitt. Dessuten har jeg lagt til en utregning for totalt beregnet MVA.&lt;/p&gt;
+&lt;p&gt;Jeg kunne ikke dy meg, og la også til en liten gul farge nederst – i tråd med den klassiske norske giroen.&lt;/p&gt;
+&lt;h2 id=&#34;gjennomgang-av-nye-hammer-faktura&#34;&gt;Gjennomgang av nye Hammer Faktura&lt;/h2&gt;
+&lt;p&gt;I det nye programmet har jeg lagt til to nye klasser: Bank og Faktura. Det slo meg at jeg ikke ville oppgi min egen bankinformasjon på Github, så nå er ikke lenger bankopplysningene statiske inne i programmet.&lt;/p&gt;
+&lt;p&gt;Nå som mye av informasjonen var blitt sortert etter Kunde og Bank, slo deg meg som inkonsekvent at fakturanummer og forfallsdato ligger lagret direkte i fakturageneratoren. Derfor ligger den informasjonen nå i en egen Faktura-klasse.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cdcd00&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#00cdcd&#34;&gt;Bank&lt;/span&gt;():
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; __init__(self, konto, iban, bic, bank):
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;konto &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; konto
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;iban &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; iban
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;bic &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; bic
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;bank &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; bank
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#00cdcd&#34;&gt;Faktura&lt;/span&gt;():
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; __init__(self):
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;id &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;make_invoice_number()
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;dato, self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;get_invoice_dates()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Jobben med å faktisk skape fakturaen har blitt flyttet til en fjerde klasse, som heter Generator. Dermed er oppgavefordelingen slik:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;code&gt;Kunde()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Holder informasjon om kunden. Dette inkluderer også informasjon om MVA-sats og valuta.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;Faktura()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Inneholder metainformasjon om fakturaen:  dato, forfall og fakturanr.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;Bank()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Inneholder betalingsinformasjon som kontonr, IBAN etc.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;Generator()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;har som oppgave å skape fakturaen. Skaper en tabell med metoden &lt;code&gt;add_to_invoice&lt;/code&gt; og fyller inn metainformasjon fra Kunde, Faktura og Bank.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id=&#34;1-initialisere-kunde-bank-og-faktura&#34;&gt;1. Initialisere kunde, bank og faktura&lt;/h3&gt;
+&lt;p&gt;Det første som må gjøres, er å initialisere Kunde og Bank. Faktura skapes fortsatt automatisk.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Importer modulen&lt;/span&gt;
+&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hammer_faktura
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Initialiser Kunde og Bank.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Initialiser selve Generatoren.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Faktura initialiseres automatisk med datoer og id.&lt;/span&gt;
+kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde AS&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4&amp;#34;&lt;/span&gt;)
+bank &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Bank(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;XX.XXX.XXX..XX&amp;#34;&lt;/span&gt;,
+        	&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NOXX.XXXX.XXXX.XX&amp;#34;&lt;/span&gt;,
+        	&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NKSVP&amp;#34;&lt;/span&gt;,
+        	&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Banken AS&amp;#34;&lt;/span&gt;)
+
+generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Generator(kunde, bank)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Viktig å merke seg at man også kan legge til to valgfrie argumenter når man initialiserer kunden for å endre MVA-sats og valuta. Som standard initialiseres kunden med 0,25 % MVA og «NOK» som valuta.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Kunde med null MVA og amerikanske dollar som valuta.&lt;/span&gt;
+kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde AS&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4&amp;#34;&lt;/span&gt;, vat&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;0.00&lt;/span&gt;, valuta&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;USD&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;På dette stadiet har man også mulighet til å endre andre standarder. For eksempel kan forfallsdato eller fakturadato endres manuelt, om du vil gi kunden litt lenger frist.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Endre fakturadato og forfallsdato manuelt&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;dato &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;10.05.1997&amp;#34;&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;10.07.1997&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-mat-inn-alle-oppdrag&#34;&gt;2. Mat inn alle oppdrag&lt;/h3&gt;
+&lt;p&gt;Nå som rammeopplysningene er på plass, kan vi legge inn noen oppdrag vi vil fakturere kunden for. For hvert oppdrag må vi legge inn en leveringsdato, en id, en beskrivelse og et beløp. Leveringsdato, ID og bekreftelse er tekst, mens beløpet er et naturlig tall (floating point) som vi skal utføre mattestykker på.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Her lager jeg en liste med 3 fiktive oppdrag&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Hvert av de fiktive oppdragene ligger i en dictionary.&lt;/span&gt;
+alle_oppdrag &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;01.01.2020&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;001&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse nettside&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1200.00&lt;/span&gt;
+                },
+                {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;05.01.2020&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;002&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Korrekturlesning&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;432.30&lt;/span&gt;
+                },
+                {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;06.01.2020&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;004&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Skjønnlitteratur oversettelse&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1223.00&lt;/span&gt;
+                }]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Det er lurt å på en eller annen måte strukturere dataene på en forutsigbar måte. I dette tilfellet har jeg laget en liste. Listen inneholder 3 unike gjenstander. Hver gjenstand representerer én jobb, og inneholder 4 nøkkel-verdi-par som inneholder de fire opplysningene jeg behøver (i Python er dette en &lt;em&gt;dictonary&lt;/em&gt;, en samling med data strukturert som nøkkel-verdi-par)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Loop over alle oppdragene i datasettet.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg inn id, navn, type, beløp, enhet og leveringsdato.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Gjenta for alle oppdragene som skal med.&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; oppdrag &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; alle_oppdrag:
+	generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;add_to_invoice(oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Nå kan jeg loope over de tre gjenstandene i listen min. Jeg kaller metoden &lt;code&gt;faktura.add_to_invoice&lt;/code&gt; på hver gjenstand, slik at informasjonen blir lagt inn i faktura-generatoren.&lt;/p&gt;
+&lt;p&gt;Takket være den nye fordelingen med netto-brutto-utregning for hver eneste fakturapost, kan vi nå også endre MVA-satsen på enkelte poster. Dette kan være nyttig om du skal fakturere med ulike MVA-satser.&lt;/p&gt;
+&lt;p&gt;I eksempelet nedenfor skal jeg fakturere en jobb som av en eller annen grunn har en annen MVA-sats. Da legger jeg til et fjerde, valgfritt argument som sier at MVA-satsen på denne jobben skal være 12 %, i stedet for de 25 %-ene som er standard på overordnet nivå (fra &lt;code&gt;generator.kunde.vat&lt;/code&gt;)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;add_to_invoice(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;07.01.2020&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;0007&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse skatteregler&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd00cd&#34;&gt;1310.23&lt;/span&gt;, vat&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;0.12&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-generer-fakturaen-og-skriv-til-fil&#34;&gt;3. Generer fakturaen og skriv til fil&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Generer tabellen.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Generer så selve fakturaen og lagre den i en variabel.&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_table()
+html_fil &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_body()
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Skriv fakturaen til en fil.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# (Bruk fakturanummret i filnavnet for bedre oversikt.)&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(f&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;invoices/obs_faktura_{generator.faktura.id}.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(html_fil)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Resten fungerer som før. Ved å kalle &lt;code&gt;generator.generate_table()&lt;/code&gt;, vil tabellen til fakturaen skapes. Neste kall til &lt;code&gt;generator.generate_body()&lt;/code&gt; legger tabellen, kundeinformasjon, bankinformasjon og fakturainformasjon inn i selve HTML-dokumentet og returnerer det. Jeg lagrer det returnerte objektet i variabelen html_fil, og skriver den til en fil. Filen markerer jeg med fakturanummeret, som jeg har tilgang til via &lt;code&gt;generator.faktura.id&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.olehammersland.com/obs_faktura_9159.html&#34;&gt;Her kan du se den ferdige fakturaen.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Det er alt som trengs for å «programmatisk» skape en faktura. Nå burde det meste ligge til rette for å automatisere hele prosessen, for eksempel ved å binde Hammer Faktura inn i et skript som laster informasjonen om utførte oppdrag ned fra XTRF-installasjonen til kunden din.&lt;/p&gt;
+&lt;h2 id=&#34;andre-forbedringer&#34;&gt;Andre forbedringer&lt;/h2&gt;
+&lt;p&gt;Det er også noen andre forbedringer jeg er fornøyd med med tanke på organisering av kode.&lt;/p&gt;
+&lt;p&gt;Nå ligger alle byggesteinene til dokumentet lagret som maler i HTML-format i en og samme mappe. Det gjør det enda enklere å arbeide med utformingen til fakturaene, uten å gjøre endringer i Python-koden.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;/&lt;/span&gt;
+&lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; __init__&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;py
+&lt;span style=&#34;&#34;&gt;└──&lt;/span&gt; maler
+    &lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; fakturamal&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+    &lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; style&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+    &lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; tabellmal&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+    &lt;span style=&#34;&#34;&gt;└──&lt;/span&gt; tr_elem_mal&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Dessuten har jeg lagt CSS-stilene inn i et eget HTML-dokument, som jeg legger inn i headeren til fakturaen. Dermed er fakturaen et helt frittstående HTML-dokument hvor alt er synlig, litt som HTML-dokumentene til hjemmesiden min.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Obs:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Siden jeg la ut denne bloggposten har jeg oppdatert Hammer Faktura igjen. Nå har jeg lagt til støtte for databaser.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.olehammersland.com/blogg/hammer-faktura-versjon-3&#34;&gt;Les bloggposten om versjon 3 av Hammer Faktura her&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.olehammersland.com/blogg/fakturagenerator-i-python&#34;&gt;Les bloggposten om den første utgaven av Hammer Faktura her&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -125,10 +677,143 @@ I løpet av 3 sekunder hadde jeg lastet ned informasjonen om 500 mini-oppdrag fr
       <pubDate>Wed, 24 Feb 2021 16:41:49 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/fakturagenerator-i-python/</guid>
-      <description>I denne bloggposten beskriver jeg en fakturagenerator jeg har laget i Python. Fakturageneratoren kan i løpet av få milisekunder opprette en faktura i HTML-format basert på data.
-Nedenfor vil jeg gå litt gjennom prosjektet og vise hvordan det fungerer med et praktisk eksempel. Koden til fakturageneratoren min finner du her!
-Oversikt:
- Hammer Faktura Slik fungerer det Den ferdige fakturaen Eksempel på bruk av Hammer Faktura Veien videre  Hammer Faktura I løpet av februar har jeg gjort over 500 (små) oppdrag for én og samme kunde.</description>
+      <description>&lt;p&gt;I denne bloggposten beskriver jeg en fakturagenerator jeg har laget i Python. Fakturageneratoren kan i løpet av få milisekunder opprette en faktura i HTML-format basert på data.&lt;/p&gt;
+&lt;p&gt;Nedenfor vil jeg gå litt gjennom prosjektet og vise hvordan det fungerer med et praktisk eksempel. &lt;a href=&#34;https://github.com/Oleham/hammer_faktura&#34;&gt;Koden til fakturageneratoren min finner du her!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Oversikt:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#hammer-faktura&#34;&gt;Hammer Faktura&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#slik-fungerer-det&#34;&gt;Slik fungerer det&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#den-ferdige-fakturaen&#34;&gt;Den ferdige fakturaen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#eksempel-p%C3%A5-bruk-av-hammer-faktura&#34;&gt;Eksempel på bruk av Hammer Faktura&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#veien-videre&#34;&gt;Veien videre&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;hammer-faktura&#34;&gt;Hammer Faktura&lt;/h2&gt;
+&lt;p&gt;I løpet av februar har jeg gjort over 500 (små) oppdrag for én og samme kunde. Disse skal faktureres til tre ulike organsiasjonsnumre avhengig av hvilket land oppdraget kom fra. Da ble det klart for meg at jeg behøver en automatisert måte å opprette fakturaer på – litt på samme måte som &lt;a href=&#34;https://www.olehammersland.com/blogg/simplevp-xtrf-gjort-enkelt/&#34;&gt;GUI-programmet mitt simpleVP&lt;/a&gt;, som jeg bruker til å automatisere nedlastning av oppdrag fra XTRF-portalen.&lt;/p&gt;
+&lt;p&gt;Det startet altså som et prosjekt skreddersydd én eneste kunde, men det kjentes ikke ut som noen elegant løsning. Hva så når jeg får en annen kunde med andre behov?&lt;/p&gt;
+&lt;p&gt;Jeg vil jo egentlig ha et fakturaprogram som kan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tilpasses ulike kunder.&lt;/li&gt;
+&lt;li&gt;skape enhetlige fakturaer.&lt;/li&gt;
+&lt;li&gt;ellers automatisere alt det praktiske med faktura-nr. og datoer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Noen kunder vil ha faktura på jobb-basis, mens andre vil ha månedlige fakturaer. Derfor er det viktig å kunne tilpasse fakturaene og layoutet litt, samtidig som det hele skal ha et visst enhetlig format.&lt;/p&gt;
+&lt;p&gt;Løsningen på dette ble å todele det opprinnelige prosjektet mitt. Den ene delen er skriptet som laster ned data fra XTRF og sorterer det. Det er spesialtilpasset en viss kunde og et visst CMS-system.&lt;/p&gt;
+&lt;p&gt;Resten av programmet flyttet jeg over i en hjemmelaget modul som jeg gav navnet &lt;strong&gt;Hammer Faktura&lt;/strong&gt; og by-linen &lt;em&gt;einfach der Hammer&lt;/em&gt;. Denne modulen har kun én jobb – ta i mot data og lage en faktura på bakgrunn av denne. Målet er at jeg skal kunne bruke den samme modulen med alle mine kunder.&lt;/p&gt;
+&lt;h2 id=&#34;slik-fungerer-det&#34;&gt;Slik fungerer det&lt;/h2&gt;
+&lt;p&gt;Slik er Hammer Faktura bygget opp:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hammer_faktura
+├── README.md
+├── __init__.py
+└── maler
+    ├── faktura.css
+    ├── fakturamal.html
+    └── tabellmal.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Den inneholder en python-fil med to klasser, og en mappe med byggeklosser i HTML og CSS. Jobben til modulen er å hente inn informasjon, plassere det inn i HTML-byggeklossene og så sette sammen et ferdig dokument.&lt;/p&gt;
+&lt;p&gt;Vi starter med kundeklassen:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-kunde-klasse.jpg&#34; alt=&#34;Kunde.klassen initaliseres&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Kunde-klassen inneholder så langt bare tre nøkkelinformasjoner: navn, organisasjonsnummer og adresse. Dette skal skrives ut på fakturaen. Etter hvert vil det også være aktuelt å legge til flere variabler og metoder – for eksempel om kunden vil ha 30 dagers eller 14 dagers frist.&lt;/p&gt;
+&lt;p&gt;Nå som vi har initialisert en kunde, kan vi initialisere selve fakturaen.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura-klasse.jpg&#34; alt=&#34;Faktura-klassen initaliseres&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I det Faktura-klassen initialiseres, fyller den automatisk ut feltet dato med dagens dato, og legger til en forfallsdato 1 måned senere. Dessuten genererer den et tilfeldig fakturanummer.&lt;/p&gt;
+&lt;p&gt;I tillegg inneholder den en liten html-snutt som representerer en rad i en tabell, lagret som &lt;code&gt;tr_elem_mal&lt;/code&gt;. Det er den som skal fylles opp med alle jobbene vi skal fakturere. Det gjøres trinn for trinn ved hjelp av metodene til Faktura-klassen.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;add_to_tr_elem&lt;/strong&gt;&lt;br&gt;
+Denne metoden brukes til å legge oppdragets navn, referanse, type og avtalt beløp inn i html-snutten &lt;code&gt;Faktura.tr_elem_list&lt;/code&gt;. Hver gang metoden kalles, vil en ny rad legges inn i listen. Om det er flere oppdrag som skal legges til en faktura, kan man altså loope over dem og kalle denne metoden.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;generate_table&lt;/strong&gt;&lt;br&gt;
+Når alle radene er på plass i &lt;code&gt;Faktura.tr_elem_list&lt;/code&gt;, kan selve tabellen genereres. Tabell-radene fra punkt 1 settes inn i &lt;code&gt;maler/tabellmal.html&lt;/code&gt;. Totalen legges så inn, og bruttopris regnes ut basert på momssatsen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;generate_body&lt;/strong&gt;&lt;br&gt;
+Til slutt kan man generere selve fakturaen. Den ferdige tabellen med total fra punkt 2 settes inn i &lt;code&gt;maler/fakturamal.html&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Her er en eksemplarisk bruk av modulen:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Importer modulen&lt;/span&gt;
+&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hammer_faktura
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Last inn et datasett med alle oppdrag som skal på fakturaen&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;oppdrag.json&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	alle_oppdrag &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; json&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;load(f)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Oppgi kunde og initialiser fakturaen.&lt;/span&gt;
+kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde AS&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4&amp;#34;&lt;/span&gt;)
+faktura &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Faktura(kunde)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Loop over alle oppdragene i datasettet.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg inn id, navn, type, beløp, enhet og leveringsdato.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Gjenta for alle oppdragene som skal med.&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; oppdrag &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; alle_oppdrag:
+	faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;add_to_tr_elem(oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;enhet&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;])
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Generer tabellen.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Generer så selve fakturaen og lagre den i en variabel.&lt;/span&gt;
+faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_table()
+html_fil &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_body()
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Skriv fakturaen til en fil.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# (Bruk fakturanummret i filnavnet for bedre oversikt.)&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(f&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura_{faktura.invoice_number}.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(html_fil)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;den-ferdige-fakturaen&#34;&gt;Den ferdige fakturaen&lt;/h2&gt;
+&lt;p&gt;Resultatet er et HTML-dokument som f.eks. kan åpnes i nettleseren.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura_hf.jpg&#34; alt=&#34;Eksempel på hvordan en ferdig faktura kan se ut.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Dette dokumentet består av to byggeklosser.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maler/fakturamal.html&lt;/code&gt; inneholder selve rammen, med kontaktinformasjon, datoer og betalingsinformasjon.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maler/tabellmal.html&lt;/code&gt; inneholder rammeverket for selve tabellen. Fordelen med denne oppgavedelingen er at jeg raskt kan utforme en annerledes tabell til en annen kunde, uten å påvirke utformingen til resten av fakturaen.&lt;/p&gt;
+&lt;p&gt;Selve stylingen gjøres i &lt;code&gt;maler/faktura.css&lt;/code&gt;. Jeg har forsøkt å legge meg på en stil som ligner på Faktura Larsen, et (gratis!) eldre hobbyprogram som fortsatt fungerer veldig bra.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura_larsen.jpg&#34; alt=&#34;Faktura fra Faktura Larsen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Minus den (riktignok tidløse) giroen nederst, og kanskje pluss en liten logo.&lt;/p&gt;
+&lt;p&gt;Hvorfor et HTML-dokument? Vel, det er utrolig versatilt og kan enkelt konverteres til PDF og docx ved hjelp av verktøy som pandoc. Tanken er at det er et tidløst format som kan brukes til veldig mye, og som det er lett å endre stilen på.&lt;/p&gt;
+&lt;h2 id=&#34;eksempel-på-bruk-av-hammer-faktura&#34;&gt;Eksempel på bruk av Hammer Faktura&lt;/h2&gt;
+&lt;p&gt;Hvorfor alt styret? La oss gå tilbake og ta en titt på denne kunden som ville ha tre ulike fakturaer for over 500 småoppdrag som jeg gjorde i løpet av en måned.&lt;/p&gt;
+&lt;p&gt;I eksempelet nedenfor viser jeg hvor lett det nå har blitt for meg å generere 3 fakturaer med over 500 oppdrag som lastes direkte ned fra nettet:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;kontorer &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;DK&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;SE&amp;#34;&lt;/span&gt;]
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; kontor &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; kontorer:
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;if&lt;/span&gt; kontor &lt;span style=&#34;color:#39c&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO&amp;#34;&lt;/span&gt;:
+		kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NORSK KUNDE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;1234567&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oslo&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;elif&lt;/span&gt; kontor &lt;span style=&#34;color:#39c&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;DK&amp;#34;&lt;/span&gt;:
+		kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;DANSK KUNDE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;7654321&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;København&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;else&lt;/span&gt;:
+		kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;SVENSK KUNDE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;17262534&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Stockholm&amp;#34;&lt;/span&gt;)
+
+	invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Faktura(kunde)
+
+	&lt;span style=&#34;color:#000080&#34;&gt;# Fyller ut tabellen med data som hentes direkte fra XTRF&lt;/span&gt;
+	populate_invoice_from_XTRF(invoice, oversikt, kontor)
+
+	invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_table()
+		
+	faktura &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_body()
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;join(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;invoices&amp;#34;&lt;/span&gt;, f&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura_{invoice.invoice_number}_{kontor}.html&amp;#34;&lt;/span&gt;), &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+		f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt; write(faktura)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Resultatet? 3 fine filer som dette:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;─ faktura_13137_DK.html
+─ faktura_2912_SE.html
+─ faktura_35457_NO.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Disse kan så gjøres om til Word med pandoc:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ for file in *; do pandoc -o ${file%.html}.docx $file; done;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Det å skrive dette skriptet tar ikke så lang tid nå som selve fakturaens oppbygning og stil allerede er på plass.&lt;/p&gt;
+&lt;h2 id=&#34;veien-videre&#34;&gt;Veien videre&lt;/h2&gt;
+&lt;p&gt;Jeg startet prosjetet på mandag og har kost meg veldig gjennom hele uken. Det har vært en spennende utfordring å rydde opp i koden min og prøve å gjøre oppbygningen så logisk som mulig. Prøve å finne den perfekte balansen mellom &lt;em&gt;enhetlig&lt;/em&gt; og &lt;em&gt;fleksibel&lt;/em&gt; – et program som skaper orden, men som likevel skal kunne utvides og endres på i fremtiden.&lt;/p&gt;
+&lt;p&gt;Det er ikke så lett, fordi man må prøve å gjette på hvilke funksjoner som kan være nyttige i fremtiden. Muligheten for å endre språket i fakturaen? Kanskje bør kundene lagres i en database og hentes derfra? Kanskje skal det være mulig å oppdatere totalen etter at tabellen har blitt generert? Og så videre.&lt;/p&gt;
+&lt;p&gt;Uansett er jeg fornøyd med ukens fremgang på prosjektet. Nå skal jeg lage fakturaene mine, og så får jeg tenke over de neste utvidelsene en annen gang!&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;obs&#34;&gt;OBS!&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Oppdatering 4.3.2021&lt;/strong&gt;
+Jeg har overhalet Hammer Faktura ganske betydelig. Alle endringene og forbedringene er beskrevet og forklart tydelig i det nye blogginnlegget, &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturaer-del-to&#34;&gt;som kan leses her&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -137,8 +822,91 @@ Oversikt:
       <pubDate>Tue, 16 Feb 2021 18:31:38 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/epost-parsing/</guid>
-      <description>Det er ikke alltid mulig å arbeide på en så effektiv måte som mulig. Ofte må man samarbeide med organisasjoner med en egen arbeidsflyt og kultur som ikke nødvendigvis er forenlig med hurtig arbeid.
-To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post og Excel-regneark. Det er ikke så rart. For flere kunder som ikke nødvendigvis er så teknisk kompetente, fremstår Excel som grei måte å organisere tekst på.</description>
+      <description>&lt;p&gt;Det er ikke alltid mulig å arbeide på en så effektiv måte som mulig. Ofte må man samarbeide med organisasjoner med en egen arbeidsflyt og kultur som ikke nødvendigvis er forenlig med hurtig arbeid.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post og Excel-regneark.&lt;/strong&gt; Det er ikke så rart. For flere kunder som ikke nødvendigvis er så teknisk kompetente, fremstår Excel som grei måte å organisere tekst på. På samme måte er e-post en rask og umiddelbar måte å sende ut en fil når det ikke er noen etablert teknisk infrastruktur på plass ennå. Men det er ikke noen solid måte å arbeide på. Det er mange ulemper ved å distribuere filer på e-post:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;oversikt&lt;/li&gt;
+&lt;li&gt;kapasitet (mental og tidsmessig)&lt;/li&gt;
+&lt;li&gt;stress&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Det første punktet gjelder oversikt: til tross for at jeg har jobbet mye med e-post, føler jeg fortsatt ikke at jeg helt har knekket koden for hvordan man skal sortere e-poster så effektivt som mulig. Spesielt når man også skal sortere flere kunder, flere kontaktpersoner og flere filer. Det har hendt meg at jeg har oversatt feil fil fordi jeg på samme tid fikk to filer tilsendt med tilnærmet samme navn.&lt;/p&gt;
+&lt;p&gt;Det at det tar tid å sortere e-post, lagre vedlegg og vedlikeholde mappestrukturer, er også ganske opplagt.&lt;/p&gt;
+&lt;p&gt;Balingen med e-post koster også mental &lt;em&gt;kapasitet&lt;/em&gt;. Man er nødt til å konsentrere seg, holde tunga rett i munnen og bruke tid på å sortere og finne frem til riktig filer. Det er dessuten et &lt;em&gt;stressmoment&lt;/em&gt; som henter meg ut av flytsonen jeg helst vil være i når jeg oversetter.
+Dessuten er det vel nok rapporter nå om at for mange e-poster ikke er bra for mental helse. Likevel&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;noen-kunder-elsker-e-post&#34;&gt;Noen kunder elsker e-post&lt;/h2&gt;
+&lt;p&gt;Det er bare å feise fakta. Som en stakkars frilanser er jeg jo der for å oppfylle kundens behov. Da er det flaks at man kan tenne lys i stedet for å forbanne mørket – ved å lære seg programmering.&lt;/p&gt;
+&lt;p&gt;Her vil jeg vise frem to Python-skript jeg har for å forenkle arbeidet med en kunde. Det er en stor kunde med et stort markedsføringsapparat: nyhetsbrev, bannere, TV-reklamer, you name it.
+De sender meg ca. 15 e-poster daglig. Hver av disse e-postene inneholder et sted mellom 4 og 50 bilder (jpg eller gif). Bildene inneholder et første utkast av det grafiske innholdet på opptil 6 forskjellige språk. Min jobb er å se på vedleggene med de norske layoutene og lese den norske teksten.&lt;/p&gt;
+&lt;p&gt;Det å lese gjennom bildene for å lete etter feil tar, ikke så lang tid. Men det å lese gjennom listen over vedlegg for å finne de som er relevante for meg, tar litt tid. Heldigvis kan det automatiseres med Python 🐍.&lt;/p&gt;
+&lt;h2 id=&#34;parsing-med-mailparser&#34;&gt;Parsing med mailparser&lt;/h2&gt;
+&lt;p&gt;Ved hjelp av &lt;a href=&#34;https://pypi.org/project/mail-parser/1.2.2/&#34;&gt;mailparser-biblioteket til Python&lt;/a&gt; har jeg derfor raskt laget et skript som:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Leter gjennom alle e-poster i samme mappe.&lt;/li&gt;
+&lt;li&gt;Sorterer alle vedlegg etter avsender og e-post.&lt;/li&gt;
+&lt;li&gt;Sletter alle som ikke er markert med NO for norsk.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Slik ser det ut:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; os&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; mailparser&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; re
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Loops over emails in current directory&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; raw_mail &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;listdir():
+
+    &lt;span style=&#34;color:#000080&#34;&gt;# Unpack all files except the python files.&lt;/span&gt;
+    &lt;span style=&#34;color:#000080&#34;&gt;# It is assumed that the current directory only contains emails&lt;/span&gt;
+    &lt;span style=&#34;color:#cdcd00&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#cdcd00&#34;&gt;not&lt;/span&gt; raw_mail&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;endswith(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;.py&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;and&lt;/span&gt; os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;isfile(raw_mail):
+
+        &lt;span style=&#34;color:#000080&#34;&gt;# Extract sender and subject from email&lt;/span&gt;
+        epost_obj &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; mailparser&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;parse_from_file(raw_mail)
+        sender &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; epost_obj&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;from_[&lt;span style=&#34;color:#cd00cd&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#cd00cd&#34;&gt;1&lt;/span&gt;]
+        subject &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; epost_obj&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;subject
+        new_subject &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; re&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;sub(&lt;span style=&#34;color:#cd0000&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;\W&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;, subject)
+
+        &lt;span style=&#34;color:#000080&#34;&gt;# Create a folder structure based on sender and subject&lt;/span&gt;
+        image_path &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;join(sender, new_subject)
+        os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makedirs(image_path, exist_ok&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True)
+
+        &lt;span style=&#34;color:#000080&#34;&gt;# Write all attachments to the corresponding folder&lt;/span&gt;
+        epost_obj&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write_attachments(image_path)
+
+        &lt;span style=&#34;color:#000080&#34;&gt;# Delete all files that don&amp;#39;t contain NO in title&lt;/span&gt;
+        &lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; attach &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;listdir(image_path):
+            &lt;span style=&#34;color:#cdcd00&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;_no.&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; attach &lt;span style=&#34;color:#cdcd00&#34;&gt;or&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; attach:
+                &lt;span style=&#34;color:#cdcd00&#34;&gt;continue&lt;/span&gt;
+            &lt;span style=&#34;color:#cdcd00&#34;&gt;else&lt;/span&gt;:
+                os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;remove(os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;join(image_path,attach))
+    
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ikke et veldig elegant og effektivt skript, men det er en fin quick fix som finner frem alle de bildene jeg trenger fra 15 eposter og 100 vedlegg i løpet av få sekunder.&lt;/p&gt;
+&lt;h2 id=&#34;e-poster-fra-google-drive&#34;&gt;E-poster fra Google Drive&lt;/h2&gt;
+&lt;p&gt;Den nevnte kunden sender også en god del e-poster fra Google Drive. I prinsippet fungerer det på samme måte, men disse epostene inneholder opptil 80–90 lenker i stedet for vedlegg. Av disse skal jeg klikke på de som inneholder norsk tekst (ca. 10 %).&lt;/p&gt;
+&lt;p&gt;Quick-fix-løsningen på det ble å lagre epostene som HTML-filer og skrive et raskt skript som bruker &lt;a href=&#34;https://pypi.org/project/beautifulsoup4/&#34;&gt;Python-biblioteket BeautifulSoup&lt;/a&gt; til å parse HTML. Skriptet henter ut alle lenkene og åpner dem i nettleseren dersom de slutter på &amp;ldquo;_no.gif&amp;rdquo; eller &amp;ldquo;_no.jpg&amp;rdquo;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; bs4&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; sys&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; webbrowser
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Enter name of HTML email as CL argument&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;len&lt;/span&gt;(sys&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;argv) &lt;span style=&#34;color:#39c&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;2&lt;/span&gt;:
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Usage: python get_no_links.py &amp;lt;name of file&amp;gt;&amp;#34;&lt;/span&gt;)
+	sys&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;exit()
+
+filename &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; sys&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;argv[&lt;span style=&#34;color:#cd00cd&#34;&gt;1&lt;/span&gt;]
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(filename) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	soup &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; bs4&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;BeautifulSoup(f, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;lxml&amp;#34;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Find all anchor tags in HTML&lt;/span&gt;
+lenker &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; soup&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;find_all(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Loop over all anchor tags&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; lenk &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; lenker:
+    &lt;span style=&#34;color:#cdcd00&#34;&gt;try&lt;/span&gt;:
+		proofname &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; lenk&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;span&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;text
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;except&lt;/span&gt;:
+		&lt;span style=&#34;color:#cdcd00&#34;&gt;continue&lt;/span&gt;
+
+    &lt;span style=&#34;color:#000080&#34;&gt;# Open all links which ends with &amp;#34;no.gif&amp;#34; or &amp;#34;no.jpg&amp;#34; in web browser&lt;/span&gt;
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;if&lt;/span&gt; proofname&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;endswith(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;no.gif&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;or&lt;/span&gt; proofname&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;endswith(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;no.jpg&amp;#34;&lt;/span&gt;):
+		&lt;span style=&#34;color:#cdcd00&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Opened &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#39c&#34;&gt;+&lt;/span&gt; proofname)
+		webbrowser&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;open(lenk&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;get(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;href&amp;#34;&lt;/span&gt;))
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -147,8 +915,31 @@ To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post 
       <pubDate>Fri, 12 Feb 2021 17:38:36 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/memoq-triks-versjonskontroll/</guid>
-      <description>Jeg har funnet en fin-fin funksjon i memoQ som jeg har bestemt meg for å benytte meg hemningsløst av fremover. Det er en funksjon jeg har savnet, frem til jeg faktisk gjorde litt research og fant ut at den har vært der hele tiden. Typisk.
-Det er muligheten for å bruke memoQs innebygde versjonskontroll til å sammenligne ulike versjoner av et oppdrag. Ved å klikke på «Review»-fanen øverst, vil man se en seksjon som heter «History».</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoq-triks.png&#34; alt=&#34;En hjemmelaget memoQ-logo&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Jeg har funnet en fin-fin funksjon i memoQ som jeg har bestemt meg for å benytte meg &lt;em&gt;hemningsløst&lt;/em&gt; av fremover. Det er en funksjon jeg har savnet, frem til jeg faktisk gjorde litt research og fant ut at den har vært der hele tiden. Typisk.&lt;/p&gt;
+&lt;p&gt;Det er muligheten for å bruke memoQs innebygde &lt;em&gt;versjonskontroll&lt;/em&gt; til å sammenligne ulike versjoner av et oppdrag. Ved å klikke på «Review»-fanen øverst, vil man se en seksjon som heter «History». Der er det en nedtrekksmeny som heter «Compare Versions».&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoqtriksVersjonskontroll2.gif&#34; alt=&#34;Bilde av «Review»-fanen i memoQ&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Ved å klikke på «Compare Versions» får du opp en rekke valg om å sammenligne ulike versjoner.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoqtriksVersjonskontroll.gif&#34; alt=&#34;Bilde av «Compare Versions»-nedtrekksmenyen i memoQ&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Jeg anbefaler å trykke på knappen «Custom» med det samme. Da får du opp en oversikt over alle tidligere versjoner av dokumentet. Det ser ut til at memoQs versjonskontroll ikke lar deg se hver bidige endring, men at det lagrer et bilde av forrige versjon når oppdraget endrer status.&lt;/p&gt;
+&lt;p&gt;Om du velger en av de tidligere versjonene, vil du få se alle endringene som har skjedd fra forrige versjon og frem til den nåværende. Det fungerer på lignende måte som «diff»-kommandoen i Linux eller «track changes» i Word.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoqtriksVersjonskontroll3.gif&#34; alt=&#34;Se endringene mellom versjoner&#34;&gt;
+&lt;em&gt;«Ikke bli fortvilet for at det er mye rødt, altså. Det var bare noen småting.»&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;eksporter-word-dokument-med-track-changes&#34;&gt;Eksporter Word-dokument med track changes&lt;/h2&gt;
+&lt;p&gt;Hvorfor er dette nyttig? Jo, man kan faktisk eksportere teksten inkludert endringer til et Word-dokument med «track changes». Dette fungerer uavhengig av opprinnelig filformat – det har ikke noe å si om du jobber med en XML, IDML eller JSON. Dessuten &lt;em&gt;behøver du ikke vite på forhånd at du vil sende en tilbakemelding&lt;/em&gt;. Jeg er ikke nødt til å notere tilbakemeldinger underveis eller huske å slå på memoQ sin «track changes»-funksjon manuelt.&lt;/p&gt;
+&lt;p&gt;Slik gjør du:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Først må du levere jobben, slik at du har to ulike versjoner.&lt;/li&gt;
+&lt;li&gt;Deretter må du aktivere «Compare Versions» ved å velge «Custom» fra nedtrekksmenyen.&lt;/li&gt;
+&lt;li&gt;Kontroller at sammenligningen faktisk viser de endringene du har gjort.&lt;/li&gt;
+&lt;li&gt;Nå kan du trykke på «Export Changes to Word» i nedtrekksmenyen «Compare Versions» (samme som tidligere).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Av en eller annen grunn fungerer det ikke for meg om jeg velger noe annet enn «Custom» i trinn 2.&lt;/p&gt;
+&lt;h2 id=&#34;bli-en-bedre-korrekturleser&#34;&gt;Bli en bedre korrekturleser&lt;/h2&gt;
+&lt;p&gt;Om det er noe jeg tror oversettere kan bli flinkere på (meg selv inkludert), så er det å dele kunnskap. Arbeidsflyten i denne bransjen består altfor ofte av en oversetter og en korrekturleser som jobber med den samme teksten, men som ikke kommuniserer direkte med hverandre. Som oversetter får man ofte ikke vite hva som skjedde med teksten etter at den ble sendt til korrektur, og ofte har man som korrekturleser ikke tid eller overskudd til å skrive en personlig tilbakemelding.&lt;/p&gt;
+&lt;p&gt;Jeg har imidlertid gode erfaringer med å utveksle Word-dokumenter med track changes. Det er et format som er velkjent for de fleste. Når man oversetter er det alltid utrolig nyttig med en slik tilbakemelding. Dersom man ikke er så stødig på kundens vokabular eller fagfeltet, kan en tilbakemelding fra en mer erfaren kollega være uvurderlig. Man får også et innblikk i andre måter å formulere seg på.&lt;/p&gt;
+&lt;p&gt;Et lite nyttårsforsett fra min side er å huske å sende et slikt dokument tilbake til oversetter når jeg har lest korrektur. Det er en god måte å gi tilbakemeldinger på, eller kanskje til og med sette i gang en liten faglig diskusjon om hvordan teksten bør se ut. I min erfaring blir en tekst nesten alltid bedre jo oftere den endres, redigeres og leses av ulike personer. Om vi vil levere virkelig gode tekster, er det viktig med tilbakemeldinger og faglig utveksling – jo mer, desto bedre.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -157,8 +948,50 @@ Det er muligheten for å bruke memoQs innebygde versjonskontroll til å sammenli
       <pubDate>Tue, 09 Feb 2021 17:11:05 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/gjenstridige-floskler-powerful/</guid>
-      <description>Dette ordet har jeg de siste månedene bitt meg merke i som en av disse «gjenstridige flosklene» som har som vane å snike seg inn over alt – til og med på tvers av språk!
-De gjenstridige flosklene er litt som falske venner, altså sånt som når man blander sammen chin og kinn. I motsetning til falske venner, er gjenstridige floskler imidlertid ikke bundet så veldig til fonetikk, men mer til semantikk, eller betydning.</description>
+      <description>&lt;p&gt;Dette ordet har jeg de siste månedene bitt meg merke i som en av disse «gjenstridige flosklene» som har som vane å snike seg inn over alt – til og med på tvers av språk!&lt;/p&gt;
+&lt;p&gt;De gjenstridige flosklene er litt som falske venner, altså sånt som når man blander sammen &lt;em&gt;chin&lt;/em&gt; og &lt;em&gt;kinn&lt;/em&gt;. I motsetning til falske venner, er gjenstridige floskler imidlertid ikke bundet så veldig til fonetikk, men mer til semantikk, eller betydning. Derfor har de en lei tendens til å transcendere språkgrensene.&lt;/p&gt;
+&lt;p&gt;I kildespråket høres floskelen veldig naturlig ut, og det er ikke så lett å få has på betydningen.
+Man sitter og grubler litt. Gjør noen Google-søk og ordboksøk. Legger merke til et dobbelt mellomrom et annet sted i teksten og – pang!
+I et svakt øyeblikk har oversetteren senket guarden. Floskelen sniker seg gjennom filteret og invaderer det nye språkdomenet.
+Oversetteren har mislyktes i sin oppgave som sprogets portvokter.&lt;/p&gt;
+&lt;p&gt;I dag fikk jeg servert følgende setning på svensk (redigert litt for anonymisering):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Du får också se hur möjligheterna att förstå och analysera verksamheten kraftfullt kan förbättras.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Det jeg reagerer på, er bruken av orden kraftfullt.
+Setningen påstår altså at den vil vise meg hvordan jeg kan forstå og analysere virksomheten på en kraftfull måte.&lt;/p&gt;
+&lt;p&gt;Edderkoppsansen min plinger &amp;ndash; nå er det opp med guarden!&lt;/p&gt;
+&lt;p&gt;Jeg tror nemlig jeg står overfor en floskel som har klart å smyge seg forbi en stakkars svensk oversetter, og som nå, forkledd som et svensk ord, prøver å trenge enda dypere inn i de skandinaviske språkene.&lt;/p&gt;
+&lt;p&gt;Jeg vet jo tilfeldigvis at domenet er IT, og jeg har lagt merke til at engelskspråklige IT-folk &lt;em&gt;elsker&lt;/em&gt; å kalle applikasjoner, søkefelt, grafiske elementer, kodesnutter, biblioteker, egentlig hva som helst, for &lt;strong&gt;powerful&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Sannsynligvis er dette helt ideomatisk engelsk. Jeg ser også at man gjerne snakker om verktøy som &lt;em&gt;powerful&lt;/em&gt;, altså &lt;em&gt;powerful tools&lt;/em&gt;.
+Her ligger det altså en forståelse av at også uhåndgripelig programvare kan være verktøy, noe jeg slett ikke er uenig i.
+Men når jeg først og fremst forbinder ordet &lt;em&gt;powerful&lt;/em&gt; med faktisk «mektig, kraftfull», så kan det noen ganger fortone seg som litt morsomt.&lt;/p&gt;
+&lt;p&gt;Se f.eks. i &lt;a href=&#34;https://www.ubuntupit.com/best-linux-commands-to-run-in-the-terminal/&#34;&gt;denne gjennomgangen av nyttige Linux-kommandoer&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The echo command is a very powerful command-line utility that lets you output a specific text to the terminal console.&lt;/p&gt;
+&lt;p&gt;The exciting thing about this little yet powerful command is that you will often use it among other terminal commands when creating bootable live USB sticks.&lt;/p&gt;
+&lt;p&gt;The kill command is a powerful way to stop processes that are stuck due to resource constraints.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ordet maner hos meg frem et mentalt bilde av en tordengud, av orkaner og av ville krefter. Derfor har jeg altid synes at slike formuleringer blir litt morsomme.&lt;/p&gt;
+&lt;h2 id=&#34;hva-ligger-bak-floskelen&#34;&gt;Hva ligger bak floskelen?&lt;/h2&gt;
+&lt;p&gt;Bruken kommer sannsynligvis fra engelsk markedsføringsspråk for verktøy, men har så utviklet seg til å bli en floskel – altså et uttrykk det har gått inflasjon i.&lt;/p&gt;
+&lt;p&gt;Da mister ordet litt av sin opprinnelige tyngde. Semantisk sett betegner det i dag kanskje ikke mer enn et «veldig nyttig verktøy».&lt;/p&gt;
+&lt;p&gt;Derfra har det sneket seg inn programvareverdenen. De av oss (ikke-engelskspråklige) som ikke kjenner denne floskelbruken fra det mer hverdagligse verktøydomenet, &lt;a href=&#34;https://softwareengineering.stackexchange.com/questions/75479/why-is-every-programming-language-powerful&#34;&gt;stusser veldig&lt;/a&gt;.
+IT-bransjen er grunnleggende internasjonal, så derfra flyter floskelen ut i veldig mange tekster som skal oversettes. Oversettere står overfor et dillemma! Kan jeg virkelig beskrive dette chatteprogrammet som &lt;em&gt;mektig&lt;/em&gt;? Og kan et søkefelt i et CMS være &lt;em&gt;kraftfullt&lt;/em&gt;?&lt;/p&gt;
+&lt;p&gt;Jaja, jeg antar at man kan &lt;em&gt;forstå en virksomhet på en kraftfull måte&lt;/em&gt;, det er forståelig nok.&lt;/p&gt;
+&lt;p&gt;Jeg har i det siste sett &lt;em&gt;powerful&lt;/em&gt; dukke opp i både svenske og danske kildetekster. Ofte fører det med seg rare setningsstrukturer – åpenbart har noen klødd seg litt i hodet for å få betydningen til å henge sammen. I tysk også, men siden tyskerne også har sansen for et superlativ-befenget språk, tas det umerkelig opp i uttrykk som &lt;em&gt;leistungsstark&lt;/em&gt;, &lt;em&gt;mächtig&lt;/em&gt; eller &lt;em&gt;potent&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Selv synes jeg det ser litt merkelig ut med både kraftfull, mektig og potent. Hvorfor bruke en engelskspråklig floskel på norsk, når det vil være mye mer naturlig å kalle det «nyttig», «uunnværlig». Om man faktisk beskriver en superdatamaskin med rå regnekraft, ville jeg nok ikke reagert om den ble beskrevet som «kraftig». Men en kraftig webapplikasjon? Låter litt rart.&lt;/p&gt;
+&lt;p&gt;I dette tilfellet endte jeg opp med å oversette slik:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Du får også se hvordan du kan forbedre mulighetene for en dypere forståelse og analyse av virksomheten.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Aller helst ville jeg også kuttet ned litt på setningen, fordi jeg antar jeg like så godt kunne sagt:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Du får også lære hvordan du kan oppnå en dypere forståelse og analyse av virksomheten.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Jeg antar at leddet med &lt;em&gt;forbedre mulighetene for&lt;/em&gt; også har trengt gjennom språkfilteret til oversetteren før meg, men der går da min grense for hvor langt jeg synes det er verdt å fjerne seg fra kildespråket.
+I dette tilfellet vil budskapt bli det samme, så da dropper jeg den lille forbedringen.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -167,9 +1000,80 @@ De gjenstridige flosklene er litt som falske venner, altså sånt som når man b
       <pubDate>Wed, 03 Feb 2021 15:19:39 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/simplevp-xtrf-gjort-enkelt/</guid>
-      <description>Helt siden Norge gikk i lockdown, har jeg jobbet med et jobb/hobbyprosjekt som jeg nå begynner å bli veldig fornøyd med. Det er prosjekt som effektiviserer og automatiserer arbeidsflyten min knyttet til XTRFs Vendor Portal.
-Jeg har lært mer om:
- Hvordan bruke HTTP, ~Verdensvevens~ grunnmur. Hvordan lage en database og hvordan bruke SQL-spørringer. Et enkelt (og riktignok ikke særlig pent) brukergrensesnitt Masse Python Sortering av kode, bruk av Git etc.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/intro.gif&#34; alt=&#34;Bilde av simpleVP&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Helt siden Norge gikk i lockdown, har jeg jobbet med et jobb/hobbyprosjekt som jeg nå begynner å bli veldig fornøyd med. Det er prosjekt som effektiviserer og automatiserer arbeidsflyten min knyttet til XTRFs Vendor Portal.&lt;/p&gt;
+&lt;p&gt;Jeg har lært mer om:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hvordan bruke HTTP, ~Verdensvevens~ grunnmur.&lt;/li&gt;
+&lt;li&gt;Hvordan lage en database og hvordan bruke SQL-spørringer.&lt;/li&gt;
+&lt;li&gt;Et enkelt (og riktignok ikke særlig pent) brukergrensesnitt&lt;/li&gt;
+&lt;li&gt;Masse Python&lt;/li&gt;
+&lt;li&gt;Sortering av kode, bruk av Git etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Og det har ikke minst gjort meg til en mye mer effektiv oversetter!&lt;/p&gt;
+&lt;p&gt;Dette programmet er skrevet i Python og &lt;a href=&#34;https://github.com/Oleham/simplevp&#34;&gt;ligger på min Github&lt;/a&gt;. Det er nyttig for oversettere som bruker XTRF Vendor Portal til å laste ned flere oppdrag hver dag, men som synes det blir litt vel tungvint.&lt;/p&gt;
+&lt;p&gt;Prosjektet startet slik jeg har blitt fortalt at alle gode programmeringsprosjekter startet – med et virkelig problem.&lt;/p&gt;
+&lt;h2 id=&#34;bakgrunn&#34;&gt;Bakgrunn&lt;/h2&gt;
+&lt;p&gt;Da jeg startet som fastansatt oversetter i 2018, ble jeg raskt konfrontert med &lt;a href=&#34;https://xtrf.eu&#34;&gt;XTRF&lt;/a&gt;.
+XTRF er et såkalt TMS – Translation Management System – altså en avart av et CMS som er rettet mot språkbransjen.&lt;/p&gt;
+&lt;p&gt;Det polske selskapet har som mål å strømlinjeforme arbeidet i språkbransjen. Taglinen deres er «Translation Made Simple». Systemet består av én kundeportal hvor kunder kan be om tilbud, én portal hvor leverandører kan finne prosjekter, og én Home-portal for alt det administrative i bakgrunnen.
+Oversettere som meg vil altså bli sendt til deres leverandørportal, eller Vendor Portal.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/vendorportal.jpg&#34; alt=&#34;Skjermdump av XTRFs Vendor Portal&#34;&gt;&lt;br&gt;
+&lt;em&gt;Skjermdump av Vendor Portal&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Dette skriver XTRF selv om leverandørportalen sin:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;XTRF’s Vendor Portal is your vendors’ one-stop-shop.
+It’s where they accept jobs, access and upload files,
+create invoices, and update their availability.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Som oversetter bruker man altså XTRF til å si ja til oppdrag, og til å laste ned ev. filer. Man har også tilgang til en oversikt over fullførte oppdrag som kan brukes som fakturagrunnlag. Ganske nyttig!&lt;/p&gt;
+&lt;p&gt;Mitt problem var bare det at jobben min involverte veldig, veldig mange &lt;em&gt;mindre&lt;/em&gt; oppdrag.
+Bak mange av dem lå det en automatisert arbeidsflyt som forhåndsoversatte det meste, og som så spyttet de siste resterende setningene mot meg. En arbeidsdag kunne dermed involvere 30–40 oppdrag på kun 1–4 setninger. For alle disse oppdragene måtte jeg manuelt laste ned filene fra Vendor Portal.&lt;/p&gt;
+&lt;p&gt;Tillat meg, kjære leser, å ta deg med på denne uendelige lidelsen, trinn for trinn.&lt;/p&gt;
+&lt;p&gt;Først måtte jeg velge et oppdrag fra listen, trykke last ned…&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/xtrf_vendorportal_dl_button.JPG&#34; alt=&#34;Last ned&#34;&gt;&lt;/p&gt;
+&lt;p&gt;…velge lokal mappe. Pakke ut. Oversette! Eksportere. Trykke last opp…&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/xtrf_vendorportal_ul_button.jpg&#34; alt=&#34;Last opp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Velge fra lokal mappe, lokalisere filen…&lt;/p&gt;
+&lt;p&gt;…trykke avslutt.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/xtrf_finish_button.jpg&#34; alt=&#34;Avslutt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;…bekrefte avslutt.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/xtrf_finish_button2.jpg&#34; alt=&#34;Bekrefte avslutt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;…og det 40 ganger, dag inn, dag ut.&lt;/p&gt;
+&lt;p&gt;Sammenlagt ender man opp med å bruke veldig mye tid på å klikke på grafiske elementer. Selv om jeg etterhvert er i stand til å gjøre det med bind for øynene, i fritt fall, med armene bundet på ryggen, vil jeg jo aller helst kunne konsentrere meg om oversettelsen!&lt;/p&gt;
+&lt;p&gt;Den ideelle situasjonen ville være at alle disse oppdragene bare er en lang, uavbrutt rekke med tekst.
+Jeg vil ha så få muligheter til å falle ut av flytsonen som mulig.&lt;/p&gt;
+&lt;h2 id=&#34;simplevp&#34;&gt;simpleVP&lt;/h2&gt;
+&lt;p&gt;En dag, mens jeg satt i en transe og klikket på grønne knapper, drømte jeg opp «simpleVP». En leverandørportal av folket – for folket. A powerful tool enabling freedom to enjoy what really matters to you. We take care of the rest. Eller noe annet sånn bullshit.&lt;/p&gt;
+&lt;p&gt;Den første iterasjonen av simpleVP var et Python-skript som fjernstyrte en nettleser. Det var ganske ålreit, fordi det i det minste tok seg av all klikkingen. Jeg kunne stikke bort på kjøkkenet og hente meg en kaffe, og i mellomtiden navigerte simpleVP versjon 1 seg gjennom leverandørportalen, lastet opp filen, avsluttet oppdraget og startet neste oppdrag. &lt;a href=&#34;https://www.selenium.dev/&#34;&gt;Til dette brukte jeg det som heter Selenium.&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Men til tross for nytelsen det er å kunne se på at musepekeren flytter seg magisk over skjermen – om jeg virkelig ville spare inn verdifull tid, måtte programmet jobbe enda litt raskere enn det.&lt;/p&gt;
+&lt;p&gt;Etter mye prøving og feiling fant jeg, med god hjelp, til slutt noe som fungerte enda bedre: simpleVP versjon 2!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/simplevp_list_view.jpg&#34; alt=&#34;simpleVP versjon 2&#34;&gt;&lt;br&gt;
+&lt;em&gt;Listevisningen til simpleVP.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Programmet fungerer nå som en veldig forenklet utgave av Vendor Portal. Man velger dato i kalenderen til høyre, og har så valget om å vise alle oppdrag med nedlastbare filer, eller vise absolutt alle oppdrag med frist på valgt dato.&lt;/p&gt;
+&lt;p&gt;Når man trykker på oppdater-symbolet (♻️), vil simpleVP legge til nye oppdrag i listen eller endre status på oppdrag – litt som i nettleseren.&lt;/p&gt;
+&lt;p&gt;Det som gjør simpleVP spesielt nyttig, er at man kan velge flere oppdrag med sjekkboksene ute til venstre. Når man trykker på download, vil &lt;strong&gt;alle&lt;/strong&gt; filene lastes ned til mappen som er definert, uten noe om og men. Mappen vil kun inneholde filene som ble lastet ned sist.&lt;/p&gt;
+&lt;p&gt;Nå trenger jeg ikke lenger forlate oversettelsesprogrammet mitt, men kan jobbe meg gjennom fil for fil, uten avbrytelser. Jeg bruker en hurtigtast for å pakke ut neste prosjekt i nedlastningsmappen, og det går lynraskt.&lt;/p&gt;
+&lt;p&gt;På samme måte kan jeg slenge alle ferdige prosjekter inn i en mappe, uten å memorere filnavn eller tenke noe videre over det. Når filen skal lastes opp, finner simpleVP selv frem til riktig fil, laster den opp og avslutter oppdraget.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/simplevp_list_status.JPG&#34; alt=&#34;simpleVP versjon 2&#34;&gt;&lt;br&gt;
+&lt;em&gt;Slik ser det ut på en typisk arbeidsdag.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Programmet, eller databasen, holder selv styr på hvilke oppdrag som er lastet ned, lastet opp, eller som har blitt avsluttet (OK). Grunnen til at det er to separate statuser for opplastet og OK, er at det ikke fungerer feilfritt hver gang på grunn av en intern feil i XTRF-systemet. I slike tilfeller er det lettest å bruke nettleseren til forsøke å stenge oppdraget, siden det trengs flere tilløp.&lt;/p&gt;
+&lt;h2 id=&#34;arktitekturen-bak&#34;&gt;Arktitekturen bak&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/bloggpost_simplevp/sVP_explanation.png&#34; alt=&#34;Databasen&#34;&gt;&lt;br&gt;
+&lt;em&gt;En &amp;ndash;elegant&amp;ndash; fremstilling av arkitekturen bak.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;simpleVP benytter seg av det man kaller et API &amp;ndash; &lt;em&gt;application programming interface&lt;/em&gt;. Når jeg bruker XTRF sin opprinnelige Vendor Portal, blir det sendt en forespørsel til XTRF sin server, som svarer med en strukturert oversikt over alle tilgjengelige oppdrag i JSON-format.&lt;/p&gt;
+&lt;p&gt;For å lage simpleVP har jeg ganske enkelt undersøkt hvilke forespørsler som sendes i nettleseren min når jeg besøker vendor portal. Så har jeg skrevet et python-program som sender akkurat de samme forespørslene som nettleseren min gjør.
+Om jeg bare formulerer forespørselen riktig, bryr ikke serveren til XTRF seg om det er en nettleser eller et python-skript som står bak: den bare svarer med ønsket informasjon.&lt;/p&gt;
+&lt;p&gt;Hele cluet er altså å lage et program som emulerer nettsiden til XTRF. Kommunikasjonen foregår etter HTTP &amp;ndash; &lt;em&gt;Hyper Text Transfer Protocol&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Informasjonen som returneres, lagres så i min lokale database. Det er oppdragsnummer, frist, størrelsen på oppdraget, prosjektlederen osv.&lt;/p&gt;
+&lt;p&gt;Det siste leddet i programmet er selve det grafiske brukergrensesnittet, altså «vinduet». Det er et eget program som tegner opp et vindu ved hjelp av Python sitt tkinter-bibliotek. Programmet sender en forespørsel til min lokale database, for eksempel «vis alle oppdrag som har frist mandag 12.01.2021». Databasen svarer, og informasjonen sorteres til en rekke setninger som listes opp ved siden av en rekke sjekkbokser. Brukeren kan nå interagere med disse sjekkboksene, og programmet vil knytte det til riktig underliggende oppdrags-ID.&lt;/p&gt;
+&lt;p&gt;Dermed kan brukeren selv styre opplastning og nedlastning av individuelle oppdrag.&lt;/p&gt;
+&lt;h2 id=&#34;veien-videre&#34;&gt;Veien videre&lt;/h2&gt;
+&lt;p&gt;simpleVP er et lite hjertebarn som jeg bruker hver dag, og jeg vet at flere tidligere kolleger i GLOBALscandinavia også bruker det. Jeg fortsetter inntil videre å utvikle det på samme måte som jeg har gjort hele tiden: jeg fikser småfeil her og der når jeg kommer over dem og legger til forbedringer når jeg føler for det. Det er ikke et disiplinert prosjekt, men det har vært veldig lærerikt.&lt;/p&gt;
+&lt;p&gt;Akkurat nå er det så klart veldig tilpasset oppdrag fra et visst oversettelsesbyrå og en viss type oppdrag, men jeg ser for meg at jeg etterhvert vil bruke det for andre oversettelsesbyråer som bruker XTRF-systemet.&lt;/p&gt;
+&lt;p&gt;Jeg vil også lage et nytt prosjekt opp mot XTRF Vendor Portal som skal la meg generere egne fakturaer automatisk. Det vil fungere på omtrent samme måte, men produktet vil da bli en spesifikasjonsliste på en faktura, og ikke en liste med sjekkbokser på et grafisk brukergrensesnitt.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Oleham/simplevp&#34;&gt;Last ned simpleVP 2.0 her!&lt;/a&gt; Alltid gøy med kommentarer, tips og råd! :)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -178,8 +1082,74 @@ Jeg har lært mer om:
       <pubDate>Wed, 27 Jan 2021 19:46:15 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/automatisk-registrering-kunder-xtrf/</guid>
-      <description>Denne bloggposten beskriver et lite pilotkonsept jeg lagde i fjor. Jeg arbeidet da som selger for GLOBALscandinavia AS, og hadde ansvaret for å forberede tilbud til kunder som meldte seg via nettsiden vår. Den samme oppsummeringen ligger ute på min Github
-Dette prosjektet var en god trening i å bruke både Django og JSON-API. Jeg måtte sette meg inn det å selv lage et API, og det å forstå dokumentasjonen til API-et noen andre har laget.</description>
+      <description>&lt;p&gt;Denne bloggposten beskriver et lite pilotkonsept jeg lagde i fjor. Jeg arbeidet da som selger for GLOBALscandinavia AS, og hadde ansvaret for å forberede tilbud til kunder som meldte seg via nettsiden vår. &lt;a href=&#34;https://github.com/Oleham/xtrf_client_registration&#34;&gt;Den samme oppsummeringen ligger ute på min Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Dette prosjektet var en god trening i å bruke både Django og JSON-API. Jeg måtte sette meg inn det å selv lage et API, og det å forstå dokumentasjonen til API-et noen andre har laget.
+Husker det var spesielt morsomt å utvide funksjonaliteten med automatiske varsler til Teams! Og ikke minst var det min første erfaring med &lt;a href=&#34;https://www.linode.com&#34;&gt;Linode&lt;/a&gt;, hvor man kan leie seg en liten virtuell server for noen få euro i måneden. Det er tjenesten jeg nå hoster denne nettsiden på.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;automatically-registering-clients-on-the-xtrf-translation-system&#34;&gt;Automatically registering clients on the XTRF translation system&lt;/h2&gt;
+&lt;h3 id=&#34;why&#34;&gt;Why?&lt;/h3&gt;
+&lt;p&gt;Working as a sales person at a translation agency, I recieved numerous requests from potential clients requesting a quote. The requests are usually sent to a large number of agencies in order for them to compare prices. Sending these probably didn&amp;rsquo;t take the potential clients very long. However, I found that registering them in XTRF so that I could prepare a quote ended up eating up a lot of my time.&lt;/p&gt;
+&lt;p&gt;XTRF is a nice enough TMS (Translation Management System), but it&amp;rsquo;s heavy: with a lot of menus. Most of the time, you end up entering the same information for everyone. So why not automate the process?&lt;/p&gt;
+&lt;h3 id=&#34;gathering-information&#34;&gt;Gathering information&lt;/h3&gt;
+&lt;p&gt;Interestingly enough, most potential clients went through our web page in order to request a quote. There, they would be able to enter their basic contact information along with their request. I would then register them as a new client in the XTRF database, drawing on online sources to find the missing pieces. Especially the organization number or CSV-number, which is needed for tax reasons.&lt;/p&gt;
+&lt;p&gt;In my new project, I would allow the clients to simply enter this information themselves. The tax number (organization number in Sweden/Norway, CVR in Denmark) is the most important piece of information. Depending on which Scandinavian country the company was from, I would know what else to set up when registering them to the XTRF database: project managers, invoicing settings, responsible sales person, etc.&lt;/p&gt;
+&lt;p&gt;Of course, it would also be nice to keep all the not so serious-sounding clients out of our XTRF database. I came up with a simple architecture looking something like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/automatisk-registrering-kunder-xtrf-chart.png&#34; alt=&#34;The architecture of my site&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here, the clients could interact with our web page (represented by the IP adress in the illustration). The sales team (&amp;ldquo;Salg&amp;rdquo;) would recieve a notification, and choose whether to subsequently transfer the information from the web page into the main XTRF database.&lt;/p&gt;
+&lt;p&gt;By first having the potential clients enter their information into an intermediary database, my translation agency would be able to screen the requests before choosing to automatically registering them on XTRF. That&amp;rsquo;s good, as we&amp;rsquo;d get a lot of requests for smaller translation jobs, two-pagers like CVs and diplomas, which wasn&amp;rsquo;t something we as a B2B translation agency would do.&lt;/p&gt;
+&lt;p&gt;A more prominent reason for this architecture is also simply the fact that I was learning Django at the time. I thought this would be a good opportunity to make use of the &lt;a href=&#34;https://www.django-rest-framework.org/&#34;&gt;Django REST API framework&lt;/a&gt;. I quickly built a very simple pilot web site containing only one form in the frontend.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/automatisk-registrering-kunder-xtrf-form.jpg&#34; alt=&#34;The form for collecting user input&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here, the potential clients would be able enter their information and write a short message to request a quote.
+This form was linked to the following Django model:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cdcd00&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#00cdcd&#34;&gt;Company&lt;/span&gt;(models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Model):
+    name &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;300&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Name&amp;#34;&lt;/span&gt;)
+    publish_date &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;DateTimeField(auto_now&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True)
+    adressLine1 &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adress Line 1&amp;#34;&lt;/span&gt;)
+    adressLine2 &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adress Line 2&amp;#34;&lt;/span&gt;)
+    area_code &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Area Code&amp;#34;&lt;/span&gt;)
+    email &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;EmailField(verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;E-Mail&amp;#34;&lt;/span&gt;)
+    phone_number &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Phone Number&amp;#34;&lt;/span&gt;)
+    city &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;200&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;City&amp;#34;&lt;/span&gt;)
+    country_id &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;ForeignKey(Country, on_delete&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CASCADE, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Country&amp;#34;&lt;/span&gt;)
+    idNumber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;CharField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, max_length&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;30&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Company ID/Org.No./CVR No.&amp;#34;&lt;/span&gt;)
+    document &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;FileField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, upload_to&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;documents/&amp;#39;&lt;/span&gt;, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Upload Files that need translating&amp;#34;&lt;/span&gt;)
+    freetext &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; models&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;TextField(blank&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True, verbose_name&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;What can we help you with?&amp;#34;&lt;/span&gt;)
+
+    &lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; __str__(self):
+        &lt;span style=&#34;color:#cdcd00&#34;&gt;return&lt;/span&gt; self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;name
+
+    &lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; get_absolute_url(self):
+        &lt;span style=&#34;color:#cdcd00&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;success/&amp;#34;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A Django model defines the database fields for the table which is connected to the web page form. When the user submits the form, the information is organized and stored in the corresponding fields of that database table (sort of like an Excel spreadsheet).
+As you might tell from the model, the potential client would also be able to directly upload the file he or she wanted translated.&lt;/p&gt;
+&lt;h3 id=&#34;registering&#34;&gt;Registering&lt;/h3&gt;
+&lt;p&gt;When someone entered the above information to request a quote, all the information was stored on the database of my Django site. It was then accessible via the Django REST API in JSON format.&lt;/p&gt;
+&lt;p&gt;I would get an email from the server informing me of the request. Also, my team would recieve a message on &lt;a href=&#34;https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/connectors-using&#34;&gt;Teams through a connector&lt;/a&gt;, which would allow us to directly discuss the request.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/automatisk-registrering-kunder-xtrf-teams.jpg&#34; alt=&#34;Demo of the Teams connector&#34;&gt;&lt;/p&gt;
+&lt;p&gt;If we deemed the request as serious, we would run the python script &lt;strong&gt;add_client.py&lt;/strong&gt;, using the ID of the request as an argument, i.e. &lt;code&gt;python3 add_client.py 23&lt;/code&gt;. The script downloaded the information from the Django API and instantly uploaded it to the XTRF database through the &lt;a href=&#34;https://www.xtrf.eu/xtrf-api-doc/home-api&#34;&gt;Home Portal API&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;to-test-the-django-site&#34;&gt;To test the Django site&lt;/h3&gt;
+&lt;p&gt;Install something similar to the requirements in &lt;strong&gt;requirements.txt&lt;/strong&gt;.
+Go into the client_registration folder, migrate the database and run the test server.
+Add a super user so that you will be able to log in to the admin and API panels.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;cd&lt;/span&gt; client_registration
+python3 manage.py makemigrations
+python3 manage.py makemigrations registration_app
+python3 manage.py migrate
+python3 manage.py createsuperuser
+python3 manage.py runserver
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Go to localhost:8000 and try adding someone to your database. You should see the company you added on localhost:8000/api/companies&lt;/p&gt;
+&lt;p&gt;To review the email and Teams-functionality, check out the commented out code in &lt;strong&gt;client_registration/registration_app/views.py&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;to-sum-up&#34;&gt;To sum up&lt;/h3&gt;
+&lt;p&gt;This was a fun &amp;ldquo;proof-of-concept&amp;rdquo;. XTRF is a very big TMS that aims to satisfy every thinkable need. For us, the translation business is mostly fast-moving and fluid. Why invest too much time in a potential client when the likelihood of them picking one of the fifteen other agencies they contacted is so high?&lt;/p&gt;
+&lt;p&gt;Advantages of automating client registration in XTRF:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Instantanous registration within seconds&lt;/li&gt;
+&lt;li&gt;All standard fields entered correctly based on country&lt;/li&gt;
+&lt;li&gt;No danger of spam, as the client go through an intermediate server&lt;/li&gt;
+&lt;li&gt;Teams integration – better communication!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -188,10 +1158,16 @@ Dette prosjektet var en god trening i å bruke både Django og JSON-API. Jeg må
       <pubDate>Sun, 24 Jan 2021 16:56:35 +0100</pubDate>
       
       <guid>https://www.olehammersland.com/blogg/velkommen/</guid>
-      <description>Hei og velkommen til den første bloggposten min.
-Her vil jeg skrive om oversettelse, språk, programmering og alle andre interesser.
-Jeg vil skrive opp ulike tips og triks og andre prosjekter jeg holder på med. Blant annet ser jeg for meg at jeg vil vie litt plass til ulike snarveier og arbeidsflyter jeg har utviklet når jeg arbeider med oversettelsesverktøy som
- XTRF memoQ Transit NXT  Jeg arbeider f.eks. også mye med bash og python for å automatisere og effektivisere arbeidet mitt.</description>
+      <description>&lt;p&gt;Hei og velkommen til den første bloggposten min.&lt;/p&gt;
+&lt;p&gt;Her vil jeg skrive om oversettelse, språk, programmering og alle andre interesser.&lt;/p&gt;
+&lt;p&gt;Jeg vil skrive opp ulike tips og triks og andre prosjekter jeg holder på med. Blant annet ser jeg for meg at jeg vil vie litt plass til ulike snarveier og arbeidsflyter jeg har utviklet når jeg arbeider med oversettelsesverktøy som&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;XTRF&lt;/li&gt;
+&lt;li&gt;memoQ&lt;/li&gt;
+&lt;li&gt;Transit NXT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Jeg arbeider f.eks. også mye med bash og python for å automatisere og effektivisere arbeidet mitt. Noen av disse triksene vil jeg også gjerne forevige i dagbokform.&lt;/p&gt;
+</description>
     </item>
     
   </channel>
