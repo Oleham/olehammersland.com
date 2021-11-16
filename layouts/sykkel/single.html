@@ -1,0 +1,10 @@
+{{ define "main" }}
+
+{{ .Content }}
+
+
+<div id="bysykkel-component"></div>
+{{ $sykkel := resources.Get "bysykkel.js" | js.Build "sykkel.js" }}
+<script src={{ $sykkel.RelPermalink }}></script>
+
+{{ end }}

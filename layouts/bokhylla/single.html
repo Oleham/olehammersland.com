@@ -1,0 +1,52 @@
+{{ define "main" }}
+
+{{ .Content }}
+
+
+<div x-data="param_data">
+    <template x-for="bok in data">
+        <div :class="overlay"
+        x-data="{selected:false, stil: 'card', overlay:''}" 
+        :class="stil"
+        @click="selected=!selected; 
+                if (selected) {
+                    overlay='active_overlay';
+                    stil='selected_card';
+                } else {
+                    overlay='';
+                    stil='card';
+                }
+        ">
+        <div :class="stil">
+            <img :src="bok.img">
+            <div class="text-box">
+                <div x-text="bok.genre" class="label" x-show="selected" x-transition></div>
+                <h3 x-text="bok.title"></h3>
+                <i x-text="bok.subtitle" x-show="selected" x-transition></i>
+                <p x-text="bok.author"></p>
+                <div class="review" x-show="selected" x-transition:enter.delay.200ms>
+                <h4>Hva jeg synes</h4>
+                <p x-html="bok.review" ></p>
+            </div>
+        </div>
+        </div>
+    </template>
+</div>
+
+<div style="clear:both;"></div>
+
+{{ $alpine := resources.Get "bokhylla.js" | js.Build (dict "minify" "true" "targetPath" "alpine.js") }}
+
+<script src={{ $alpine.RelPermalink }} defer></script>
+
+<script>
+  let jsobj = JSON.parse("{{ .Site.Data.bokhylla | jsonify }}")
+  document.addEventListener('alpine:init', () => {
+        Alpine.data('param_data', () => ({
+              data: jsobj
+            })
+        )
+    })
+</script>
+
+{{ end }}

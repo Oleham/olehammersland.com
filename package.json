@@ -1,0 +1,23 @@
+{
+  "name": "olehammersland.com",
+  "version": "1.0.0",
+  "description": "backup av nettsiden min",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oleham/olehammersland.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oleham/olehammersland.com/issues"
+  },
+  "homepage": "https://github.com/Oleham/olehammersland.com#readme",
+  "devDependencies": {
+    "alpinejs": "^3.5.1"
+  }
+}

@@ -14,8 +14,6 @@ ignoreErrors = ["error-disable-taxonomy"]
 
 [params]
   authorName = "Ole Hammersland"
-  # Alpine JS CDN
-  alpineCDN= "https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
 
   description = "Min hjemmeside. Jeg arbeider med oversettelse fra tysk, engelsk, dansk og svensk."
 

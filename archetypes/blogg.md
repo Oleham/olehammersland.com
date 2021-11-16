@@ -11,12 +11,6 @@ tags = [{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $
 
 # Add toc just above title
 include_toc = false
-
-# Add Alpine JS CDN
-include_alpinejs = false
-
-# Send data obj into Alpine.data()
-include_data = false
 +++
 
 This is a page about »{{ replace .Name "-" " " | title }}«.

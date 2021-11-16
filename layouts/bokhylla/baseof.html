@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}nb-NO{{ end }}">
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 
 <head>
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
@@ -16,6 +16,7 @@
   {{ end -}}
 
   {{- partial "style.html" . -}}
+  {{- partial "style-bokhylla.html" . -}}
 
 </head>
 
@@ -29,9 +30,6 @@
   <footer>
     {{- partial "footer.html" . -}}
   </footer>
-
-  {{$build := resources.Get "index.js" | js.Build (dict "minify" "true" "targetPath" "bundle.js") }}
-  <script src={{ $build.RelPermalink }}></script>
 </body>
 
 </html>

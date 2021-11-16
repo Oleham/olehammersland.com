@@ -1,2 +1,4 @@
 themes/*
 resources/*
+node_modules/
+package-lock.json

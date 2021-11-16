@@ -32,23 +32,4 @@
 </p>
 {{ end }}
 
-{{ if .Params.sykkel }}
-<!-- Custom bysykkel component -->
-<div id="bysykkel-component"></div>
-{{ $sykkel := resources.Get "bysykkel.js" | js.Build "sykkel.js" }}
-<script src={{ $sykkel.RelPermalink }}></script>
-{{ end }}
-
-{{ if .Params.include_data }}
-<script>
-  let jsobj = JSON.parse("{{ .Params.data | jsonify }}")
-  document.addEventListener('alpine:init', () => {
-        Alpine.data('param_data', () => ({
-              data: jsobj
-            })
-        )
-    })
-</script>
-{{ end }}
-
 {{ end }}

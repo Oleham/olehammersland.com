@@ -1,7 +1,8 @@
 ---
 title: "Sykkel"
 menu: "main"
-sykkel: true
+
+type: "sykkel"
 ---
 
 ## Oslo Bysykkel
