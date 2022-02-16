@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ole Hammersland sin blogg</title>
+    <link>https://www.olehammersland.com/blogg/go/</link>
+    <description>Ole Hammersland sin blogg</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Mon, 26 Apr 2021 12:57:36 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mitt første Go-prosjekt</title>
+      <link>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</link>
+      <pubDate>Mon, 26 Apr 2021 12:57:36 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</guid>
+      <description>&lt;p&gt;Jeg har de siste ukene jobbet ganske jevnt og trutt på et nytt programmerings-prosjekt. Målet er å utvide simpleVP, et prosjekt jeg skapte for å automatisere filnedlastning og opplastning fra oversettelsesportalen XTRF (&lt;a href=&#34;http://localhost:1313/blogg/simplevp-xtrf-gjort-enkelt/&#34;&gt;se her&lt;/a&gt;). I tillegg vil jeg smelte det sammen med faktura-generatoren min. Det nye prosjektet skal altså bli en one-stop klient for XTRF-systemet for oversettere!&lt;/p&gt;
+&lt;p&gt;Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er at den er skrevet i Go. Go er et såkalt &lt;em&gt;kompilert&lt;/em&gt; språk som gjør det mye lettere for meg å distribuere programmet. Da jeg lagde det opprinnelige simpleVP i Python, skrev jeg lange instruksjoner til sluttbrukerne om hvordan man laster ned Python, bruker kommandolinjen, installerer ulike moduler og setter opp miljøvariabler. Nå er målet å lage en enkel kjørbar fil i et format som er velkjent for de fleste Windows-brukere (.exe). Det legger Go til rette for.&lt;/p&gt;
+&lt;p&gt;Det andre som er nytt, er at jeg skaper programmet med perspektivet til en frilansoversetter. Derfor skal systemet ha støtte for å koble seg til ulike XTRF-servere, slik at jeg kan samle oppdrag fra flere oversettelsesbyråer inn i én enkel oversikt. I min erfaring er XTRF noe slikt som en bransjestandard. Tar man oppdrag fra et oversettelsesbyrå, er sjansen for at de bruker XTRF temmelig stor. Derfor er det spesielt verdifullt å samle alle disse web-applikasjonene inn i ett enkelt grensesnitt. Dessuten baserer de fleste byråer seg på XTRF til regnskapet sitt. Derfor er det heller ikke så dumt å legge inn støtte for fakturering også.&lt;/p&gt;
+&lt;p&gt;Så langt har jeg jobbet mest med et enkelt grafisk brukergrensesnitt og databasen. Brukergrensesnittet er basert på en åpen kildekode-modul ved navn &lt;a href=&#34;https://pkg.go.dev/fyne.io/fyne&#34;&gt;Fyne&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-gui-first-look.jpg&#34; alt=&#34;Slik ser nye simpleVP ut.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Bildet over viser den delen av programmet som er kommet lengst: siden for å opprette, endre og slette forbindelsene til de ulike XTRF-portalene. Når du bruker programmet, vil du kunne bruke alle disse XTRF-portalene samtidig, i samme programmet.&lt;/p&gt;
+&lt;p&gt;Prosjektet er delt opp i følgende pakker eller «delprogrammer»:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;            main
+           /    \
+        gui  –-  db
+                   \
+                   xtrf
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;GUI tegner det grafiske grensnittet på skjermen. For å gjøre det, henter det informasjon fra databasen (db). Kunden kan kan også oppdatere databasen. Da bruker databasen delprogrammet som heter xtrf til å laste ned informasjonen via API-et til XTRF.&lt;/p&gt;
+&lt;p&gt;Databasen er med andre ord hjulnavet, &lt;em&gt;die Drehscheibe&lt;/em&gt;, i programmet mitt. Den starter med en tabell for &lt;strong&gt;settings&lt;/strong&gt;. En setting inneholder påloggingsinformasjonen for en XTRF-portal. Per setting kan man finne flere &lt;strong&gt;jobs&lt;/strong&gt;, som representerer jobbene fra XTRF, enten de har statusen &lt;em&gt;in progress&lt;/em&gt;, &lt;em&gt;pending&lt;/em&gt; eller &lt;em&gt;to be invoiced&lt;/em&gt;. Hver jobb kan igjen inneholde filer: tabellen &lt;strong&gt;files&lt;/strong&gt; inneholder alle filene.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-database.jpg&#34; alt=&#34;Database-oversikt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Når hovedfunksjonaliteten er klar, kan det bli relevant med en tabell kalt &lt;strong&gt;invoices&lt;/strong&gt;, som inneholder fakturaene brukeren skaper. Hver jobb vil da også knyttes til en faktura. Tabellen &lt;strong&gt;banks&lt;/strong&gt; vil inneholde betalingsinformasjonen til brukeren, og så må &lt;strong&gt;settings&lt;/strong&gt; oppdateres med kundens faktureringsinnstillinger.&lt;/p&gt;
+&lt;p&gt;Databasen, og logikken for å oppdatere den, er nesten fullført. I neste trinn må det grafiske brukergrensesnittet kunne vise jobber, beskrivelser, filer og annen informasjon på en passe oversiktlig måte. Deretter skal brukeren få muligheten til å laste ned jobber.&lt;/p&gt;
+&lt;p&gt;Gleder meg til å jobbe videre på dette prosjektet!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

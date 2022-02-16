@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://www.olehammersland.com/images/favicon.png" />
+<title>SimpleVP – XTRF gjort enkelt! | Ole Hammersland</title>
+<meta name="title" content="SimpleVP – XTRF gjort enkelt!" />
+<meta name="description" content="Python-prosjekt for å automatisere og forenkle filhåndtering i XTRF." />
+<meta name="keywords" content="automatisering,oversettelse,python,xtrf,effektivisering," />
+
+
+<meta property="og:title" content="SimpleVP – XTRF gjort enkelt!" />
+<meta property="og:description" content="Python-prosjekt for å automatisere og forenkle filhåndtering i XTRF." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.olehammersland.com/blogg/simplevp-xtrf-gjort-enkelt/" />
+<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="article:published_time" content="2021-02-03T15:19:39+01:00" />
+<meta property="article:modified_time" content="2021-02-03T15:19:39+01:00" />
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.olehammersland.com/images/share.png"/>
+
+<meta name="twitter:title" content="SimpleVP – XTRF gjort enkelt!"/>
+<meta name="twitter:description" content="Python-prosjekt for å automatisere og forenkle filhåndtering i XTRF."/>
+
+
+
+<meta itemprop="name" content="SimpleVP – XTRF gjort enkelt!">
+<meta itemprop="description" content="Python-prosjekt for å automatisere og forenkle filhåndtering i XTRF.">
+<meta itemprop="datePublished" content="2021-02-03T15:19:39+01:00" />
+<meta itemprop="dateModified" content="2021-02-03T15:19:39+01:00" />
+<meta itemprop="wordCount" content="1341">
+<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
+
+
+
+<meta itemprop="keywords" content="automatisering,oversettelse,python,xtrf,effektivisering," />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+
+  :root {
+    --main-color: rgb(35, 19, 253);
+}
+
+  @import url('fonts/inter.css');
+    html { 
+      font-family: 'Inter', sans-serif; 
+    }
+  @supports (font-variation-settings: normal) {
+    html { 
+      font-family: 'Inter var', sans-serif; 
+    }
+  }
+
+  body {
+    margin: auto;
+    font-size: 1.2rem;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+ .logo-icon {
+    min-width: 100px;
+    margin-right: 10px;
+  }
+
+  .logo-box {
+    display:flex;
+    width: 100%;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  #main-nav a {
+    font-size: 1.5rem;
+    margin-right: 5px;
+    padding-right: 10px;
+    color:#444;
+    text-decoration: none;
+    border-right: 2px solid var(--main-color);
+  }
+
+  #main-nav a:hover {
+    color:rgb(145, 139, 139)
+  }
+
+  #main-nav a:last-of-type {
+    border-right: none;
+  }
+
+  #burger {
+    display: none;
+    margin: 10px;
+  }
+
+  .burger-line {
+    height: 5px;
+    width: 35px;
+    background-color:var(--main-color);
+    margin-bottom: 5px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+  .blog-posts a {
+    text-decoration: none;
+    color:#444;
+  }
+
+  .blog-posts h3 {
+    border-bottom: 1px solid var(--main-color);
+  }
+
+  .blog-posts h3::first-letter {
+    color:var(--main-color);
+  }
+
+  .blog-posts a:hover, .blog-posts h3:hover {
+    color:rgb(145, 139, 139);
+  }
+
+  #pagination {
+    margin: auto;
+    width: 100%;
+    align-items: center;
+    font-size: 1.5rem;
+    border: 1px solid var(--main-color);
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #pagination span {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  #pagination button {
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  div#TableOfContents {
+    padding-top: 10px; 
+  }
+  #TableOfContents li {
+    list-style: circle;
+  }
+
+  .blog-teaser  {
+    border: 3px solid var(--main-color);
+    border-radius: 5%;
+    padding: 20px;
+    background-color: lightblue;
+    box-shadow: 5px -5px 10px black;
+    margin-bottom: 15px;
+  }
+
+  .blog-teaser h3 {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 700px) {
+    #burger {
+      display:block
+    }
+
+    #main-nav {
+      display: absolute;
+      transform: translateY(calc(-100vh));
+      height: 5px;
+      transition: 1s;
+      border-left: 2px solid var(--main-color);
+      padding-left: 10px;
+    }
+
+    #main-nav a {
+      border:none;
+    }
+
+    #main-nav.open-burger {
+      display: flex;
+      height: unset;
+      flex-direction: column;
+      transition: 1s;
+      font-size: 2rem;
+      transform: translateY(0);
+    }
+
+    .open-burger .burger-line {
+      margin:none;
+      transform: none;
+    }
+
+   .open-burger #line1 {
+      transform: rotate(45deg) translateY(6px) translateX(1px);
+      margin:none;
+      transition: 1s ease-out;
+    }
+    .open-burger #line2 {
+      display:none;
+    }
+    .open-burger #line3 {
+      transform: rotate(-45deg) translateY(-6px);
+      margin:none;
+      transition: 1s ease-out;
+    }
+  }
+
+
+
+  @media screen and (max-width: 400px) {
+    .logo-box {
+      flex-direction: column;
+    }
+
+    .title {
+      border-bottom: 5px solid var(--main-color);
+    }
+
+    .logo-icon {
+      display:none;
+    }
+
+    #burger {
+      align-self: flex-end;
+    }
+  }
+</style></head>
+
+<body>
+  <header>
+<div class="logo-box">
+  <a href="/" class="title">
+    <img class="logo-icon" src="/images/book.png">
+  </a>
+  <h2>Ole Hammersland</h2>
+  <div id="burger">
+      <div class="burger-line" id="line1"></div>
+      <div class="burger-line" id="line2"></div>
+      <div class="burger-line" id="line3"></div>
+  </div>
+</div>
+<nav id="main-nav"><a href="/">Hjem</a>
+
+<a href="/om/">Om</a>
+
+<a href="/spr%C3%A5ktjenester/">Språktjenester</a>
+
+<a href="/sykkel/">Sykkel</a>
+
+<a href="/bokhylla/">📚</a>
+
+
+<a href="/blogg">Blogg</a>
+
+</nav>
+
+</header>
+  <main>
+
+
+
+<div id="TableOfContents">
+<p><strong>Innhold:</strong></p>
+<nav id="TableOfContents">
+  <ol>
+    <li><a href="#bakgrunn">Bakgrunn</a></li>
+    <li><a href="#simplevp">simpleVP</a></li>
+    <li><a href="#arktitekturen-bak">Arktitekturen bak</a></li>
+    <li><a href="#veien-videre">Veien videre</a></li>
+  </ol>
+</nav>
+
+</div>
+<h1>SimpleVP – XTRF gjort enkelt!</h1>
+<p>
+  <i>
+    <time datetime='2021-02-03' pubdate>
+      Først publisert: 03.02.2021
+    </time>
+  </i>
+</p>
+
+
+<content>
+  <p><img src="/images/blogg/bloggpost_simplevp/intro.gif" alt="Bilde av simpleVP"></p>
+<p>Helt siden Norge gikk i lockdown, har jeg jobbet med et jobb/hobbyprosjekt som jeg nå begynner å bli veldig fornøyd med. Det er prosjekt som effektiviserer og automatiserer arbeidsflyten min knyttet til XTRFs Vendor Portal.</p>
+<p>Jeg har lært mer om:</p>
+<ul>
+<li>Hvordan bruke HTTP, ~Verdensvevens~ grunnmur.</li>
+<li>Hvordan lage en database og hvordan bruke SQL-spørringer.</li>
+<li>Et enkelt (og riktignok ikke særlig pent) brukergrensesnitt</li>
+<li>Masse Python</li>
+<li>Sortering av kode, bruk av Git etc.</li>
+</ul>
+<p>Og det har ikke minst gjort meg til en mye mer effektiv oversetter!</p>
+<p>Dette programmet er skrevet i Python og <a href="https://github.com/Oleham/simplevp">ligger på min Github</a>. Det er nyttig for oversettere som bruker XTRF Vendor Portal til å laste ned flere oppdrag hver dag, men som synes det blir litt vel tungvint.</p>
+<p>Prosjektet startet slik jeg har blitt fortalt at alle gode programmeringsprosjekter startet – med et virkelig problem.</p>
+<h2 id="bakgrunn">Bakgrunn</h2>
+<p>Da jeg startet som fastansatt oversetter i 2018, ble jeg raskt konfrontert med <a href="https://xtrf.eu">XTRF</a>.
+XTRF er et såkalt TMS – Translation Management System – altså en avart av et CMS som er rettet mot språkbransjen.</p>
+<p>Det polske selskapet har som mål å strømlinjeforme arbeidet i språkbransjen. Taglinen deres er «Translation Made Simple». Systemet består av én kundeportal hvor kunder kan be om tilbud, én portal hvor leverandører kan finne prosjekter, og én Home-portal for alt det administrative i bakgrunnen.
+Oversettere som meg vil altså bli sendt til deres leverandørportal, eller Vendor Portal.</p>
+<p><img src="/images/blogg/bloggpost_simplevp/vendorportal.jpg" alt="Skjermdump av XTRFs Vendor Portal"><br>
+<em>Skjermdump av Vendor Portal</em></p>
+<p>Dette skriver XTRF selv om leverandørportalen sin:</p>
+<blockquote>
+<p>XTRF’s Vendor Portal is your vendors’ one-stop-shop.
+It’s where they accept jobs, access and upload files,
+create invoices, and update their availability.</p>
+</blockquote>
+<p>Som oversetter bruker man altså XTRF til å si ja til oppdrag, og til å laste ned ev. filer. Man har også tilgang til en oversikt over fullførte oppdrag som kan brukes som fakturagrunnlag. Ganske nyttig!</p>
+<p>Mitt problem var bare det at jobben min involverte veldig, veldig mange <em>mindre</em> oppdrag.
+Bak mange av dem lå det en automatisert arbeidsflyt som forhåndsoversatte det meste, og som så spyttet de siste resterende setningene mot meg. En arbeidsdag kunne dermed involvere 30–40 oppdrag på kun 1–4 setninger. For alle disse oppdragene måtte jeg manuelt laste ned filene fra Vendor Portal.</p>
+<p>Tillat meg, kjære leser, å ta deg med på denne uendelige lidelsen, trinn for trinn.</p>
+<p>Først måtte jeg velge et oppdrag fra listen, trykke last ned…</p>
+<p><img src="/images/blogg/bloggpost_simplevp/xtrf_vendorportal_dl_button.JPG" alt="Last ned"></p>
+<p>…velge lokal mappe. Pakke ut. Oversette! Eksportere. Trykke last opp…</p>
+<p><img src="/images/blogg/bloggpost_simplevp/xtrf_vendorportal_ul_button.jpg" alt="Last opp"></p>
+<p>Velge fra lokal mappe, lokalisere filen…</p>
+<p>…trykke avslutt.</p>
+<p><img src="/images/blogg/bloggpost_simplevp/xtrf_finish_button.jpg" alt="Avslutt"></p>
+<p>…bekrefte avslutt.</p>
+<p><img src="/images/blogg/bloggpost_simplevp/xtrf_finish_button2.jpg" alt="Bekrefte avslutt"></p>
+<p>…og det 40 ganger, dag inn, dag ut.</p>
+<p>Sammenlagt ender man opp med å bruke veldig mye tid på å klikke på grafiske elementer. Selv om jeg etterhvert er i stand til å gjøre det med bind for øynene, i fritt fall, med armene bundet på ryggen, vil jeg jo aller helst kunne konsentrere meg om oversettelsen!</p>
+<p>Den ideelle situasjonen ville være at alle disse oppdragene bare er en lang, uavbrutt rekke med tekst.
+Jeg vil ha så få muligheter til å falle ut av flytsonen som mulig.</p>
+<h2 id="simplevp">simpleVP</h2>
+<p>En dag, mens jeg satt i en transe og klikket på grønne knapper, drømte jeg opp «simpleVP». En leverandørportal av folket – for folket. A powerful tool enabling freedom to enjoy what really matters to you. We take care of the rest. Eller noe annet sånn bullshit.</p>
+<p>Den første iterasjonen av simpleVP var et Python-skript som fjernstyrte en nettleser. Det var ganske ålreit, fordi det i det minste tok seg av all klikkingen. Jeg kunne stikke bort på kjøkkenet og hente meg en kaffe, og i mellomtiden navigerte simpleVP versjon 1 seg gjennom leverandørportalen, lastet opp filen, avsluttet oppdraget og startet neste oppdrag. <a href="https://www.selenium.dev/">Til dette brukte jeg det som heter Selenium.</a>.</p>
+<p>Men til tross for nytelsen det er å kunne se på at musepekeren flytter seg magisk over skjermen – om jeg virkelig ville spare inn verdifull tid, måtte programmet jobbe enda litt raskere enn det.</p>
+<p>Etter mye prøving og feiling fant jeg, med god hjelp, til slutt noe som fungerte enda bedre: simpleVP versjon 2!</p>
+<p><img src="/images/blogg/bloggpost_simplevp/simplevp_list_view.jpg" alt="simpleVP versjon 2"><br>
+<em>Listevisningen til simpleVP.</em></p>
+<p>Programmet fungerer nå som en veldig forenklet utgave av Vendor Portal. Man velger dato i kalenderen til høyre, og har så valget om å vise alle oppdrag med nedlastbare filer, eller vise absolutt alle oppdrag med frist på valgt dato.</p>
+<p>Når man trykker på oppdater-symbolet (♻️), vil simpleVP legge til nye oppdrag i listen eller endre status på oppdrag – litt som i nettleseren.</p>
+<p>Det som gjør simpleVP spesielt nyttig, er at man kan velge flere oppdrag med sjekkboksene ute til venstre. Når man trykker på download, vil <strong>alle</strong> filene lastes ned til mappen som er definert, uten noe om og men. Mappen vil kun inneholde filene som ble lastet ned sist.</p>
+<p>Nå trenger jeg ikke lenger forlate oversettelsesprogrammet mitt, men kan jobbe meg gjennom fil for fil, uten avbrytelser. Jeg bruker en hurtigtast for å pakke ut neste prosjekt i nedlastningsmappen, og det går lynraskt.</p>
+<p>På samme måte kan jeg slenge alle ferdige prosjekter inn i en mappe, uten å memorere filnavn eller tenke noe videre over det. Når filen skal lastes opp, finner simpleVP selv frem til riktig fil, laster den opp og avslutter oppdraget.</p>
+<p><img src="/images/blogg/bloggpost_simplevp/simplevp_list_status.JPG" alt="simpleVP versjon 2"><br>
+<em>Slik ser det ut på en typisk arbeidsdag.</em></p>
+<p>Programmet, eller databasen, holder selv styr på hvilke oppdrag som er lastet ned, lastet opp, eller som har blitt avsluttet (OK). Grunnen til at det er to separate statuser for opplastet og OK, er at det ikke fungerer feilfritt hver gang på grunn av en intern feil i XTRF-systemet. I slike tilfeller er det lettest å bruke nettleseren til forsøke å stenge oppdraget, siden det trengs flere tilløp.</p>
+<h2 id="arktitekturen-bak">Arktitekturen bak</h2>
+<p><img src="/images/blogg/bloggpost_simplevp/sVP_explanation.png" alt="Databasen"><br>
+<em>En &ndash;elegant&ndash; fremstilling av arkitekturen bak.</em></p>
+<p>simpleVP benytter seg av det man kaller et API &ndash; <em>application programming interface</em>. Når jeg bruker XTRF sin opprinnelige Vendor Portal, blir det sendt en forespørsel til XTRF sin server, som svarer med en strukturert oversikt over alle tilgjengelige oppdrag i JSON-format.</p>
+<p>For å lage simpleVP har jeg ganske enkelt undersøkt hvilke forespørsler som sendes i nettleseren min når jeg besøker vendor portal. Så har jeg skrevet et python-program som sender akkurat de samme forespørslene som nettleseren min gjør.
+Om jeg bare formulerer forespørselen riktig, bryr ikke serveren til XTRF seg om det er en nettleser eller et python-skript som står bak: den bare svarer med ønsket informasjon.</p>
+<p>Hele cluet er altså å lage et program som emulerer nettsiden til XTRF. Kommunikasjonen foregår etter HTTP &ndash; <em>Hyper Text Transfer Protocol</em>.</p>
+<p>Informasjonen som returneres, lagres så i min lokale database. Det er oppdragsnummer, frist, størrelsen på oppdraget, prosjektlederen osv.</p>
+<p>Det siste leddet i programmet er selve det grafiske brukergrensesnittet, altså «vinduet». Det er et eget program som tegner opp et vindu ved hjelp av Python sitt tkinter-bibliotek. Programmet sender en forespørsel til min lokale database, for eksempel «vis alle oppdrag som har frist mandag 12.01.2021». Databasen svarer, og informasjonen sorteres til en rekke setninger som listes opp ved siden av en rekke sjekkbokser. Brukeren kan nå interagere med disse sjekkboksene, og programmet vil knytte det til riktig underliggende oppdrags-ID.</p>
+<p>Dermed kan brukeren selv styre opplastning og nedlastning av individuelle oppdrag.</p>
+<h2 id="veien-videre">Veien videre</h2>
+<p>simpleVP er et lite hjertebarn som jeg bruker hver dag, og jeg vet at flere tidligere kolleger i GLOBALscandinavia også bruker det. Jeg fortsetter inntil videre å utvikle det på samme måte som jeg har gjort hele tiden: jeg fikser småfeil her og der når jeg kommer over dem og legger til forbedringer når jeg føler for det. Det er ikke et disiplinert prosjekt, men det har vært veldig lærerikt.</p>
+<p>Akkurat nå er det så klart veldig tilpasset oppdrag fra et visst oversettelsesbyrå og en viss type oppdrag, men jeg ser for meg at jeg etterhvert vil bruke det for andre oversettelsesbyråer som bruker XTRF-systemet.</p>
+<p>Jeg vil også lage et nytt prosjekt opp mot XTRF Vendor Portal som skal la meg generere egne fakturaer automatisk. Det vil fungere på omtrent samme måte, men produktet vil da bli en spesifikasjonsliste på en faktura, og ikke en liste med sjekkbokser på et grafisk brukergrensesnitt.</p>
+<p><a href="https://github.com/Oleham/simplevp">Last ned simpleVP 2.0 her!</a> Alltid gøy med kommentarer, tips og råd! :)</p>
+
+</content>
+
+
+<hr>
+<p style="text-align: center;"><a href="/blogg/">Tilbake til bloggoversikten</a></p>
+<h4>Tagger:</h4>
+<p>
+  
+  <a href="https://www.olehammersland.com/blogg/automatisering/">#automatisering</a>
+  
+  <a href="https://www.olehammersland.com/blogg/oversettelse/">#oversettelse</a>
+  
+  <a href="https://www.olehammersland.com/blogg/python/">#python</a>
+  
+  <a href="https://www.olehammersland.com/blogg/xtrf/">#xtrf</a>
+  
+  <a href="https://www.olehammersland.com/blogg/effektivisering/">#effektivisering</a>
+  
+</p>
+
+
+
+  </main>
+  <footer>Kontakt: <a href="mailto:post@olehammersland">post@olehammersland.com</a>
+</footer>
+
+  
+  <script src=/bundle.js></script>
+</body>
+
+</html>

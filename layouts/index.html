@@ -1,27 +1,51 @@
 {{ define "main" }}
+{{- partial "style-bokhylla.html" . -}}
 
-{{ .Content }}
 
-{{/*
-KOMMENTAR: Artikkel nr. 2 ser ut til å være den siste. Bedre fremgangsmåte?    
-*/}}
-<h1>Siste innlegg: </h1>
-{{ $count := 0 }}
-{{ range .Site.Pages }}
-    {{if eq .Type "blogg"}}
-    {{ if eq $count 1 }}
+        {{ .Content }}
 
-<div style="background-color: blue;">
-    <small>Lagt ut: {{ .Date.Format "02.01.2006" }}</small>
-    <h3>{{ .Title }}</h3>
-    <p>{{ .Summary }}</p>
-</div>
+        {{/*
+            KOMMENTAR: Artikkel nr. 2 ser ut til å være den siste. Bedre fremgangsmåte?    
+            */}}
+            <h3>Siste innlegg: </h3>
+            {{ $count := 0 }}
+            {{ range .Site.Pages }}
+                {{if eq .Type "blogg"}}
+                {{ if eq $count 1 }}
+                <div class="blog-teaser">
+                    <small>Lagt ut: {{ .Date.Format "02.01.2006" }}</small>
+                    <h3>{{ .Title }}</h3>
+                    <p>{{ .Summary }}</p>
+                    <p><a href="{{ .Permalink }}">Les videre</a></p>
+                </div>
+            
+                {{ end }}
+                {{ $count = add $count 1 }}
+                {{ end }}
+            
+            {{ end }}
+    
+        <h3>Siste bok:</h3>
+        <a href="/bokhylla">
+            <div class="overlay">
+                <div class="card">
+                    {{ $bookslen := sub (len .Site.Data.bokhylla) 1 }}
+                    {{ with (index .Site.Data.bokhylla $bookslen) }}
+                    <img src="{{.img }}" alt="Coveret til {{ .title }}">
+                    <div class="text-box">
+                        <h3>{{ .title }}</h3>
+                        <p style="color:black;">{{ .author }}</p>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </a>
 
-    {{ end }}
-    {{ $count = add $count 1 }}
-    {{ end }}
+        <div style="clear:both;"></div>
+        
 
-{{ end }}
-
+        <h3>RSS:</h3>
+        <input style="width:50%;"type="text" value="{{ .Site.BaseURL }}blogg/index.xml"/> <button>Kopier</button>
+        
 
 {{ end }}

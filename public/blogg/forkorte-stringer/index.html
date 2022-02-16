@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://www.olehammersland.com/images/favicon.png" />
+<title>Forkorte strenger | Ole Hammersland</title>
+<meta name="title" content="Forkorte strenger" />
+<meta name="description" content="Innledning Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.
+Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes." />
+<meta name="keywords" content="automatisering,effektivisering,koding,maskinoversttelse,memoq,oversettelse,python,translation," />
+
+
+<meta property="og:title" content="Forkorte strenger" />
+<meta property="og:description" content="Innledning Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.
+Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.olehammersland.com/blogg/forkorte-stringer/" />
+<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="article:published_time" content="2021-11-04T15:33:19+01:00" />
+<meta property="article:modified_time" content="2021-11-04T15:33:19+01:00" />
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.olehammersland.com/images/share.png"/>
+
+<meta name="twitter:title" content="Forkorte strenger"/>
+<meta name="twitter:description" content="Innledning Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.
+Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes."/>
+
+
+
+<meta itemprop="name" content="Forkorte strenger">
+<meta itemprop="description" content="Innledning Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.
+Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes.">
+<meta itemprop="datePublished" content="2021-11-04T15:33:19+01:00" />
+<meta itemprop="dateModified" content="2021-11-04T15:33:19+01:00" />
+<meta itemprop="wordCount" content="673">
+<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
+
+
+
+<meta itemprop="keywords" content="automatisering,effektivisering,koding,maskinoversttelse,memoq,oversettelse,python,translation," />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+
+  :root {
+    --main-color: rgb(35, 19, 253);
+}
+
+  @import url('fonts/inter.css');
+    html { 
+      font-family: 'Inter', sans-serif; 
+    }
+  @supports (font-variation-settings: normal) {
+    html { 
+      font-family: 'Inter var', sans-serif; 
+    }
+  }
+
+  body {
+    margin: auto;
+    font-size: 1.2rem;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+ .logo-icon {
+    min-width: 100px;
+    margin-right: 10px;
+  }
+
+  .logo-box {
+    display:flex;
+    width: 100%;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  #main-nav a {
+    font-size: 1.5rem;
+    margin-right: 5px;
+    padding-right: 10px;
+    color:#444;
+    text-decoration: none;
+    border-right: 2px solid var(--main-color);
+  }
+
+  #main-nav a:hover {
+    color:rgb(145, 139, 139)
+  }
+
+  #main-nav a:last-of-type {
+    border-right: none;
+  }
+
+  #burger {
+    display: none;
+    margin: 10px;
+  }
+
+  .burger-line {
+    height: 5px;
+    width: 35px;
+    background-color:var(--main-color);
+    margin-bottom: 5px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+  .blog-posts a {
+    text-decoration: none;
+    color:#444;
+  }
+
+  .blog-posts h3 {
+    border-bottom: 1px solid var(--main-color);
+  }
+
+  .blog-posts h3::first-letter {
+    color:var(--main-color);
+  }
+
+  .blog-posts a:hover, .blog-posts h3:hover {
+    color:rgb(145, 139, 139);
+  }
+
+  #pagination {
+    margin: auto;
+    width: 100%;
+    align-items: center;
+    font-size: 1.5rem;
+    border: 1px solid var(--main-color);
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #pagination span {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  #pagination button {
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  div#TableOfContents {
+    padding-top: 10px; 
+  }
+  #TableOfContents li {
+    list-style: circle;
+  }
+
+  .blog-teaser  {
+    border: 3px solid var(--main-color);
+    border-radius: 5%;
+    padding: 20px;
+    background-color: lightblue;
+    box-shadow: 5px -5px 10px black;
+    margin-bottom: 15px;
+  }
+
+  .blog-teaser h3 {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 700px) {
+    #burger {
+      display:block
+    }
+
+    #main-nav {
+      display: absolute;
+      transform: translateY(calc(-100vh));
+      height: 5px;
+      transition: 1s;
+      border-left: 2px solid var(--main-color);
+      padding-left: 10px;
+    }
+
+    #main-nav a {
+      border:none;
+    }
+
+    #main-nav.open-burger {
+      display: flex;
+      height: unset;
+      flex-direction: column;
+      transition: 1s;
+      font-size: 2rem;
+      transform: translateY(0);
+    }
+
+    .open-burger .burger-line {
+      margin:none;
+      transform: none;
+    }
+
+   .open-burger #line1 {
+      transform: rotate(45deg) translateY(6px) translateX(1px);
+      margin:none;
+      transition: 1s ease-out;
+    }
+    .open-burger #line2 {
+      display:none;
+    }
+    .open-burger #line3 {
+      transform: rotate(-45deg) translateY(-6px);
+      margin:none;
+      transition: 1s ease-out;
+    }
+  }
+
+
+
+  @media screen and (max-width: 400px) {
+    .logo-box {
+      flex-direction: column;
+    }
+
+    .title {
+      border-bottom: 5px solid var(--main-color);
+    }
+
+    .logo-icon {
+      display:none;
+    }
+
+    #burger {
+      align-self: flex-end;
+    }
+  }
+</style></head>
+
+<body>
+  <header>
+<div class="logo-box">
+  <a href="/" class="title">
+    <img class="logo-icon" src="/images/book.png">
+  </a>
+  <h2>Ole Hammersland</h2>
+  <div id="burger">
+      <div class="burger-line" id="line1"></div>
+      <div class="burger-line" id="line2"></div>
+      <div class="burger-line" id="line3"></div>
+  </div>
+</div>
+<nav id="main-nav"><a href="/">Hjem</a>
+
+<a href="/om/">Om</a>
+
+<a href="/spr%C3%A5ktjenester/">Språktjenester</a>
+
+<a href="/sykkel/">Sykkel</a>
+
+<a href="/bokhylla/">📚</a>
+
+
+<a href="/blogg">Blogg</a>
+
+</nav>
+
+</header>
+  <main>
+
+
+
+<div id="TableOfContents">
+<p><strong>Innhold:</strong></p>
+<nav id="TableOfContents">
+  <ol>
+    <li><a href="#innledning">Innledning</a></li>
+    <li><a href="#ny-arbeidsflyt">Ny arbeidsflyt</a>
+      <ol>
+        <li><a href="#trinn-1-analysere-teksten">Trinn 1: Analysere teksten</a></li>
+        <li><a href="#trinn-2-lage-forkortelser">Trinn 2: Lage forkortelser</a></li>
+        <li><a href="#trinn-3-korte-hver-setning-ned-til-25-bytes">Trinn 3: Korte hver setning ned til 25 bytes</a></li>
+      </ol>
+    </li>
+    <li><a href="#oppsummering">Oppsummering</a></li>
+  </ol>
+</nav>
+
+</div>
+<h1>Forkorte strenger</h1>
+<p>
+  <i>
+    <time datetime='2021-11-04' pubdate>
+      Først publisert: 04.11.2021
+    </time>
+  </i>
+</p>
+
+
+<content>
+  <h2 id="innledning">Innledning</h2>
+<p>Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.</p>
+<p>Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med  at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes. Vet ikke helt hvorfor kundene er så gniene på bytesene.</p>
+<p>Uansett slo det meg som lite effektivt, spesielt når Excel-makroen ikke teller riktig, så jeg har forsøkt å utvikle en litt raskere workflow. Håpet er å kunne bruke denne også på fremtidige oppdrag. Les videre:</p>
+<h2 id="ny-arbeidsflyt">Ny arbeidsflyt</h2>
+<h3 id="trinn-1-analysere-teksten">Trinn 1: Analysere teksten</h3>
+<p>Jeg begynte med et python-skript som deler opp hver setning i enkeltord og deretter teller opp hvor ofte hvert enkeltord forekommer i setningen. Dette (meta!)skriptet skriver så et nytt python-skript som kun inneholder en liste over hvert ord dobbelt og en merknad om hvor ofte ordet forekommer i Excel-listen.</p>
+<p>Slik ser det nye python-skriptet ut:</p>
+<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vanlige_ord <span style="color:#39c">=</span> [
+    (<span style="color:#cd0000">&#39;Ut-&#39;</span>,<span style="color:#cd0000">&#39;Ut-&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;innmonteringsverktøy&#39;</span>,<span style="color:#cd0000">&#39;innmonteringsverktøy&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;Belgia/Nederland&#39;</span>,<span style="color:#cd0000">&#39;Belgia/Nederland&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;Tyskland/Sveits/Østerrike&#39;</span>,<span style="color:#cd0000">&#39;Tyskland/Sveits/Østerrike&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;Frankrike/Belgia/Sveits/Lux.&#39;</span>,<span style="color:#cd0000">&#39;Frankrike/Belgia/Sveits/Lux.&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;Italia/Sveits&#39;</span>,<span style="color:#cd0000">&#39;Italia/Sveits&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;mørkeblå/beige&#39;</span>,<span style="color:#cd0000">&#39;mørkeblå/beige&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    <span style="color:#000080">#[...]</span>
+    (<span style="color:#cd0000">&#39;kjøretøy&#39;</span>,<span style="color:#cd0000">&#39;kjøretøy.&#39;</span>), <span style="color:#000080"># Antall: 54</span>
+    (<span style="color:#cd0000">&#39;til&#39;</span>,<span style="color:#cd0000">&#39;til&#39;</span>), <span style="color:#000080"># Antall: 55</span>
+    (<span style="color:#cd0000">&#39;T-skjorte&#39;</span>,<span style="color:#cd0000">&#39;T-skjorte&#39;</span>), <span style="color:#000080"># Antall: 61</span>
+    (<span style="color:#cd0000">&#39;venstre&#39;</span>,<span style="color:#cd0000">&#39;venstre&#39;</span>), <span style="color:#000080"># Antall: 64</span>
+    (<span style="color:#cd0000">&#39;f&#39;</span>,<span style="color:#cd0000">&#39;f&#39;</span>), <span style="color:#000080"># Antall: 73</span>
+    (<span style="color:#cd0000">&#39;Program&#39;</span>,<span style="color:#cd0000">&#39;Program&#39;</span>), <span style="color:#000080"># Antall: 103</span>
+]
+</code></pre></div><p>Merk at jeg kun har skilt opp ord etter mellomrommene i teksten. Derfor dukker det også opp flere ord som ikke er skilt av mellomrom.</p>
+<h3 id="trinn-2-lage-forkortelser">Trinn 2: Lage forkortelser</h3>
+<p>Jeg gikk så manuelt gjennom denne python-listen og forkortet det høyre ordet i hver tuple, slik som dette:</p>
+<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vanlige_ord <span style="color:#39c">=</span> [
+    (<span style="color:#cd0000">&#39;Ut-&#39;</span>,<span style="color:#cd0000">&#39;Ut-&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;innmonteringsverktøy&#39;</span>,<span style="color:#cd0000">&#39;innmont.verktøy&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;Belgia/Nederland&#39;</span>,<span style="color:#cd0000">&#39;B/NL&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;Tyskland/Sveits/Østerrike&#39;</span>,<span style="color:#cd0000">&#39;DE/CH/A&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;Frankrike/Belgia/Sveits/Lux.&#39;</span>,<span style="color:#cd0000">&#39;F/B/CH/LX&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;Italia/Sveits&#39;</span>,<span style="color:#cd0000">&#39;I/CH&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    (<span style="color:#cd0000">&#39;mørkeblå/beige&#39;</span>,<span style="color:#cd0000">&#39;blå/beige&#39;</span>), <span style="color:#000080"># Antall: 1</span>
+    <span style="color:#000080">#[...]</span>
+    (<span style="color:#cd0000">&#39;kjøretøy&#39;</span>,<span style="color:#cd0000">&#39;kj.tøy.&#39;</span>), <span style="color:#000080"># Antall: 54</span>
+    (<span style="color:#cd0000">&#39;til&#39;</span>,<span style="color:#cd0000">&#39;til&#39;</span>), <span style="color:#000080"># Antall: 55</span>
+    (<span style="color:#cd0000">&#39;T-skjorte&#39;</span>,<span style="color:#cd0000">&#39;T-skj.&#39;</span>), <span style="color:#000080"># Antall: 61</span>
+    (<span style="color:#cd0000">&#39;venstre&#39;</span>,<span style="color:#cd0000">&#39;v.&#39;</span>), <span style="color:#000080"># Antall: 64</span>
+    (<span style="color:#cd0000">&#39;f&#39;</span>,<span style="color:#cd0000">&#39;f&#39;</span>), <span style="color:#000080"># Antall: 73</span>
+    (<span style="color:#cd0000">&#39;Program&#39;</span>,<span style="color:#cd0000">&#39;Pr.gram&#39;</span>), <span style="color:#000080"># Antall: 103</span>
+]
+</code></pre></div><p>I denne første gjennomgangen konsentrerte jeg meg om de ordene som forekommer oftest og om de vanligste og mest lavthengende forkortelsene. Jeg gikk ikke gjennom fra A til Å, men holdt på en stund til jeg følte jeg hadde tatt det som ville gi størst utslag.</p>
+<h3 id="trinn-3-korte-hver-setning-ned-til-25-bytes">Trinn 3: Korte hver setning ned til 25 bytes</h3>
+<p>Etter å ha definert en rekke forkortelser, skrev jeg et nytt skript som søkte gjennom hele Excel-listen og sjekket hver setning om den er på mer enn 25 bytes. Hvis en setning er på over 25 bytes, vil den erstatte ordene i setningen med tilsvarende forkortelser fra <code>vanlige_ord</code>-listen helt til setningen kommer under 25 bytes eller det ikke finnes flere relevante forkortelser.</p>
+<p>Resultatet i Excel blir seende slik ut:</p>
+<p><img src="/images/blogg/forkortede-strenger.jpg" alt="Utklipp fra Excel"></p>
+<p>Utgangsspråket er helt til venstre, den norske oversettelsen i midten og den nye, forkortede versjonen helt til høyre. Om man sammenligner kolonne D og F, ser man at disse setningene nå er innenfor tegnbegrensningen.</p>
+<p>Det som er ålreit, er at denne arbeidsflyten kan itereres flere ganger. Etter første gjennomgang kunne jeg skape en ny  <code>vanlige_ord</code>-liste, men denne gangen definere enda særere og mer uforståelige forkortelser. Det er ok, fordi det vil til slutt kun berøre setningene som fortsatt ligger over 25 bytes. Det er da sannsynligvis setninger som uansett må tåle litt dårligere leseforståelse.</p>
+<p>Faremomentet er at setningene blir komplett uleselige. I flere tilfeller vil det nok gi mer mening å kutte ut enkelte ord, fremfor å forkorte hvert eneste ord enda litt til. Derfor tror jeg denne fremgangsmåten og andre «søk og erstatt»-metoder kun vil være effektivt til en viss grad. Men de kan skape et nyttig utgangspunkt.</p>
+<h2 id="oppsummering">Oppsummering</h2>
+<p>Jeg tror dette er en mye mer effektiv arbeidsflyt enn å gå gjennom med kun vanlig «søk og erstatt». Jeg har nå gått gjennom prosessen tre ganger, og resultatet er at ca. 60 % av setningene er under 25 bytes-grensen 👍 Resten tar jeg nok manuelt.</p>
+
+</content>
+
+
+<hr>
+<p style="text-align: center;"><a href="/blogg/">Tilbake til bloggoversikten</a></p>
+<h4>Tagger:</h4>
+<p>
+  
+  <a href="https://www.olehammersland.com/blogg/automatisering/">#automatisering</a>
+  
+  <a href="https://www.olehammersland.com/blogg/effektivisering/">#effektivisering</a>
+  
+  <a href="https://www.olehammersland.com/blogg/koding/">#koding</a>
+  
+  <a href="https://www.olehammersland.com/blogg/maskinoversttelse/">#maskinoversttelse</a>
+  
+  <a href="https://www.olehammersland.com/blogg/memoq/">#memoq</a>
+  
+  <a href="https://www.olehammersland.com/blogg/oversettelse/">#oversettelse</a>
+  
+  <a href="https://www.olehammersland.com/blogg/python/">#python</a>
+  
+  <a href="https://www.olehammersland.com/blogg/translation/">#translation</a>
+  
+</p>
+
+
+
+  </main>
+  <footer>Kontakt: <a href="mailto:post@olehammersland">post@olehammersland.com</a>
+</footer>
+
+  
+  <script src=/bundle.js></script>
+</body>
+
+</html>

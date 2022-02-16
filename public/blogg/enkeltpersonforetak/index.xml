@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ole Hammersland sin blogg</title>
+    <link>https://www.olehammersland.com/blogg/enkeltpersonforetak/</link>
+    <description>Ole Hammersland sin blogg</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>Ole Hammersland©2021</copyright>
+    <lastBuildDate>Mon, 04 Oct 2021 17:02:15 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/enkeltpersonforetak/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fornyelse av Let&#39;s Encrypt-sertifikat</title>
+      <link>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</link>
+      <pubDate>Mon, 04 Oct 2021 17:02:15 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</guid>
+      <description>&lt;p&gt;Jeg hoster min egen epost-tjener under domenet mitt, olehammersland.com. Det fungerer overraskende godt, og har ikke blitt et mål for storslåtte spam-angrep ennå (fingrene krysset). Dermed er det en billig måte å ha en e-post med eget domenenavn – og litt gøy å ha «fikset det selv». Det eneste som er litt skummelt, er når det er på tide å oppdatere SSL-sertifikatet. Siden jeg så sjelden åpner panseret og gjør arbeid på tjeneren, er det alltid litt uvant å orientere seg.&lt;/p&gt;
+&lt;p&gt;I dag tidlig var det f.eks. på tide å fornye sertifikatet, som var løpt ut i løpet av helgens Paris-Roubaix-ritt. Jeg gjorde prosessen slik jeg husket det, men glemte å restarte alle programmene som er involvert i e-posttjenesten min. Dermed fungerte fornyelsen av sertifikatet mitt øyensynlig ikke, og det ble en lett stresset og irritabel start på dagen.&lt;/p&gt;
+&lt;p&gt;Derfor skriver jeg nå en liten huskeliste til meg selv:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Skru av både Apache, Postfix &lt;strong&gt;OG&lt;/strong&gt; Dovecot med &lt;code&gt;sudo service [---] stop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Kjør Certbot, som av en eller annen grunn ikke ligger under PATH: &lt;code&gt;sudo ~/snap/bin/certbot renew&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Sjekk at alt er fornyet med &lt;code&gt;sudo ~/snap/bin/certbot certificates&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start de tre daemonene igjen.&lt;/li&gt;
+&lt;li&gt;Sjekk ev. &lt;code&gt;/var/log/mail.log&lt;/code&gt; for å se at e-posten er oppe.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Viktig å huske å skru av både Postfix og Dovecot 😅!&lt;/p&gt;
+&lt;p&gt;Og ja, dette kan selvfølgelig automatiseres, det vet jeg. Vet bare ikke om jeg orker å stikke fingeren i det vepsebolet i nærmeste fremtid&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>180.no – ikke glem abonnementer 💸</title>
+      <link>https://www.olehammersland.com/blogg/ferie-over/</link>
+      <pubDate>Thu, 26 Aug 2021 09:38:32 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/ferie-over/</guid>
+      <description>&lt;p&gt;Dette er en påminnelse om å ikke glemme løpende abonnementer. Da jeg meldte enkeltpersonforetaket mitt inn i Enhetsregisteret, ble jeg straks oppringt av 180.no. De kunne gi meg et strålende tilbud på å la meg oppføre i registeret deres. &lt;a href=&#34;https://www.180.no/firmavis/02011553231561.htm&#34;&gt;Slik ser det ut&lt;/a&gt;. Det gikk selvfølgelig som det måtte gå – jeg glemte å si opp abonnementet i ferieørska og er nå tvunget til å fortsette kundeforholdet i 1 år. Ett helt år! Ergerlig! 💸&lt;/p&gt;
+&lt;p&gt;Nå som jeg har arbeidet som frilanser i 6 måneder, vet jeg at jeg ikke hadde noe behov for denne tjenesten. Da jeg meldte meg inn, var jeg fortsatt spent på om jeg i det hele tatt ville få noen kunder. Men kombinasjonen av gode relasjoner til tidligere arbeidsgiver og forhåndskunnskap om bransjen har ført til at jeg alltid har hatt nok å gjøre. Om noe, har jeg hatt det motsatte (luksus-)problemet – for mye å gjøre!&lt;/p&gt;
+&lt;p&gt;De nye kundene jeg har vunnet, har dessuten ikke kommet fra 180.no, men fra Proz.com. Proz.com er en nettportal for språktjenester. Jeg har ikke en gang registrert meg for den betalte versjonen, men får likevel stadig nye tilbud. Mange av disse er useriøse henvendelser av typen «oversett 10 000 ord innen kl. 1800 i dag for 50 euro», men jeg har også knyttet kontakter med seriøse byråer som har gitt meg flere gode oppdrag!&lt;/p&gt;
+&lt;p&gt;180.no har imidlertid ikke brakt meg noen merverdi utover å gi nettsiden min en marginalt bedre plassering i Google. Så det er ikke en tjeneste jeg vil anbefale til frilansoversettere, dessverre. Mitt inntrykk er at de fleste byråer jeg jobber for uansett kommer fra Sverige, Baltikum og østover i Europa.&lt;/p&gt;
+&lt;p&gt;Og 1 år! Det er lenge! Og dyrt! Skulle ikke vært lov med automatisk fornyelse av abonnementer i denne prisklassen. Noen av oss må faktisk beskyttes mot oss selv. Siden jeg uansett er tvunget til å være kunde hos dem 1 ett år til, skal jeg gjøre et ærlig forsøk på å pusse opp profilen min. Rådet mitt til andre frilansoversettere er imidlertid – utvis forsiktighet!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mitt første Go-prosjekt</title>
+      <link>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</link>
+      <pubDate>Mon, 26 Apr 2021 12:57:36 +0200</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</guid>
+      <description>&lt;p&gt;Jeg har de siste ukene jobbet ganske jevnt og trutt på et nytt programmerings-prosjekt. Målet er å utvide simpleVP, et prosjekt jeg skapte for å automatisere filnedlastning og opplastning fra oversettelsesportalen XTRF (&lt;a href=&#34;http://localhost:1313/blogg/simplevp-xtrf-gjort-enkelt/&#34;&gt;se her&lt;/a&gt;). I tillegg vil jeg smelte det sammen med faktura-generatoren min. Det nye prosjektet skal altså bli en one-stop klient for XTRF-systemet for oversettere!&lt;/p&gt;
+&lt;p&gt;Det første som er nytt med denne utgaven av simpleVP (simple Vendor Portal), er at den er skrevet i Go. Go er et såkalt &lt;em&gt;kompilert&lt;/em&gt; språk som gjør det mye lettere for meg å distribuere programmet. Da jeg lagde det opprinnelige simpleVP i Python, skrev jeg lange instruksjoner til sluttbrukerne om hvordan man laster ned Python, bruker kommandolinjen, installerer ulike moduler og setter opp miljøvariabler. Nå er målet å lage en enkel kjørbar fil i et format som er velkjent for de fleste Windows-brukere (.exe). Det legger Go til rette for.&lt;/p&gt;
+&lt;p&gt;Det andre som er nytt, er at jeg skaper programmet med perspektivet til en frilansoversetter. Derfor skal systemet ha støtte for å koble seg til ulike XTRF-servere, slik at jeg kan samle oppdrag fra flere oversettelsesbyråer inn i én enkel oversikt. I min erfaring er XTRF noe slikt som en bransjestandard. Tar man oppdrag fra et oversettelsesbyrå, er sjansen for at de bruker XTRF temmelig stor. Derfor er det spesielt verdifullt å samle alle disse web-applikasjonene inn i ett enkelt grensesnitt. Dessuten baserer de fleste byråer seg på XTRF til regnskapet sitt. Derfor er det heller ikke så dumt å legge inn støtte for fakturering også.&lt;/p&gt;
+&lt;p&gt;Så langt har jeg jobbet mest med et enkelt grafisk brukergrensesnitt og databasen. Brukergrensesnittet er basert på en åpen kildekode-modul ved navn &lt;a href=&#34;https://pkg.go.dev/fyne.io/fyne&#34;&gt;Fyne&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-gui-first-look.jpg&#34; alt=&#34;Slik ser nye simpleVP ut.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Bildet over viser den delen av programmet som er kommet lengst: siden for å opprette, endre og slette forbindelsene til de ulike XTRF-portalene. Når du bruker programmet, vil du kunne bruke alle disse XTRF-portalene samtidig, i samme programmet.&lt;/p&gt;
+&lt;p&gt;Prosjektet er delt opp i følgende pakker eller «delprogrammer»:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;            main
+           /    \
+        gui  –-  db
+                   \
+                   xtrf
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;GUI tegner det grafiske grensnittet på skjermen. For å gjøre det, henter det informasjon fra databasen (db). Kunden kan kan også oppdatere databasen. Da bruker databasen delprogrammet som heter xtrf til å laste ned informasjonen via API-et til XTRF.&lt;/p&gt;
+&lt;p&gt;Databasen er med andre ord hjulnavet, &lt;em&gt;die Drehscheibe&lt;/em&gt;, i programmet mitt. Den starter med en tabell for &lt;strong&gt;settings&lt;/strong&gt;. En setting inneholder påloggingsinformasjonen for en XTRF-portal. Per setting kan man finne flere &lt;strong&gt;jobs&lt;/strong&gt;, som representerer jobbene fra XTRF, enten de har statusen &lt;em&gt;in progress&lt;/em&gt;, &lt;em&gt;pending&lt;/em&gt; eller &lt;em&gt;to be invoiced&lt;/em&gt;. Hver jobb kan igjen inneholde filer: tabellen &lt;strong&gt;files&lt;/strong&gt; inneholder alle filene.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-database.jpg&#34; alt=&#34;Database-oversikt&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Når hovedfunksjonaliteten er klar, kan det bli relevant med en tabell kalt &lt;strong&gt;invoices&lt;/strong&gt;, som inneholder fakturaene brukeren skaper. Hver jobb vil da også knyttes til en faktura. Tabellen &lt;strong&gt;banks&lt;/strong&gt; vil inneholde betalingsinformasjonen til brukeren, og så må &lt;strong&gt;settings&lt;/strong&gt; oppdateres med kundens faktureringsinnstillinger.&lt;/p&gt;
+&lt;p&gt;Databasen, og logikken for å oppdatere den, er nesten fullført. I neste trinn må det grafiske brukergrensesnittet kunne vise jobber, beskrivelser, filer og annen informasjon på en passe oversiktlig måte. Deretter skal brukeren få muligheten til å laste ned jobber.&lt;/p&gt;
+&lt;p&gt;Gleder meg til å jobbe videre på dette prosjektet!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Maskinoversettelse i Azure</title>
+      <link>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</link>
+      <pubDate>Thu, 25 Mar 2021 16:28:09 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/maskinoversettelse-i-azure/</guid>
+      <description>&lt;p&gt;Har tenkt på og jobbet litt med maskinoversettelse i mars. I denne posten sammenfatter jeg noen generelle tanker og idéer rundt temaet. Jeg liker selv å bruke maskinoversettelse, og har lyst til å på sikt dykke dypere ned i den tekniske delen av det.&lt;/p&gt;
+&lt;h2 id=&#34;ja-til-maskinoversettelser-&#34;&gt;Ja til maskinoversettelser 📜🤖&lt;/h2&gt;
+&lt;p&gt;Helt siden jeg startet som oversetter, har jeg hatt inntrykket av at det lureste jeg kan lære meg, er koding og maskinoversettelse. For meg er det ingen tvil om at maskinoversettelse kun er i startgropen, og at det vil bli mer og mer utbredt. Kvaliteten blir bedre og bedre, men ikke bare derfor – den generelle forbedringen i kvalitet vil med tiden møte på en større og større aksept for mindre oversettelsesfeil. Gevinsten med litt dårlig, maskinelt språk vil etterhvert overveie ulempene med alt for mange faktorer.&lt;/p&gt;
+&lt;p&gt;I dag leste jeg f.eks. i Süddeutsche Zeitung at rettsaken rundt Cum-Ex-skandalen, som skal starte i disse dager i Frankfurt, &lt;a href=&#34;https://www.sueddeutsche.de/wirtschaft/cum-ex-skandal-zum-prozessauftakt-fehlen-die-hauptpersonen-1.5245685&#34;&gt;ble utsatt i nesten 1 år fordi man ventet på en engelsk oversettelse av anklageskriften&lt;/a&gt; (som var på nesten 1000 sider, «selbst für Profis schwer zu lesen»).&lt;/p&gt;
+&lt;p&gt;Det synes jeg er verdt å tenke gjennom en gang til.&lt;/p&gt;
+&lt;p&gt;Saken handler om en rekke finansfolk som svindlet Europas sentralbanker for ufattelige &lt;em&gt;62,9 milliarder euro&lt;/em&gt;! Vi burde fråde av raseri og få dem dømt så snart som mulig. Anklagemyndigheten er imidlertid likefullt nødt til å vente på et uendelig langt oversettelsesprosjekt som sikkert er utført av en rekke juridiske oversettere, mens flere av bakmennene lever som vanlig.&lt;/p&gt;
+&lt;p&gt;Tenk på alle forsinkelsene og kostnadene i forbindelse med rettsakter, anbudsrunder, osv. på tvers av landegrenser. Det kan være en fulltidsjobb for flere oversettere i flere år om f.eks. Oslo Sporveier bestiller et nytt signalsystem fra et firma i Tyskland. De færreste jubler vel over at kommunen skal lønne en rekke personer for å gjøre en potensiell meningsløs jobb (er det ikke lettere, billigere og mer givende for ingeniørene i Oslo Kommune å lese de engelske tekstene?). De fleste ønsker seg vel heller et godt t-banesystem.&lt;/p&gt;
+&lt;p&gt;Jeg synes ikke det er noen særlig verdi i å beskytte markedet for oversettere. Oversettelser er fantastiske fordi de lar oss få innblikk i andre verdener. Det er imidlertid ingenting mot å faktisk lære det andre språket. &lt;a href=&#34;https://slator.com/&#34;&gt;Bransjemagasinet Slator&lt;/a&gt; har et større perspektiv en ren «oversettelse», de snakker om «språktjenestebransjen». Den omfatter mer enn ren oversettelse, den omfatter også språkkurs, tolkning, maskinoversettelse, programvare, kulturformidling m.m. Og denne bransjen kommer nok alltid i høy grad til å finnes.&lt;/p&gt;
+&lt;p&gt;Når motstandere mot maskinoversettelser krever at vi må «beskytte» oversettelser, synes jeg man glemmer den underliggende tragikken i å være avhengige av mellommenn for å kommunisere med sine medmennesker på tvers av landegrensene.&lt;/p&gt;
+&lt;p&gt;Målet må jo være at kommunikasjonen kan finne sted, så enkelt som mulig!&lt;/p&gt;
+&lt;p&gt;Så jeg tror bare det er å forvente mer og mer aksept for maskinoversettelser. &lt;a href=&#34;https://www.dn.se/ekonomi/amazons-sverigelansering-hanas-for-oversattningsmissar/&#34;&gt;Man gjorde narr av kvaliteten på oversettelsene&lt;/a&gt; da Amazon ble lansert i  Sverige, men tenk heller på de svimlende summende de sparte. Jeg tror ikke det bedre kvalitet som er den egentlig driveren: globalisering og mer interaksjon på tvers av landegrenser vil nok forbli den virkelig store driveren.&lt;/p&gt;
+&lt;h2 id=&#34;min-bruk-av-mt&#34;&gt;Min bruk av MT&lt;/h2&gt;
+&lt;p&gt;Spørsmålet er som alltid hvilken kvalitet man er villig til å betale for. Som oversetter vil jeg kunne være fleksibel når det gjelder graden av personlig vs. automatisert oversettelse. For å si det enkelt: om en kunde er villig til å betale for at jeg leverer en oversettelse av en årsrapport på 100 sider i løpet av én dag, 7,5 timer, så vil jeg kunne levere &lt;em&gt;noe&lt;/em&gt;. Så får vi diskutere hvilke tilpasninger jeg realistisk skal prioritere for å levere et produkt som er akseptabelt for sitt formål.&lt;/p&gt;
+&lt;p&gt;Denne uken har jeg hatt det veldig, veldig travelt. Da en kunde ønsket oversettelse av en veldig generell tekst, hadde jeg egentlig ikke tid til det – men teksten så såpass generell ut at det var en kandidat for maskinoversettelse med de generelle MT-motorene til Microsoft, Google osv. Jo mer fagspesifikk en tekst er, med intern sjargong og interne forkortelser og lignende, desto mindre egnet vil den være (med mindre man trener opp en egen MT-motor for nettopp det fagfeltet/den kunden), mer om det siden.&lt;/p&gt;
+&lt;p&gt;Så jeg logget meg inn på Azure og satte opp en gratis oversetter. Fikk en API-nøkkel og la det inn i memoQ. Heldigvis stemte teorien – jeg sparte tid og fikk levert uten å ofre hele kvelden. Det beste er ofte at man ikke er nødt til å skrive så mye på tastaturet, men kan konsentrere seg om å endre i en allerede eksisterende tekstmal.&lt;/p&gt;
+&lt;p&gt;Forøvrig: med tiden håper jeg å kunne bruke europeiske &lt;a href=&#34;https://www.deepl.com/translator&#34;&gt;DeepL&lt;/a&gt; til å maskinoversette tekster for kunder. De har en fantastisk god maskinoversetter som gir glimrende oversettelser mellom tysk og engelsk. &lt;a href=&#34;https://slator.com/machine-translation/deepl-adds-13-european-languages-as-traffic-continues-to-surge/&#34;&gt;Nå har de lagt ut støtte for 13 nye europeiske språk&lt;/a&gt;, blant annet svensk og dansk!&lt;/p&gt;
+&lt;p&gt;… men dessverre ikke norsk 😕&lt;/p&gt;
+&lt;h2 id=&#34;ge-de-pe-errr&#34;&gt;GE-DE-PE-ERRR&lt;/h2&gt;
+&lt;p&gt;Personvern er jo noe å tenke på. Når man bruker Microsoft Translator, laster man i prinsippet teksten opp til en av Azure sine mange servere. Det bør man gjøre kunden klar over, &lt;a href=&#34;https://azure.microsoft.com/en-us/services/cognitive-services/translator/&#34;&gt;til tross for at Microsoft lover at dataene er sikre&lt;/a&gt;. Om kunden har betenkninger, kan man jo prøve seg med en liten reduksjon i ordpris for å gjøre det mer smakfullt. I min erfaring er det imidlertid ikke &lt;em&gt;så&lt;/em&gt; mye tid å spare som kundene kanskje ser for seg. Man arbeider kanskje 20 % raskere som følge av at ikke alle ord må tastes inn første gangen. Men det egentlige arbeidet, det å skape en god og flytende tekst, gjenstår. Og det er vel det kunden &lt;em&gt;egentlig&lt;/em&gt; betaler for?&lt;/p&gt;
+&lt;p&gt;Det håper i hvert fall jeg – det er det jeg synes er gøy. Hvis ikke, kan vel bare maskinene ta seg av arbeidet?&lt;/p&gt;
+&lt;p&gt;Ironisk nok (jeg tror i hvert fall det er ironisk?), så har jeg merket at tekster om personvern er de som enklest lar seg oversette av Microsoft Translator. 🤫 Det beste resultatet jeg noen gang har hatt, var da jeg lastet opp en tekst med personvernretningslinjer. Det virket som om Microsoft Translator hadde lest den teksten før, fordi den spyttet ut en helt perfekt, menneskelig oversettelse med det samme. Det tok meg kun 15 minutter å lese gjennom to ganger for å konstatere at alt var rett. Så det er nok en del firmaer som har automatisert dette kjedelige lovkravet. 😁&lt;/p&gt;
+&lt;h2 id=&#34;pytorch-tensorflow&#34;&gt;PyTorch? Tensorflow?&lt;/h2&gt;
+&lt;p&gt;På sikt kunne jeg veldig gjerne tenke meg å lære meg hvordan man selv trener en maskinlæringsalgoritme for å lage sine egne maskinoversettelser. Det kunne vært en spennende pakke å tilby til kunder – jeg oversetter ikke bare, jeg lager en algoritme som blir ekspert på akkurat deres tekster!&lt;/p&gt;
+&lt;p&gt;Jeg har forsøkt å sette meg inn i Tensorflow og PyTorch, men jeg forstår det liksom ikke helt. Det glipper.&lt;/p&gt;
+&lt;p&gt;I språklæring heter det at man lærer mest av å lese tekster hvor man forstår 80 %, slik at hjernen forstår helheten, og kan fokusere på å fylle inn de ukjente enkeltordene og -uttrykkene. Når jeg prøver å lese meg opp på maskinlæring, har jeg følelsen av at jeg ikke har nådd til disse 80 %-ene ennå. Jeg har ikke nok forutsetninger for å helt forestille meg hva det handler om.&lt;/p&gt;
+&lt;p&gt;Så for tiden leter jeg etter en god ressurs til å komme igang med det helt grunnleggende. Om du kjenner til en god ressurs for en nybegynner, gi meg gjerne noen tips :) (jeg liker bøker!)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hammer Faktura versjon 3</title>
+      <link>https://www.olehammersland.com/blogg/hammer-faktura-versjon-3/</link>
+      <pubDate>Sun, 21 Mar 2021 18:16:42 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/hammer-faktura-versjon-3/</guid>
+      <description>&lt;p&gt;Jeg har oppdatert Hammer Faktura igjen! I denne bloggposten går jeg gjennom hva som er nytt, og gir litt dokumentasjon på hvordan man kan bruke programmet.&lt;/p&gt;
+&lt;h2 id=&#34;nytt-i-hammer-faktura-versjon-3&#34;&gt;Nytt i Hammer Faktura versjon 3:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Støtte for sqlite-database muliggjør lagring av fakturaposter, kunder, bankinformasjon og fakturaer.&lt;/li&gt;
+&lt;li&gt;Kommandolinjeverktøy for direkte samhandling med databasen.&lt;/li&gt;
+&lt;li&gt;Wrapper-funksjoner som forenkler prosessen med å opprette faktuaene.&lt;/li&gt;
+&lt;li&gt;Støtte for enkel flerspråklighet, slik at jeg kan skrive ut engelske fakturaer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;De tidligere utgavene av Hammer Faktura har kun hatt støtte for å opprette fakturaene. Fakturaene har blitt opprettet ved å kjøre data fra eksterne kilder gjennom programmet. Nå legger jeg til støtte for å lagre all relevant informasjon i en egen database. En database er i prinsippet som et Excel-regneark: den inneholder ulike tabeller som er knyttet sammen. Man kan samhandle med databasen med spørringsspråket SQL, eller med andre verktøy og drivere.&lt;/p&gt;
+&lt;p&gt;Det er det som er fint med å lagre all informasjonen i en SQL-database: det er en ganske agnostisk måte å lagre data på. Det finnes utallige måter å hente dataene og kjøre regnestykker og analyser på dem, og det er ikke knyttet til noe spesielt program eller programmeringsspråk. Den sentraliserte datastrukturen burde tilfredsstille alle behovene mine for regnskapsføring: f.eks kan jeg regne ut hvor mye penger jeg tjente i løpet av en viss tidsperiode, hvor mye MVA jeg har betalt, hvor mange oppdrag jeg har fått fra kunde X, osv.&lt;/p&gt;
+&lt;p&gt;Hammer Faktura har fått en egen modul, &lt;code&gt;hfdb&lt;/code&gt;(Hammer Faktura -database), som er ansvarlig for å samhandle med databasen og knytte informasjonen der sammen med programmet mitt.&lt;/p&gt;
+&lt;p&gt;Hammer Faktura kan nå dessuten &lt;a href=&#34;#kommandolinjeverkt%C3%B8y&#34;&gt;kjøres direkte som et skript&lt;/a&gt; med &amp;ldquo;-m&amp;rdquo; flagget til Python.&lt;/p&gt;
+&lt;h2 id=&#34;dokumentasjon&#34;&gt;Dokumentasjon&lt;/h2&gt;
+&lt;h3 id=&#34;hurtigstart&#34;&gt;Hurtigstart&lt;/h3&gt;
+&lt;p&gt;Last ned modulen:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/Oleham/hammer_faktura.git
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Opprett en tom database i nåværende mappe. Navnet vil alltid være &lt;code&gt;hammer_faktura.db&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m hammer_faktura.create_tables
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Importer database-modulen &lt;code&gt;hammerfaktura.hfdb&lt;/code&gt; i skriptet ditt. Den inneholder funksjoner for å samhandle med databasen.
+Lag en enkel faktura for ett oppdrag:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg til en kunde i databasen.&lt;/span&gt;
+client_pk &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addClient(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde&amp;#34;&lt;/span&gt;, 
+                            &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;934 343 343&amp;#34;&lt;/span&gt;,
+                            &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4, 1234 Oslo&amp;#34;&lt;/span&gt;, 
+                            &lt;span style=&#34;color:#cd00cd&#34;&gt;0.25&lt;/span&gt;, 
+                            &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NOK&amp;#34;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg til bankinformasjonen din i databasen.&lt;/span&gt;
+bank_pk &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addBank(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123.2312.2323&amp;#34;&lt;/span&gt;, 
+                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO87234233&amp;#34;&lt;/span&gt;,
+                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NONKIRE&amp;#34;&lt;/span&gt;,
+                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Banken AS&amp;#34;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Verdien på jobben&lt;/span&gt;
+value &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;2320.3&lt;/span&gt;
+
+generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromItem(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;01.01.1990&amp;#34;&lt;/span&gt;,
+                                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;ID-231&amp;#34;&lt;/span&gt;,
+                                        &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse kokebok&amp;#34;&lt;/span&gt;,
+                                        value,
+                                        client_pk, 
+                                        bank_pk)
+
+invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeInvoiceBody()
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+    f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(invoice)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt; lar oss legge til en jobb i databasen og umiddelbart skape en faktura for den. Med &lt;code&gt;hfdb.quickGeneratorFromList&lt;/code&gt; kan vi på samme måte legge inn flere oppdrag og umiddelbart skape en faktura.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968966&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;1234&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse avis&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;320.12&lt;/span&gt;
+    }, 
+    {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968100&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;5678&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Korrekturlesning 4 timer&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1030.20&lt;/span&gt;
+    }, 
+    {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1616328966&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;ABCDF&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kokebok&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;365.06&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;vat&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;0.15&lt;/span&gt; &lt;span style=&#34;color:#000080&#34;&gt;# obs!&lt;/span&gt;
+    } 
+]
+
+generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromList(jobber, client_pk, bank_pk)
+
+invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeInvoiceBody()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Merk at det er valgfritt å oppgi en mva-sats på enkeltjobbene. Om det ikke oppgis noen mva-sats, vil standardsatsen for den aktuelle kunden velges (i dette tilfellet 0.25, altså 25 %)&lt;/p&gt;
+&lt;h3 id=&#34;samhandling-med-databasen&#34;&gt;Samhandling med databasen&lt;/h3&gt;
+&lt;p&gt;La oss ta en titt på hva som skjer i bakgrunnen. Da er det nyttig å først kaste et blikk på strukturen til databasen:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer_faktura_database.jpg&#34; alt=&#34;En skjematisk fremstilling av databasen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Som vi ser, består databasen av fire tabeller: invoices, invoice_items, clients og banks. Den viktigste tabellen som knytter alle tabellene sammen, er invoices. Det er alltid knyttet en client og en bank til hver invoice, i et én-til-én-forhold. Samtidig kan flere poster i invoice_items, som representerer de enkelte jobbene, være knyttet til en invoice i et mange-til-én-forhold (en faktura kan inneholde flere fakturaposter).&lt;/p&gt;
+&lt;p&gt;I forrige avsnitt viste jeg hvordan man veldig raskt kan skape fakturaer med &lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt; og &lt;code&gt;hfdb.quickGeneratorFromList&lt;/code&gt;. Dette er faktisk to wrapper-funksjoner som «wrapper» en rekke funksjoner for samhandling med databasen, med den hensikt å gjøre det så enkelt så mulig å opprette en faktura hurtig. De gjør to ting med informasjonen som gis dem: de legger dem til i databasen, og så returnerer de en &lt;code&gt;hammer_faktura.Generator&lt;/code&gt;, som vi kan bruke for å skape en faktura.&lt;/p&gt;
+&lt;p&gt;La oss ta en titt på hva som skjer i bakgrunnen når vi bruker disse wrapper-funksjonene:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
+
+jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968100&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;5678&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Korrekturlesning 4 timer&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1030.20&lt;/span&gt;,
+    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;client&amp;#34;&lt;/span&gt;: client_pk  &lt;span style=&#34;color:#000080&#34;&gt;# obs!&lt;/span&gt;
+    },
+    [&lt;span style=&#34;&#34;&gt;…&lt;/span&gt;]
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; jobb &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; jobber:
+    hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addItem(jobb)  
+
+invoice_number &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addInvoice(client_pk, bank_pk, 
+                    dato&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;timestamp, 
+                    frist&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;30&lt;/span&gt;, 
+                    language&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO&amp;#34;&lt;/span&gt;)
+                                                                                     
+hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;assignItemsByDate(invoice_number, 
+                    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;16.03.2021&amp;#34;&lt;/span&gt;,
+                    &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;21.03.2021&amp;#34;&lt;/span&gt;)  
+  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I dette eksempelet lagrer vi jobbene manuelt i databasen med &lt;code&gt;hfdb.addItem()&lt;/code&gt;. Jobbene lagres i tabellen invoice_items. Merk at vi nå er nødt til å oppgi hvem som er client for hver enkelt jobb, siden vi nå legger til jobbene «uavhengig» av en faktura.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hfdb.addInvoice()&lt;/code&gt; lagrer en faktura i databasen, i tabellen invoices. Det er kun nødvendig å oppgi en kunde og bankinformasjon. Vi kan også oppgi følgende: en egendefinert fakturadato (som timestamp – standard er dagens dato), en egendefinert frist eller velge et annet språk enn norsk. I bakgrunnen blir det automatisk generert et fakturanummer som returneres og lagres i variabelen invoice_number.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hfdb.assignItemsByDate()&lt;/code&gt; knytter så en rekke invoice_item til en invoice i et én-til-flere-forhold. Dette forholdet etableres først når vi kjører denne funksjonen – fakturaposter som ennå ikke er blitt berørt, vil ikke være tilknyttet noen faktura i det hele tatt. Argumentene er fakturanummeret det gjelder og et datospenn. Alle poster i invoice_items med samme client som fakturaen og leveringsdato innenfor tidsspennet, blir knyttet til fakturaen.&lt;/p&gt;
+&lt;h3 id=&#34;skape-og-bruke-fakturageneratoren&#34;&gt;Skape og bruke fakturageneratoren&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;[&lt;span style=&#34;&#34;&gt;…&lt;/span&gt;]
+
+generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeGenerator(invoice_number)  
+
+body &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeInvoiceBody()
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+    f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(body)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Til slutt skaper vi generatoren med funksjonen &lt;code&gt;hfdb.makeGenerator()&lt;/code&gt;. Funksjonen tar et fakturanummer som argument, og forutsetter at det finnes poster i tabellen invoice_items som er knyttet til dette fakturanummeret. Det henter så all informasjon om client, bank, og invoice_items som er knyttet til fakturaen, og lagrer det i generatoren.&lt;/p&gt;
+&lt;p&gt;Generatoren er en klasse med tre underklasser, client, invoice og bank, som til sammen inneholder all relevant informasjon om fakturaen fra databasen. Den har også en (wrapper-)metode &lt;code&gt;hammer_faktura.Generator.makeInvoiceBody&lt;/code&gt; som returnerer et html-dokument som en string. &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturaer-del-to/#1-initialisere-kunde-bank-og-faktura&#34;&gt;Se min forrige post for mer informasjon om Generator-objektet&lt;/a&gt;. &lt;code&gt;hfdb.makeGenerator()&lt;/code&gt; er altså en nøkkelfunksjon som forvandler en post i tabellen invoices til en python-klasse vi kan bruke programmet vårt.Vi kan  manuelt overskrive feltene til hammer_faktura.Generator-objektet, f.eks slik:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromList(jobber, client_pk, bank_pk)
+
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;language &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;        &lt;span style=&#34;color:#000080&#34;&gt;# endre språk.&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;01.01.2020&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000080&#34;&gt;# overskrive forfallsdatoen&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;client&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;vat &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;0.3&lt;/span&gt;               &lt;span style=&#34;color:#000080&#34;&gt;# overskrive mva-satsen&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice_items[&lt;span style=&#34;color:#cd00cd&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;] &lt;span style=&#34;color:#39c&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34; m.m.&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000080&#34;&gt;# endre en jobb&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Man skal imidlertid ha en ganske god grunn for å gjøre det, for endringene vil ikke gjenspeiles i databasen, kun på fakturaen man så genererer. Om man vil endre på innholdet i databasen, må det gjøre med funksjonene i &lt;code&gt;hfdb&lt;/code&gt;-modulen.&lt;/p&gt;
+&lt;h3 id=&#34;navn-og-kontrakter&#34;&gt;Navn og kontrakter&lt;/h3&gt;
+&lt;p&gt;I dette prosjektet har jeg blitt inspirert av boken jeg leser for tiden, &lt;em&gt;The Go Programming Language&lt;/em&gt;. Forfatterne av boken går nøye gjennom navnekonvensjonene i Go, og det har vært lærerikt å tilnærme seg en lignende konsekvenstenking når jeg definerer funksjoner og oppførsel i dette prosjektet.&lt;/p&gt;
+&lt;p&gt;Som den oppmerksomme leser kanskje har fått med seg, finnes det en rekke funksjoner i Hammer Faktura med prefikset «add», etterfulgt av et objekt i singular. «addInvoice», «addItem», «addClient» og «addBank». Alle disse korresponderer med en tabell i databasen.&lt;/p&gt;
+&lt;p&gt;Wrapper-funksjonene starter med «quick» og gir allerede i navnet et hint om hvilke argumenter som må følge: «quickGeneratorFromList» eller «quickGeneratorFromItem».&lt;/p&gt;
+&lt;p&gt;Hva er poenget? Hvorfor ikke bare kalle funksjonene for «funksjon1» eller «asdfgh»?&lt;/p&gt;
+&lt;p&gt;Vel, ved å skape lignende navn og lignende oppførsel blir det lettere å lese og forstå koden. Det skaper en slags «kontrakt» mellom brukeren og modulen. Konsekvenstenkingen vil også gjøre det lettere for meg å plukke opp koden på et senere tidspunkt. Jeg har for eksempel bestemt at alle «addX»-funksjonene legger til noe i databasen, og at de returnerer primærnøkkelen for den posten de nettopp la til. Dette skal da gjennomføres konsekvent, selv om jeg som regel ikke bruker denne returverdien til noe, unntatt i «addInvoice». Om jeg i fremtiden vil bruke Hammer Faktura på en ny måte, vet jeg imidlertid at det er en mulighet. Det vil også gjøre det lettere å skumme gjennom listen over funksjoner og se hvilke nye funksjoner som kan legges til. Kanskje vil jeg legge til en funksjon kalt «assignItemsById» for å knytte fakturaposter til fakturaer etter jobb-id, i stedet for etter et datospenn med «assignItemsByDate».&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;def addItem(values)&lt;/li&gt;
+&lt;li&gt;def addClient(navn, org_nr, adresse, vat, valuta)&lt;/li&gt;
+&lt;li&gt;def addBank(konto, iban, bic, bank)&lt;/li&gt;
+&lt;li&gt;def addInvoice(client, bank, dato=int(time.time()), frist=30, language=&amp;ldquo;NO&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;def assignItemsByDate(invoice, _from, to)&lt;/li&gt;
+&lt;li&gt;def makeGenerator(id)&lt;/li&gt;
+&lt;li&gt;def quickGeneratorFromList(items, client, bank)&lt;/li&gt;
+&lt;li&gt;def quickGeneratorFromItem(dato, id, beskrivelse, netto, client, bank)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Når jeg ser på listen over funksjoner, vil jeg si at det ser ganske forståelig ut (selvskryt skal man lytte til, for det kommer fra hjertet)! 😬&lt;/p&gt;
+&lt;p&gt;I henhold til SQL-konvensjoner er tabellene databasen skrevet i såkalt &lt;em&gt;snake case&lt;/em&gt; i stedet for &lt;em&gt;camel case&lt;/em&gt;, altså &lt;em&gt;slik_som_dette&lt;/em&gt; i stedet for &lt;em&gt;påDenneMåten&lt;/em&gt;. Dessuten står tabellnavn alltid i flertall.&lt;/p&gt;
+&lt;h3 id=&#34;kommandolinjeverktøy&#34;&gt;Kommandolinjeverktøy&lt;/h3&gt;
+&lt;p&gt;Jeg har begynt å lage støtte for å bruke Hammer Faktura i kommandolinjen. Inntil videre har jeg konsentrert meg spesielt om de operasjonene som ikke må gjøres så ofte: da tenker jeg på det å legge til en ny kunde eller en ny bankforbindelse. Jeg har også støtte for å legge til en enkelt jobb i invoice_item.&lt;/p&gt;
+&lt;p&gt;Slik kan Hammer Faktura brukes i kommandolinjen:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m hammer_faktura
+
+Usage: python3 -m hammer_faktura [-l/-a] &amp;lt;args&amp;gt;
+
+        list: -l or --list (table name in plural, i.e. &amp;quot;invoices&amp;quot;)
+        add: -a or --add (item, bank, client or invoice)
+
+$ python3 -m hammer_faktura -l clients
+
+3       Navn     Org        Adresse     0.25    NOK
+4       Test     234234     Adresse     0.25    SEK
+5       Navn     43443      Adresse     0.25    SEK
+6       Probe    234233     Adresse     0.25    SEK
+
+$ python3 -m hammer_faktura -a client &amp;quot;En ny kunde&amp;quot; 94233465 &amp;quot;Bakketoppen 4, 4567 Kristiansand&amp;quot; 0.25 NOK
+
+        Name: En ny kunde
+        Org_nr: 94233465
+        Adresse: Bakketoppen 4, 4567 Kristiansand
+        VAT rate: 0.25
+        Valuta: NOK
+
+Type Y to add client (Y)
+Y
+Added new client: En ny kunde, 94233465, Bakketoppen 4, 4567 Kristiansand, 0.25, NOK
+
+$ python3 -m hammer_faktura -l clients
+
+3       Navn            Org        Adresse               0.25    NOK
+4       Test            234234     Adresse               0.25    SEK
+5       Navn            43443      Adresse               0.25    SEK
+6       Probe           234233     Adresse               0.25    SEK      
+8       En ny kunde     94233465   Bakketoppen 4, 
+                                   4567 Kristiansand     0.25    NOK
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Neste punkt på programmet vil være støtte for å lage en faktura direkte i kommandolinjen, på samme måte som &lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Oleham/hammer_faktura&#34;&gt;Se Hammer Faktura på Github!&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fakturaer del to</title>
+      <link>https://www.olehammersland.com/blogg/fakturaer-del-to/</link>
+      <pubDate>Wed, 03 Mar 2021 20:34:36 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/fakturaer-del-to/</guid>
+      <description>&lt;p&gt;Fakturaer, fakturaer. Jeg tenker fortsatt utelukkende på fakturaer.&lt;/p&gt;
+&lt;p&gt;I forrige blogginnlegg skrev jeg om &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturagenerator-i-python&#34;&gt;en fakturagenerator jeg har skrevet i Python&lt;/a&gt;. Et gøy prosjekt som jeg satt sammen i løpet av noen dager innimellom oversettelsesoppdragene. Denne uken skulle Hammer Faktura settes på prøve, og den bestod!&lt;/p&gt;
+&lt;p&gt;I løpet av 3 sekunder hadde jeg lastet ned informasjonen om 500 mini-oppdrag fra XTRF, fordelt disse på tre fakturaer basert på avdeling og tegnet opp tre fine fakturaer med fakturanummer, forfallsdato, bankopplysninger og kundenes adresser.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura_hf.jpg&#34; alt=&#34;Den forrige fakturaen!&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Resultatet ser fint ut. I prinsippet speiler det opplysningene i XTRF helt og holdent.&lt;/p&gt;
+&lt;h2 id=&#34;utfordringene&#34;&gt;Utfordringene&lt;/h2&gt;
+&lt;p&gt;Den siste uken har jeg imidlertid hatt den tvilsomme gleden av å fylle ut min første MVA-melding. Nå som jeg har vært i gjennom den prosessen, skjønner jeg mer av hva som er nyttig i forbindelse med fakturaer. Jeg måtte for eksempel stadig konsultere kalkulatoren for å finne tall som ikke var skrevet eksplisitt på fakturaen, bruttoprisen på enkeltjobber eller sammenlagt MVA. Om jeg en dag må føre opplysningene inn i andre skjemaer eller regnskapsark, vil det potensielt bety masse omregning.&lt;/p&gt;
+&lt;p&gt;Det jeg på den andre &lt;em&gt;siden ikke hadde bruk for i det hele tatt&lt;/em&gt;, var opplysninger som den interne jobb-ID-en til XTRF, oppdragstypen, etc. En faktura er en salgsdokumentasjon som skal dokumentere salget, pengene som skifter hånd og hvilke forpliktelser som oppstår med hensyn til MVA-registeret. Det er et dokument som skal regnskapsføres og være etterettelig. I MVA-meldingen er det helt ubetydelig om oppdraget var oversettelse eller korrekturlesning – man trenger bare ha en passe god beskrivelse av hva slags arbeid som har blitt utført. Det er beløpene som teller.&lt;/p&gt;
+&lt;p&gt;Derfor har jeg gitt programmet en ordentlig overhaling, oppdatert fakturamalene og ellers fikset opp i en del småting som jeg har manglet.&lt;/p&gt;
+&lt;h2 id=&#34;ny-utforming&#34;&gt;Ny utforming&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-eksempel-ny-faktura.jpg&#34; alt=&#34;Ny utforming på fakturaen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Nå har jeg presset de tidligere spaltene navn + type, som jo egentlig var kategorier fra XTRF, inn på en linje som heter &amp;ldquo;Beskrivelse&amp;rdquo;. Her kan jeg legge inn en generell varebeskrivelse. Jeg beholder ID-kolonnen, fordi jeg ser for meg at den kan brukes i mange sammenhenger. Jeg har lagt til en egen MVA-utregning på hver eneste post, hvilket gjør at fakturaen er mye mer eksplisitt. Dessuten har jeg lagt til en utregning for totalt beregnet MVA.&lt;/p&gt;
+&lt;p&gt;Jeg kunne ikke dy meg, og la også til en liten gul farge nederst – i tråd med den klassiske norske giroen.&lt;/p&gt;
+&lt;h2 id=&#34;gjennomgang-av-nye-hammer-faktura&#34;&gt;Gjennomgang av nye Hammer Faktura&lt;/h2&gt;
+&lt;p&gt;I det nye programmet har jeg lagt til to nye klasser: Bank og Faktura. Det slo meg at jeg ikke ville oppgi min egen bankinformasjon på Github, så nå er ikke lenger bankopplysningene statiske inne i programmet.&lt;/p&gt;
+&lt;p&gt;Nå som mye av informasjonen var blitt sortert etter Kunde og Bank, slo deg meg som inkonsekvent at fakturanummer og forfallsdato ligger lagret direkte i fakturageneratoren. Derfor ligger den informasjonen nå i en egen Faktura-klasse.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cdcd00&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#00cdcd&#34;&gt;Bank&lt;/span&gt;():
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; __init__(self, konto, iban, bic, bank):
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;konto &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; konto
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;iban &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; iban
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;bic &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; bic
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;bank &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; bank
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#00cdcd&#34;&gt;Faktura&lt;/span&gt;():
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;def&lt;/span&gt; __init__(self):
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;id &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;make_invoice_number()
+		self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;dato, self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;get_invoice_dates()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Jobben med å faktisk skape fakturaen har blitt flyttet til en fjerde klasse, som heter Generator. Dermed er oppgavefordelingen slik:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;code&gt;Kunde()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Holder informasjon om kunden. Dette inkluderer også informasjon om MVA-sats og valuta.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;Faktura()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Inneholder metainformasjon om fakturaen:  dato, forfall og fakturanr.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;Bank()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Inneholder betalingsinformasjon som kontonr, IBAN etc.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;Generator()&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;har som oppgave å skape fakturaen. Skaper en tabell med metoden &lt;code&gt;add_to_invoice&lt;/code&gt; og fyller inn metainformasjon fra Kunde, Faktura og Bank.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id=&#34;1-initialisere-kunde-bank-og-faktura&#34;&gt;1. Initialisere kunde, bank og faktura&lt;/h3&gt;
+&lt;p&gt;Det første som må gjøres, er å initialisere Kunde og Bank. Faktura skapes fortsatt automatisk.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Importer modulen&lt;/span&gt;
+&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hammer_faktura
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Initialiser Kunde og Bank.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Initialiser selve Generatoren.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Faktura initialiseres automatisk med datoer og id.&lt;/span&gt;
+kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde AS&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4&amp;#34;&lt;/span&gt;)
+bank &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Bank(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;XX.XXX.XXX..XX&amp;#34;&lt;/span&gt;,
+        	&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NOXX.XXXX.XXXX.XX&amp;#34;&lt;/span&gt;,
+        	&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NKSVP&amp;#34;&lt;/span&gt;,
+        	&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Banken AS&amp;#34;&lt;/span&gt;)
+
+generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Generator(kunde, bank)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Viktig å merke seg at man også kan legge til to valgfrie argumenter når man initialiserer kunden for å endre MVA-sats og valuta. Som standard initialiseres kunden med 0,25 % MVA og «NOK» som valuta.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Kunde med null MVA og amerikanske dollar som valuta.&lt;/span&gt;
+kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde AS&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4&amp;#34;&lt;/span&gt;, vat&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;0.00&lt;/span&gt;, valuta&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;USD&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;På dette stadiet har man også mulighet til å endre andre standarder. For eksempel kan forfallsdato eller fakturadato endres manuelt, om du vil gi kunden litt lenger frist.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Endre fakturadato og forfallsdato manuelt&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;dato &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;10.05.1997&amp;#34;&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;10.07.1997&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-mat-inn-alle-oppdrag&#34;&gt;2. Mat inn alle oppdrag&lt;/h3&gt;
+&lt;p&gt;Nå som rammeopplysningene er på plass, kan vi legge inn noen oppdrag vi vil fakturere kunden for. For hvert oppdrag må vi legge inn en leveringsdato, en id, en beskrivelse og et beløp. Leveringsdato, ID og bekreftelse er tekst, mens beløpet er et naturlig tall (floating point) som vi skal utføre mattestykker på.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Her lager jeg en liste med 3 fiktive oppdrag&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Hvert av de fiktive oppdragene ligger i en dictionary.&lt;/span&gt;
+alle_oppdrag &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;01.01.2020&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;001&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse nettside&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1200.00&lt;/span&gt;
+                },
+                {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;05.01.2020&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;002&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Korrekturlesning&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;432.30&lt;/span&gt;
+                },
+                {&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;06.01.2020&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;004&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Skjønnlitteratur oversettelse&amp;#34;&lt;/span&gt;,
+                &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1223.00&lt;/span&gt;
+                }]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Det er lurt å på en eller annen måte strukturere dataene på en forutsigbar måte. I dette tilfellet har jeg laget en liste. Listen inneholder 3 unike gjenstander. Hver gjenstand representerer én jobb, og inneholder 4 nøkkel-verdi-par som inneholder de fire opplysningene jeg behøver (i Python er dette en &lt;em&gt;dictonary&lt;/em&gt;, en samling med data strukturert som nøkkel-verdi-par)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Loop over alle oppdragene i datasettet.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg inn id, navn, type, beløp, enhet og leveringsdato.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Gjenta for alle oppdragene som skal med.&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; oppdrag &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; alle_oppdrag:
+	generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;add_to_invoice(oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Nå kan jeg loope over de tre gjenstandene i listen min. Jeg kaller metoden &lt;code&gt;faktura.add_to_invoice&lt;/code&gt; på hver gjenstand, slik at informasjonen blir lagt inn i faktura-generatoren.&lt;/p&gt;
+&lt;p&gt;Takket være den nye fordelingen med netto-brutto-utregning for hver eneste fakturapost, kan vi nå også endre MVA-satsen på enkelte poster. Dette kan være nyttig om du skal fakturere med ulike MVA-satser.&lt;/p&gt;
+&lt;p&gt;I eksempelet nedenfor skal jeg fakturere en jobb som av en eller annen grunn har en annen MVA-sats. Da legger jeg til et fjerde, valgfritt argument som sier at MVA-satsen på denne jobben skal være 12 %, i stedet for de 25 %-ene som er standard på overordnet nivå (fra &lt;code&gt;generator.kunde.vat&lt;/code&gt;)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;add_to_invoice(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;07.01.2020&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;0007&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse skatteregler&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd00cd&#34;&gt;1310.23&lt;/span&gt;, vat&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;0.12&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-generer-fakturaen-og-skriv-til-fil&#34;&gt;3. Generer fakturaen og skriv til fil&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Generer tabellen.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Generer så selve fakturaen og lagre den i en variabel.&lt;/span&gt;
+generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_table()
+html_fil &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_body()
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Skriv fakturaen til en fil.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# (Bruk fakturanummret i filnavnet for bedre oversikt.)&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(f&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;invoices/obs_faktura_{generator.faktura.id}.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(html_fil)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Resten fungerer som før. Ved å kalle &lt;code&gt;generator.generate_table()&lt;/code&gt;, vil tabellen til fakturaen skapes. Neste kall til &lt;code&gt;generator.generate_body()&lt;/code&gt; legger tabellen, kundeinformasjon, bankinformasjon og fakturainformasjon inn i selve HTML-dokumentet og returnerer det. Jeg lagrer det returnerte objektet i variabelen html_fil, og skriver den til en fil. Filen markerer jeg med fakturanummeret, som jeg har tilgang til via &lt;code&gt;generator.faktura.id&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.olehammersland.com/obs_faktura_9159.html&#34;&gt;Her kan du se den ferdige fakturaen.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Det er alt som trengs for å «programmatisk» skape en faktura. Nå burde det meste ligge til rette for å automatisere hele prosessen, for eksempel ved å binde Hammer Faktura inn i et skript som laster informasjonen om utførte oppdrag ned fra XTRF-installasjonen til kunden din.&lt;/p&gt;
+&lt;h2 id=&#34;andre-forbedringer&#34;&gt;Andre forbedringer&lt;/h2&gt;
+&lt;p&gt;Det er også noen andre forbedringer jeg er fornøyd med med tanke på organisering av kode.&lt;/p&gt;
+&lt;p&gt;Nå ligger alle byggesteinene til dokumentet lagret som maler i HTML-format i en og samme mappe. Det gjør det enda enklere å arbeide med utformingen til fakturaene, uten å gjøre endringer i Python-koden.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;/&lt;/span&gt;
+&lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; __init__&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;py
+&lt;span style=&#34;&#34;&gt;└──&lt;/span&gt; maler
+    &lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; fakturamal&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+    &lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; style&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+    &lt;span style=&#34;&#34;&gt;├──&lt;/span&gt; tabellmal&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+    &lt;span style=&#34;&#34;&gt;└──&lt;/span&gt; tr_elem_mal&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Dessuten har jeg lagt CSS-stilene inn i et eget HTML-dokument, som jeg legger inn i headeren til fakturaen. Dermed er fakturaen et helt frittstående HTML-dokument hvor alt er synlig, litt som HTML-dokumentene til hjemmesiden min.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Obs:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Siden jeg la ut denne bloggposten har jeg oppdatert Hammer Faktura igjen. Nå har jeg lagt til støtte for databaser.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.olehammersland.com/blogg/hammer-faktura-versjon-3&#34;&gt;Les bloggposten om versjon 3 av Hammer Faktura her&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.olehammersland.com/blogg/fakturagenerator-i-python&#34;&gt;Les bloggposten om den første utgaven av Hammer Faktura her&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fakturagenerator i Python</title>
+      <link>https://www.olehammersland.com/blogg/fakturagenerator-i-python/</link>
+      <pubDate>Wed, 24 Feb 2021 16:41:49 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/fakturagenerator-i-python/</guid>
+      <description>&lt;p&gt;I denne bloggposten beskriver jeg en fakturagenerator jeg har laget i Python. Fakturageneratoren kan i løpet av få milisekunder opprette en faktura i HTML-format basert på data.&lt;/p&gt;
+&lt;p&gt;Nedenfor vil jeg gå litt gjennom prosjektet og vise hvordan det fungerer med et praktisk eksempel. &lt;a href=&#34;https://github.com/Oleham/hammer_faktura&#34;&gt;Koden til fakturageneratoren min finner du her!&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Oversikt:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#hammer-faktura&#34;&gt;Hammer Faktura&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#slik-fungerer-det&#34;&gt;Slik fungerer det&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#den-ferdige-fakturaen&#34;&gt;Den ferdige fakturaen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#eksempel-p%C3%A5-bruk-av-hammer-faktura&#34;&gt;Eksempel på bruk av Hammer Faktura&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#veien-videre&#34;&gt;Veien videre&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;hammer-faktura&#34;&gt;Hammer Faktura&lt;/h2&gt;
+&lt;p&gt;I løpet av februar har jeg gjort over 500 (små) oppdrag for én og samme kunde. Disse skal faktureres til tre ulike organsiasjonsnumre avhengig av hvilket land oppdraget kom fra. Da ble det klart for meg at jeg behøver en automatisert måte å opprette fakturaer på – litt på samme måte som &lt;a href=&#34;https://www.olehammersland.com/blogg/simplevp-xtrf-gjort-enkelt/&#34;&gt;GUI-programmet mitt simpleVP&lt;/a&gt;, som jeg bruker til å automatisere nedlastning av oppdrag fra XTRF-portalen.&lt;/p&gt;
+&lt;p&gt;Det startet altså som et prosjekt skreddersydd én eneste kunde, men det kjentes ikke ut som noen elegant løsning. Hva så når jeg får en annen kunde med andre behov?&lt;/p&gt;
+&lt;p&gt;Jeg vil jo egentlig ha et fakturaprogram som kan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tilpasses ulike kunder.&lt;/li&gt;
+&lt;li&gt;skape enhetlige fakturaer.&lt;/li&gt;
+&lt;li&gt;ellers automatisere alt det praktiske med faktura-nr. og datoer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Noen kunder vil ha faktura på jobb-basis, mens andre vil ha månedlige fakturaer. Derfor er det viktig å kunne tilpasse fakturaene og layoutet litt, samtidig som det hele skal ha et visst enhetlig format.&lt;/p&gt;
+&lt;p&gt;Løsningen på dette ble å todele det opprinnelige prosjektet mitt. Den ene delen er skriptet som laster ned data fra XTRF og sorterer det. Det er spesialtilpasset en viss kunde og et visst CMS-system.&lt;/p&gt;
+&lt;p&gt;Resten av programmet flyttet jeg over i en hjemmelaget modul som jeg gav navnet &lt;strong&gt;Hammer Faktura&lt;/strong&gt; og by-linen &lt;em&gt;einfach der Hammer&lt;/em&gt;. Denne modulen har kun én jobb – ta i mot data og lage en faktura på bakgrunn av denne. Målet er at jeg skal kunne bruke den samme modulen med alle mine kunder.&lt;/p&gt;
+&lt;h2 id=&#34;slik-fungerer-det&#34;&gt;Slik fungerer det&lt;/h2&gt;
+&lt;p&gt;Slik er Hammer Faktura bygget opp:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hammer_faktura
+├── README.md
+├── __init__.py
+└── maler
+    ├── faktura.css
+    ├── fakturamal.html
+    └── tabellmal.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Den inneholder en python-fil med to klasser, og en mappe med byggeklosser i HTML og CSS. Jobben til modulen er å hente inn informasjon, plassere det inn i HTML-byggeklossene og så sette sammen et ferdig dokument.&lt;/p&gt;
+&lt;p&gt;Vi starter med kundeklassen:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-kunde-klasse.jpg&#34; alt=&#34;Kunde.klassen initaliseres&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Kunde-klassen inneholder så langt bare tre nøkkelinformasjoner: navn, organisasjonsnummer og adresse. Dette skal skrives ut på fakturaen. Etter hvert vil det også være aktuelt å legge til flere variabler og metoder – for eksempel om kunden vil ha 30 dagers eller 14 dagers frist.&lt;/p&gt;
+&lt;p&gt;Nå som vi har initialisert en kunde, kan vi initialisere selve fakturaen.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura-klasse.jpg&#34; alt=&#34;Faktura-klassen initaliseres&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I det Faktura-klassen initialiseres, fyller den automatisk ut feltet dato med dagens dato, og legger til en forfallsdato 1 måned senere. Dessuten genererer den et tilfeldig fakturanummer.&lt;/p&gt;
+&lt;p&gt;I tillegg inneholder den en liten html-snutt som representerer en rad i en tabell, lagret som &lt;code&gt;tr_elem_mal&lt;/code&gt;. Det er den som skal fylles opp med alle jobbene vi skal fakturere. Det gjøres trinn for trinn ved hjelp av metodene til Faktura-klassen.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;add_to_tr_elem&lt;/strong&gt;&lt;br&gt;
+Denne metoden brukes til å legge oppdragets navn, referanse, type og avtalt beløp inn i html-snutten &lt;code&gt;Faktura.tr_elem_list&lt;/code&gt;. Hver gang metoden kalles, vil en ny rad legges inn i listen. Om det er flere oppdrag som skal legges til en faktura, kan man altså loope over dem og kalle denne metoden.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;generate_table&lt;/strong&gt;&lt;br&gt;
+Når alle radene er på plass i &lt;code&gt;Faktura.tr_elem_list&lt;/code&gt;, kan selve tabellen genereres. Tabell-radene fra punkt 1 settes inn i &lt;code&gt;maler/tabellmal.html&lt;/code&gt;. Totalen legges så inn, og bruttopris regnes ut basert på momssatsen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;generate_body&lt;/strong&gt;&lt;br&gt;
+Til slutt kan man generere selve fakturaen. Den ferdige tabellen med total fra punkt 2 settes inn i &lt;code&gt;maler/fakturamal.html&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Her er en eksemplarisk bruk av modulen:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#000080&#34;&gt;# Importer modulen&lt;/span&gt;
+&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hammer_faktura
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Last inn et datasett med alle oppdrag som skal på fakturaen&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;oppdrag.json&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	alle_oppdrag &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; json&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;load(f)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Oppgi kunde og initialiser fakturaen.&lt;/span&gt;
+kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde AS&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;123456789&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Adresseveien 4&amp;#34;&lt;/span&gt;)
+faktura &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Faktura(kunde)
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Loop over alle oppdragene i datasettet.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Legg inn id, navn, type, beløp, enhet og leveringsdato.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Gjenta for alle oppdragene som skal med.&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; oppdrag &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; alle_oppdrag:
+	faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;add_to_tr_elem(oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;navn&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beløp&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;enhet&amp;#34;&lt;/span&gt;],
+							oppdrag[&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;leveringsdato&amp;#34;&lt;/span&gt;])
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Generer tabellen.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# Generer så selve fakturaen og lagre den i en variabel.&lt;/span&gt;
+faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_table()
+html_fil &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_body()
+
+&lt;span style=&#34;color:#000080&#34;&gt;# Skriv fakturaen til en fil.&lt;/span&gt;
+&lt;span style=&#34;color:#000080&#34;&gt;# (Bruk fakturanummret i filnavnet for bedre oversikt.)&lt;/span&gt;
+&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(f&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura_{faktura.invoice_number}.html&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+	f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(html_fil)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;den-ferdige-fakturaen&#34;&gt;Den ferdige fakturaen&lt;/h2&gt;
+&lt;p&gt;Resultatet er et HTML-dokument som f.eks. kan åpnes i nettleseren.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura_hf.jpg&#34; alt=&#34;Eksempel på hvordan en ferdig faktura kan se ut.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Dette dokumentet består av to byggeklosser.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maler/fakturamal.html&lt;/code&gt; inneholder selve rammen, med kontaktinformasjon, datoer og betalingsinformasjon.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;maler/tabellmal.html&lt;/code&gt; inneholder rammeverket for selve tabellen. Fordelen med denne oppgavedelingen er at jeg raskt kan utforme en annerledes tabell til en annen kunde, uten å påvirke utformingen til resten av fakturaen.&lt;/p&gt;
+&lt;p&gt;Selve stylingen gjøres i &lt;code&gt;maler/faktura.css&lt;/code&gt;. Jeg har forsøkt å legge meg på en stil som ligner på Faktura Larsen, et (gratis!) eldre hobbyprogram som fortsatt fungerer veldig bra.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/hammer-faktura-faktura_larsen.jpg&#34; alt=&#34;Faktura fra Faktura Larsen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Minus den (riktignok tidløse) giroen nederst, og kanskje pluss en liten logo.&lt;/p&gt;
+&lt;p&gt;Hvorfor et HTML-dokument? Vel, det er utrolig versatilt og kan enkelt konverteres til PDF og docx ved hjelp av verktøy som pandoc. Tanken er at det er et tidløst format som kan brukes til veldig mye, og som det er lett å endre stilen på.&lt;/p&gt;
+&lt;h2 id=&#34;eksempel-på-bruk-av-hammer-faktura&#34;&gt;Eksempel på bruk av Hammer Faktura&lt;/h2&gt;
+&lt;p&gt;Hvorfor alt styret? La oss gå tilbake og ta en titt på denne kunden som ville ha tre ulike fakturaer for over 500 småoppdrag som jeg gjorde i løpet av en måned.&lt;/p&gt;
+&lt;p&gt;I eksempelet nedenfor viser jeg hvor lett det nå har blitt for meg å generere 3 fakturaer med over 500 oppdrag som lastes direkte ned fra nettet:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;kontorer &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;DK&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;SE&amp;#34;&lt;/span&gt;]
+
+&lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; kontor &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; kontorer:
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;if&lt;/span&gt; kontor &lt;span style=&#34;color:#39c&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NO&amp;#34;&lt;/span&gt;:
+		kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;NORSK KUNDE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;1234567&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oslo&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;elif&lt;/span&gt; kontor &lt;span style=&#34;color:#39c&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;DK&amp;#34;&lt;/span&gt;:
+		kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;DANSK KUNDE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;7654321&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;København&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;else&lt;/span&gt;:
+		kunde &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Kunde(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;SVENSK KUNDE&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;17262534&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Stockholm&amp;#34;&lt;/span&gt;)
+
+	invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hammer_faktura&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;Faktura(kunde)
+
+	&lt;span style=&#34;color:#000080&#34;&gt;# Fyller ut tabellen med data som hentes direkte fra XTRF&lt;/span&gt;
+	populate_invoice_from_XTRF(invoice, oversikt, kontor)
+
+	invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_table()
+		
+	faktura &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;generate_body()
+
+	&lt;span style=&#34;color:#cdcd00&#34;&gt;with&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;open&lt;/span&gt;(os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;join(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;invoices&amp;#34;&lt;/span&gt;, f&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;faktura_{invoice.invoice_number}_{kontor}.html&amp;#34;&lt;/span&gt;), &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;as&lt;/span&gt; f:
+		f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt; write(faktura)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Resultatet? 3 fine filer som dette:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;─ faktura_13137_DK.html
+─ faktura_2912_SE.html
+─ faktura_35457_NO.html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Disse kan så gjøres om til Word med pandoc:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ for file in *; do pandoc -o ${file%.html}.docx $file; done;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Det å skrive dette skriptet tar ikke så lang tid nå som selve fakturaens oppbygning og stil allerede er på plass.&lt;/p&gt;
+&lt;h2 id=&#34;veien-videre&#34;&gt;Veien videre&lt;/h2&gt;
+&lt;p&gt;Jeg startet prosjetet på mandag og har kost meg veldig gjennom hele uken. Det har vært en spennende utfordring å rydde opp i koden min og prøve å gjøre oppbygningen så logisk som mulig. Prøve å finne den perfekte balansen mellom &lt;em&gt;enhetlig&lt;/em&gt; og &lt;em&gt;fleksibel&lt;/em&gt; – et program som skaper orden, men som likevel skal kunne utvides og endres på i fremtiden.&lt;/p&gt;
+&lt;p&gt;Det er ikke så lett, fordi man må prøve å gjette på hvilke funksjoner som kan være nyttige i fremtiden. Muligheten for å endre språket i fakturaen? Kanskje bør kundene lagres i en database og hentes derfra? Kanskje skal det være mulig å oppdatere totalen etter at tabellen har blitt generert? Og så videre.&lt;/p&gt;
+&lt;p&gt;Uansett er jeg fornøyd med ukens fremgang på prosjektet. Nå skal jeg lage fakturaene mine, og så får jeg tenke over de neste utvidelsene en annen gang!&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;obs&#34;&gt;OBS!&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Oppdatering 4.3.2021&lt;/strong&gt;
+Jeg har overhalet Hammer Faktura ganske betydelig. Alle endringene og forbedringene er beskrevet og forklart tydelig i det nye blogginnlegget, &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturaer-del-to&#34;&gt;som kan leses her&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

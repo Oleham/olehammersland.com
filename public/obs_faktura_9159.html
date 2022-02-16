@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>   
+        <style>
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    font-size: medium;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.5;
+    padding-top: 20px;
+}
+
+table {
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+td {
+    padding-bottom: 4px;
+    padding-right: 8px;
+}
+
+td.last_row {
+    padding-right: 0px;
+}
+
+table.oppdragsliste {
+    font-size: 12px;
+}
+
+.topp {
+    font-size: small;
+}
+
+.kundeinfo {
+    padding-right: 20px;
+    vertical-align: bottom;
+}
+
+.fakturainfo {
+    padding-left: 20px;
+    width: 35%;
+}
+
+.bankinfo {
+    border-style: solid;
+    border-width: 20px;
+    border-color: rgb(255, 253, 130);
+}
+
+.total {
+    text-align: right;
+    padding-right: 10px;
+}
+</style>   
+    </head>
+
+    <body>
+        <div class="topp">
+            Ole Hammersland ENK –– Org. nr. 926 462 040 MVA –– Louises gate 24b, 0169 Oslo
+        </div>
+                    
+        <table>
+            <tr>
+                <td class="kundeinfo">
+                    <p><strong>Kunde</strong></p>
+                    <p>Kunde AS</p>
+                    <p>Org.nr	123456789</p>
+                    <p>Adresse	Adresseveien 4</p>
+                    
+                </td>
+
+                <td class="fakturainfo">
+                    <h1>Faktura</h1>
+                    <p>Fakturanr: 9159</p>
+                    <p>Fakturadato: 04.03.2021</p>
+                    <p>Forfallsdato: 03.04.2021</p>
+                    
+                </td>
+            </tr>
+        </table>
+
+            <hr>
+    <table class="oppdragsliste">
+        <colgroup>
+            <col width="10%" />
+            <col width="20%" />
+            <col width="50%" />
+            <col width="10%" />
+            <col width="10%" />
+            <col width="10%" />
+        </colgroup>
+        <thead>
+            <tr class="header">
+                <th align="left">DATO</th>
+                <th align="left">ID</th>
+                <th align="left">BESKRIVELSE</th>
+                <th align="right">NETTO<br>(NOK)</th>
+                <th align="right">MVA</th>
+                <th align="right">BRUTTO<br>(NOK)</th>
+            </tr>
+        </thead>
+    <tbody>
+
+        <tr>
+    <td align="left">01.01.2020</td>
+    <td align="left">001</td>
+    <td align="left">Oversettelse nettside</td>
+    <td align="right">1200.00</td>
+    <td align="right">25%</td>
+    <td class="last_row" align="right"><strong>1500.00</strong></td>
+</tr>
+<tr>
+    <td align="left">05.01.2020</td>
+    <td align="left">002</td>
+    <td align="left">Korrekturlesning</td>
+    <td align="right">432.30</td>
+    <td align="right">25%</td>
+    <td class="last_row" align="right"><strong>540.38</strong></td>
+</tr>
+<tr>
+    <td align="left">06.01.2020</td>
+    <td align="left">004</td>
+    <td align="left">Skjønnlitteratur oversettelse</td>
+    <td align="right">1223.00</td>
+    <td align="right">25%</td>
+    <td class="last_row" align="right"><strong>1528.75</strong></td>
+</tr>
+<tr>
+    <td align="left">07.01.2020</td>
+    <td align="left">0007</td>
+    <td align="left">Oversettelse skatteregler</td>
+    <td align="right">1310.23</td>
+    <td align="right">12%</td>
+    <td class="last_row" align="right"><strong>1467.46</strong></td>
+</tr>
+
+    </tbody>
+</table>
+
+<hr>
+
+<div class="total">
+    <strong>Nettosalg: 4165.53 NOK</strong><br>
+    <strong>MVA: 871.05 NOK</strong><br>
+    <strong>Til sammen: 5036.58 NOK</strong><br>
+</div>
+
+        <p>
+            <div class="bankinfo">
+            <strong>Innbetales til:</strong><br>
+            Kontornr: XX.XXX.XXX..XX<br>
+            IBAN: NOXX.XXXX.XXXX.XX<br>
+            BIC: NKSVP<br>
+            Bank: Banken AS
+            </div>
+        </p>
+
+    </body>
+</html>
