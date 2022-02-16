@@ -1,4 +1,27 @@
 {{ define "main" }}
-<img src="/images/front.jpg" alt="Ole Hammersland" style="float:left; border-radius: 60%; padding-left: 20px; padding-right: 20px; max-width: 15%; height: auto;">
+
 {{ .Content }}
+
+{{/*
+KOMMENTAR: Artikkel nr. 2 ser ut til å være den siste. Bedre fremgangsmåte?    
+*/}}
+<h1>Siste innlegg: </h1>
+{{ $count := 0 }}
+{{ range .Site.Pages }}
+    {{if eq .Type "blogg"}}
+    {{ if eq $count 1 }}
+
+<div style="background-color: blue;">
+    <small>Lagt ut: {{ .Date.Format "02.01.2006" }}</small>
+    <h3>{{ .Title }}</h3>
+    <p>{{ .Summary }}</p>
+</div>
+
+    {{ end }}
+    {{ $count = add $count 1 }}
+    {{ end }}
+
+{{ end }}
+
+
 {{ end }}
