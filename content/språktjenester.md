@@ -4,7 +4,7 @@ menu = "main"
 +++
 
 # Språktjenester
-Mitt enkeltmannsforetak tilbyr språktjenester overfor direktekunder og oversettelsesbyråer. Jeg har ca. 4 års erfaring i denne bransjen: som oversetter, korrekturleser og utvikler.
+Oleham AS tilbyr språktjenester overfor direktekunder og oversettelsesbyråer. Jeg har ca. 4 års erfaring i denne bransjen: som oversetter, korrekturleser og utvikler.
 
 ## Hva tilbyr jeg
 Jeg oversetter fra følgende språk:

@@ -4,23 +4,113 @@
   
   <url>
     <loc>https://www.olehammersland.com/</loc>
-    <lastmod>2021-11-10T08:55:37+01:00</lastmod>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://www.olehammersland.com/blogg/automatisering/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/bash/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.olehammersland.com/blogg/</loc>
-    <lastmod>2021-11-10T08:55:37+01:00</lastmod>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/br%C3%B8dbaking/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/effektivisering/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/english/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/enkeltpersonforetak/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/german/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/go/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/javascrip/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.olehammersland.com/blogg/javascript/</loc>
-    <lastmod>2021-11-10T08:55:37+01:00</lastmod>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.olehammersland.com/blogg/koding/</loc>
-    <lastmod>2021-11-10T08:55:37+01:00</lastmod>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/linux/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/maskinoversttelse/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/memoq/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/oversettelse/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/python/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/sykkel/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/translation/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/tysk/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.olehammersland.com/blogg/xtrf/</loc>
+    <lastmod>2022-04-29T13:57:04+02:00</lastmod>
   </url>
   
   <url>
@@ -29,42 +119,7 @@
   </url>
   
   <url>
-    <loc>https://www.olehammersland.com/blogg/automatisering/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/effektivisering/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.olehammersland.com/blogg/forkorte-stringer/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/maskinoversttelse/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/memoq/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/oversettelse/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/python/</loc>
-    <lastmod>2021-11-04T15:33:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/translation/</loc>
     <lastmod>2021-11-04T15:33:19+01:00</lastmod>
   </url>
   
@@ -74,38 +129,13 @@
   </url>
   
   <url>
-    <loc>https://www.olehammersland.com/blogg/sykkel/</loc>
-    <lastmod>2021-10-09T17:54:51+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.olehammersland.com/bokhylla/</loc>
     <lastmod>2021-10-06T14:21:43+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.olehammersland.com/blogg/bash/</loc>
-    <lastmod>2021-10-04T17:02:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/enkeltpersonforetak/</loc>
-    <lastmod>2021-10-04T17:02:15+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.olehammersland.com/blogg/fornyelse-letsencrypt-sertifikat/</loc>
     <lastmod>2021-10-04T17:02:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/linux/</loc>
-    <lastmod>2021-10-04T17:02:15+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/javascrip/</loc>
-    <lastmod>2021-09-27T17:30:58+02:00</lastmod>
   </url>
   
   <url>
@@ -119,22 +149,7 @@
   </url>
   
   <url>
-    <loc>https://www.olehammersland.com/blogg/go/</loc>
-    <lastmod>2021-04-26T12:57:36+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.olehammersland.com/blogg/mitt-f%C3%B8rste-go-prosjekt/</loc>
-    <lastmod>2021-04-26T12:57:36+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/tysk/</loc>
-    <lastmod>2021-04-26T12:57:36+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/xtrf/</loc>
     <lastmod>2021-04-26T12:57:36+02:00</lastmod>
   </url>
   
@@ -171,16 +186,6 @@
   <url>
     <loc>https://www.olehammersland.com/blogg/memoq-triks-versjonskontroll/</loc>
     <lastmod>2021-02-12T17:38:36+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/english/</loc>
-    <lastmod>2021-02-09T17:11:05+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.olehammersland.com/blogg/german/</loc>
-    <lastmod>2021-02-09T17:11:05+01:00</lastmod>
   </url>
   
   <url>

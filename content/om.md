@@ -6,7 +6,7 @@ menu = "main"
 ![Portrettbilde av meg](/images/om.jpg)
 
 ## Om meg
-Engasjert oversetter med lidenskap for språk og programmering. Opprinnelig fra Kristiansand, men bosatt på St. Hanshaugen i Oslo.
+Engasjert oversetter med lidenskap for språk og programmering. Opprinnelig fra Kristiansand, men bosatt på Tøyen i Oslo.
 
 ## Kvalifikasjoner
 Jeg har arbeidet fulltid som oversetter siden 2018.
@@ -24,7 +24,9 @@ Jeg har arbeidet fulltid som oversetter siden 2018.
 
 #### Organisasjonsnummer
 
-> Mitt organisasjonsnummer er **926 462 040 MVA**
+> Mitt organisasjonsnummer er **928 538 605 MVA**
+> 
+> Se Oleham AS på [proff.no](https://proff.no/selskap/oleham-as/oslo/oversettere-og-tolker/IFCTSZ110JZ/)
 
 #### Sosiale medier
 
