@@ -17,10 +17,10 @@ Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring
 <meta property="og:description" content="Jeg har oppdatert Hammer Faktura igjen! I denne bloggposten går jeg gjennom hva som er nytt, og gir litt dokumentasjon på hvordan man kan bruke programmet.
 Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring av fakturaposter, kunder, bankinformasjon og fakturaer. Kommandolinjeverktøy for direkte samhandling med databasen. Wrapper-funksjoner som forenkler prosessen med å opprette faktuaene. Støtte for enkel flerspråklighet, slik at jeg kan skrive ut engelske fakturaer.  De tidligere utgavene av Hammer Faktura har kun hatt støtte for å opprette fakturaene." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.olehammersland.com/blogg/hammer-faktura-versjon-3/" />
-<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="og:url" content="https://www.olehammersland.com/blogg/hammer-faktura-versjon-3/" /><meta property="og:image" content="https://www.olehammersland.com/images/share.png"/><meta property="article:section" content="blogg" />
 <meta property="article:published_time" content="2021-03-21T18:16:42+01:00" />
 <meta property="article:modified_time" content="2021-03-21T18:16:42+01:00" />
+
 
 
 
@@ -35,16 +35,10 @@ Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring
 
 <meta itemprop="name" content="Hammer Faktura versjon 3">
 <meta itemprop="description" content="Jeg har oppdatert Hammer Faktura igjen! I denne bloggposten går jeg gjennom hva som er nytt, og gir litt dokumentasjon på hvordan man kan bruke programmet.
-Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring av fakturaposter, kunder, bankinformasjon og fakturaer. Kommandolinjeverktøy for direkte samhandling med databasen. Wrapper-funksjoner som forenkler prosessen med å opprette faktuaene. Støtte for enkel flerspråklighet, slik at jeg kan skrive ut engelske fakturaer.  De tidligere utgavene av Hammer Faktura har kun hatt støtte for å opprette fakturaene.">
-<meta itemprop="datePublished" content="2021-03-21T18:16:42+01:00" />
+Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring av fakturaposter, kunder, bankinformasjon og fakturaer. Kommandolinjeverktøy for direkte samhandling med databasen. Wrapper-funksjoner som forenkler prosessen med å opprette faktuaene. Støtte for enkel flerspråklighet, slik at jeg kan skrive ut engelske fakturaer.  De tidligere utgavene av Hammer Faktura har kun hatt støtte for å opprette fakturaene."><meta itemprop="datePublished" content="2021-03-21T18:16:42+01:00" />
 <meta itemprop="dateModified" content="2021-03-21T18:16:42+01:00" />
-<meta itemprop="wordCount" content="1687">
-<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
-
-
-
+<meta itemprop="wordCount" content="1687"><meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
 <meta itemprop="keywords" content="automatisering,bash,effektivisering,enkeltpersonforetak,oversettelse,python," />
-
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -402,12 +396,12 @@ Nytt i Hammer Faktura versjon 3:  Støtte for sqlite-database muliggjør lagring
 <h2 id="dokumentasjon">Dokumentasjon</h2>
 <h3 id="hurtigstart">Hurtigstart</h3>
 <p>Last ned modulen:</p>
-<pre><code>git clone https://github.com/Oleham/hammer_faktura.git
+<pre tabindex="0"><code>git clone https://github.com/Oleham/hammer_faktura.git
 </code></pre><p>Opprett en tom database i nåværende mappe. Navnet vil alltid være <code>hammer_faktura.db</code>.</p>
-<pre><code>$ python3 -m hammer_faktura.create_tables
+<pre tabindex="0"><code>$ python3 -m hammer_faktura.create_tables
 </code></pre><p>Importer database-modulen <code>hammerfaktura.hfdb</code> i skriptet ditt. Den inneholder funksjoner for å samhandle med databasen.
 Lag en enkel faktura for ett oppdrag:</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cd00cd">from</span> hammer_faktura <span style="color:#cd00cd">import</span> hfdb
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cd00cd">from</span> hammer_faktura <span style="color:#cd00cd">import</span> hfdb
 
 <span style="color:#000080"># Legg til en kunde i databasen.</span>
 client_pk <span style="color:#39c">=</span> hfdb<span style="color:#39c">.</span>addClient(<span style="color:#cd0000">&#34;Kunde&#34;</span>, 
@@ -438,7 +432,7 @@ invoice <span style="color:#39c">=</span> generator<span style="color:#39c">.</s
     f<span style="color:#39c">.</span>write(invoice)
 
 </code></pre></div><p><code>hfdb.quickGeneratorFromItem</code> lar oss legge til en jobb i databasen og umiddelbart skape en faktura for den. Med <code>hfdb.quickGeneratorFromList</code> kan vi på samme måte legge inn flere oppdrag og umiddelbart skape en faktura.</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">jobber <span style="color:#39c">=</span> [{<span style="color:#cd0000">&#34;dato&#34;</span>: <span style="color:#cd00cd">1615968966</span>,
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">jobber <span style="color:#39c">=</span> [{<span style="color:#cd0000">&#34;dato&#34;</span>: <span style="color:#cd00cd">1615968966</span>,
     <span style="color:#cd0000">&#34;id&#34;</span>: <span style="color:#cd0000">&#34;1234&#34;</span>,
     <span style="color:#cd0000">&#34;beskrivelse&#34;</span>: <span style="color:#cd0000">&#34;Oversettelse avis&#34;</span>,
     <span style="color:#cd0000">&#34;netto&#34;</span>: <span style="color:#cd00cd">320.12</span>
@@ -466,7 +460,7 @@ invoice <span style="color:#39c">=</span> generator<span style="color:#39c">.</s
 <p>Som vi ser, består databasen av fire tabeller: invoices, invoice_items, clients og banks. Den viktigste tabellen som knytter alle tabellene sammen, er invoices. Det er alltid knyttet en client og en bank til hver invoice, i et én-til-én-forhold. Samtidig kan flere poster i invoice_items, som representerer de enkelte jobbene, være knyttet til en invoice i et mange-til-én-forhold (en faktura kan inneholde flere fakturaposter).</p>
 <p>I forrige avsnitt viste jeg hvordan man veldig raskt kan skape fakturaer med <code>hfdb.quickGeneratorFromItem</code> og <code>hfdb.quickGeneratorFromList</code>. Dette er faktisk to wrapper-funksjoner som «wrapper» en rekke funksjoner for samhandling med databasen, med den hensikt å gjøre det så enkelt så mulig å opprette en faktura hurtig. De gjør to ting med informasjonen som gis dem: de legger dem til i databasen, og så returnerer de en <code>hammer_faktura.Generator</code>, som vi kan bruke for å skape en faktura.</p>
 <p>La oss ta en titt på hva som skjer i bakgrunnen når vi bruker disse wrapper-funksjonene:</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cd00cd">from</span> hammer_faktura <span style="color:#cd00cd">import</span> hfdb
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cd00cd">from</span> hammer_faktura <span style="color:#cd00cd">import</span> hfdb
 
 jobber <span style="color:#39c">=</span> [{<span style="color:#cd0000">&#34;dato&#34;</span>: <span style="color:#cd00cd">1615968100</span>,
     <span style="color:#cd0000">&#34;id&#34;</span>: <span style="color:#cd0000">&#34;5678&#34;</span>,
@@ -492,7 +486,7 @@ hfdb<span style="color:#39c">.</span>assignItemsByDate(invoice_number,
 <p><code>hfdb.addInvoice()</code> lagrer en faktura i databasen, i tabellen invoices. Det er kun nødvendig å oppgi en kunde og bankinformasjon. Vi kan også oppgi følgende: en egendefinert fakturadato (som timestamp – standard er dagens dato), en egendefinert frist eller velge et annet språk enn norsk. I bakgrunnen blir det automatisk generert et fakturanummer som returneres og lagres i variabelen invoice_number.</p>
 <p><code>hfdb.assignItemsByDate()</code> knytter så en rekke invoice_item til en invoice i et én-til-flere-forhold. Dette forholdet etableres først når vi kjører denne funksjonen – fakturaposter som ennå ikke er blitt berørt, vil ikke være tilknyttet noen faktura i det hele tatt. Argumentene er fakturanummeret det gjelder og et datospenn. Alle poster i invoice_items med samme client som fakturaen og leveringsdato innenfor tidsspennet, blir knyttet til fakturaen.</p>
 <h3 id="skape-og-bruke-fakturageneratoren">Skape og bruke fakturageneratoren</h3>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="">…</span>]
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[<span style="">…</span>]
 
 generator <span style="color:#39c">=</span> hfdb<span style="color:#39c">.</span>makeGenerator(invoice_number)  
 
@@ -503,7 +497,7 @@ body <span style="color:#39c">=</span> generator<span style="color:#39c">.</span
 
 </code></pre></div><p>Til slutt skaper vi generatoren med funksjonen <code>hfdb.makeGenerator()</code>. Funksjonen tar et fakturanummer som argument, og forutsetter at det finnes poster i tabellen invoice_items som er knyttet til dette fakturanummeret. Det henter så all informasjon om client, bank, og invoice_items som er knyttet til fakturaen, og lagrer det i generatoren.</p>
 <p>Generatoren er en klasse med tre underklasser, client, invoice og bank, som til sammen inneholder all relevant informasjon om fakturaen fra databasen. Den har også en (wrapper-)metode <code>hammer_faktura.Generator.makeInvoiceBody</code> som returnerer et html-dokument som en string. <a href="/blogg/fakturaer-del-to/#1-initialisere-kunde-bank-og-faktura">Se min forrige post for mer informasjon om Generator-objektet</a>. <code>hfdb.makeGenerator()</code> er altså en nøkkelfunksjon som forvandler en post i tabellen invoices til en python-klasse vi kan bruke programmet vårt.Vi kan  manuelt overskrive feltene til hammer_faktura.Generator-objektet, f.eks slik:</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">generator <span style="color:#39c">=</span> hfdb<span style="color:#39c">.</span>quickGeneratorFromList(jobber, client_pk, bank_pk)
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">generator <span style="color:#39c">=</span> hfdb<span style="color:#39c">.</span>quickGeneratorFromList(jobber, client_pk, bank_pk)
 
 generator<span style="color:#39c">.</span>invoice<span style="color:#39c">.</span>language <span style="color:#39c">=</span> <span style="color:#cd0000">&#34;en&#34;</span>        <span style="color:#000080"># endre språk.</span>
 generator<span style="color:#39c">.</span>invoice<span style="color:#39c">.</span>forfall <span style="color:#39c">=</span> <span style="color:#cd0000">&#34;01.01.2020&#34;</span> <span style="color:#000080"># overskrive forfallsdatoen</span>
@@ -531,7 +525,7 @@ generator<span style="color:#39c">.</span>invoice_items[<span style="color:#cd00
 <h3 id="kommandolinjeverktøy">Kommandolinjeverktøy</h3>
 <p>Jeg har begynt å lage støtte for å bruke Hammer Faktura i kommandolinjen. Inntil videre har jeg konsentrert meg spesielt om de operasjonene som ikke må gjøres så ofte: da tenker jeg på det å legge til en ny kunde eller en ny bankforbindelse. Jeg har også støtte for å legge til en enkelt jobb i invoice_item.</p>
 <p>Slik kan Hammer Faktura brukes i kommandolinjen:</p>
-<pre><code>$ python3 -m hammer_faktura
+<pre tabindex="0"><code>$ python3 -m hammer_faktura
 
 Usage: python3 -m hammer_faktura [-l/-a] &lt;args&gt;
 

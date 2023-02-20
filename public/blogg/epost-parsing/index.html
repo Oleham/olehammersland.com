@@ -17,10 +17,10 @@ To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post 
 <meta property="og:description" content="Det er ikke alltid mulig å arbeide på en så effektiv måte som mulig. Ofte må man samarbeide med organisasjoner med en egen arbeidsflyt og kultur som ikke nødvendigvis er forenlig med hurtig arbeid.
 To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post og Excel-regneark. Det er ikke så rart. For flere kunder som ikke nødvendigvis er så teknisk kompetente, fremstår Excel som grei måte å organisere tekst på." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.olehammersland.com/blogg/epost-parsing/" />
-<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="og:url" content="https://www.olehammersland.com/blogg/epost-parsing/" /><meta property="og:image" content="https://www.olehammersland.com/images/share.png"/><meta property="article:section" content="blogg" />
 <meta property="article:published_time" content="2021-02-16T18:31:38+01:00" />
 <meta property="article:modified_time" content="2021-02-16T18:31:38+01:00" />
+
 
 
 
@@ -35,16 +35,10 @@ To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post 
 
 <meta itemprop="name" content="Parsing av e-poster 📮">
 <meta itemprop="description" content="Det er ikke alltid mulig å arbeide på en så effektiv måte som mulig. Ofte må man samarbeide med organisasjoner med en egen arbeidsflyt og kultur som ikke nødvendigvis er forenlig med hurtig arbeid.
-To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post og Excel-regneark. Det er ikke så rart. For flere kunder som ikke nødvendigvis er så teknisk kompetente, fremstår Excel som grei måte å organisere tekst på.">
-<meta itemprop="datePublished" content="2021-02-16T18:31:38+01:00" />
+To av verstingene de fleste oversettere blir tvunget til å bale med, er e-post og Excel-regneark. Det er ikke så rart. For flere kunder som ikke nødvendigvis er så teknisk kompetente, fremstår Excel som grei måte å organisere tekst på."><meta itemprop="datePublished" content="2021-02-16T18:31:38+01:00" />
 <meta itemprop="dateModified" content="2021-02-16T18:31:38+01:00" />
-<meta itemprop="wordCount" content="810">
-<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
-
-
-
+<meta itemprop="wordCount" content="810"><meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
 <meta itemprop="keywords" content="automatisering,bash,effektivisering,python," />
-
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -404,7 +398,7 @@ De sender meg ca. 15 e-poster daglig. Hver av disse e-postene inneholder et sted
 <li>Sletter alle som ikke er markert med NO for norsk.</li>
 </ol>
 <p>Slik ser det ut:</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cd00cd">import</span> os<span style="color:#39c">,</span> mailparser<span style="color:#39c">,</span> re
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cd00cd">import</span> os<span style="color:#39c">,</span> mailparser<span style="color:#39c">,</span> re
 
 <span style="color:#000080"># Loops over emails in current directory</span>
 <span style="color:#cdcd00">for</span> raw_mail <span style="color:#cdcd00">in</span> os<span style="color:#39c">.</span>listdir():
@@ -421,7 +415,7 @@ De sender meg ca. 15 e-poster daglig. Hver av disse e-postene inneholder et sted
 
         <span style="color:#000080"># Create a folder structure based on sender and subject</span>
         image_path <span style="color:#39c">=</span> os<span style="color:#39c">.</span>path<span style="color:#39c">.</span>join(sender, new_subject)
-        os<span style="color:#39c">.</span>makedirs(image_path, exist_ok<span style="color:#39c">=</span>True)
+        os<span style="color:#39c">.</span>makedirs(image_path, exist_ok<span style="color:#39c">=</span><span style="color:#cdcd00">True</span>)
 
         <span style="color:#000080"># Write all attachments to the corresponding folder</span>
         epost_obj<span style="color:#39c">.</span>write_attachments(image_path)
@@ -437,11 +431,11 @@ De sender meg ca. 15 e-poster daglig. Hver av disse e-postene inneholder et sted
 <h2 id="e-poster-fra-google-drive">E-poster fra Google Drive</h2>
 <p>Den nevnte kunden sender også en god del e-poster fra Google Drive. I prinsippet fungerer det på samme måte, men disse epostene inneholder opptil 80–90 lenker i stedet for vedlegg. Av disse skal jeg klikke på de som inneholder norsk tekst (ca. 10 %).</p>
 <p>Quick-fix-løsningen på det ble å lagre epostene som HTML-filer og skrive et raskt skript som bruker <a href="https://pypi.org/project/beautifulsoup4/">Python-biblioteket BeautifulSoup</a> til å parse HTML. Skriptet henter ut alle lenkene og åpner dem i nettleseren dersom de slutter på &ldquo;_no.gif&rdquo; eller &ldquo;_no.jpg&rdquo;.</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cd00cd">import</span> bs4<span style="color:#39c">,</span> sys<span style="color:#39c">,</span> webbrowser
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cd00cd">import</span> bs4<span style="color:#39c">,</span> sys<span style="color:#39c">,</span> webbrowser
 
 <span style="color:#000080"># Enter name of HTML email as CL argument</span>
 <span style="color:#cdcd00">if</span> <span style="color:#cd00cd">len</span>(sys<span style="color:#39c">.</span>argv) <span style="color:#39c">!=</span> <span style="color:#cd00cd">2</span>:
-	<span style="color:#cdcd00">print</span>(<span style="color:#cd0000">&#34;Usage: python get_no_links.py &lt;name of file&gt;&#34;</span>)
+	<span style="color:#cd00cd">print</span>(<span style="color:#cd0000">&#34;Usage: python get_no_links.py &lt;name of file&gt;&#34;</span>)
 	sys<span style="color:#39c">.</span>exit()
 
 filename <span style="color:#39c">=</span> sys<span style="color:#39c">.</span>argv[<span style="color:#cd00cd">1</span>]
@@ -461,7 +455,7 @@ lenker <span style="color:#39c">=</span> soup<span style="color:#39c">.</span>fi
 
     <span style="color:#000080"># Open all links which ends with &#34;no.gif&#34; or &#34;no.jpg&#34; in web browser</span>
 	<span style="color:#cdcd00">if</span> proofname<span style="color:#39c">.</span>endswith(<span style="color:#cd0000">&#34;no.gif&#34;</span>) <span style="color:#cdcd00">or</span> proofname<span style="color:#39c">.</span>endswith(<span style="color:#cd0000">&#34;no.jpg&#34;</span>):
-		<span style="color:#cdcd00">print</span>(<span style="color:#cd0000">&#34;Opened &#34;</span> <span style="color:#39c">+</span> proofname)
+		<span style="color:#cd00cd">print</span>(<span style="color:#cd0000">&#34;Opened &#34;</span> <span style="color:#39c">+</span> proofname)
 		webbrowser<span style="color:#39c">.</span>open(lenk<span style="color:#39c">.</span>get(<span style="color:#cd0000">&#34;href&#34;</span>))
 
 </code></pre></div>

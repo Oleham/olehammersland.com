@@ -15,10 +15,10 @@
 <meta property="og:title" content="📚" />
 <meta property="og:description" content="Bokhylla Se bøkene jeg har lest i 2021" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.olehammersland.com/bokhylla/" />
-<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="og:url" content="https://www.olehammersland.com/bokhylla/" /><meta property="og:image" content="https://www.olehammersland.com/images/share.png"/><meta property="article:section" content="" />
 <meta property="article:published_time" content="2021-10-06T14:21:43+02:00" />
 <meta property="article:modified_time" content="2021-10-06T14:21:43+02:00" />
+
 
 
 
@@ -31,16 +31,10 @@
 
 
 <meta itemprop="name" content="📚">
-<meta itemprop="description" content="Bokhylla Se bøkene jeg har lest i 2021">
-<meta itemprop="datePublished" content="2021-10-06T14:21:43+02:00" />
+<meta itemprop="description" content="Bokhylla Se bøkene jeg har lest i 2021"><meta itemprop="datePublished" content="2021-10-06T14:21:43+02:00" />
 <meta itemprop="dateModified" content="2021-10-06T14:21:43+02:00" />
-<meta itemprop="wordCount" content="8">
-<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
-
-
-
+<meta itemprop="wordCount" content="8"><meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
 <meta itemprop="keywords" content="" />
-
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -461,52 +455,6 @@
 <p>Se bøkene jeg har lest i 2021</p>
 
 
-
-<div x-data="param_data">
-    <template x-for="bok in data">
-        <div :class="overlay"
-        x-data="{selected:false, stil: 'card', overlay:''}" 
-        :class="stil"
-        @click="selected=!selected; 
-                if (selected) {
-                    overlay='active_overlay';
-                    stil='selected_card';
-                } else {
-                    overlay='';
-                    stil='card';
-                }
-        ">
-        <div :class="stil">
-            <img :src="bok.img">
-            <div class="text-box">
-                <div x-text="bok.genre" class="label" x-show="selected" x-transition></div>
-                <h3 x-text="bok.title"></h3>
-                <i x-text="bok.subtitle" x-show="selected" x-transition></i>
-                <p x-text="bok.author"></p>
-                <div class="review" x-show="selected" x-transition:enter.delay.200ms>
-                <h4>Hva jeg synes</h4>
-                <p x-html="bok.review" ></p>
-            </div>
-        </div>
-        </div>
-    </template>
-</div>
-
-<div style="clear:both;"></div>
-
-
-
-<script src=/alpine.js defer></script>
-
-<script>
-  let jsobj = JSON.parse("[{\u0022author\u0022:\u0022Paolo Bacigalupi\u0022,\u0022genre\u0022:\u0022Sci-fi\u0022,\u0022img\u0022:\u0022https:\/\/images-na.ssl-images-amazon.com\/images\/I\/51w5GtgTm5L._SX331_BO1,204,203,200_.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Handler om en fremtid der fossilt drivstoff har forsvunnet. I takt med overgangen til mer muskelbasert kraft, har makten til de store kaloriselskapene (bønner, korn, mais osv.) tiltatt. Disse har reist seg i skyggen av det enorme biologiske tapet som verdens tidligere energibruk påførte kloden, derfor er også biologisk krigføring over kunstige kornsorter og dyrearter blitt vanlig. Kjempespennende og annerledes fremtidsvisjon.\u0022,\u0022title\u0022:\u0022The Windup Girl\u0022},{\u0022author\u0022:\u0022Paolo Bacigalupi\u0022,\u0022genre\u0022:\u0022Sci-Fi\u0022,\u0022img\u0022:\u0022https:\/\/images-na.ssl-images-amazon.com\/images\/I\/51zDV2EbV6L._SY291_BO1,204,203,200_QL40_FMwebp_.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Enda en fremtidsdystopi. Colerado-elven er i stor fare, og vannet rasjoneres ut til statene rundt den. Ressursknappheten har svekket det føderale USA, og gjort at hver delstat må kjempe for hver dråpe. Hovedpersonen Angel er en \\u003ci\\u003ewater knife\\u003c\/i\\u003e, en slags torpedo\/leiemorder som kjemper for vannrettighetene til Nevada. Ganske spennende. Gode skildringer av en ørkenverden med støv, hete og sandstormer.\u0022,\u0022title\u0022:\u0022The Water Knife\u0022},{\u0022author\u0022:\u0022Richard Morgan\u0022,\u0022genre\u0022:\u0022Fantasy\u0022,\u0022img\u0022:\u0022https:\/\/deichman.no\/api\/images\/resize\/420\/cover-images\/pb829dcb52eb62948a7a1bd549396b18e.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Første bok i serien \\u003ci\\u003eLand Fit for Heroes\\u003c\/i\\u003e. \\u003cstrong\\u003eVanvittig\\u003c\/strong\\u003e tøff fantasy. Rå og brutal, ikke ett eneste kjedelig kapittel. I Steel Remains møter vi alle figurene i bokserien: Ringil Eskiath, Egar Dragebane og Archeth Indamaninarmal. Denne kan jeg virkelig anbefale på det varmeste!\u0022,\u0022title\u0022:\u0022The Steel Remains\u0022},{\u0022author\u0022:\u0022Richard Morgan\u0022,\u0022genre\u0022:\u0022Fantasy\u0022,\u0022img\u0022:\u0022https:\/\/deichman.no\/api\/images\/resize\/420\/cover-images\/p77e46624c95534c0c0a086051db1de6c.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Andre bok i serien \\u003ci\\u003eLand Fit for Heroes\\u003c\/i\\u003e. Slukte denne i løpet av et par dager. På samme måte som at bøkene i \\u003ci\\u003eAltered Carbon\\u003c\/i\\u003e skifter litt genre, dreier historien seg her litt i retning krim og palass-intriger i hovedstaden til Yelteth-imperiet (orientalsk inspirert). Vi blir også bedre kjent med de mytiske Aldrain Marshes, en slags skygge-dimensjon, og med guddommene i den lokale mytologien.\u0022,\u0022title\u0022:\u0022The Cold Commands\u0022},{\u0022author\u0022:\u0022Richard Morgan\u0022,\u0022genre\u0022:\u0022Fantasy\u0022,\u0022img\u0022:\u0022https:\/\/images-na.ssl-images-amazon.com\/images\/I\/51Qr1SX0sgL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Tredje bok i \\u003ci\\u003eLand Fit for Heroes\\u003c\/i\\u003e. Her tar Morgan oss over i en historie mer inspirert av oppdagelsesreiser, Skatteøya og sjørøveri. Et sinnsykt god avslutning på en sinnsykt god serie. Avslutningen på fortellingen er både elegant og tankevekkende, samtidig som den dulter fantasy-sjangeren litt i siden med et glimt i øyet. Anbefaler hele serien uforbeholdent om du liker fantasy og\/eller hardkokte fortellinger.\u0022,\u0022title\u0022:\u0022The Dark Defiles\u0022},{\u0022author\u0022:\u0022Richard Morgan\u0022,\u0022genre\u0022:\u0022Sci-fi\u0022,\u0022img\u0022:\u0022https:\/\/images-na.ssl-images-amazon.com\/images\/I\/51-G40-veUL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Morgans åndelige oppfølger til \\u003ci\\u003eBlack Man\\u003c\/i\\u003e, det vil si at den spiller i samme universet. Denne finner imidlertid sted på Mars, ikke jorda. I \\u003ci\\u003eBlack Man\\u003c\/i\\u003e ble det kun referert til Mars, som er et nytt grenseland for menneskeheten og kjennetegnet av lav livskvalitet. Kommunikasjon med jorda har en halvtimes forsinkelse, og transport mellom de to verdenene er tilnærmet umulig for vanlige mennesker grunnet de enorme kostnadene. Helten Hakan Veil er en typisk Morgan-helt. Fåmælt og usannsynlig hardbarka. Jeg likte denne veldig godt. Stilige skildringer av en ny verden på Mars som har havarert allerede før den kom ordentlig i gang.\u0022,\u0022title\u0022:\u0022Thin Air\u0022},{\u0022author\u0022:\u0022Donovan \/ Kernighan\u0022,\u0022genre\u0022:\u0022Sakprosa\u0022,\u0022img\u0022:\u0022https:\/\/images-na.ssl-images-amazon.com\/images\/I\/41aSIiETPPL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Kjempenyttig og lærerik bok om programmeringsspråket Go. Ikke bare fordi man lærer Go, men fordi forfatterne også lærer bort mye smart om programmering generelt.\u0022,\u0022title\u0022:\u0022The Go Programming Language\u0022},{\u0022author\u0022:\u0022Ulrik Eriksen\u0022,\u0022genre\u0022:\u0022Sakprosa\u0022,\u0022img\u0022:\u0022https:\/\/deichman.no\/api\/images\/resize\/270\/cover-images\/343609af-8a8d-47e6-baa3-5900624c66e8.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Interessant bok om hvordan bilen har formet byutviklingen fra den spede begynnelsen og frem til i dag. Forfatteren går veldig grundig til verks. Boka er i min gate, da jeg nok har samme utgangspunkt som forfatteren når det kommer til byutvikling – helst færre biler!\u0022,\u0022subtitle\u0022:\u0022Hvordan bilen erobret Norge\u0022,\u0022title\u0022:\u0022Et land på fire hjul\u0022},{\u0022author\u0022:\u0022Hennig Carr Ekroll\u0022,\u0022genre\u0022:\u0022Sakprosa\u0022,\u0022img\u0022:\u0022https:\/\/deichman.no\/api\/images\/resize\/420\/cover-images\/p925062420102.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Tørrmorsom og til dels frustrerende lesning om offentlige prosjekter som havarerer. Mange gode historier her – alt fra dyre, formålsløse IT-prosjekter til den berømte Stortings-garasjen. Litt repetetiv.\u0022,\u0022subtitle\u0022:\u0022Hvordan kaste bort 1,9 milliarder kroner på ingenting - og andre kostbare historier om offentlig sektor i verdens rikeste land\u0022,\u0022title\u0022:\u0022Skattepengene som forsvant\u0022},{\u0022author\u0022:\u0022James S. A. Corey\u0022,\u0022genre\u0022:\u0022Sci-fi\u0022,\u0022img\u0022:\u0022https:\/\/deichman.no\/api\/images\/resize\/420\/cover-images\/p706429cbca91c0ca2fe9eaa42ff4b1f6.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Første bok i \\u003ci\\u003eThe Expanse\\u003c\/i\\u003e. God sci-fi om brytningpunktet der menneskene har befolket store deler av eget solsystem, men ennå ikke har klart å reise til andre stjerner. Dette er en av de beste i serien. Lettlest sidevender.\u0022,\u0022title\u0022:\u0022Leviathan wakes\u0022},{\u0022author\u0022:\u0022Jasper Fforde\u0022,\u0022genre\u0022:\u0022Sci-fi\u0022,\u0022img\u0022:\u0022https:\/\/deichman.no\/api\/images\/resize\/420\/cover-images\/p6dff1b8cb9ae53592fc9bea1cbaf555f.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022\\u003ci\\u003eShades of grey\\u003c\/i\\u003e er en temmelig unik bok, skrevet i en vanvittig smart, tørrvittig britisk stil. Humoren gjennomsyrer hver eneste side, alt fra hele den absurde parodien på en dystopisk fremtid etter apokalypsen, eller «The Something That Happened», til dialogene mellom de tegneserieaktige og svært sjarmerende figurene. Hovedpersonen er spesielt vellykket, og jeg mistenker at forfatteren har lagt sin egen sjel inn i ham. Veldig, veldig artig bok. Den har to oppfølgere som jeg har veldig lyst til å lese. Anbefales varmt.\u0022,\u0022subtitle\u0022:\u00221. The road to High Saffron\u0022,\u0022title\u0022:\u0022Shades of Grey\u0022},{\u0022author\u0022:\u0022Peter Walker\u0022,\u0022genre\u0022:\u0022Sakprosa\u0022,\u0022img\u0022:\u0022https:\/\/images-na.ssl-images-amazon.com\/images\/I\/41EmQha39fL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Litt sånn selvhjelpsbok som går inn på hvor viktig bevegelse egentlig er for mennesker, og hvordan vårt moderne samfunn gjør det svært vanskelig for oss å holde oss i bevegelse. Mange gode fakta og mye informasjon som var nytt for meg. Beste tanken i boka: vi finner rester fra mennesker som levde for over 300 000 år siden (muligens). Jordbrukssamfunnet utviklet seg for bare 10 000 år siden. Fysisk er vi ikke skapt for å sitte i ro. Ellers er boken litt tørr og skaper ikke virkelig engasjement. Forfatteren har en irriterende tendens til å relatere alt til seg selv. \\\u0022While writing this book, I\\\u0022\u0022,\u0022subtitle\u0022:\u0022Why a sedentary world is getting it all wrong\u0022,\u0022title\u0022:\u0022The Miracle Pill\u0022},{\u0022author\u0022:\u0022Erika Fatland\u0022,\u0022genre\u0022:\u0022Sakprosa\u0022,\u0022img\u0022:\u0022https:\/\/deichman.no\/api\/images\/resize\/420\/cover-images\/p025068553764.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Denne boken overrasket meg positivt. Det merkelige bokomslaget pepret med norske anmelderterninger gjorde at forventningene ikke var så veldig høye, men det er faktisk en veldig velskrevet reiseskildringen av en sympatisk forfatter. Hun tar oss gjennom grensestrøkene og morsomme historiske anekdoter, flere av disse var helt ukjente for meg. For meg lå bokens store styrke i disse skildringene, men også flere av møtene og miljøskildringene fra virkeligheten er godt skrevet og engasjerende. Gav meg veldig lyst til å reise til noen av de samme landene, som Russland, Georgia og Kasakhstan.\u0022,\u0022subtitle\u0022:\u0022en reise rundt Russland : gjennom Nord-Korea, Kina, Mongolia, Kasakhstan, Aserbajdsjan, Georgia, Ukraina, Hviterussland, Litauen, Polen, Latvia, Estland, Finland og Norge samt Nordøstpassasjen\u0022,\u0022title\u0022:\u0022Grensen\u0022},{\u0022author\u0022:\u0022J.C. Vogt\u0022,\u0022genre\u0022:\u0022Fantasy\u0022,\u0022img\u0022:\u0022https:\/\/images.lovelybooks.de\/img\/520x\/cover.allsize.lovelybooks.de\/9783596002214_1617147230000_xxl.jpg\u0022,\u0022read\u0022:2021,\u0022review\u0022:\u0022Noe så sjeldent som en tysk fantasybok i \\\u0022Deco Punk\\\u0022-stilen. Handler om at man oppdager en ny vitenskapsgren som ligner mistenkelig på magi, og som lar en manipulere statuer og så videre. Godt språk, men bruker litt vel mye tid på bygge opp denne magigrenen. Finner sted i omtrent samme univers\/epoke som Babylon Berlin.\u0022,\u0022title\u0022:\u0022Anarchie Deco\u0022},{\u0022genre\u0022:\u0022Sakprosa\u0022,\u0022img\u0022:\u0022https:\/\/www.bokkilden.no\/servlet\/VisBildeServlet?produktId=6168905\\u0026width=600\u0022,\u0022read\u0022:2022,\u0022review\u0022:\u0022Biografi om Napoleon. Skrevet av en svensk forfatter, derfor med litt ytterligere fokus på en del svenske personligheter som levde i epoken, og selvfølgelig \\\u0022vår egen\\\u0022 Karl Johan.\u0022,\u0022title\u0022:\u0022Napoleon\u0022},{\u0022genre\u0022:\u0022Sakprosa\u0022,\u0022img\u0022:\u0022https:\/\/m.media-amazon.com\/images\/P\/0195374614.01._SCLZZZZZZZ_SX500_.jpg\u0022,\u0022read\u0022:2022,\u0022review\u0022:\u0022Artig liten bok om stoisisme, som jeg fikk anbefalt på den fantastiske bloggen til Mr. Money Mustache. Inneholder en oversikt over de filosofiske skolene, kort om stoisismen og så sammenfatter forfatteren det hele til en moderne tilnærming til stoisismen.\u0022,\u0022subtitle\u0022:\u0022The ancient art of stoic joy\u0022,\u0022title\u0022:\u0022A Guide to the Good Life\u0022}]")
-  document.addEventListener('alpine:init', () => {
-        Alpine.data('param_data', () => ({
-              data: jsobj
-            })
-        )
-    })
-</script>
 
 
   </main>

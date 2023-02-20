@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Ole Hammersland©2021</copyright>
-    <lastBuildDate>Sun, 17 Jul 2022 19:59:21 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/koding/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Feb 2023 08:44:40 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/koding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jeg går til skyen</title>
+      <link>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</link>
+      <pubDate>Mon, 20 Feb 2023 08:44:40 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</guid>
+      <description>&lt;p&gt;Det falt meg tungt, men jeg har endelig vokst opp og parkert min hjemmelagde e-postserver til fordel for Microsoft 365!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Landeveien til Sørlandet</title>
       <link>https://www.olehammersland.com/blogg/landeveien_til_s%C3%B8rlandet/</link>
@@ -116,7 +126,7 @@
 &lt;h3 id=&#34;trinn-1-analysere-teksten&#34;&gt;Trinn 1: Analysere teksten&lt;/h3&gt;
 &lt;p&gt;Jeg begynte med et python-skript som deler opp hver setning i enkeltord og deretter teller opp hvor ofte hvert enkeltord forekommer i setningen. Dette (meta!)skriptet skriver så et nytt python-skript som kun inneholder en liste over hvert ord dobbelt og en merknad om hvor ofte ordet forekommer i Excel-listen.&lt;/p&gt;
 &lt;p&gt;Slik ser det nye python-skriptet ut:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
@@ -135,7 +145,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Merk at jeg kun har skilt opp ord etter mellomrommene i teksten. Derfor dukker det også opp flere ord som ikke er skilt av mellomrom.&lt;/p&gt;
 &lt;h3 id=&#34;trinn-2-lage-forkortelser&#34;&gt;Trinn 2: Lage forkortelser&lt;/h3&gt;
 &lt;p&gt;Jeg gikk så manuelt gjennom denne python-listen og forkortet det høyre ordet i hver tuple, slik som dette:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmont.verktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;B/NL&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;

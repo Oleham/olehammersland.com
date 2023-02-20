@@ -15,10 +15,10 @@
 <meta property="og:title" content="Fakturaer del to" />
 <meta property="og:description" content="Jeg har forbedret min hjemmelagde fakturagenerator. Den tar nå i mye større grad hensyn til formkravene ved MVA-meldingen fra Skatteetaten. Det er automatisering av en kjedelig oppgave, som mange med enkeltpersonforetak sikkert kjenner seg igjen i." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.olehammersland.com/blogg/fakturaer-del-to/" />
-<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="og:url" content="https://www.olehammersland.com/blogg/fakturaer-del-to/" /><meta property="og:image" content="https://www.olehammersland.com/images/share.png"/><meta property="article:section" content="blogg" />
 <meta property="article:published_time" content="2021-03-03T20:34:36+01:00" />
 <meta property="article:modified_time" content="2021-03-03T20:34:36+01:00" />
+
 
 
 
@@ -31,16 +31,10 @@
 
 
 <meta itemprop="name" content="Fakturaer del to">
-<meta itemprop="description" content="Jeg har forbedret min hjemmelagde fakturagenerator. Den tar nå i mye større grad hensyn til formkravene ved MVA-meldingen fra Skatteetaten. Det er automatisering av en kjedelig oppgave, som mange med enkeltpersonforetak sikkert kjenner seg igjen i.">
-<meta itemprop="datePublished" content="2021-03-03T20:34:36+01:00" />
+<meta itemprop="description" content="Jeg har forbedret min hjemmelagde fakturagenerator. Den tar nå i mye større grad hensyn til formkravene ved MVA-meldingen fra Skatteetaten. Det er automatisering av en kjedelig oppgave, som mange med enkeltpersonforetak sikkert kjenner seg igjen i."><meta itemprop="datePublished" content="2021-03-03T20:34:36+01:00" />
 <meta itemprop="dateModified" content="2021-03-03T20:34:36+01:00" />
-<meta itemprop="wordCount" content="1331">
-<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
-
-
-
+<meta itemprop="wordCount" content="1331"><meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
 <meta itemprop="keywords" content="automatisering,effektivisering,python,xtrf,enkeltpersonforetak," />
-
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -399,7 +393,7 @@
 <h2 id="gjennomgang-av-nye-hammer-faktura">Gjennomgang av nye Hammer Faktura</h2>
 <p>I det nye programmet har jeg lagt til to nye klasser: Bank og Faktura. Det slo meg at jeg ikke ville oppgi min egen bankinformasjon på Github, så nå er ikke lenger bankopplysningene statiske inne i programmet.</p>
 <p>Nå som mye av informasjonen var blitt sortert etter Kunde og Bank, slo deg meg som inkonsekvent at fakturanummer og forfallsdato ligger lagret direkte i fakturageneratoren. Derfor ligger den informasjonen nå i en egen Faktura-klasse.</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cdcd00">class</span> <span style="color:#00cdcd">Bank</span>():
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#cdcd00">class</span> <span style="color:#00cdcd">Bank</span>():
 
 	<span style="color:#cdcd00">def</span> __init__(self, konto, iban, bic, bank):
 		self<span style="color:#39c">.</span>konto <span style="color:#39c">=</span> konto
@@ -425,7 +419,7 @@
 </dl>
 <h3 id="1-initialisere-kunde-bank-og-faktura">1. Initialisere kunde, bank og faktura</h3>
 <p>Det første som må gjøres, er å initialisere Kunde og Bank. Faktura skapes fortsatt automatisk.</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Importer modulen</span>
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Importer modulen</span>
 <span style="color:#cd00cd">import</span> hammer_faktura
 
 <span style="color:#000080"># Initialiser Kunde og Bank.</span>
@@ -439,15 +433,15 @@ bank <span style="color:#39c">=</span> hammer_faktura<span style="color:#39c">.<
 
 generator <span style="color:#39c">=</span> hammer_faktura<span style="color:#39c">.</span>Generator(kunde, bank)
 </code></pre></div><p>Viktig å merke seg at man også kan legge til to valgfrie argumenter når man initialiserer kunden for å endre MVA-sats og valuta. Som standard initialiseres kunden med 0,25 % MVA og «NOK» som valuta.</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Kunde med null MVA og amerikanske dollar som valuta.</span>
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Kunde med null MVA og amerikanske dollar som valuta.</span>
 kunde <span style="color:#39c">=</span> hammer_faktura<span style="color:#39c">.</span>Kunde(<span style="color:#cd0000">&#34;Kunde AS&#34;</span>, <span style="color:#cd0000">&#34;123456789&#34;</span>, <span style="color:#cd0000">&#34;Adresseveien 4&#34;</span>, vat<span style="color:#39c">=</span><span style="color:#cd00cd">0.00</span>, valuta<span style="color:#39c">=</span><span style="color:#cd0000">&#34;USD&#34;</span>)
 </code></pre></div><p>På dette stadiet har man også mulighet til å endre andre standarder. For eksempel kan forfallsdato eller fakturadato endres manuelt, om du vil gi kunden litt lenger frist.</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Endre fakturadato og forfallsdato manuelt</span>
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Endre fakturadato og forfallsdato manuelt</span>
 generator<span style="color:#39c">.</span>faktura<span style="color:#39c">.</span>dato <span style="color:#39c">=</span> <span style="color:#cd0000">&#34;10.05.1997&#34;</span>
 generator<span style="color:#39c">.</span>faktura<span style="color:#39c">.</span>forfall <span style="color:#39c">=</span> <span style="color:#cd0000">&#34;10.07.1997&#34;</span>
 </code></pre></div><h3 id="2-mat-inn-alle-oppdrag">2. Mat inn alle oppdrag</h3>
 <p>Nå som rammeopplysningene er på plass, kan vi legge inn noen oppdrag vi vil fakturere kunden for. For hvert oppdrag må vi legge inn en leveringsdato, en id, en beskrivelse og et beløp. Leveringsdato, ID og bekreftelse er tekst, mens beløpet er et naturlig tall (floating point) som vi skal utføre mattestykker på.</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Her lager jeg en liste med 3 fiktive oppdrag</span>
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Her lager jeg en liste med 3 fiktive oppdrag</span>
 <span style="color:#000080"># Hvert av de fiktive oppdragene ligger i en dictionary.</span>
 alle_oppdrag <span style="color:#39c">=</span> [{<span style="color:#cd0000">&#34;leveringsdato&#34;</span>: <span style="color:#cd0000">&#34;01.01.2020&#34;</span>,
                 <span style="color:#cd0000">&#34;id&#34;</span>: <span style="color:#cd0000">&#34;001&#34;</span>,
@@ -465,7 +459,7 @@ alle_oppdrag <span style="color:#39c">=</span> [{<span style="color:#cd0000">&#3
                 <span style="color:#cd0000">&#34;beløp&#34;</span>: <span style="color:#cd00cd">1223.00</span>
                 }]
 </code></pre></div><p>Det er lurt å på en eller annen måte strukturere dataene på en forutsigbar måte. I dette tilfellet har jeg laget en liste. Listen inneholder 3 unike gjenstander. Hver gjenstand representerer én jobb, og inneholder 4 nøkkel-verdi-par som inneholder de fire opplysningene jeg behøver (i Python er dette en <em>dictonary</em>, en samling med data strukturert som nøkkel-verdi-par)</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Loop over alle oppdragene i datasettet.</span>
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Loop over alle oppdragene i datasettet.</span>
 <span style="color:#000080"># Legg inn id, navn, type, beløp, enhet og leveringsdato.</span>
 <span style="color:#000080"># Gjenta for alle oppdragene som skal med.</span>
 <span style="color:#cdcd00">for</span> oppdrag <span style="color:#cdcd00">in</span> alle_oppdrag:
@@ -476,16 +470,16 @@ alle_oppdrag <span style="color:#39c">=</span> [{<span style="color:#cd0000">&#3
 </code></pre></div><p>Nå kan jeg loope over de tre gjenstandene i listen min. Jeg kaller metoden <code>faktura.add_to_invoice</code> på hver gjenstand, slik at informasjonen blir lagt inn i faktura-generatoren.</p>
 <p>Takket være den nye fordelingen med netto-brutto-utregning for hver eneste fakturapost, kan vi nå også endre MVA-satsen på enkelte poster. Dette kan være nyttig om du skal fakturere med ulike MVA-satser.</p>
 <p>I eksempelet nedenfor skal jeg fakturere en jobb som av en eller annen grunn har en annen MVA-sats. Da legger jeg til et fjerde, valgfritt argument som sier at MVA-satsen på denne jobben skal være 12 %, i stedet for de 25 %-ene som er standard på overordnet nivå (fra <code>generator.kunde.vat</code>)</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">generator<span style="color:#39c">.</span>add_to_invoice(<span style="color:#cd0000">&#34;07.01.2020&#34;</span>, <span style="color:#cd0000">&#34;0007&#34;</span>, <span style="color:#cd0000">&#34;Oversettelse skatteregler&#34;</span>, <span style="color:#cd00cd">1310.23</span>, vat<span style="color:#39c">=</span><span style="color:#cd00cd">0.12</span>)
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">generator<span style="color:#39c">.</span>add_to_invoice(<span style="color:#cd0000">&#34;07.01.2020&#34;</span>, <span style="color:#cd0000">&#34;0007&#34;</span>, <span style="color:#cd0000">&#34;Oversettelse skatteregler&#34;</span>, <span style="color:#cd00cd">1310.23</span>, vat<span style="color:#39c">=</span><span style="color:#cd00cd">0.12</span>)
 </code></pre></div><h3 id="3-generer-fakturaen-og-skriv-til-fil">3. Generer fakturaen og skriv til fil</h3>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Generer tabellen.</span>
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Generer tabellen.</span>
 <span style="color:#000080"># Generer så selve fakturaen og lagre den i en variabel.</span>
 generator<span style="color:#39c">.</span>generate_table()
 html_fil <span style="color:#39c">=</span> generator<span style="color:#39c">.</span>generate_body()
 
 <span style="color:#000080"># Skriv fakturaen til en fil.</span>
 <span style="color:#000080"># (Bruk fakturanummret i filnavnet for bedre oversikt.)</span>
-<span style="color:#cdcd00">with</span> <span style="color:#cd00cd">open</span>(f<span style="color:#cd0000">&#34;invoices/obs_faktura_{generator.faktura.id}.html&#34;</span>, <span style="color:#cd0000">&#34;w&#34;</span>) <span style="color:#cdcd00">as</span> f:
+<span style="color:#cdcd00">with</span> <span style="color:#cd00cd">open</span>(<span style="color:#cd0000">f</span><span style="color:#cd0000">&#34;invoices/obs_faktura_</span><span style="color:#cd0000">{</span>generator<span style="color:#39c">.</span>faktura<span style="color:#39c">.</span>id<span style="color:#cd0000">}</span><span style="color:#cd0000">.html&#34;</span>, <span style="color:#cd0000">&#34;w&#34;</span>) <span style="color:#cdcd00">as</span> f:
 	f<span style="color:#39c">.</span>write(html_fil)
 </code></pre></div><p>Resten fungerer som før. Ved å kalle <code>generator.generate_table()</code>, vil tabellen til fakturaen skapes. Neste kall til <code>generator.generate_body()</code> legger tabellen, kundeinformasjon, bankinformasjon og fakturainformasjon inn i selve HTML-dokumentet og returnerer det. Jeg lagrer det returnerte objektet i variabelen html_fil, og skriver den til en fil. Filen markerer jeg med fakturanummeret, som jeg har tilgang til via <code>generator.faktura.id</code>.</p>
 <p><a href="/obs_faktura_9159.html">Her kan du se den ferdige fakturaen.</a></p>
@@ -493,7 +487,7 @@ html_fil <span style="color:#39c">=</span> generator<span style="color:#39c">.</
 <h2 id="andre-forbedringer">Andre forbedringer</h2>
 <p>Det er også noen andre forbedringer jeg er fornøyd med med tanke på organisering av kode.</p>
 <p>Nå ligger alle byggesteinene til dokumentet lagret som maler i HTML-format i en og samme mappe. Det gjør det enda enklere å arbeide med utformingen til fakturaene, uten å gjøre endringer i Python-koden.</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">hammer_faktura<span style="color:#39c">/</span>
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">hammer_faktura<span style="color:#39c">/</span>
 <span style="">├──</span> __init__<span style="color:#39c">.</span>py
 <span style="">└──</span> maler
     <span style="">├──</span> fakturamal<span style="color:#39c">.</span>html

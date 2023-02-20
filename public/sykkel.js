@@ -1,5 +1,5 @@
 (() => {
-  // bysykkel.js
+  // <stdin>
   var slot = document.getElementById("bysykkel-component");
   var inputField = document.createElement("input");
   inputField.setAttribute("type", "text");
@@ -19,11 +19,11 @@
   async function fetchStationsAndAvailability() {
     let response = await fetch("https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json", {
       method: "GET",
-      headers: {"Client-Identifier": "olehammersland.com"}
+      headers: { "Client-Identifier": "olehammersland.com" }
     });
     let response2 = await fetch("https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json", {
       method: "GET",
-      headers: {"Client-Identifier": "olehammersland.com"}
+      headers: { "Client-Identifier": "olehammersland.com" }
     });
     if (response.status === 200 && response2.status === 200) {
       let stinfo = await response.json();

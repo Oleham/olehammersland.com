@@ -17,10 +17,10 @@ Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation)."
 <meta property="og:description" content="I anledning av at jeg denne uken kjøpte min første lisens til memoQ, tenkte jeg å liste opp noen tips og triks jeg bruker når jeg arbeider i dette CAT-verktøyet. Listen er nok mest interessant for deg som allerede har kjennskap til verktøyet. For deg som ikke kjenner til det og lurer på hva det er, vil jeg forklare det i neste avsnitt.
 Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.olehammersland.com/blogg/mine-beste-memoq-triks/" />
-<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="og:url" content="https://www.olehammersland.com/blogg/mine-beste-memoq-triks/" /><meta property="og:image" content="https://www.olehammersland.com/images/share.png"/><meta property="article:section" content="blogg" />
 <meta property="article:published_time" content="2021-03-09T19:28:15+01:00" />
 <meta property="article:modified_time" content="2021-03-09T19:28:15+01:00" />
+
 
 
 
@@ -35,16 +35,10 @@ Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation)."
 
 <meta itemprop="name" content="Mine 10 beste memoQ-triks">
 <meta itemprop="description" content="I anledning av at jeg denne uken kjøpte min første lisens til memoQ, tenkte jeg å liste opp noen tips og triks jeg bruker når jeg arbeider i dette CAT-verktøyet. Listen er nok mest interessant for deg som allerede har kjennskap til verktøyet. For deg som ikke kjenner til det og lurer på hva det er, vil jeg forklare det i neste avsnitt.
-Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation).">
-<meta itemprop="datePublished" content="2021-03-09T19:28:15+01:00" />
+Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation)."><meta itemprop="datePublished" content="2021-03-09T19:28:15+01:00" />
 <meta itemprop="dateModified" content="2021-03-09T19:28:15+01:00" />
-<meta itemprop="wordCount" content="1956">
-<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
-
-
-
+<meta itemprop="wordCount" content="1956"><meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
 <meta itemprop="keywords" content="effektivisering,memoq,oversettelse,translation," />
-
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -479,7 +473,7 @@ Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation)."
 <h2 id="9-fjern-slitsom-markup-med-regex-tagger">9. Fjern slitsom markup med regex tagger</h2>
 <p>Markup vil si kodetegn som f.eks. «\n» (linjeskift), «&lt;br&gt;» (også linjeskift), «&amp;nbsp;» (hardt mellomrom) og så videre. Dette er kode som f.eks. skal tolkes av en nettleser for å markere teksten på en bestemt måte. F.eks. skrives <strong>fet skrift</strong> slik i HTML: &lt;strong&gt;fet skrift&lt;/strong&gt;</p>
 <p>memoQ har god støtte for å filtrere bort markup, slik at man som oversetter kan konsentrere seg om den faktiske teksten. Noen ganger sniker det seg likevel med noen varianter. Jeg har f.eks. lagt merke til at «\n» sjelden blir filtrert bort. Om teksten ser slik ut, kan det bli slitsomt:</p>
-<pre><code>Kjære kunde\n\nVi ønsker å gjøre dere oppmerksomme\npå at det ikke er mulig å\nbetale med kort.\n\nTakk for forståelsen.\n\nmvh kundeservice. 
+<pre tabindex="0"><code>Kjære kunde\n\nVi ønsker å gjøre dere oppmerksomme\npå at det ikke er mulig å\nbetale med kort.\n\nTakk for forståelsen.\n\nmvh kundeservice. 
 </code></pre><p>Hver «\n» er viktig å få med, fordi den representerer et linjeskift. Men i sin nåværende form er det tungvint å se hvor ordene begynner og slutter. Dessuten vil vi bruke mye tid på stavekontroll, siden den vil reagere på nesten annethvert ord. Det er  bortkastet tid om teksten er på 10 000 ord eller mer.</p>
 <p>Med regex-tagger kan man låse hver forekomst av «\n» inn i en tagg. I memoQ representeres en slik tagg som en liten rød blokk som ikke kan endres på. Den teller ikke som et ord. Programmet reagerer dessuten dersom taggen mangler eller ikke står i riktig rekkefølge.</p>
 <p><img src="/images/blogg/memoq-regex-tagger.JPG" alt="Regex-tagger i aksjon"></p>
@@ -502,7 +496,7 @@ Hva er memoQ? memoQ er et såkalt CAT-verktøy (Computer Assisted Translation)."
 </ul>
 <p>Noen raske eksempler på hvilke superkrefter man får med regulære uttrykk: man kan filtrere etter alle setninger hvor «Aftenposten» er det første ordet (<em>^Aftenposten</em>). Eller filtrere bort alle setninger som inneholder bokstaver (<em>[^\w]</em>).</p>
 <p>Eller skifte valuta på alle beløp i hele filen. Slik kan man f.eks. skifte fra amerikansk stil (USD XXX) til norsk (XXX NOK) med et trylleslag:</p>
-<pre><code>Search for: USD (\d{2,4})
+<pre tabindex="0"><code>Search for: USD (\d{2,4})
 
 Replace with: $1 NOK
 </code></pre><p>Dette vil si at alle forekomster av USD foran to til fire tall vil bli erstattet med de samme to til fire tallene <em>etterfulgt</em> av NOK.</p>

@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Ole Hammersland©2021</copyright>
-    <lastBuildDate>Sun, 17 Jul 2022 19:59:21 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/bash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Feb 2023 08:44:40 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jeg går til skyen</title>
+      <link>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</link>
+      <pubDate>Mon, 20 Feb 2023 08:44:40 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</guid>
+      <description>&lt;p&gt;Det falt meg tungt, men jeg har endelig vokst opp og parkert min hjemmelagde e-postserver til fordel for Microsoft 365!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Landeveien til Sørlandet</title>
       <link>https://www.olehammersland.com/blogg/landeveien_til_s%C3%B8rlandet/</link>
@@ -124,12 +134,12 @@
 &lt;h2 id=&#34;dokumentasjon&#34;&gt;Dokumentasjon&lt;/h2&gt;
 &lt;h3 id=&#34;hurtigstart&#34;&gt;Hurtigstart&lt;/h3&gt;
 &lt;p&gt;Last ned modulen:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/Oleham/hammer_faktura.git
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone https://github.com/Oleham/hammer_faktura.git
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Opprett en tom database i nåværende mappe. Navnet vil alltid være &lt;code&gt;hammer_faktura.db&lt;/code&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ python3 -m hammer_faktura.create_tables
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ python3 -m hammer_faktura.create_tables
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Importer database-modulen &lt;code&gt;hammerfaktura.hfdb&lt;/code&gt; i skriptet ditt. Den inneholder funksjoner for å samhandle med databasen.
 Lag en enkel faktura for ett oppdrag:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
 
 &lt;span style=&#34;color:#000080&#34;&gt;# Legg til en kunde i databasen.&lt;/span&gt;
 client_pk &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addClient(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde&amp;#34;&lt;/span&gt;, 
@@ -160,7 +170,7 @@ invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span 
     f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(invoice)
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt; lar oss legge til en jobb i databasen og umiddelbart skape en faktura for den. Med &lt;code&gt;hfdb.quickGeneratorFromList&lt;/code&gt; kan vi på samme måte legge inn flere oppdrag og umiddelbart skape en faktura.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968966&lt;/span&gt;,
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968966&lt;/span&gt;,
     &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;1234&amp;#34;&lt;/span&gt;,
     &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse avis&amp;#34;&lt;/span&gt;,
     &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;320.12&lt;/span&gt;
@@ -188,7 +198,7 @@ invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span 
 &lt;p&gt;Som vi ser, består databasen av fire tabeller: invoices, invoice_items, clients og banks. Den viktigste tabellen som knytter alle tabellene sammen, er invoices. Det er alltid knyttet en client og en bank til hver invoice, i et én-til-én-forhold. Samtidig kan flere poster i invoice_items, som representerer de enkelte jobbene, være knyttet til en invoice i et mange-til-én-forhold (en faktura kan inneholde flere fakturaposter).&lt;/p&gt;
 &lt;p&gt;I forrige avsnitt viste jeg hvordan man veldig raskt kan skape fakturaer med &lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt; og &lt;code&gt;hfdb.quickGeneratorFromList&lt;/code&gt;. Dette er faktisk to wrapper-funksjoner som «wrapper» en rekke funksjoner for samhandling med databasen, med den hensikt å gjøre det så enkelt så mulig å opprette en faktura hurtig. De gjør to ting med informasjonen som gis dem: de legger dem til i databasen, og så returnerer de en &lt;code&gt;hammer_faktura.Generator&lt;/code&gt;, som vi kan bruke for å skape en faktura.&lt;/p&gt;
 &lt;p&gt;La oss ta en titt på hva som skjer i bakgrunnen når vi bruker disse wrapper-funksjonene:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
 
 jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968100&lt;/span&gt;,
     &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;5678&amp;#34;&lt;/span&gt;,
@@ -214,7 +224,7 @@ hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;assignItemsByDate(invoi
 &lt;p&gt;&lt;code&gt;hfdb.addInvoice()&lt;/code&gt; lagrer en faktura i databasen, i tabellen invoices. Det er kun nødvendig å oppgi en kunde og bankinformasjon. Vi kan også oppgi følgende: en egendefinert fakturadato (som timestamp – standard er dagens dato), en egendefinert frist eller velge et annet språk enn norsk. I bakgrunnen blir det automatisk generert et fakturanummer som returneres og lagres i variabelen invoice_number.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;hfdb.assignItemsByDate()&lt;/code&gt; knytter så en rekke invoice_item til en invoice i et én-til-flere-forhold. Dette forholdet etableres først når vi kjører denne funksjonen – fakturaposter som ennå ikke er blitt berørt, vil ikke være tilknyttet noen faktura i det hele tatt. Argumentene er fakturanummeret det gjelder og et datospenn. Alle poster i invoice_items med samme client som fakturaen og leveringsdato innenfor tidsspennet, blir knyttet til fakturaen.&lt;/p&gt;
 &lt;h3 id=&#34;skape-og-bruke-fakturageneratoren&#34;&gt;Skape og bruke fakturageneratoren&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;[&lt;span style=&#34;&#34;&gt;…&lt;/span&gt;]
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;[&lt;span style=&#34;&#34;&gt;…&lt;/span&gt;]
 
 generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeGenerator(invoice_number)  
 
@@ -225,7 +235,7 @@ body &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span sty
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Til slutt skaper vi generatoren med funksjonen &lt;code&gt;hfdb.makeGenerator()&lt;/code&gt;. Funksjonen tar et fakturanummer som argument, og forutsetter at det finnes poster i tabellen invoice_items som er knyttet til dette fakturanummeret. Det henter så all informasjon om client, bank, og invoice_items som er knyttet til fakturaen, og lagrer det i generatoren.&lt;/p&gt;
 &lt;p&gt;Generatoren er en klasse med tre underklasser, client, invoice og bank, som til sammen inneholder all relevant informasjon om fakturaen fra databasen. Den har også en (wrapper-)metode &lt;code&gt;hammer_faktura.Generator.makeInvoiceBody&lt;/code&gt; som returnerer et html-dokument som en string. &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturaer-del-to/#1-initialisere-kunde-bank-og-faktura&#34;&gt;Se min forrige post for mer informasjon om Generator-objektet&lt;/a&gt;. &lt;code&gt;hfdb.makeGenerator()&lt;/code&gt; er altså en nøkkelfunksjon som forvandler en post i tabellen invoices til en python-klasse vi kan bruke programmet vårt.Vi kan  manuelt overskrive feltene til hammer_faktura.Generator-objektet, f.eks slik:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromList(jobber, client_pk, bank_pk)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromList(jobber, client_pk, bank_pk)
 
 generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;language &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;        &lt;span style=&#34;color:#000080&#34;&gt;# endre språk.&lt;/span&gt;
 generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;01.01.2020&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000080&#34;&gt;# overskrive forfallsdatoen&lt;/span&gt;
@@ -253,7 +263,7 @@ generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice_items[&lt;
 &lt;h3 id=&#34;kommandolinjeverktøy&#34;&gt;Kommandolinjeverktøy&lt;/h3&gt;
 &lt;p&gt;Jeg har begynt å lage støtte for å bruke Hammer Faktura i kommandolinjen. Inntil videre har jeg konsentrert meg spesielt om de operasjonene som ikke må gjøres så ofte: da tenker jeg på det å legge til en ny kunde eller en ny bankforbindelse. Jeg har også støtte for å legge til en enkelt jobb i invoice_item.&lt;/p&gt;
 &lt;p&gt;Slik kan Hammer Faktura brukes i kommandolinjen:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ python3 -m hammer_faktura
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ python3 -m hammer_faktura
 
 Usage: python3 -m hammer_faktura [-l/-a] &amp;lt;args&amp;gt;
 
@@ -322,7 +332,7 @@ De sender meg ca. 15 e-poster daglig. Hver av disse e-postene inneholder et sted
 &lt;li&gt;Sletter alle som ikke er markert med NO for norsk.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Slik ser det ut:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; os&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; mailparser&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; re
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; os&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; mailparser&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; re
 
 &lt;span style=&#34;color:#000080&#34;&gt;# Loops over emails in current directory&lt;/span&gt;
 &lt;span style=&#34;color:#cdcd00&#34;&gt;for&lt;/span&gt; raw_mail &lt;span style=&#34;color:#cdcd00&#34;&gt;in&lt;/span&gt; os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;listdir():
@@ -339,7 +349,7 @@ De sender meg ca. 15 e-poster daglig. Hver av disse e-postene inneholder et sted
 
         &lt;span style=&#34;color:#000080&#34;&gt;# Create a folder structure based on sender and subject&lt;/span&gt;
         image_path &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;join(sender, new_subject)
-        os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makedirs(image_path, exist_ok&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;True)
+        os&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makedirs(image_path, exist_ok&lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#cdcd00&#34;&gt;True&lt;/span&gt;)
 
         &lt;span style=&#34;color:#000080&#34;&gt;# Write all attachments to the corresponding folder&lt;/span&gt;
         epost_obj&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write_attachments(image_path)
@@ -355,11 +365,11 @@ De sender meg ca. 15 e-poster daglig. Hver av disse e-postene inneholder et sted
 &lt;h2 id=&#34;e-poster-fra-google-drive&#34;&gt;E-poster fra Google Drive&lt;/h2&gt;
 &lt;p&gt;Den nevnte kunden sender også en god del e-poster fra Google Drive. I prinsippet fungerer det på samme måte, men disse epostene inneholder opptil 80–90 lenker i stedet for vedlegg. Av disse skal jeg klikke på de som inneholder norsk tekst (ca. 10 %).&lt;/p&gt;
 &lt;p&gt;Quick-fix-løsningen på det ble å lagre epostene som HTML-filer og skrive et raskt skript som bruker &lt;a href=&#34;https://pypi.org/project/beautifulsoup4/&#34;&gt;Python-biblioteket BeautifulSoup&lt;/a&gt; til å parse HTML. Skriptet henter ut alle lenkene og åpner dem i nettleseren dersom de slutter på &amp;ldquo;_no.gif&amp;rdquo; eller &amp;ldquo;_no.jpg&amp;rdquo;.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; bs4&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; sys&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; webbrowser
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; bs4&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; sys&lt;span style=&#34;color:#39c&#34;&gt;,&lt;/span&gt; webbrowser
 
 &lt;span style=&#34;color:#000080&#34;&gt;# Enter name of HTML email as CL argument&lt;/span&gt;
 &lt;span style=&#34;color:#cdcd00&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;len&lt;/span&gt;(sys&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;argv) &lt;span style=&#34;color:#39c&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#cd00cd&#34;&gt;2&lt;/span&gt;:
-	&lt;span style=&#34;color:#cdcd00&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Usage: python get_no_links.py &amp;lt;name of file&amp;gt;&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#cd00cd&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Usage: python get_no_links.py &amp;lt;name of file&amp;gt;&amp;#34;&lt;/span&gt;)
 	sys&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;exit()
 
 filename &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; sys&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;argv[&lt;span style=&#34;color:#cd00cd&#34;&gt;1&lt;/span&gt;]
@@ -379,7 +389,7 @@ lenker &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; soup&lt;span style=
 
     &lt;span style=&#34;color:#000080&#34;&gt;# Open all links which ends with &amp;#34;no.gif&amp;#34; or &amp;#34;no.jpg&amp;#34; in web browser&lt;/span&gt;
 	&lt;span style=&#34;color:#cdcd00&#34;&gt;if&lt;/span&gt; proofname&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;endswith(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;no.gif&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#cdcd00&#34;&gt;or&lt;/span&gt; proofname&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;endswith(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;no.jpg&amp;#34;&lt;/span&gt;):
-		&lt;span style=&#34;color:#cdcd00&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Opened &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#39c&#34;&gt;+&lt;/span&gt; proofname)
+		&lt;span style=&#34;color:#cd00cd&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Opened &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#39c&#34;&gt;+&lt;/span&gt; proofname)
 		webbrowser&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;open(lenk&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;get(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;href&amp;#34;&lt;/span&gt;))
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>

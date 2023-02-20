@@ -21,10 +21,10 @@ Nedenfor vil jeg gå litt gjennom prosjektet og vise hvordan det fungerer med et
 Oversikt:
  Hammer Faktura Slik fungerer det Den ferdige fakturaen Eksempel på bruk av Hammer Faktura Veien videre  Hammer Faktura I løpet av februar har jeg gjort over 500 (små) oppdrag for én og samme kunde." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.olehammersland.com/blogg/fakturagenerator-i-python/" />
-<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="og:url" content="https://www.olehammersland.com/blogg/fakturagenerator-i-python/" /><meta property="og:image" content="https://www.olehammersland.com/images/share.png"/><meta property="article:section" content="blogg" />
 <meta property="article:published_time" content="2021-02-24T16:41:49+01:00" />
 <meta property="article:modified_time" content="2021-02-24T16:41:49+01:00" />
+
 
 
 
@@ -43,16 +43,10 @@ Oversikt:
 <meta itemprop="description" content="I denne bloggposten beskriver jeg en fakturagenerator jeg har laget i Python. Fakturageneratoren kan i løpet av få milisekunder opprette en faktura i HTML-format basert på data.
 Nedenfor vil jeg gå litt gjennom prosjektet og vise hvordan det fungerer med et praktisk eksempel. Koden til fakturageneratoren min finner du her!
 Oversikt:
- Hammer Faktura Slik fungerer det Den ferdige fakturaen Eksempel på bruk av Hammer Faktura Veien videre  Hammer Faktura I løpet av februar har jeg gjort over 500 (små) oppdrag for én og samme kunde.">
-<meta itemprop="datePublished" content="2021-02-24T16:41:49+01:00" />
+ Hammer Faktura Slik fungerer det Den ferdige fakturaen Eksempel på bruk av Hammer Faktura Veien videre  Hammer Faktura I løpet av februar har jeg gjort over 500 (små) oppdrag for én og samme kunde."><meta itemprop="datePublished" content="2021-02-24T16:41:49+01:00" />
 <meta itemprop="dateModified" content="2021-02-24T16:41:49+01:00" />
-<meta itemprop="wordCount" content="1218">
-<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
-
-
-
+<meta itemprop="wordCount" content="1218"><meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
 <meta itemprop="keywords" content="automatisering,effektivisering,python,xtrf,enkeltpersonforetak," />
-
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -402,7 +396,7 @@ Oversikt:
 <p>Resten av programmet flyttet jeg over i en hjemmelaget modul som jeg gav navnet <strong>Hammer Faktura</strong> og by-linen <em>einfach der Hammer</em>. Denne modulen har kun én jobb – ta i mot data og lage en faktura på bakgrunn av denne. Målet er at jeg skal kunne bruke den samme modulen med alle mine kunder.</p>
 <h2 id="slik-fungerer-det">Slik fungerer det</h2>
 <p>Slik er Hammer Faktura bygget opp:</p>
-<pre><code>hammer_faktura
+<pre tabindex="0"><code>hammer_faktura
 ├── README.md
 ├── __init__.py
 └── maler
@@ -432,7 +426,7 @@ Til slutt kan man generere selve fakturaen. Den ferdige tabellen med total fra p
 </li>
 </ol>
 <p>Her er en eksemplarisk bruk av modulen:</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Importer modulen</span>
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080"># Importer modulen</span>
 <span style="color:#cd00cd">import</span> hammer_faktura
 
 <span style="color:#000080"># Last inn et datasett med alle oppdrag som skal på fakturaen</span>
@@ -461,7 +455,7 @@ html_fil <span style="color:#39c">=</span> faktura<span style="color:#39c">.</sp
 
 <span style="color:#000080"># Skriv fakturaen til en fil.</span>
 <span style="color:#000080"># (Bruk fakturanummret i filnavnet for bedre oversikt.)</span>
-<span style="color:#cdcd00">with</span> <span style="color:#cd00cd">open</span>(f<span style="color:#cd0000">&#34;faktura_{faktura.invoice_number}.html&#34;</span>, <span style="color:#cd0000">&#34;w&#34;</span>) <span style="color:#cdcd00">as</span> f:
+<span style="color:#cdcd00">with</span> <span style="color:#cd00cd">open</span>(<span style="color:#cd0000">f</span><span style="color:#cd0000">&#34;faktura_</span><span style="color:#cd0000">{</span>faktura<span style="color:#39c">.</span>invoice_number<span style="color:#cd0000">}</span><span style="color:#cd0000">.html&#34;</span>, <span style="color:#cd0000">&#34;w&#34;</span>) <span style="color:#cdcd00">as</span> f:
 	f<span style="color:#39c">.</span>write(html_fil)
 
 </code></pre></div><h2 id="den-ferdige-fakturaen">Den ferdige fakturaen</h2>
@@ -477,7 +471,7 @@ html_fil <span style="color:#39c">=</span> faktura<span style="color:#39c">.</sp
 <h2 id="eksempel-på-bruk-av-hammer-faktura">Eksempel på bruk av Hammer Faktura</h2>
 <p>Hvorfor alt styret? La oss gå tilbake og ta en titt på denne kunden som ville ha tre ulike fakturaer for over 500 småoppdrag som jeg gjorde i løpet av en måned.</p>
 <p>I eksempelet nedenfor viser jeg hvor lett det nå har blitt for meg å generere 3 fakturaer med over 500 oppdrag som lastes direkte ned fra nettet:</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">kontorer <span style="color:#39c">=</span> [<span style="color:#cd0000">&#34;NO&#34;</span>, <span style="color:#cd0000">&#34;DK&#34;</span>, <span style="color:#cd0000">&#34;SE&#34;</span>]
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">kontorer <span style="color:#39c">=</span> [<span style="color:#cd0000">&#34;NO&#34;</span>, <span style="color:#cd0000">&#34;DK&#34;</span>, <span style="color:#cd0000">&#34;SE&#34;</span>]
 
 <span style="color:#cdcd00">for</span> kontor <span style="color:#cdcd00">in</span> kontorer:
 
@@ -497,14 +491,14 @@ html_fil <span style="color:#39c">=</span> faktura<span style="color:#39c">.</sp
 		
 	faktura <span style="color:#39c">=</span> invoice<span style="color:#39c">.</span>generate_body()
 
-	<span style="color:#cdcd00">with</span> <span style="color:#cd00cd">open</span>(os<span style="color:#39c">.</span>path<span style="color:#39c">.</span>join(<span style="color:#cd0000">&#34;invoices&#34;</span>, f<span style="color:#cd0000">&#34;faktura_{invoice.invoice_number}_{kontor}.html&#34;</span>), <span style="color:#cd0000">&#34;w&#34;</span>) <span style="color:#cdcd00">as</span> f:
+	<span style="color:#cdcd00">with</span> <span style="color:#cd00cd">open</span>(os<span style="color:#39c">.</span>path<span style="color:#39c">.</span>join(<span style="color:#cd0000">&#34;invoices&#34;</span>, <span style="color:#cd0000">f</span><span style="color:#cd0000">&#34;faktura_</span><span style="color:#cd0000">{</span>invoice<span style="color:#39c">.</span>invoice_number<span style="color:#cd0000">}</span><span style="color:#cd0000">_</span><span style="color:#cd0000">{</span>kontor<span style="color:#cd0000">}</span><span style="color:#cd0000">.html&#34;</span>), <span style="color:#cd0000">&#34;w&#34;</span>) <span style="color:#cdcd00">as</span> f:
 		f<span style="color:#39c">.</span> write(faktura)
 </code></pre></div><p>Resultatet? 3 fine filer som dette:</p>
-<pre><code>─ faktura_13137_DK.html
+<pre tabindex="0"><code>─ faktura_13137_DK.html
 ─ faktura_2912_SE.html
 ─ faktura_35457_NO.html
 </code></pre><p>Disse kan så gjøres om til Word med pandoc:</p>
-<pre><code>$ for file in *; do pandoc -o ${file%.html}.docx $file; done;
+<pre tabindex="0"><code>$ for file in *; do pandoc -o ${file%.html}.docx $file; done;
 </code></pre><p>Det å skrive dette skriptet tar ikke så lang tid nå som selve fakturaens oppbygning og stil allerede er på plass.</p>
 <h2 id="veien-videre">Veien videre</h2>
 <p>Jeg startet prosjetet på mandag og har kost meg veldig gjennom hele uken. Det har vært en spennende utfordring å rydde opp i koden min og prøve å gjøre oppbygningen så logisk som mulig. Prøve å finne den perfekte balansen mellom <em>enhetlig</em> og <em>fleksibel</em> – et program som skaper orden, men som likevel skal kunne utvides og endres på i fremtiden.</p>

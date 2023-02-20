@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Ole Hammersland©2021</copyright>
-    <lastBuildDate>Sun, 17 Jul 2022 19:59:21 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/oversettelse/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Feb 2023 08:44:40 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/oversettelse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jeg går til skyen</title>
+      <link>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</link>
+      <pubDate>Mon, 20 Feb 2023 08:44:40 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</guid>
+      <description>&lt;p&gt;Det falt meg tungt, men jeg har endelig vokst opp og parkert min hjemmelagde e-postserver til fordel for Microsoft 365!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Landeveien til Sørlandet</title>
       <link>https://www.olehammersland.com/blogg/landeveien_til_s%C3%B8rlandet/</link>
@@ -96,7 +106,7 @@
 &lt;h3 id=&#34;trinn-1-analysere-teksten&#34;&gt;Trinn 1: Analysere teksten&lt;/h3&gt;
 &lt;p&gt;Jeg begynte med et python-skript som deler opp hver setning i enkeltord og deretter teller opp hvor ofte hvert enkeltord forekommer i setningen. Dette (meta!)skriptet skriver så et nytt python-skript som kun inneholder en liste over hvert ord dobbelt og en merknad om hvor ofte ordet forekommer i Excel-listen.&lt;/p&gt;
 &lt;p&gt;Slik ser det nye python-skriptet ut:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
@@ -115,7 +125,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Merk at jeg kun har skilt opp ord etter mellomrommene i teksten. Derfor dukker det også opp flere ord som ikke er skilt av mellomrom.&lt;/p&gt;
 &lt;h3 id=&#34;trinn-2-lage-forkortelser&#34;&gt;Trinn 2: Lage forkortelser&lt;/h3&gt;
 &lt;p&gt;Jeg gikk så manuelt gjennom denne python-listen og forkortet det høyre ordet i hver tuple, slik som dette:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmont.verktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;B/NL&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
@@ -171,7 +181,7 @@
 &lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-gui-first-look.jpg&#34; alt=&#34;Slik ser nye simpleVP ut.&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Bildet over viser den delen av programmet som er kommet lengst: siden for å opprette, endre og slette forbindelsene til de ulike XTRF-portalene. Når du bruker programmet, vil du kunne bruke alle disse XTRF-portalene samtidig, i samme programmet.&lt;/p&gt;
 &lt;p&gt;Prosjektet er delt opp i følgende pakker eller «delprogrammer»:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;            main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;            main
            /    \
         gui  –-  db
                    \
@@ -242,12 +252,12 @@
 &lt;h2 id=&#34;dokumentasjon&#34;&gt;Dokumentasjon&lt;/h2&gt;
 &lt;h3 id=&#34;hurtigstart&#34;&gt;Hurtigstart&lt;/h3&gt;
 &lt;p&gt;Last ned modulen:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/Oleham/hammer_faktura.git
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone https://github.com/Oleham/hammer_faktura.git
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Opprett en tom database i nåværende mappe. Navnet vil alltid være &lt;code&gt;hammer_faktura.db&lt;/code&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ python3 -m hammer_faktura.create_tables
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ python3 -m hammer_faktura.create_tables
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Importer database-modulen &lt;code&gt;hammerfaktura.hfdb&lt;/code&gt; i skriptet ditt. Den inneholder funksjoner for å samhandle med databasen.
 Lag en enkel faktura for ett oppdrag:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
 
 &lt;span style=&#34;color:#000080&#34;&gt;# Legg til en kunde i databasen.&lt;/span&gt;
 client_pk &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;addClient(&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Kunde&amp;#34;&lt;/span&gt;, 
@@ -278,7 +288,7 @@ invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span 
     f&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;write(invoice)
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt; lar oss legge til en jobb i databasen og umiddelbart skape en faktura for den. Med &lt;code&gt;hfdb.quickGeneratorFromList&lt;/code&gt; kan vi på samme måte legge inn flere oppdrag og umiddelbart skape en faktura.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968966&lt;/span&gt;,
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968966&lt;/span&gt;,
     &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;1234&amp;#34;&lt;/span&gt;,
     &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;beskrivelse&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;Oversettelse avis&amp;#34;&lt;/span&gt;,
     &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;netto&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;320.12&lt;/span&gt;
@@ -306,7 +316,7 @@ invoice &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span 
 &lt;p&gt;Som vi ser, består databasen av fire tabeller: invoices, invoice_items, clients og banks. Den viktigste tabellen som knytter alle tabellene sammen, er invoices. Det er alltid knyttet en client og en bank til hver invoice, i et én-til-én-forhold. Samtidig kan flere poster i invoice_items, som representerer de enkelte jobbene, være knyttet til en invoice i et mange-til-én-forhold (en faktura kan inneholde flere fakturaposter).&lt;/p&gt;
 &lt;p&gt;I forrige avsnitt viste jeg hvordan man veldig raskt kan skape fakturaer med &lt;code&gt;hfdb.quickGeneratorFromItem&lt;/code&gt; og &lt;code&gt;hfdb.quickGeneratorFromList&lt;/code&gt;. Dette er faktisk to wrapper-funksjoner som «wrapper» en rekke funksjoner for samhandling med databasen, med den hensikt å gjøre det så enkelt så mulig å opprette en faktura hurtig. De gjør to ting med informasjonen som gis dem: de legger dem til i databasen, og så returnerer de en &lt;code&gt;hammer_faktura.Generator&lt;/code&gt;, som vi kan bruke for å skape en faktura.&lt;/p&gt;
 &lt;p&gt;La oss ta en titt på hva som skjer i bakgrunnen når vi bruker disse wrapper-funksjonene:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#cd00cd&#34;&gt;from&lt;/span&gt; hammer_faktura &lt;span style=&#34;color:#cd00cd&#34;&gt;import&lt;/span&gt; hfdb
 
 jobber &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [{&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;dato&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd00cd&#34;&gt;1615968100&lt;/span&gt;,
     &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;5678&amp;#34;&lt;/span&gt;,
@@ -332,7 +342,7 @@ hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;assignItemsByDate(invoi
 &lt;p&gt;&lt;code&gt;hfdb.addInvoice()&lt;/code&gt; lagrer en faktura i databasen, i tabellen invoices. Det er kun nødvendig å oppgi en kunde og bankinformasjon. Vi kan også oppgi følgende: en egendefinert fakturadato (som timestamp – standard er dagens dato), en egendefinert frist eller velge et annet språk enn norsk. I bakgrunnen blir det automatisk generert et fakturanummer som returneres og lagres i variabelen invoice_number.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;hfdb.assignItemsByDate()&lt;/code&gt; knytter så en rekke invoice_item til en invoice i et én-til-flere-forhold. Dette forholdet etableres først når vi kjører denne funksjonen – fakturaposter som ennå ikke er blitt berørt, vil ikke være tilknyttet noen faktura i det hele tatt. Argumentene er fakturanummeret det gjelder og et datospenn. Alle poster i invoice_items med samme client som fakturaen og leveringsdato innenfor tidsspennet, blir knyttet til fakturaen.&lt;/p&gt;
 &lt;h3 id=&#34;skape-og-bruke-fakturageneratoren&#34;&gt;Skape og bruke fakturageneratoren&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;[&lt;span style=&#34;&#34;&gt;…&lt;/span&gt;]
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;[&lt;span style=&#34;&#34;&gt;…&lt;/span&gt;]
 
 generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;makeGenerator(invoice_number)  
 
@@ -343,7 +353,7 @@ body &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; generator&lt;span sty
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Til slutt skaper vi generatoren med funksjonen &lt;code&gt;hfdb.makeGenerator()&lt;/code&gt;. Funksjonen tar et fakturanummer som argument, og forutsetter at det finnes poster i tabellen invoice_items som er knyttet til dette fakturanummeret. Det henter så all informasjon om client, bank, og invoice_items som er knyttet til fakturaen, og lagrer det i generatoren.&lt;/p&gt;
 &lt;p&gt;Generatoren er en klasse med tre underklasser, client, invoice og bank, som til sammen inneholder all relevant informasjon om fakturaen fra databasen. Den har også en (wrapper-)metode &lt;code&gt;hammer_faktura.Generator.makeInvoiceBody&lt;/code&gt; som returnerer et html-dokument som en string. &lt;a href=&#34;https://www.olehammersland.com/blogg/fakturaer-del-to/#1-initialisere-kunde-bank-og-faktura&#34;&gt;Se min forrige post for mer informasjon om Generator-objektet&lt;/a&gt;. &lt;code&gt;hfdb.makeGenerator()&lt;/code&gt; er altså en nøkkelfunksjon som forvandler en post i tabellen invoices til en python-klasse vi kan bruke programmet vårt.Vi kan  manuelt overskrive feltene til hammer_faktura.Generator-objektet, f.eks slik:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromList(jobber, client_pk, bank_pk)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;generator &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; hfdb&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;quickGeneratorFromList(jobber, client_pk, bank_pk)
 
 generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;language &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;        &lt;span style=&#34;color:#000080&#34;&gt;# endre språk.&lt;/span&gt;
 generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;forfall &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#34;01.01.2020&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000080&#34;&gt;# overskrive forfallsdatoen&lt;/span&gt;
@@ -371,7 +381,7 @@ generator&lt;span style=&#34;color:#39c&#34;&gt;.&lt;/span&gt;invoice_items[&lt;
 &lt;h3 id=&#34;kommandolinjeverktøy&#34;&gt;Kommandolinjeverktøy&lt;/h3&gt;
 &lt;p&gt;Jeg har begynt å lage støtte for å bruke Hammer Faktura i kommandolinjen. Inntil videre har jeg konsentrert meg spesielt om de operasjonene som ikke må gjøres så ofte: da tenker jeg på det å legge til en ny kunde eller en ny bankforbindelse. Jeg har også støtte for å legge til en enkelt jobb i invoice_item.&lt;/p&gt;
 &lt;p&gt;Slik kan Hammer Faktura brukes i kommandolinjen:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ python3 -m hammer_faktura
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ python3 -m hammer_faktura
 
 Usage: python3 -m hammer_faktura [-l/-a] &amp;lt;args&amp;gt;
 
@@ -506,7 +516,7 @@ $ python3 -m hammer_faktura -l clients
 &lt;h2 id=&#34;9-fjern-slitsom-markup-med-regex-tagger&#34;&gt;9. Fjern slitsom markup med regex tagger&lt;/h2&gt;
 &lt;p&gt;Markup vil si kodetegn som f.eks. «\n» (linjeskift), «&amp;lt;br&amp;gt;» (også linjeskift), «&amp;amp;nbsp;» (hardt mellomrom) og så videre. Dette er kode som f.eks. skal tolkes av en nettleser for å markere teksten på en bestemt måte. F.eks. skrives &lt;strong&gt;fet skrift&lt;/strong&gt; slik i HTML: &amp;lt;strong&amp;gt;fet skrift&amp;lt;/strong&amp;gt;&lt;/p&gt;
 &lt;p&gt;memoQ har god støtte for å filtrere bort markup, slik at man som oversetter kan konsentrere seg om den faktiske teksten. Noen ganger sniker det seg likevel med noen varianter. Jeg har f.eks. lagt merke til at «\n» sjelden blir filtrert bort. Om teksten ser slik ut, kan det bli slitsomt:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Kjære kunde\n\nVi ønsker å gjøre dere oppmerksomme\npå at det ikke er mulig å\nbetale med kort.\n\nTakk for forståelsen.\n\nmvh kundeservice. 
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Kjære kunde\n\nVi ønsker å gjøre dere oppmerksomme\npå at det ikke er mulig å\nbetale med kort.\n\nTakk for forståelsen.\n\nmvh kundeservice. 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Hver «\n» er viktig å få med, fordi den representerer et linjeskift. Men i sin nåværende form er det tungvint å se hvor ordene begynner og slutter. Dessuten vil vi bruke mye tid på stavekontroll, siden den vil reagere på nesten annethvert ord. Det er  bortkastet tid om teksten er på 10 000 ord eller mer.&lt;/p&gt;
 &lt;p&gt;Med regex-tagger kan man låse hver forekomst av «\n» inn i en tagg. I memoQ representeres en slik tagg som en liten rød blokk som ikke kan endres på. Den teller ikke som et ord. Programmet reagerer dessuten dersom taggen mangler eller ikke står i riktig rekkefølge.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoq-regex-tagger.JPG&#34; alt=&#34;Regex-tagger i aksjon&#34;&gt;&lt;/p&gt;
@@ -529,7 +539,7 @@ $ python3 -m hammer_faktura -l clients
 &lt;/ul&gt;
 &lt;p&gt;Noen raske eksempler på hvilke superkrefter man får med regulære uttrykk: man kan filtrere etter alle setninger hvor «Aftenposten» er det første ordet (&lt;em&gt;^Aftenposten&lt;/em&gt;). Eller filtrere bort alle setninger som inneholder bokstaver (&lt;em&gt;[^\w]&lt;/em&gt;).&lt;/p&gt;
 &lt;p&gt;Eller skifte valuta på alle beløp i hele filen. Slik kan man f.eks. skifte fra amerikansk stil (USD XXX) til norsk (XXX NOK) med et trylleslag:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Search for: USD (\d{2,4})
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Search for: USD (\d{2,4})
 
 Replace with: $1 NOK
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Dette vil si at alle forekomster av USD foran to til fire tall vil bli erstattet med de samme to til fire tallene &lt;em&gt;etterfulgt&lt;/em&gt; av NOK.&lt;/p&gt;

@@ -17,10 +17,10 @@ Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller an
 <meta property="og:description" content="Innledning Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.
 Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.olehammersland.com/blogg/forkorte-stringer/" />
-<meta property="og:image" content="https://www.olehammersland.com/images/share.png"/>
+<meta property="og:url" content="https://www.olehammersland.com/blogg/forkorte-stringer/" /><meta property="og:image" content="https://www.olehammersland.com/images/share.png"/><meta property="article:section" content="blogg" />
 <meta property="article:published_time" content="2021-11-04T15:33:19+01:00" />
 <meta property="article:modified_time" content="2021-11-04T15:33:19+01:00" />
+
 
 
 
@@ -35,16 +35,10 @@ Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller an
 
 <meta itemprop="name" content="Forkorte strenger">
 <meta itemprop="description" content="Innledning Denne uken fikk jeg et oppdrag som kort fortalt går ut på å redusere lengden på 3000 setninger. Kunden oppgir at det er en tegnbegrensning på 25 bytes, og nå trenger de noen til å nådeløst kutte ned lengden på disse setningene.
-Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes.">
-<meta itemprop="datePublished" content="2021-11-04T15:33:19+01:00" />
+Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller antall tegn. Makroen teller dog ikke med at ikke-ASCII-tegn tar opp mer enn en byte. Dette gjelder da især for ø, æ, å, Ø, Æ og Å, som alle tar opp to bytes."><meta itemprop="datePublished" content="2021-11-04T15:33:19+01:00" />
 <meta itemprop="dateModified" content="2021-11-04T15:33:19+01:00" />
-<meta itemprop="wordCount" content="673">
-<meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
-
-
-
+<meta itemprop="wordCount" content="673"><meta itemprop="image" content="https://www.olehammersland.com/images/share.png"/>
 <meta itemprop="keywords" content="automatisering,effektivisering,koding,maskinoversttelse,memoq,oversettelse,python,translation," />
-
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <style>
@@ -394,7 +388,7 @@ Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller an
 <h3 id="trinn-1-analysere-teksten">Trinn 1: Analysere teksten</h3>
 <p>Jeg begynte med et python-skript som deler opp hver setning i enkeltord og deretter teller opp hvor ofte hvert enkeltord forekommer i setningen. Dette (meta!)skriptet skriver så et nytt python-skript som kun inneholder en liste over hvert ord dobbelt og en merknad om hvor ofte ordet forekommer i Excel-listen.</p>
 <p>Slik ser det nye python-skriptet ut:</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vanlige_ord <span style="color:#39c">=</span> [
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vanlige_ord <span style="color:#39c">=</span> [
     (<span style="color:#cd0000">&#39;Ut-&#39;</span>,<span style="color:#cd0000">&#39;Ut-&#39;</span>), <span style="color:#000080"># Antall: 1</span>
     (<span style="color:#cd0000">&#39;innmonteringsverktøy&#39;</span>,<span style="color:#cd0000">&#39;innmonteringsverktøy&#39;</span>), <span style="color:#000080"># Antall: 1</span>
     (<span style="color:#cd0000">&#39;Belgia/Nederland&#39;</span>,<span style="color:#cd0000">&#39;Belgia/Nederland&#39;</span>), <span style="color:#000080"># Antall: 1</span>
@@ -413,7 +407,7 @@ Språkbyrået oversender oppdraget som en Excel-tabell med makroer som teller an
 </code></pre></div><p>Merk at jeg kun har skilt opp ord etter mellomrommene i teksten. Derfor dukker det også opp flere ord som ikke er skilt av mellomrom.</p>
 <h3 id="trinn-2-lage-forkortelser">Trinn 2: Lage forkortelser</h3>
 <p>Jeg gikk så manuelt gjennom denne python-listen og forkortet det høyre ordet i hver tuple, slik som dette:</p>
-<div class="highlight"><pre style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vanlige_ord <span style="color:#39c">=</span> [
+<div class="highlight"><pre tabindex="0" style="color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vanlige_ord <span style="color:#39c">=</span> [
     (<span style="color:#cd0000">&#39;Ut-&#39;</span>,<span style="color:#cd0000">&#39;Ut-&#39;</span>), <span style="color:#000080"># Antall: 1</span>
     (<span style="color:#cd0000">&#39;innmonteringsverktøy&#39;</span>,<span style="color:#cd0000">&#39;innmont.verktøy&#39;</span>), <span style="color:#000080"># Antall: 1</span>
     (<span style="color:#cd0000">&#39;Belgia/Nederland&#39;</span>,<span style="color:#cd0000">&#39;B/NL&#39;</span>), <span style="color:#000080"># Antall: 1</span>

@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Ole Hammersland©2021</copyright>
-    <lastBuildDate>Sun, 17 Jul 2022 19:59:21 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Feb 2023 08:44:40 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jeg går til skyen</title>
+      <link>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</link>
+      <pubDate>Mon, 20 Feb 2023 08:44:40 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</guid>
+      <description>&lt;p&gt;Det falt meg tungt, men jeg har endelig vokst opp og parkert min hjemmelagde e-postserver til fordel for Microsoft 365!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Landeveien til Sørlandet</title>
       <link>https://www.olehammersland.com/blogg/landeveien_til_s%C3%B8rlandet/</link>
@@ -116,7 +126,7 @@
 &lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-gui-first-look.jpg&#34; alt=&#34;Slik ser nye simpleVP ut.&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Bildet over viser den delen av programmet som er kommet lengst: siden for å opprette, endre og slette forbindelsene til de ulike XTRF-portalene. Når du bruker programmet, vil du kunne bruke alle disse XTRF-portalene samtidig, i samme programmet.&lt;/p&gt;
 &lt;p&gt;Prosjektet er delt opp i følgende pakker eller «delprogrammer»:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;            main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;            main
            /    \
         gui  –-  db
                    \

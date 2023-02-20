@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Ole Hammersland©2021</copyright>
-    <lastBuildDate>Sun, 17 Jul 2022 19:59:21 +0200</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/translation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Feb 2023 08:44:40 +0100</lastBuildDate><atom:link href="https://www.olehammersland.com/blogg/translation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jeg går til skyen</title>
+      <link>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</link>
+      <pubDate>Mon, 20 Feb 2023 08:44:40 +0100</pubDate>
+      
+      <guid>https://www.olehammersland.com/blogg/jeg_g%C3%A5r_til_skyen/</guid>
+      <description>&lt;p&gt;Det falt meg tungt, men jeg har endelig vokst opp og parkert min hjemmelagde e-postserver til fordel for Microsoft 365!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Landeveien til Sørlandet</title>
       <link>https://www.olehammersland.com/blogg/landeveien_til_s%C3%B8rlandet/</link>
@@ -96,7 +106,7 @@
 &lt;h3 id=&#34;trinn-1-analysere-teksten&#34;&gt;Trinn 1: Analysere teksten&lt;/h3&gt;
 &lt;p&gt;Jeg begynte med et python-skript som deler opp hver setning i enkeltord og deretter teller opp hvor ofte hvert enkeltord forekommer i setningen. Dette (meta!)skriptet skriver så et nytt python-skript som kun inneholder en liste over hvert ord dobbelt og en merknad om hvor ofte ordet forekommer i Excel-listen.&lt;/p&gt;
 &lt;p&gt;Slik ser det nye python-skriptet ut:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
@@ -115,7 +125,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Merk at jeg kun har skilt opp ord etter mellomrommene i teksten. Derfor dukker det også opp flere ord som ikke er skilt av mellomrom.&lt;/p&gt;
 &lt;h3 id=&#34;trinn-2-lage-forkortelser&#34;&gt;Trinn 2: Lage forkortelser&lt;/h3&gt;
 &lt;p&gt;Jeg gikk så manuelt gjennom denne python-listen og forkortet det høyre ordet i hver tuple, slik som dette:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#ccc;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;vanlige_ord &lt;span style=&#34;color:#39c&#34;&gt;=&lt;/span&gt; [
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Ut-&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmonteringsverktøy&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;innmont.verktøy&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
     (&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;Belgia/Nederland&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd0000&#34;&gt;&amp;#39;B/NL&amp;#39;&lt;/span&gt;), &lt;span style=&#34;color:#000080&#34;&gt;# Antall: 1&lt;/span&gt;
@@ -171,7 +181,7 @@
 &lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/simplevp3-gui-first-look.jpg&#34; alt=&#34;Slik ser nye simpleVP ut.&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Bildet over viser den delen av programmet som er kommet lengst: siden for å opprette, endre og slette forbindelsene til de ulike XTRF-portalene. Når du bruker programmet, vil du kunne bruke alle disse XTRF-portalene samtidig, i samme programmet.&lt;/p&gt;
 &lt;p&gt;Prosjektet er delt opp i følgende pakker eller «delprogrammer»:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;            main
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;            main
            /    \
         gui  –-  db
                    \
@@ -317,7 +327,7 @@
 &lt;h2 id=&#34;9-fjern-slitsom-markup-med-regex-tagger&#34;&gt;9. Fjern slitsom markup med regex tagger&lt;/h2&gt;
 &lt;p&gt;Markup vil si kodetegn som f.eks. «\n» (linjeskift), «&amp;lt;br&amp;gt;» (også linjeskift), «&amp;amp;nbsp;» (hardt mellomrom) og så videre. Dette er kode som f.eks. skal tolkes av en nettleser for å markere teksten på en bestemt måte. F.eks. skrives &lt;strong&gt;fet skrift&lt;/strong&gt; slik i HTML: &amp;lt;strong&amp;gt;fet skrift&amp;lt;/strong&amp;gt;&lt;/p&gt;
 &lt;p&gt;memoQ har god støtte for å filtrere bort markup, slik at man som oversetter kan konsentrere seg om den faktiske teksten. Noen ganger sniker det seg likevel med noen varianter. Jeg har f.eks. lagt merke til at «\n» sjelden blir filtrert bort. Om teksten ser slik ut, kan det bli slitsomt:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Kjære kunde\n\nVi ønsker å gjøre dere oppmerksomme\npå at det ikke er mulig å\nbetale med kort.\n\nTakk for forståelsen.\n\nmvh kundeservice. 
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Kjære kunde\n\nVi ønsker å gjøre dere oppmerksomme\npå at det ikke er mulig å\nbetale med kort.\n\nTakk for forståelsen.\n\nmvh kundeservice. 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Hver «\n» er viktig å få med, fordi den representerer et linjeskift. Men i sin nåværende form er det tungvint å se hvor ordene begynner og slutter. Dessuten vil vi bruke mye tid på stavekontroll, siden den vil reagere på nesten annethvert ord. Det er  bortkastet tid om teksten er på 10 000 ord eller mer.&lt;/p&gt;
 &lt;p&gt;Med regex-tagger kan man låse hver forekomst av «\n» inn i en tagg. I memoQ representeres en slik tagg som en liten rød blokk som ikke kan endres på. Den teller ikke som et ord. Programmet reagerer dessuten dersom taggen mangler eller ikke står i riktig rekkefølge.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.olehammersland.com/images/blogg/memoq-regex-tagger.JPG&#34; alt=&#34;Regex-tagger i aksjon&#34;&gt;&lt;/p&gt;
@@ -340,7 +350,7 @@
 &lt;/ul&gt;
 &lt;p&gt;Noen raske eksempler på hvilke superkrefter man får med regulære uttrykk: man kan filtrere etter alle setninger hvor «Aftenposten» er det første ordet (&lt;em&gt;^Aftenposten&lt;/em&gt;). Eller filtrere bort alle setninger som inneholder bokstaver (&lt;em&gt;[^\w]&lt;/em&gt;).&lt;/p&gt;
 &lt;p&gt;Eller skifte valuta på alle beløp i hele filen. Slik kan man f.eks. skifte fra amerikansk stil (USD XXX) til norsk (XXX NOK) med et trylleslag:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Search for: USD (\d{2,4})
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Search for: USD (\d{2,4})
 
 Replace with: $1 NOK
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Dette vil si at alle forekomster av USD foran to til fire tall vil bli erstattet med de samme to til fire tallene &lt;em&gt;etterfulgt&lt;/em&gt; av NOK.&lt;/p&gt;
